@@ -6220,3 +6220,104 @@
 }
 
 /* oni-homepage-type-and-hero-fix-v23:end */
+
+/* oni-homepage-mobile-hero-type-v24:start */
+
+/*
+  Mobile hero typography v2.4
+  Keep each hero phrase on one line where practical and add enough vertical
+  breathing room for Vietnamese diacritics on iOS/Chromium/WebKit.
+*/
+
+@media (max-width: 760px) {
+  .home-redesign-v2 .home-hero-v2-copy {
+    min-width: 0;
+  }
+
+  .home-redesign-v2 .home-hero-v2 h1 {
+    max-width: none !important;
+    width: 100%;
+    margin-top: 18px !important;
+    font-size: clamp(2.75rem, 11.6vw, 3.45rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.045em !important;
+    white-space: nowrap;
+    text-wrap: nowrap !important;
+  }
+
+  .home-redesign-v2 .home-hero-v2 h1 span {
+    display: block;
+    margin-top: 0.08em;
+    line-height: 1.08 !important;
+  }
+
+  .home-redesign-v2 .home-hero-v2-lead {
+    margin-top: 24px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .home-redesign-v2 .home-hero-v2 h1 {
+    font-size: clamp(2.55rem, 11.15vw, 3rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.041em !important;
+  }
+
+  .home-redesign-v2 .home-hero-v2 h1 span {
+    margin-top: 0.1em;
+    line-height: 1.1 !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .home-redesign-v2 .home-hero-v2 h1 {
+    font-size: clamp(2.35rem, 10.9vw, 2.72rem) !important;
+    letter-spacing: -0.038em !important;
+  }
+}
+
+/* oni-homepage-mobile-hero-type-v24:end */
+
+/* oni-homepage-intro-mobile-type-v25:start */
+
+/*
+  Fix the second large homepage heading on small screens.
+  Vietnamese diacritics need noticeably more line-box height than the earlier
+  editorial setting, especially on iOS/WebKit.
+*/
+
+.home-redesign-v2 .home-intro-heading h2 {
+  line-height: 1.18 !important;
+  letter-spacing: -0.032em !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+@media (max-width: 760px) {
+  .home-redesign-v2 .home-intro-heading h2 {
+    max-width: 14.5ch !important;
+    font-size: clamp(2rem, 9.2vw, 2.8rem) !important;
+    line-height: 1.24 !important;
+    letter-spacing: -0.028em !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .home-redesign-v2 .home-intro-heading h2 {
+    max-width: 13.8ch !important;
+    font-size: clamp(1.95rem, 9.4vw, 2.55rem) !important;
+    line-height: 1.26 !important;
+    letter-spacing: -0.025em !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .home-redesign-v2 .home-intro-heading h2 {
+    max-width: 13.5ch !important;
+    font-size: clamp(1.9rem, 9.6vw, 2.35rem) !important;
+    line-height: 1.27 !important;
+  }
+}
+
+/* oni-homepage-intro-mobile-type-v25:end */
