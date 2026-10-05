@@ -12,7 +12,7 @@ export default async function CategoriesAdmin({
 
   const { data, error } = await db
     .from("equipment_categories")
-    .select("*")
+    .select("id,slug,name,sort_order")
     .order("sort_order");
 
   if (error) {

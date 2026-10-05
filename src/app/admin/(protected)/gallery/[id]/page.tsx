@@ -17,7 +17,10 @@ export default async function EditGalleryAlbum({
 
   const [galleryResult, categoryResult] = await Promise.all([
     db.from("gallery").select("*").eq("id", id).maybeSingle(),
-    db.from("gallery_categories").select("*").order("sort_order"),
+    db
+      .from("gallery_categories")
+      .select("id,slug,name,sort_order")
+      .order("sort_order"),
   ]);
 
   if (galleryResult.error || !galleryResult.data) notFound();

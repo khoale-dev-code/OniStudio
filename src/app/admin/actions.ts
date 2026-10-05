@@ -65,6 +65,46 @@ function dbMessage(code?: string) {
   return "Không thể lưu dữ liệu. Kiểm tra kết nối và quyền Supabase.";
 }
 
+function revalidateEquipment(equipmentId?: string) {
+  revalidatePath("/");
+  revalidatePath("/equipment");
+  revalidatePath("/equipment/[slug]", "page");
+  revalidatePath("/pricing");
+  revalidatePath("/admin/equipment");
+  if (equipmentId) revalidatePath(`/admin/equipment/${equipmentId}`);
+}
+
+function revalidateEquipmentCategories() {
+  revalidatePath("/");
+  revalidatePath("/equipment");
+  revalidatePath("/pricing");
+  revalidatePath("/admin/equipment");
+  revalidatePath("/admin/categories");
+}
+
+function revalidateStudios(studioId?: string) {
+  revalidatePath("/");
+  revalidatePath("/studios");
+  revalidatePath("/studios/[slug]", "page");
+  revalidatePath("/pricing");
+  revalidatePath("/admin/studios");
+  if (studioId) revalidatePath(`/admin/studios/${studioId}`);
+}
+
+function revalidateGallery(galleryId?: string) {
+  revalidatePath("/");
+  revalidatePath("/gallery");
+  revalidatePath("/admin/gallery");
+  if (galleryId) revalidatePath(`/admin/gallery/${galleryId}`);
+}
+
+function revalidateGalleryCategories() {
+  revalidatePath("/");
+  revalidatePath("/gallery");
+  revalidatePath("/admin/gallery");
+  revalidatePath("/admin/gallery/categories");
+}
+
 export async function saveEquipment(
   id: string | null,
   _previous: ActionState,
@@ -85,22 +125,17 @@ export async function saveEquipment(
     return { error: "Phiên quản trị đã hết hạn. Vui lòng đăng nhập lại." };
   }
 
-  const { data: category, error: categoryError } = await session.db
-    .from("equipment_categories")
-    .select("slug")
-    .eq("slug", payload.category)
-    .maybeSingle();
-
-  if (categoryError) return { error: dbMessage(categoryError.code) };
-  if (!category) return { error: "Danh mục đã bị xóa hoặc không tồn tại." };
-
   const query = id
     ? session.db.from("equipment").update(payload).eq("id", id)
     : session.db.from("equipment").insert(payload);
   const { data, error } = await query.select("id").single();
+
+  if (error?.code === "23503") {
+    return { error: "Danh mục đã bị xóa hoặc không tồn tại." };
+  }
   if (error || !data) return { error: dbMessage(error?.code) };
 
-  revalidatePath("/", "layout");
+  revalidateEquipment(data.id);
   redirect("/admin/equipment?saved=1");
 }
 
@@ -126,7 +161,7 @@ export async function deleteEquipment(
 
   if (error || !data) return { error: "Không thể xóa thiết bị." };
 
-  revalidatePath("/", "layout");
+  revalidateEquipment(id);
   redirect("/admin/equipment?deleted=1");
 }
 
@@ -167,7 +202,12 @@ export async function saveEquipmentCategory(
     return { error: dbMessage(error?.code) };
   }
 
-  revalidatePath("/", "layout");
+  revalidateEquipmentCategories();
+
+  if (id) {
+    return { success: "Đã cập nhật danh mục." };
+  }
+
   redirect("/admin/categories?saved=1");
 }
 
@@ -200,8 +240,7 @@ export async function deleteEquipmentCategory(
   }
   if (error || !data) return { error: dbMessage(error?.code) };
 
-  revalidatePath("/admin/categories");
-  revalidatePath("/", "layout");
+  revalidateEquipmentCategories();
   return { success: "Đã xóa danh mục." };
 }
 
@@ -258,8 +297,7 @@ export async function addEquipmentUnits(
   const { error } = await session.db.from("equipment_units").insert(rows);
   if (error) return { error: dbMessage(error.code) };
 
-  revalidatePath(`/admin/equipment/${equipmentId}`);
-  revalidatePath("/", "layout");
+  revalidateEquipment(equipmentId);
   return { success: `Đã thêm ${count} thiết bị vào tồn kho.` };
 }
 
@@ -296,8 +334,7 @@ export async function saveEquipmentUnit(
 
   if (error || !data) return { error: dbMessage(error?.code) };
 
-  revalidatePath(`/admin/equipment/${equipmentId}`);
-  revalidatePath("/", "layout");
+  revalidateEquipment(equipmentId);
   return { success: "Đã cập nhật tình trạng." };
 }
 
@@ -327,8 +364,7 @@ export async function deleteEquipmentUnit(
 
   if (error || !data) return { error: dbMessage(error?.code) };
 
-  revalidatePath(`/admin/equipment/${equipmentId}`);
-  revalidatePath("/", "layout");
+  revalidateEquipment(equipmentId);
   return { success: "Đã xóa một thiết bị khỏi tồn kho." };
 }
 
@@ -392,8 +428,7 @@ export async function saveStudio(
     if (error || !data) return { error: dbMessage(error?.code) };
   }
 
-  revalidatePath("/", "layout");
-  revalidatePath("/admin/studios");
+  revalidateStudios(id ?? undefined);
   redirect("/admin/studios?saved=1");
 }
 
@@ -430,8 +465,7 @@ export async function deleteStudio(
     return { error: "Không thể xóa phòng. Kiểm tra kết nối và quyền Supabase." };
   }
 
-  revalidatePath("/", "layout");
-  revalidatePath("/admin/studios");
+  revalidateStudios(id);
   redirect("/admin/studios?deleted=1");
 }
 
@@ -506,43 +540,17 @@ export async function saveGallery(
   const session = await requireAdmin().catch(() => null);
   if (!session) return { error: "Vui lòng đăng nhập lại." };
 
-  const { data: galleryCategory, error: categoryError } = await session.db
-    .from("gallery_categories")
-    .select("id")
-    .eq("slug", selectedCategory)
-    .maybeSingle();
+  const query = id
+    ? session.db.from("gallery").update(payload).eq("id", id)
+    : session.db.from("gallery").insert(payload);
+  const { data, error } = await query.select("id").single();
 
-  if (categoryError) {
-    return {
-      error:
-        "Chưa có cấu trúc danh mục thư viện. Hãy chạy migration 006_gallery_categories_photographer.sql.",
-    };
-  }
-
-  if (!galleryCategory) {
+  if (error?.code === "23503") {
     return { error: "Danh mục thư viện không tồn tại hoặc đã bị xóa." };
   }
+  if (error || !data) return { error: dbMessage(error?.code) };
 
-  if (id) {
-    const { data, error } = await session.db
-      .from("gallery")
-      .update(payload)
-      .eq("id", id)
-      .select("id")
-      .single();
-
-    if (error || !data) return { error: dbMessage(error?.code) };
-  } else {
-    const { data, error } = await session.db
-      .from("gallery")
-      .insert(payload)
-      .select("id")
-      .single();
-
-    if (error || !data) return { error: dbMessage(error?.code) };
-  }
-
-  revalidatePath("/", "layout");
+  revalidateGallery(data.id);
   redirect("/admin/gallery?saved=1");
 }
 
@@ -604,8 +612,7 @@ export async function saveGalleryCategory(
     };
   }
 
-  revalidatePath("/", "layout");
-  revalidatePath("/admin/gallery/categories");
+  revalidateGalleryCategories();
   return { success: id ? "Đã cập nhật danh mục." : "Đã thêm danh mục." };
 }
 
@@ -665,8 +672,7 @@ export async function deleteGalleryCategory(
     return { error: "Không thể xóa danh mục." };
   }
 
-  revalidatePath("/", "layout");
-  revalidatePath("/admin/gallery/categories");
+  revalidateGalleryCategories();
   return { success: "Đã xóa danh mục." };
 }
 
@@ -687,6 +693,6 @@ export async function deleteGallery(
   const { error } = await session.db.from("gallery").delete().eq("id", id);
   if (error) return { error: "Không thể xóa ảnh." };
 
-  revalidatePath("/", "layout");
+  revalidateGallery();
   return { success: "Đã xóa ảnh khỏi thư viện website." };
 }

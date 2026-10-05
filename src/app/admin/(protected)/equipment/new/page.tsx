@@ -7,7 +7,7 @@ export default async function New() {
   const { db } = await requireAdminPage();
   const { data, error } = await db
     .from("equipment_categories")
-    .select("*")
+    .select("id,slug,name,sort_order")
     .order("sort_order");
 
   const categories = error

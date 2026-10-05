@@ -17,10 +17,13 @@ export default async function Edit({
   const [{ id }, { db }] = await Promise.all([params, requireAdminPage()]);
   const [equipmentResult, categoriesResult, unitsResult] = await Promise.all([
     db.from("equipment").select("*").eq("id", id).maybeSingle(),
-    db.from("equipment_categories").select("*").order("sort_order"),
+    db
+      .from("equipment_categories")
+      .select("id,slug,name,sort_order")
+      .order("sort_order"),
     db
       .from("equipment_units")
-      .select("*")
+      .select("id,equipment_id,label,status,sort_order")
       .eq("equipment_id", id)
       .order("sort_order"),
   ]);

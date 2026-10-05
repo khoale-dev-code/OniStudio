@@ -469,6 +469,12 @@ export function GalleryForm({
           {state.error}
         </p>
       )}
+
+      {state.success && (
+        <p role="status" className="notice success gallery-editor-notice">
+          {state.success}
+        </p>
+      )}
     </form>
   );
 }

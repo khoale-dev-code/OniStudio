@@ -17,9 +17,17 @@ export default async function EquipmentAdmin({
 }) {
   const [{ db }, query] = await Promise.all([requireAdminPage(), searchParams]);
   const [equipmentResult, categoriesResult, unitsResult] = await Promise.all([
-    db.from("equipment").select("*").order("sort_order"),
-    db.from("equipment_categories").select("*").order("sort_order"),
-    db.from("equipment_units").select("*").order("sort_order"),
+    db
+      .from("equipment")
+      .select(
+        "id,slug,name,category,price,included,status,images,image_url,published,sort_order",
+      )
+      .order("sort_order"),
+    db
+      .from("equipment_categories")
+      .select("id,slug,name,sort_order")
+      .order("sort_order"),
+    db.from("equipment_units").select("equipment_id,status").order("sort_order"),
   ]);
 
   if (equipmentResult.error) throw new Error("Equipment unavailable");

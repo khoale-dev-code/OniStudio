@@ -184,6 +184,12 @@ export function EquipmentForm({
             {state.error}
           </p>
         )}
+
+        {state.success && (
+          <p className="notice success" role="status">
+            {state.success}
+          </p>
+        )}
         <div className="form-actions">
           <button className="button" disabled={pending || mediaBlocked}>
             {pending ? "Đang lưu..." : "Lưu thiết bị"}

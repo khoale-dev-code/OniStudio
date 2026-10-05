@@ -9,7 +9,7 @@ export default async function GalleryCategoriesAdmin() {
 
   const { data, error } = await db
     .from("gallery_categories")
-    .select("*")
+    .select("id,slug,name,sort_order")
     .order("sort_order");
 
   if (error) {

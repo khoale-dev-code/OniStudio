@@ -1,19 +1,38 @@
 import "server-only";
+import { cache } from "react";
 import { redirect } from "next/navigation";
 import { createAuthClient } from "./supabase/server";
 import { isConfigured } from "./supabase/config";
-export async function adminSession() {
+
+export const adminSession = cache(async function adminSession() {
   if (!isConfigured()) return null;
+
   const db = await createAuthClient();
-  const {
-    data: { user },
-    error,
-  } = await db.auth.getUser();
-  if (error || !user) return null;
-  const { data: allowed, error: roleError } = await db.rpc("is_admin");
-  if (roleError || allowed !== true) return null;
-  return { db, user };
-}
+  const [claimsResult, roleResult] = await Promise.all([
+    db.auth.getClaims(),
+    db.rpc("is_admin"),
+  ]);
+
+  if (
+    claimsResult.error ||
+    !claimsResult.data?.claims ||
+    roleResult.error ||
+    roleResult.data !== true
+  ) {
+    return null;
+  }
+
+  const email =
+    typeof claimsResult.data.claims.email === "string"
+      ? claimsResult.data.claims.email
+      : null;
+
+  return {
+    db,
+    user: { email },
+  };
+});
+
 export async function requireAdmin() {
   const session = await adminSession();
   if (!session) throw new Error("Unauthorized");

@@ -17,8 +17,16 @@ export default async function GalleryAdmin({
   const [{ db }, query] = await Promise.all([requireAdminPage(), searchParams]);
 
   const [galleryResult, categoryResult] = await Promise.all([
-    db.from("gallery").select("*").order("sort_order"),
-    db.from("gallery_categories").select("*").order("sort_order"),
+    db
+      .from("gallery")
+      .select(
+        "id,title,category,image_url,images,published,sort_order,photographer_name,oni_production,oni_lighting,shot_at_oni",
+      )
+      .order("sort_order"),
+    db
+      .from("gallery_categories")
+      .select("id,slug,name,sort_order")
+      .order("sort_order"),
   ]);
 
   if (galleryResult.error) throw new Error("Gallery unavailable");

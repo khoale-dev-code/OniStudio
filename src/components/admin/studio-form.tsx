@@ -165,6 +165,12 @@ export function StudioForm({
           </p>
         )}
 
+        {state.success && (
+          <p role="status" className="notice success">
+            {state.success}
+          </p>
+        )}
+
         <div className="form-actions studio-admin-form-actions">
           <button className="button" disabled={pending || mediaBlocked}>
             <Save size={17} aria-hidden="true" />

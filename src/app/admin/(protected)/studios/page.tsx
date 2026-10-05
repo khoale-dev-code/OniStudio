@@ -19,7 +19,7 @@ export default async function Rooms({
   const [{ db }, query] = await Promise.all([requireAdminPage(), searchParams]);
   const { data, error } = await db
     .from("studios")
-    .select("*")
+    .select("id,name,area,capacity,price,published,sort_order")
     .order("sort_order");
 
   if (error) throw new Error("Studios unavailable");
