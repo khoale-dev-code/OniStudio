@@ -1,0 +1,27 @@
+import type { MetadataRoute } from "next";
+import { getCatalog } from "@/lib/catalog";
+export const dynamic = "force-dynamic";
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const base = (
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ).replace(/\/$/, "");
+  const { studios, equipment } = await getCatalog();
+  const paths = [
+    "",
+    "/studios",
+    "/equipment",
+    "/services",
+    "/pricing",
+    "/gallery",
+    "/about",
+    "/contact",
+    ...studios.map((s) => `/studios/${s.slug}`),
+    ...equipment.map((e) => `/equipment/${e.slug}`),
+  ];
+  return paths.flatMap((path) =>
+    ["", "/en"].map((prefix) => ({
+      url: base + prefix + path,
+      alternates: { languages: { vi: base + path, en: base + "/en" + path } },
+    })),
+  );
+}

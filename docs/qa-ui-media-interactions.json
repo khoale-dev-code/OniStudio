@@ -1,0 +1,105 @@
+{
+  "mode": "Browser with mocked upload responses; not live Cloudinary",
+  "checks": [
+    {
+      "name": "Save disabled while uploads run",
+      "pass": true
+    },
+    {
+      "name": "Uploads capped at three concurrent requests",
+      "pass": true
+    },
+    {
+      "name": "Failed upload blocks save",
+      "pass": true
+    },
+    {
+      "name": "Retry succeeds and enables save",
+      "pass": true
+    },
+    {
+      "name": "Out-of-order completion preserves selection order",
+      "pass": true
+    },
+    {
+      "name": "Mouse drag changes submitted image order",
+      "pass": true
+    },
+    {
+      "name": "Keyboard arrows reorder images",
+      "pass": true
+    },
+    {
+      "name": "Touch drag changes image order",
+      "pass": true
+    },
+    {
+      "name": "Admin media no overflow at 375px",
+      "pass": true
+    },
+    {
+      "name": "Removing an image updates submitted list",
+      "pass": true
+    },
+    {
+      "name": "Unsupported upload rejected",
+      "pass": true
+    },
+    {
+      "name": "Maximum 12 images enforced",
+      "pass": true
+    },
+    {
+      "name": "Public thumbnails change active photo",
+      "pass": true
+    },
+    {
+      "name": "Image viewer opens",
+      "pass": true
+    },
+    {
+      "name": "Viewer keyboard navigation",
+      "pass": true
+    },
+    {
+      "name": "Escape closes image viewer",
+      "pass": true
+    },
+    {
+      "name": "Media layout fits 375px",
+      "pass": true
+    },
+    {
+      "name": "Media layout fits 430px",
+      "pass": true
+    },
+    {
+      "name": "Media layout fits 768px",
+      "pass": true
+    },
+    {
+      "name": "Media layout fits 1024px",
+      "pass": true
+    },
+    {
+      "name": "Media layout fits 1440px",
+      "pass": true
+    },
+    {
+      "name": "Media layout fits 1920px",
+      "pass": true
+    },
+    {
+      "name": "File drag/drop creates upload preview",
+      "pass": true
+    },
+    {
+      "name": "Removing in-flight upload unblocks form",
+      "pass": true
+    },
+    {
+      "name": "No React runtime errors",
+      "pass": true
+    }
+  ]
+}

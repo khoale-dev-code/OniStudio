@@ -1,0 +1,731 @@
+{
+  "studios": [
+    {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "slug": "room-a",
+      "name": "Room A",
+      "description": {
+        "vi": "Không gian cho những ý tưởng thời trang, chân dung và sản phẩm. Cùng Oni trao đổi layout ánh sáng phù hợp trước buổi chụp.",
+        "en": "A space for fashion, portraits and product stories. Discuss your lighting layout with Oni before the shoot."
+      },
+      "area": 80,
+      "capacity": 10,
+      "price": 380000,
+      "led_count": 1,
+      "images": [],
+      "published": true,
+      "sort_order": 0
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "slug": "room-b",
+      "name": "Room B",
+      "description": {
+        "vi": "Không gian cho những ý tưởng thời trang, chân dung và sản phẩm. Cùng Oni trao đổi layout ánh sáng phù hợp trước buổi chụp.",
+        "en": "A space for fashion, portraits and product stories. Discuss your lighting layout with Oni before the shoot."
+      },
+      "area": 80,
+      "capacity": 10,
+      "price": 380000,
+      "led_count": 1,
+      "images": [],
+      "published": true,
+      "sort_order": 1
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "slug": "room-c",
+      "name": "Room C",
+      "description": {
+        "vi": "Không gian cho những ý tưởng thời trang, chân dung và sản phẩm. Cùng Oni trao đổi layout ánh sáng phù hợp trước buổi chụp.",
+        "en": "A space for fashion, portraits and product stories. Discuss your lighting layout with Oni before the shoot."
+      },
+      "area": 160,
+      "capacity": 20,
+      "price": 700000,
+      "led_count": 2,
+      "images": [],
+      "published": true,
+      "sort_order": 2
+    }
+  ],
+  "equipment": [
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "slug": "aputure-storm-400x",
+      "name": "Aputure STORM 400X",
+      "category": "continuous",
+      "description": {
+        "vi": "Aputure STORM 400X có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Aputure STORM 400X is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 450000,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": true,
+      "published": true,
+      "sort_order": 0,
+      "name_en": "Aputure STORM 400X"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "slug": "nanlite-fs300b",
+      "name": "Nanlite FS300B",
+      "category": "continuous",
+      "description": {
+        "vi": "Nanlite FS300B có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Nanlite FS300B is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 350000,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": true,
+      "published": true,
+      "sort_order": 1,
+      "name_en": "Nanlite FS300B"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "slug": "amaran-300c",
+      "name": "Amaran 300C",
+      "category": "continuous",
+      "description": {
+        "vi": "Amaran 300C có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Amaran 300C is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 350000,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": true,
+      "published": true,
+      "sort_order": 2,
+      "name_en": "Amaran 300C"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000004",
+      "slug": "nanlite-fs200b",
+      "name": "Nanlite FS200B",
+      "category": "continuous",
+      "description": {
+        "vi": "Nanlite FS200B có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Nanlite FS200B is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 250000,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 3,
+      "name_en": "Nanlite FS200B"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000005",
+      "slug": "tolifo-180rgb",
+      "name": "Tolifo 180RGB",
+      "category": "continuous",
+      "description": {
+        "vi": "Tolifo 180RGB có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Tolifo 180RGB is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 250000,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 4,
+      "name_en": "Tolifo 180RGB"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000006",
+      "slug": "nanlite-fs150",
+      "name": "Nanlite FS150",
+      "category": "continuous",
+      "description": {
+        "vi": "Nanlite FS150 có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Nanlite FS150 is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 200000,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 5,
+      "name_en": "Nanlite FS150"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000007",
+      "slug": "amaran-t4c",
+      "name": "Amaran T4c Tube RGB",
+      "category": "continuous",
+      "description": {
+        "vi": "Amaran T4c Tube RGB có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Amaran T4c Tube RGB is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 250000,
+      "unit": {
+        "vi": "cây",
+        "en": "tube"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": true,
+      "published": true,
+      "sort_order": 6,
+      "name_en": "Amaran T4c Tube RGB"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000008",
+      "slug": "amaran-t4c-pair",
+      "name": "Amaran T4c Tube RGB — cặp",
+      "category": "continuous",
+      "description": {
+        "vi": "Amaran T4c Tube RGB — cặp có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Amaran T4c Tube RGB — pair is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 450000,
+      "unit": {
+        "vi": "cặp",
+        "en": "pair"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 7,
+      "name_en": "Amaran T4c Tube RGB — pair"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000009",
+      "slug": "ringflash-ad1200",
+      "name": "Ringflash + AD1200",
+      "category": "flash",
+      "description": {
+        "vi": "Ringflash + AD1200 có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Ringflash + AD1200 is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 500000,
+      "unit": {
+        "vi": "bộ",
+        "en": "set"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": true,
+      "published": true,
+      "sort_order": 8,
+      "name_en": "Ringflash + AD1200"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000010",
+      "slug": "tether",
+      "name": "Tether",
+      "category": "support",
+      "description": {
+        "vi": "Tether có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Tether is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 75000,
+      "unit": {
+        "vi": "dây",
+        "en": "cable"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 9,
+      "name_en": "Tether"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000011",
+      "slug": "gian-giao",
+      "name": "Giàn giáo",
+      "category": "support",
+      "description": {
+        "vi": "Giàn giáo có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Scaffolding is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 300000,
+      "unit": {
+        "vi": "bộ",
+        "en": "set"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 10,
+      "name_en": "Scaffolding"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000012",
+      "slug": "may-khoi",
+      "name": "Máy khói",
+      "category": "support",
+      "description": {
+        "vi": "Máy khói có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Smoke machine is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 250000,
+      "unit": {
+        "vi": "máy",
+        "en": "machine"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 11,
+      "name_en": "Smoke machine"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000013",
+      "slug": "imac-21",
+      "name": "iMac 21 inch",
+      "category": "support",
+      "description": {
+        "vi": "iMac 21 inch có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "iMac 21 inch is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 250000,
+      "unit": {
+        "vi": "buổi",
+        "en": "session"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 12,
+      "name_en": "iMac 21 inch"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000014",
+      "slug": "dell-25",
+      "name": "Màn Dell 25 inch",
+      "category": "support",
+      "description": {
+        "vi": "Màn Dell 25 inch có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "Dell 25-inch monitor is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 200000,
+      "unit": {
+        "vi": "buổi",
+        "en": "session"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 13,
+      "name_en": "Dell 25-inch monitor"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000015",
+      "slug": "boom-9m",
+      "name": "Chân Boom 9m",
+      "category": "support",
+      "description": {
+        "vi": "Chân Boom 9m có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "9m boom stand is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 300000,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 14,
+      "name_en": "9m boom stand"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000016",
+      "slug": "tan-3m6",
+      "name": "Tản lớn 3.6 × 3.6m",
+      "category": "modifier",
+      "description": {
+        "vi": "Tản lớn 3.6 × 3.6m có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "3.6 × 3.6m diffusion frame is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 300000,
+      "unit": {
+        "vi": "cây",
+        "en": "unit"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 15,
+      "name_en": "3.6 × 3.6m diffusion frame"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000017",
+      "slug": "canvas",
+      "name": "Phông canvas 2.8 × 6m",
+      "category": "backdrop",
+      "description": {
+        "vi": "Phông canvas 2.8 × 6m có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "2.8 × 6m canvas backdrop is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 400000,
+      "unit": {
+        "vi": "cặp",
+        "en": "pair"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 16,
+      "name_en": "2.8 × 6m canvas backdrop"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000018",
+      "slug": "green-screen",
+      "name": "Phông vải xanh key 6 × 6.4m",
+      "category": "backdrop",
+      "description": {
+        "vi": "Phông vải xanh key 6 × 6.4m có trong danh mục thiết bị cho thuê của Oni Studio. Liên hệ để xác nhận thời lượng thuê, phụ kiện đi kèm và lịch sử dụng.",
+        "en": "6 × 6.4m green fabric backdrop is listed in Oni Studio’s rental catalogue. Contact the team to confirm rental duration, included accessories and availability."
+      },
+      "specifications": {
+        "vi": "Thông số chi tiết và cấu hình đi kèm: xác nhận cùng Oni trước buổi chụp.",
+        "en": "Confirm detailed specifications and the supplied configuration with Oni before your session."
+      },
+      "price": 200000,
+      "unit": {
+        "vi": "bộ",
+        "en": "set"
+      },
+      "included": false,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 17,
+      "name_en": "6 × 6.4m green fabric backdrop"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000100",
+      "slug": "godox-ad600bm",
+      "name": "Godox AD600BM",
+      "category": "flash",
+      "description": {
+        "vi": "Đèn flash thuộc danh mục sử dụng miễn phí khi thuê phòng. Vui lòng xác nhận số lượng và bố trí trước buổi chụp.",
+        "en": "Studio flash listed as included with room rental. Confirm quantities and lighting setup before your session."
+      },
+      "specifications": {
+        "vi": "Model theo bảng giá Oni. Số lượng và phụ kiện cần được xác nhận.",
+        "en": "Model listed in Oni’s price sheet. Quantities and accessories require confirmation."
+      },
+      "price": null,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": true,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 100,
+      "name_en": "Godox AD600BM"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000101",
+      "slug": "godox-ad600bmii",
+      "name": "Godox AD600BMII",
+      "category": "flash",
+      "description": {
+        "vi": "Đèn flash thuộc danh mục sử dụng miễn phí khi thuê phòng. Vui lòng xác nhận số lượng và bố trí trước buổi chụp.",
+        "en": "Studio flash listed as included with room rental. Confirm quantities and lighting setup before your session."
+      },
+      "specifications": {
+        "vi": "Model theo bảng giá Oni. Số lượng và phụ kiện cần được xác nhận.",
+        "en": "Model listed in Oni’s price sheet. Quantities and accessories require confirmation."
+      },
+      "price": null,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": true,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 101,
+      "name_en": "Godox AD600BMII"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000102",
+      "slug": "godox-qs1200",
+      "name": "Godox QS1200",
+      "category": "flash",
+      "description": {
+        "vi": "Đèn flash thuộc danh mục sử dụng miễn phí khi thuê phòng. Vui lòng xác nhận số lượng và bố trí trước buổi chụp.",
+        "en": "Studio flash listed as included with room rental. Confirm quantities and lighting setup before your session."
+      },
+      "specifications": {
+        "vi": "Model theo bảng giá Oni. Số lượng và phụ kiện cần được xác nhận.",
+        "en": "Model listed in Oni’s price sheet. Quantities and accessories require confirmation."
+      },
+      "price": null,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": true,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 102,
+      "name_en": "Godox QS1200"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000103",
+      "slug": "godox-qs800",
+      "name": "Godox QS800",
+      "category": "flash",
+      "description": {
+        "vi": "Đèn flash thuộc danh mục sử dụng miễn phí khi thuê phòng. Vui lòng xác nhận số lượng và bố trí trước buổi chụp.",
+        "en": "Studio flash listed as included with room rental. Confirm quantities and lighting setup before your session."
+      },
+      "specifications": {
+        "vi": "Model theo bảng giá Oni. Số lượng và phụ kiện cần được xác nhận.",
+        "en": "Model listed in Oni’s price sheet. Quantities and accessories require confirmation."
+      },
+      "price": null,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": true,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 103,
+      "name_en": "Godox QS800"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000104",
+      "slug": "godox-qt600",
+      "name": "Godox QT600",
+      "category": "flash",
+      "description": {
+        "vi": "Đèn flash thuộc danh mục sử dụng miễn phí khi thuê phòng. Vui lòng xác nhận số lượng và bố trí trước buổi chụp.",
+        "en": "Studio flash listed as included with room rental. Confirm quantities and lighting setup before your session."
+      },
+      "specifications": {
+        "vi": "Model theo bảng giá Oni. Số lượng và phụ kiện cần được xác nhận.",
+        "en": "Model listed in Oni’s price sheet. Quantities and accessories require confirmation."
+      },
+      "price": null,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": true,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 104,
+      "name_en": "Godox QT600"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000105",
+      "slug": "godox-dp600",
+      "name": "Godox DP600",
+      "category": "flash",
+      "description": {
+        "vi": "Đèn flash thuộc danh mục sử dụng miễn phí khi thuê phòng. Vui lòng xác nhận số lượng và bố trí trước buổi chụp.",
+        "en": "Studio flash listed as included with room rental. Confirm quantities and lighting setup before your session."
+      },
+      "specifications": {
+        "vi": "Model theo bảng giá Oni. Số lượng và phụ kiện cần được xác nhận.",
+        "en": "Model listed in Oni’s price sheet. Quantities and accessories require confirmation."
+      },
+      "price": null,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": true,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 105,
+      "name_en": "Godox DP600"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000106",
+      "slug": "godox-qs400",
+      "name": "Godox QS400",
+      "category": "flash",
+      "description": {
+        "vi": "Đèn flash thuộc danh mục sử dụng miễn phí khi thuê phòng. Vui lòng xác nhận số lượng và bố trí trước buổi chụp.",
+        "en": "Studio flash listed as included with room rental. Confirm quantities and lighting setup before your session."
+      },
+      "specifications": {
+        "vi": "Model theo bảng giá Oni. Số lượng và phụ kiện cần được xác nhận.",
+        "en": "Model listed in Oni’s price sheet. Quantities and accessories require confirmation."
+      },
+      "price": null,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": true,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 106,
+      "name_en": "Godox QS400"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000107",
+      "slug": "godox-dp400",
+      "name": "Godox DP400",
+      "category": "flash",
+      "description": {
+        "vi": "Đèn flash thuộc danh mục sử dụng miễn phí khi thuê phòng. Vui lòng xác nhận số lượng và bố trí trước buổi chụp.",
+        "en": "Studio flash listed as included with room rental. Confirm quantities and lighting setup before your session."
+      },
+      "specifications": {
+        "vi": "Model theo bảng giá Oni. Số lượng và phụ kiện cần được xác nhận.",
+        "en": "Model listed in Oni’s price sheet. Quantities and accessories require confirmation."
+      },
+      "price": null,
+      "unit": {
+        "vi": "đèn",
+        "en": "light"
+      },
+      "included": true,
+      "status": "contact",
+      "image_url": null,
+      "featured": false,
+      "published": true,
+      "sort_order": 107,
+      "name_en": "Godox DP400"
+    }
+  ],
+  "gallery": []
+}

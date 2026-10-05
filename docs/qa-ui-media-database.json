@@ -1,0 +1,85 @@
+{
+  "engine": "Local PGlite PostgreSQL; auth schema stub, not live Supabase",
+  "checks": [
+    {
+      "name": "Migration executes",
+      "pass": true
+    },
+    {
+      "name": "Seed is repeatable: 26 equipment, 3 rooms",
+      "pass": true
+    },
+    {
+      "name": "Additive migration repeatable; old image backfilled",
+      "pass": true
+    },
+    {
+      "name": "First image becomes cover",
+      "pass": true
+    },
+    {
+      "name": "Reordered images persist with matching cover",
+      "pass": true
+    },
+    {
+      "name": "Legacy single-image update remains compatible",
+      "pass": true
+    },
+    {
+      "name": "Database rejects more than 12 images",
+      "pass": true
+    },
+    {
+      "name": "Removing all images clears legacy cover",
+      "pass": true
+    },
+    {
+      "name": "Anonymous sees published rows only",
+      "pass": true
+    },
+    {
+      "name": "Anonymous cannot grant admin membership",
+      "pass": true
+    },
+    {
+      "name": "Normal user is not admin",
+      "pass": true
+    },
+    {
+      "name": "Normal user cannot insert equipment",
+      "pass": true
+    },
+    {
+      "name": "Normal user cannot update equipment",
+      "pass": true
+    },
+    {
+      "name": "Normal user cannot self-promote",
+      "pass": true
+    },
+    {
+      "name": "Admin membership is recognized",
+      "pass": true
+    },
+    {
+      "name": "Admin sees unpublished equipment",
+      "pass": true
+    },
+    {
+      "name": "Admin inserts equipment",
+      "pass": true
+    },
+    {
+      "name": "Admin updates price",
+      "pass": true
+    },
+    {
+      "name": "Admin deletes equipment",
+      "pass": true
+    },
+    {
+      "name": "Database rejects negative price",
+      "pass": true
+    }
+  ]
+}

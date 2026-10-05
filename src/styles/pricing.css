@@ -1,0 +1,1319 @@
+/* Scoped to pricing: keeps public, catalog and admin pages unchanged. */
+.pricing-page {
+  --rate-blue: #254cdb;
+  --rate-muted: #5c625c;
+}
+.pricing-page .rate-kicker {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--rate-blue);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.rate-hero {
+  padding-top: 30px;
+}
+.rate-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.rate-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.rate-hero-caption {
+  display: none;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--rate-muted);
+}
+.rate-hero-grid {
+  display: grid;
+  gap: 30px;
+  padding-block: 28px 34px;
+}
+.rate-hero h1 {
+  font-size: clamp(2rem, 7.6vw, 4.2rem);
+  font-weight: 550;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+  text-wrap: initial;
+}
+.rate-hero h1 > span {
+  color: #737d70;
+}
+.rate-hero-description {
+  margin-top: 22px;
+  max-width: 500px;
+  color: var(--rate-muted);
+  font-size: 0.93rem;
+  line-height: 1.85;
+}
+.rate-hero-aside {
+  border-left: 2px solid #ccd4bb;
+  padding-left: 20px;
+  display: grid;
+  gap: 15px;
+}
+.rate-hero-aside > svg {
+  display: none;
+  color: var(--rate-blue);
+}
+.rate-hero-aside > p {
+  display: none;
+  font-size: 1.15rem;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+.rate-hero-aside > div {
+  display: flex;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+}
+.rate-hero-aside span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+}
+.rate-hero-aside span svg {
+  color: var(--rate-blue);
+}
+.rate-jump-links {
+  display: grid;
+  border-block: 1px solid var(--line);
+}
+.rate-jump-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.rate-jump-links a + a {
+  border-top: 1px solid var(--line);
+}
+.rate-jump-links a > svg {
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+.rate-jump-links a:hover {
+  color: var(--rate-blue);
+}
+.rate-jump-links a:hover svg {
+  transform: translateY(3px);
+}
+.rate-jump-number {
+  font-size: 0.65rem;
+  color: var(--rate-muted);
+  font-variant-numeric: tabular-nums;
+}
+.rate-section {
+  padding-block: 48px;
+  scroll-margin-top: 24px;
+}
+.rate-section-heading {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.rate-section-heading h2 {
+  margin-top: 12px;
+  font-size: clamp(1.7rem, 3vw, 2.55rem);
+  max-width: 680px;
+  line-height: 1.3;
+  text-wrap: initial;
+}
+.rate-section-heading > p {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--rate-muted);
+  max-width: 390px;
+}
+.rate-rooms-grid {
+  display: grid;
+  gap: 16px;
+}
+.rate-room {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e1e3da;
+  border-radius: 16px;
+  padding: 26px;
+  min-width: 0;
+}
+.rate-room-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.rate-room-symbol {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #d9ded2;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.rate-room-tag {
+  font-size: 0.58rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  text-align: right;
+}
+.rate-room h3 {
+  font-size: 1.65rem;
+  font-weight: 550;
+}
+.rate-room-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 12px;
+  color: var(--rate-muted);
+  font-size: 0.73rem;
+}
+.rate-room-specs span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.rate-room .rate-room-price {
+  margin: 27px 0 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  line-height: 1.25;
+}
+.rate-room-price strong {
+  font-size: clamp(1.9rem, 3vw, 2.65rem);
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: -0.055em;
+  font-variant-numeric: tabular-nums;
+}
+.rate-room-price > span {
+  font-size: 0.8rem;
+  color: var(--rate-muted);
+}
+.rate-room .rate-room-tax {
+  font-size: 0.67rem;
+  margin-top: 9px;
+  color: var(--rate-muted);
+}
+.rate-room-inclusions {
+  list-style: none;
+  margin: 24px 0;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 11px;
+  font-size: 0.76rem;
+}
+.rate-room-inclusions li {
+  display: flex;
+  align-items: start;
+  gap: 9px;
+}
+.rate-room-inclusions svg {
+  margin-top: 2px;
+  color: var(--rate-blue);
+}
+.rate-room .rate-room-button {
+  margin-top: auto;
+  justify-content: space-between;
+  width: 100%;
+  background: #eef0e9;
+  border-color: #eef0e9;
+  color: var(--ink);
+  font-size: 0.78rem;
+  padding-inline: 20px;
+}
+.rate-room .rate-room-button:hover {
+  background: #e1e6d9;
+  color: var(--ink);
+  border-color: #e1e6d9;
+}
+.rate-room-featured {
+  background: var(--rate-blue);
+  border-color: var(--rate-blue);
+  color: white;
+}
+.rate-room-featured .rate-room-symbol {
+  border-color: #6d88ea;
+}
+.rate-room-featured .rate-room-specs,
+.rate-room-featured .rate-room-tax,
+.rate-room-featured .rate-room-price > span {
+  color: #e0e7ff;
+}
+.rate-room-featured .rate-room-inclusions {
+  border-color: #6d88ea;
+}
+.rate-room-featured .rate-room-inclusions svg {
+  color: #d2f2a3;
+}
+.rate-room-featured .rate-room-button {
+  background: white;
+  border-color: white;
+  color: #1738ae;
+}
+.rate-room-featured .rate-room-button:hover {
+  background: #e4eaff;
+  border-color: #e4eaff;
+  color: #1738ae;
+}
+.rate-equipment-section {
+  background: #eeefe9;
+  scroll-margin-top: 24px;
+}
+.rate-equipment-browser {
+  background: #fff;
+  border: 1px solid #dfe2d7;
+  border-radius: 16px;
+  padding: 18px;
+}
+.rate-equipment-toolbar {
+  display: grid;
+  gap: 18px;
+}
+.rate-mode {
+  display: flex;
+  background: #f0f1eb;
+  border-radius: 100px;
+  padding: 4px;
+  width: fit-content;
+  max-width: 100%;
+}
+.rate-mode button {
+  border: 0;
+  border-radius: 100px;
+  background: transparent;
+  color: #51574e;
+  font-size: 0.76rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 14px;
+}
+.rate-mode button[aria-pressed="true"] {
+  background: #202520;
+  color: #fff;
+}
+.rate-mode button:hover:not([aria-pressed="true"]) {
+  background: #e1e5d9;
+}
+.rate-mode button > span {
+  font-size: 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 50px;
+  padding: 0 5px;
+}
+.rate-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #c8cfc1;
+  border-radius: 100px;
+  min-height: 48px;
+  padding-inline: 16px;
+  color: var(--rate-muted);
+}
+.rate-search:focus-within {
+  outline: 2px solid var(--rate-blue);
+  outline-offset: 2px;
+}
+.rate-search input {
+  background: transparent;
+  border: 0;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  font-size: 0.8rem;
+  color: var(--ink);
+  outline: none;
+}
+.rate-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  margin-top: 18px;
+}
+.rate-categories button {
+  min-width: 44px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--rate-muted);
+  font-size: 0.73rem;
+  min-height: 44px;
+  padding: 6px 2px;
+}
+.rate-categories button[aria-pressed="true"] {
+  border-color: var(--rate-blue);
+  color: var(--rate-blue);
+  font-weight: 700;
+}
+.rate-categories button:hover {
+  color: var(--rate-blue);
+}
+.rate-list-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-block: 1px solid var(--line);
+  margin-top: 18px;
+  padding-block: 14px;
+  color: var(--rate-muted);
+  font-size: 0.64rem;
+}
+.rate-equipment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rate-equipment-list li + li {
+  border-top: 1px solid #e8ebe3;
+}
+.rate-equipment-row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 4px 12px;
+  align-items: center;
+  padding-block: 16px;
+  border-radius: 6px;
+  transition: background 0.18s;
+}
+.rate-equipment-row:hover {
+  background: #f5f7f0;
+}
+.rate-equipment-thumb {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 46px;
+  background: #f0f2ec;
+  color: #5b6653;
+  border-radius: 8px;
+  grid-row: 1 / 3;
+  align-self: start;
+  overflow: hidden;
+}
+.rate-equipment-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  mix-blend-mode: multiply;
+}
+.rate-equipment-name {
+  display: grid;
+  gap: 4px;
+}
+.rate-equipment-name strong {
+  font-weight: 600;
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+.rate-equipment-name small {
+  font-size: 0.6rem;
+  color: var(--rate-muted);
+}
+.rate-equipment-cost {
+  grid-column: 2;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-variant-numeric: tabular-nums;
+}
+.rate-equipment-cost strong {
+  font-size: 0.82rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.rate-equipment-cost small {
+  font-size: 0.65rem;
+  color: var(--rate-muted);
+}
+.rate-row-arrow {
+  display: none;
+}
+.rate-equipment-note {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: var(--rate-muted);
+  max-width: 760px;
+}
+.rate-empty {
+  padding: 40px 16px;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 16px;
+}
+.rate-empty p {
+  color: var(--rate-muted);
+  font-size: 0.85rem;
+}
+.rate-extras-grid {
+  display: grid;
+  gap: 14px;
+}
+.rate-extra {
+  padding: 24px;
+  border: 1px solid #d9dfd0;
+  border-radius: 14px;
+}
+.rate-extra > svg {
+  color: #5d6c50;
+  margin-bottom: 22px;
+}
+.rate-extra h3 {
+  font-size: 1rem;
+}
+.rate-extra > p {
+  margin-top: 14px;
+}
+.rate-extra > p strong {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+.rate-extra > p span {
+  font-size: 0.75rem;
+  color: var(--rate-muted);
+}
+.rate-extra > p:last-child {
+  font-size: 0.77rem;
+  color: var(--rate-muted);
+  max-width: 300px;
+}
+.rate-makeup {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  background: #e9eddf;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 16px;
+  font-size: 0.77rem;
+  color: #38472f;
+}
+.rate-package {
+  display: grid;
+  gap: 24px;
+  margin-block: 36px;
+  padding-block: 34px;
+  border-block: 1px solid var(--line);
+}
+.rate-package h3 {
+  margin-top: 12px;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 550;
+}
+.rate-package h3 + p {
+  max-width: 650px;
+  color: var(--rate-muted);
+  font-size: 0.82rem;
+  margin-top: 14px;
+  line-height: 1.8;
+}
+.rate-package > a {
+  width: fit-content;
+  font-size: 0.8rem;
+}
+.rate-source summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+  cursor: pointer;
+  font-size: 0.82rem;
+  list-style: none;
+}
+.rate-source summary::-webkit-details-marker {
+  display: none;
+}
+.rate-source summary > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rate-source summary > svg {
+  transition: transform 0.2s;
+}
+.rate-source[open] summary > svg {
+  transform: rotate(45deg);
+}
+.rate-source-content {
+  padding: 24px 0;
+}
+.rate-source-content > p {
+  font-size: 0.8rem;
+  color: var(--rate-muted);
+  max-width: 660px;
+  margin-bottom: 24px;
+}
+.rate-source img {
+  width: min(100%, 600px);
+  height: auto;
+  display: block;
+  margin-inline: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+@media (min-width: 700px) {
+  .rate-hero-caption {
+    display: block;
+  }
+  .rate-hero {
+    padding-top: 38px;
+  }
+  .rate-jump-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .rate-jump-links a {
+    padding-right: 22px;
+  }
+  .rate-jump-links a + a {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    padding-left: 22px;
+  }
+  .rate-section {
+    padding-block: 64px;
+  }
+  .rate-rooms-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rate-equipment-browser {
+    padding: 26px 30px;
+  }
+  .rate-equipment-toolbar {
+    grid-template-columns: auto minmax(0, 320px);
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .rate-equipment-row {
+    grid-template-columns: 56px minmax(0, 1fr) auto 20px;
+    gap: 20px;
+    padding: 14px 8px;
+  }
+  .rate-equipment-thumb {
+    width: 56px;
+    height: 56px;
+    grid-row: auto;
+  }
+  .rate-equipment-cost {
+    grid-column: auto;
+    display: grid;
+    gap: 3px;
+    text-align: right;
+  }
+  .rate-equipment-name strong,
+  .rate-equipment-cost strong {
+    font-size: 0.9rem;
+  }
+  .rate-equipment-name small {
+    font-size: 0.67rem;
+  }
+  .rate-row-arrow {
+    display: block;
+    color: #6a7560;
+  }
+  .rate-list-heading {
+    padding-right: 48px;
+  }
+  .rate-categories {
+    gap: 8px 24px;
+  }
+  .rate-categories button {
+    font-size: 0.8rem;
+  }
+  .rate-extras-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .rate-extra {
+    padding: 22px;
+  }
+}
+@media (min-width: 1024px) {
+  .rate-hero-grid {
+    grid-template-columns: 1.7fr 1fr;
+    align-items: end;
+    gap: 60px;
+    padding-block: 42px 48px;
+  }
+  .rate-hero-aside {
+    justify-self: end;
+    padding-left: 34px;
+    max-width: 340px;
+  }
+  .rate-hero-aside > svg,
+  .rate-hero-aside > p {
+    display: block;
+  }
+  .rate-hero-aside > div {
+    display: grid;
+    gap: 7px;
+  }
+  .rate-hero h1 {
+    font-size: clamp(3rem, 4.6vw, 4.2rem);
+  }
+  .rate-section-heading {
+    grid-template-columns: 1.6fr 1fr;
+    align-items: end;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 34px;
+  }
+  .rate-section-heading > p {
+    justify-self: end;
+  }
+  .rate-section-heading h2 {
+    max-width: 630px;
+  }
+  .rate-rooms-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .rate-section {
+    padding-block: 76px;
+  }
+  .rate-room {
+    padding: 28px;
+  }
+  .rate-extras-grid {
+    gap: 20px;
+  }
+  .rate-extra {
+    padding: 28px;
+  }
+  .rate-package {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 50px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pricing-page *,
+  .pricing-page *::before,
+  .pricing-page *::after {
+    transition: none;
+  }
+}
+
+/* oni-pricing-layout-v2:start */
+
+/* Page rhythm */
+.pricing-page {
+  --rate-blue: #254cdb;
+  --rate-blue-soft: #edf2ff;
+  --rate-ink: #151b2d;
+  --rate-muted: #667085;
+  --rate-line: #dde3ee;
+  --rate-surface: #ffffff;
+  --rate-warm: #fbfaf6;
+  background:
+    radial-gradient(circle at 82% 7%, rgba(37, 76, 219, 0.055), transparent 24rem),
+    var(--rate-warm);
+}
+
+.pricing-page .container {
+  width: min(1280px, calc(100% - 64px));
+}
+
+/* Hero */
+.pricing-page .rate-hero {
+  padding-top: 42px;
+}
+
+.pricing-page .rate-hero-top {
+  padding-inline: 2px;
+}
+
+.pricing-page .rate-hero-grid {
+  position: relative;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.65fr);
+  align-items: stretch;
+  gap: 28px;
+  margin-top: 20px;
+  padding: 44px;
+  border: 1px solid var(--rate-line);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.98), rgba(247,249,255,.96));
+  box-shadow: 0 24px 60px rgba(13, 28, 66, 0.07);
+  overflow: hidden;
+}
+
+.pricing-page .rate-hero-grid::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -90px;
+  top: -110px;
+  border-radius: 999px;
+  background: rgba(37, 76, 219, 0.07);
+  pointer-events: none;
+}
+
+.pricing-page .rate-hero h1 {
+  max-width: 760px;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1.03;
+}
+
+.pricing-page .rate-hero h1 > span {
+  color: #718096;
+}
+
+.pricing-page .rate-hero-description {
+  max-width: 620px;
+  margin-top: 24px;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.pricing-page .rate-hero-aside {
+  position: relative;
+  z-index: 1;
+  align-content: center;
+  align-self: stretch;
+  max-width: none;
+  padding: 28px;
+  border: 1px solid #d8e2ff;
+  border-left: 1px solid #d8e2ff;
+  border-radius: 20px;
+  background: rgba(238, 243, 255, 0.78);
+}
+
+.pricing-page .rate-hero-aside > svg,
+.pricing-page .rate-hero-aside > p {
+  display: block;
+}
+
+.pricing-page .rate-hero-aside > p {
+  font-size: 1.18rem;
+  font-weight: 650;
+  color: var(--rate-ink);
+}
+
+.pricing-page .rate-hero-aside > div {
+  display: grid;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.pricing-page .rate-hero-aside span {
+  font-size: .78rem;
+  color: #4f5d75;
+}
+
+/* Jump navigation */
+.pricing-page .rate-jump-links {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+  padding: 10px;
+  border: 1px solid var(--rate-line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 12px 30px rgba(13, 28, 66, 0.035);
+}
+
+.pricing-page .rate-jump-links a {
+  min-height: 64px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 12px;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+
+.pricing-page .rate-jump-links a + a {
+  border: 0;
+  padding-left: 18px;
+}
+
+.pricing-page .rate-jump-links a:hover {
+  background: var(--rate-blue-soft);
+  transform: translateY(-1px);
+}
+
+/* Section hierarchy */
+.pricing-page .rate-section {
+  padding-block: 78px;
+}
+
+.pricing-page .rate-section-heading {
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, .55fr);
+  align-items: end;
+  gap: 72px;
+  margin-bottom: 34px;
+}
+
+.pricing-page .rate-section-heading h2 {
+  max-width: 760px;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  line-height: 1.08;
+}
+
+.pricing-page .rate-section-heading > p {
+  max-width: 420px;
+  justify-self: end;
+  padding-left: 20px;
+  border-left: 2px solid #d7deec;
+  font-size: .9rem;
+}
+
+/* Room pricing */
+.pricing-page .rate-rooms-grid {
+  align-items: stretch;
+  gap: 22px;
+}
+
+.pricing-page .rate-rooms-grid:has(> .rate-room:first-child:last-child) {
+  grid-template-columns: minmax(0, 620px);
+  justify-content: center;
+}
+
+.pricing-page .rate-rooms-grid:has(> .rate-room:nth-child(2):last-child) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pricing-page .rate-room {
+  min-height: 100%;
+  padding: 30px;
+  border-color: var(--rate-line);
+  border-radius: 22px;
+  box-shadow: 0 16px 38px rgba(13, 28, 66, 0.045);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.pricing-page .rate-room:hover {
+  transform: translateY(-3px);
+  border-color: #cbd6eb;
+  box-shadow: 0 22px 50px rgba(13, 28, 66, 0.09);
+}
+
+.pricing-page .rate-room-featured {
+  background:
+    linear-gradient(150deg, #22396f 0%, #254cdb 100%);
+  border-color: transparent;
+}
+
+.pricing-page .rate-room h3 {
+  font-size: clamp(1.8rem, 2.4vw, 2.35rem);
+}
+
+.pricing-page .rate-room-price strong {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+}
+
+.pricing-page .rate-room-inclusions {
+  margin-top: 26px;
+  gap: 13px;
+  font-size: .82rem;
+}
+
+.pricing-page .rate-room-button {
+  min-height: 50px;
+  border-radius: 12px;
+}
+
+/* Equipment section */
+.pricing-page .rate-equipment-section {
+  background:
+    linear-gradient(180deg, #f0f3f8 0%, #eef1f6 100%);
+  border-block: 1px solid #e1e6ef;
+}
+
+.pricing-page .rate-equipment-browser {
+  padding: 28px;
+  border-color: #dbe2ed;
+  border-radius: 22px;
+  box-shadow: 0 18px 48px rgba(13, 28, 66, 0.055);
+}
+
+.pricing-page .rate-equipment-toolbar {
+  grid-template-columns: auto minmax(300px, 420px);
+  align-items: center;
+  gap: 24px;
+}
+
+.pricing-page .rate-mode {
+  padding: 5px;
+  background: #f1f4f8;
+  border: 1px solid #e2e7ef;
+}
+
+.pricing-page .rate-mode button {
+  min-height: 46px;
+  padding-inline: 17px;
+}
+
+.pricing-page .rate-mode button[aria-pressed="true"] {
+  background: #172033;
+  box-shadow: 0 7px 18px rgba(13, 28, 66, .16);
+}
+
+.pricing-page .rate-search {
+  min-height: 50px;
+  border-color: #d5ddea;
+  background: #fff;
+}
+
+.pricing-page .rate-categories {
+  gap: 8px;
+  margin-top: 20px;
+  padding-bottom: 4px;
+}
+
+.pricing-page .rate-categories button {
+  min-height: 40px;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+}
+
+.pricing-page .rate-categories button[aria-pressed="true"] {
+  border-color: #cbd8ff;
+  background: var(--rate-blue-soft);
+}
+
+.pricing-page .rate-list-heading {
+  margin-top: 20px;
+  padding: 14px 4px;
+}
+
+/* Two-column catalogue reduces excessive vertical length on wide screens */
+.pricing-page .rate-equipment-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding-top: 12px;
+}
+
+.pricing-page .rate-equipment-list li + li {
+  border-top: 0;
+}
+
+.pricing-page .rate-equipment-row {
+  grid-template-columns: 58px minmax(0, 1fr) auto 18px;
+  gap: 16px;
+  min-height: 86px;
+  padding: 12px;
+  border: 1px solid #e7ebf1;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.pricing-page .rate-equipment-row:hover {
+  background: #f8faff;
+  border-color: #cfdaef;
+}
+
+.pricing-page .rate-equipment-thumb {
+  width: 58px;
+  height: 58px;
+  border-radius: 11px;
+}
+
+.pricing-page .rate-equipment-name strong {
+  font-size: .9rem;
+}
+
+.pricing-page .rate-equipment-name small {
+  font-size: .69rem;
+}
+
+.pricing-page .rate-equipment-cost strong {
+  font-size: .9rem;
+}
+
+.pricing-page .rate-equipment-cost small {
+  font-size: .67rem;
+}
+
+.pricing-page .rate-equipment-note {
+  max-width: none;
+  margin-top: 18px;
+  padding: 16px 18px 0;
+  line-height: 1.7;
+}
+
+/* Extras */
+.pricing-page .rate-extras-grid {
+  gap: 18px;
+}
+
+.pricing-page .rate-extra {
+  padding: 28px;
+  border-color: var(--rate-line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(13, 28, 66, 0.035);
+}
+
+.pricing-page .rate-extra > svg {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  background: #eef3ff;
+  color: var(--rate-blue);
+}
+
+.pricing-page .rate-makeup {
+  margin-top: 18px;
+  padding: 18px 20px;
+  border: 1px solid #dce7cf;
+  border-radius: 14px;
+}
+
+.pricing-page .rate-package {
+  margin-block: 44px;
+  padding: 36px;
+  border: 1px solid var(--rate-line);
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f5f8ff 100%);
+}
+
+.pricing-page .rate-package > a {
+  min-height: 48px;
+  border-radius: 12px;
+}
+
+.pricing-page .rate-source {
+  border-top: 1px solid var(--rate-line);
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .pricing-page .container {
+    width: min(100% - 40px, 980px);
+  }
+
+  .pricing-page .rate-hero-grid {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+
+  .pricing-page .rate-hero-aside {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 18px;
+  }
+
+  .pricing-page .rate-hero-aside > div {
+    grid-column: 2;
+  }
+
+  .pricing-page .rate-section-heading {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 16px;
+  }
+
+  .pricing-page .rate-section-heading > p {
+    justify-self: start;
+    max-width: 620px;
+  }
+
+  .pricing-page .rate-rooms-grid,
+  .pricing-page .rate-rooms-grid:has(> .rate-room:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pricing-page .rate-equipment-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 699px) {
+  .pricing-page .container {
+    width: calc(100% - 28px);
+  }
+
+  .pricing-page .rate-hero {
+    padding-top: 24px;
+  }
+
+  .pricing-page .rate-hero-grid {
+    margin-top: 14px;
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .pricing-page .rate-hero h1 {
+    font-size: clamp(2.35rem, 11vw, 3.3rem);
+  }
+
+  .pricing-page .rate-hero-description {
+    margin-top: 18px;
+    font-size: .92rem;
+  }
+
+  .pricing-page .rate-hero-aside {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .pricing-page .rate-hero-aside > div {
+    grid-column: auto;
+  }
+
+  .pricing-page .rate-jump-links {
+    grid-template-columns: 1fr;
+    padding: 8px;
+  }
+
+  .pricing-page .rate-jump-links a,
+  .pricing-page .rate-jump-links a + a {
+    min-height: 54px;
+    padding: 0 14px;
+  }
+
+  .pricing-page .rate-section {
+    padding-block: 54px;
+  }
+
+  .pricing-page .rate-section-heading {
+    margin-bottom: 24px;
+  }
+
+  .pricing-page .rate-section-heading h2 {
+    font-size: clamp(1.75rem, 8vw, 2.3rem);
+  }
+
+  .pricing-page .rate-section-heading > p {
+    padding-left: 14px;
+    font-size: .84rem;
+  }
+
+  .pricing-page .rate-rooms-grid,
+  .pricing-page .rate-rooms-grid:has(> .rate-room:first-child:last-child),
+  .pricing-page .rate-rooms-grid:has(> .rate-room:nth-child(2):last-child) {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-page .rate-room {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .pricing-page .rate-equipment-browser {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .pricing-page .rate-equipment-toolbar {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .pricing-page .rate-mode {
+    width: 100%;
+  }
+
+  .pricing-page .rate-mode button {
+    flex: 1 1 0;
+  }
+
+  .pricing-page .rate-categories {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .pricing-page .rate-categories button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .pricing-page .rate-list-heading {
+    padding-inline: 2px;
+  }
+
+  .pricing-page .rate-equipment-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .pricing-page .rate-equipment-row {
+    grid-template-columns: 52px minmax(0, 1fr) auto;
+    min-height: 78px;
+    padding: 10px;
+  }
+
+  .pricing-page .rate-equipment-thumb {
+    width: 52px;
+    height: 52px;
+  }
+
+  .pricing-page .rate-row-arrow {
+    display: none;
+  }
+
+  .pricing-page .rate-equipment-cost {
+    grid-column: 2 / -1;
+    justify-self: start;
+    text-align: left;
+    display: flex;
+  }
+
+  .pricing-page .rate-extras-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-page .rate-package {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    margin-block: 32px;
+  }
+
+  .pricing-page .rate-package > a {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-page .rate-room,
+  .pricing-page .rate-jump-links a,
+  .pricing-page .rate-equipment-row {
+    transition: none;
+  }
+
+  .pricing-page .rate-room:hover,
+  .pricing-page .rate-jump-links a:hover {
+    transform: none;
+  }
+}
+
+/* oni-pricing-layout-v2:end */

@@ -1,0 +1,910 @@
+{
+  "browser": {
+    "pages": [
+      {
+        "width": 375,
+        "route": "/",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian cho sáng tạo | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/studios",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian studio | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/studios/room-a",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Room A | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thiết bị studio | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/equipment/aputure-storm-400x",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Aputure STORM 400X | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/services",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Dịch vụ | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/pricing",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Bảng giá | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/gallery",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thư viện hình ảnh | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/about",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Về Oni Studio | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/contact",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Liên hệ | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/admin/login",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Quản trị Oni Studio | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/en",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Space for your creativity | Oni Studio"
+      },
+      {
+        "width": 375,
+        "route": "/en/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Studio equipment | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian cho sáng tạo | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/studios",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian studio | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/studios/room-a",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Room A | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thiết bị studio | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/equipment/aputure-storm-400x",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Aputure STORM 400X | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/services",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Dịch vụ | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/pricing",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Bảng giá | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/gallery",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thư viện hình ảnh | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/about",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Về Oni Studio | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/contact",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Liên hệ | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/admin/login",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Quản trị Oni Studio | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/en",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Space for your creativity | Oni Studio"
+      },
+      {
+        "width": 430,
+        "route": "/en/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Studio equipment | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian cho sáng tạo | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/studios",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian studio | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/studios/room-a",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Room A | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thiết bị studio | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/equipment/aputure-storm-400x",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Aputure STORM 400X | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/services",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Dịch vụ | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/pricing",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Bảng giá | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/gallery",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thư viện hình ảnh | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/about",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Về Oni Studio | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/contact",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Liên hệ | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/admin/login",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Quản trị Oni Studio | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/en",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Space for your creativity | Oni Studio"
+      },
+      {
+        "width": 768,
+        "route": "/en/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Studio equipment | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian cho sáng tạo | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/studios",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian studio | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/studios/room-a",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Room A | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thiết bị studio | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/equipment/aputure-storm-400x",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Aputure STORM 400X | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/services",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Dịch vụ | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/pricing",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Bảng giá | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/gallery",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thư viện hình ảnh | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/about",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Về Oni Studio | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/contact",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Liên hệ | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/admin/login",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Quản trị Oni Studio | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/en",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Space for your creativity | Oni Studio"
+      },
+      {
+        "width": 1024,
+        "route": "/en/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Studio equipment | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian cho sáng tạo | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/studios",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian studio | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/studios/room-a",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Room A | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thiết bị studio | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/equipment/aputure-storm-400x",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Aputure STORM 400X | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/services",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Dịch vụ | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/pricing",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Bảng giá | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/gallery",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thư viện hình ảnh | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/about",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Về Oni Studio | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/contact",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Liên hệ | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/admin/login",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Quản trị Oni Studio | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/en",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Space for your creativity | Oni Studio"
+      },
+      {
+        "width": 1440,
+        "route": "/en/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Studio equipment | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian cho sáng tạo | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/studios",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Không gian studio | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/studios/room-a",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Room A | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thiết bị studio | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/equipment/aputure-storm-400x",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Aputure STORM 400X | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/services",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Dịch vụ | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/pricing",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Bảng giá | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/gallery",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Thư viện hình ảnh | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/about",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Về Oni Studio | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/contact",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Liên hệ | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/admin/login",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "vi",
+        "images": [],
+        "title": "Quản trị Oni Studio | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/en",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Space for your creativity | Oni Studio"
+      },
+      {
+        "width": 1920,
+        "route": "/en/equipment",
+        "status": 200,
+        "overflow": false,
+        "h1": 1,
+        "lang": "en",
+        "images": [],
+        "title": "Studio equipment | Oni Studio"
+      }
+    ],
+    "interactions": [
+      {
+        "name": "mobile menu opens",
+        "pass": true
+      },
+      {
+        "name": "Escape closes mobile menu",
+        "pass": true
+      },
+      {
+        "name": "mobile navigation closes drawer",
+        "pass": true
+      },
+      {
+        "name": "search filters equipment",
+        "pass": true
+      },
+      {
+        "name": "empty search feedback",
+        "pass": true
+      },
+      {
+        "name": "clear search restores 26 records",
+        "pass": true
+      },
+      {
+        "name": "category filter",
+        "pass": true
+      },
+      {
+        "name": "English content and html language",
+        "pass": true
+      },
+      {
+        "name": "return to Vietnamese",
+        "pass": true
+      },
+      {
+        "name": "FAQ opens",
+        "pass": true
+      },
+      {
+        "name": "anonymous admin redirected",
+        "pass": true
+      },
+      {
+        "name": "anonymous upload rejected",
+        "pass": true
+      },
+      {
+        "name": "cross-origin upload rejected",
+        "pass": true
+      },
+      {
+        "name": "missing item returns 404",
+        "pass": true
+      },
+      {
+        "name": "200 percent text: no horizontal overflow",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  "database": {
+    "engine": "Local PGlite PostgreSQL; auth schema stub, not live Supabase",
+    "checks": [
+      {
+        "name": "Migration executes",
+        "pass": true
+      },
+      {
+        "name": "Seed is repeatable: 26 equipment, 3 rooms",
+        "pass": true
+      },
+      {
+        "name": "Anonymous sees published rows only",
+        "pass": true
+      },
+      {
+        "name": "Anonymous cannot grant admin membership",
+        "pass": true
+      },
+      {
+        "name": "Normal user is not admin",
+        "pass": true
+      },
+      {
+        "name": "Normal user cannot insert equipment",
+        "pass": true
+      },
+      {
+        "name": "Normal user cannot update equipment",
+        "pass": true
+      },
+      {
+        "name": "Normal user cannot self-promote",
+        "pass": true
+      },
+      {
+        "name": "Admin membership is recognized",
+        "pass": true
+      },
+      {
+        "name": "Admin sees unpublished equipment",
+        "pass": true
+      },
+      {
+        "name": "Admin inserts equipment",
+        "pass": true
+      },
+      {
+        "name": "Admin updates price",
+        "pass": true
+      },
+      {
+        "name": "Admin deletes equipment",
+        "pass": true
+      },
+      {
+        "name": "Database rejects negative price",
+        "pass": true
+      }
+    ]
+  }
+}
