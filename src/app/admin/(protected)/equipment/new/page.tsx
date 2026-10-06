@@ -1,37 +1,51 @@
 import { EquipmentForm } from "@/components/admin/equipment-form";
 import { requireAdminPage } from "@/lib/auth";
 import { defaultEquipmentCategories } from "@/data/site";
-import type { EquipmentCategory } from "@/types/catalog";
+import type {
+  EquipmentCategory,
+  EquipmentOption,
+} from "@/types/catalog";
 
 export default async function New() {
   const { db } = await requireAdminPage();
-  const { data, error } = await db
-    .from("equipment_categories")
-    .select("id,slug,name,sort_order")
-    .order("sort_order");
 
-  const categories = error
+  const [categoriesResult, optionsResult] = await Promise.all([
+    db
+      .from("equipment_categories")
+      .select("id,slug,name,sort_order")
+      .neq("slug", "backdrop")
+      .order("sort_order"),
+    db
+      .from("equipment")
+      .select("id,name,name_en,category,rental_source")
+      .neq("category", "backdrop")
+      .order("name"),
+  ]);
+
+  const categories = categoriesResult.error
     ? defaultEquipmentCategories
-    : ((data || []) as EquipmentCategory[]);
+    : ((categoriesResult.data || []) as EquipmentCategory[]);
+
+  const equipmentOptions = optionsResult.error
+    ? []
+    : ((optionsResult.data || []) as EquipmentOption[]);
 
   return (
     <>
       <div className="admin-title">
         <div>
-          <h1>Thêm thiết bị</h1>
+          <h1>Thêm thiết bị cho thuê</h1>
           <p>
-            Lưu thiết bị trước, sau đó mở lại để khai báo số lượng và trạng thái
-            từng thiết bị vật lý.
+            Chọn thiết bị tại Oni hoặc thiết bị thuê ngoài, sau đó thêm ảnh và
+            thông tin hiển thị.
           </p>
         </div>
       </div>
-      {error && (
-        <p className="notice error" role="alert">
-          Chưa có bảng danh mục mới. Hãy chạy migration
-          003_admin_categories_inventory.sql trên Supabase.
-        </p>
-      )}
-      <EquipmentForm categories={categories} />
+
+      <EquipmentForm
+        categories={categories}
+        equipmentOptions={equipmentOptions}
+      />
     </>
   );
 }

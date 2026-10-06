@@ -1,16 +1,10 @@
 export type Locale = "vi" | "en";
 export type Localized = { vi: string; en: string };
 export type Category = string;
-export type EquipmentStatus =
-  | "contact"
-  | "available"
-  | "maintenance"
-  | "unavailable";
-export type EquipmentUnitStatus =
-  | "available"
-  | "rented"
-  | "maintenance"
-  | "unavailable";
+export type EquipmentStatus = "contact" | "available" | "maintenance" | "unavailable";
+export type EquipmentUnitStatus = "available" | "rented" | "maintenance" | "unavailable";
+export type EquipmentRentalSource = "internal" | "external";
+export type BackdropKind = "effect" | "color";
 
 export interface EquipmentCategory {
   id: string;
@@ -25,6 +19,20 @@ export interface EquipmentUnit {
   label: string;
   status: EquipmentUnitStatus;
   sort_order: number;
+}
+
+export interface EquipmentOption {
+  id: string;
+  name: string;
+  name_en: string;
+  category: Category;
+  rental_source?: EquipmentRentalSource;
+}
+
+export interface IncludedEquipmentSummary {
+  id: string;
+  name: string;
+  name_en: string;
 }
 
 export interface Equipment {
@@ -44,7 +52,39 @@ export interface Equipment {
   featured: boolean;
   published: boolean;
   sort_order: number;
+  rental_source?: EquipmentRentalSource;
+  included_equipment_ids?: string[];
+  included_equipment_items?: IncludedEquipmentSummary[];
   inventory?: EquipmentUnit[];
+}
+
+export interface Backdrop {
+  id: string;
+  slug: string;
+  name: string;
+  name_en: string;
+  kind: BackdropKind;
+  description: Localized;
+  price: number | null;
+  included: boolean;
+  image_url: string | null;
+  images?: string[];
+  published: boolean;
+  sort_order: number;
+}
+
+export interface PropItem {
+  id: string;
+  slug: string;
+  name: string;
+  name_en: string;
+  description: Localized;
+  price: number | null;
+  included: boolean;
+  image_url: string | null;
+  images?: string[];
+  published: boolean;
+  sort_order: number;
 }
 
 export interface Studio {

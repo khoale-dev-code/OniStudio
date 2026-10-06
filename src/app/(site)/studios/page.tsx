@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import PageLoading from "@/components/ui/page-loading";
 import { PageHeading } from "@/components/ui/section";
 import { StudioCard } from "@/components/catalog/studio-card";
-import { ContactCTA } from "@/components/layout/contact-cta";
+
 import { getCatalog } from "@/lib/catalog";
 import { context } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
@@ -69,7 +69,7 @@ async function StudiosContent() {
         </div>
       </section>
 
-      <ContactCTA locale={locale} />
+      
     </>
   );
 }

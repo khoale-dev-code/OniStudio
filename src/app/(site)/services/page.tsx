@@ -1,6 +1,6 @@
 import { PageHeading } from "@/components/ui/section";
 import { ServiceGrid } from "@/components/home/services-section";
-import { ContactCTA } from "@/components/layout/contact-cta";
+
 import { context } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
 export function generateMetadata() {
@@ -33,7 +33,7 @@ export default async function Services() {
       <section className="section-bottom container services-light">
         <ServiceGrid locale={locale} />
       </section>
-      <ContactCTA locale={locale} />
+      
     </>
   );
 }

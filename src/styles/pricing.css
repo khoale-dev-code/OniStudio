@@ -1317,3 +1317,76 @@
 }
 
 /* oni-pricing-layout-v2:end */
+
+/* oni-pricing-price-emphasis-v1:start */
+
+/*
+  Pricing page uses the same ONI gold price language as the rest of the site.
+  This block lives in pricing.css as well so route-level CSS cannot mute it.
+*/
+.pricing-page .rate-room-price strong {
+  color: var(--oni-price-accent) !important;
+  font-weight: 800 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.pricing-page .rate-room-price > span {
+  color: #75684f !important;
+}
+
+/* The featured room has a dark cobalt surface, so use light gold. */
+.pricing-page .rate-room-featured .rate-room-price strong {
+  color: var(--oni-price-on-dark) !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.14);
+}
+
+.pricing-page .rate-room-featured .rate-room-price > span {
+  color: #f2e6bf !important;
+}
+
+/* Equipment pricing list */
+.pricing-page .rate-equipment-cost strong {
+  color: var(--oni-price-accent) !important;
+  font-weight: 800 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.pricing-page .rate-equipment-cost small {
+  color: #75684f !important;
+}
+
+/* Extra charges */
+.pricing-page .rate-extra p strong {
+  color: var(--oni-price-accent) !important;
+  font-weight: 800 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.pricing-page .rate-extra p strong + span {
+  color: #75684f !important;
+}
+
+/* A subtle highlight makes scanning a long pricing catalogue faster. */
+.pricing-page .rate-equipment-cost {
+  padding: 5px 8px;
+  border: 1px solid var(--oni-price-accent-border);
+  border-radius: 9px;
+  background: var(--oni-price-accent-soft-2);
+}
+
+.pricing-page .rate-room-price {
+  width: max-content;
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  .pricing-page .rate-equipment-cost {
+    padding: 4px 7px;
+  }
+
+  .pricing-page .rate-room-price strong {
+    font-size: clamp(1.9rem, 8vw, 2.55rem) !important;
+  }
+}
+
+/* oni-pricing-price-emphasis-v1:end */

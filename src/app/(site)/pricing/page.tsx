@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { ArrowDown, ArrowDownRight, Check } from "lucide-react";
 import PageLoading from "@/components/ui/page-loading";
-import { ContactCTA } from "@/components/layout/contact-cta";
+
 import { RoomRateCard } from "@/components/pricing/room-rate-card";
 import { EquipmentRates } from "@/components/pricing/equipment-rates";
 import { PricingNotes } from "@/components/pricing/pricing-notes";
@@ -168,7 +168,7 @@ async function PricingContent() {
         </div>
       </section>
       <PricingNotes locale={locale} />
-      <ContactCTA locale={locale} />
+      
     </div>
   );
 }

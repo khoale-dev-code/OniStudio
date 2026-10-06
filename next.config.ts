@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 const cloud = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const config: NextConfig = {
+  // Limit build-time page-data workers to reduce peak RAM usage.
+  // This does not limit request concurrency in the deployed application.
+  experimental: {
+    cpus: 2,
+  },
   poweredByHeader: false,
   images: {
     remotePatterns: cloud

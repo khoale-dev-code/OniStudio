@@ -368,6 +368,20 @@ export async function deleteEquipmentUnit(
   return { success: "Đã xóa một thiết bị khỏi tồn kho." };
 }
 
+/* oni-rental-catalog-actions-v1:start */
+function revalidateBackdrops(id?: string) { revalidatePath("/backdrops"); revalidatePath("/effect-backdrops"); revalidatePath("/admin/backdrops"); if (id) revalidatePath(`/admin/backdrops/${id}`); }
+function revalidateProps(id?: string) { revalidatePath("/props"); revalidatePath("/admin/props"); if (id) revalidatePath(`/admin/props/${id}`); }
+function rentalAssetPayload(form: FormData) {
+ const images=imageList(form); const included=form.get("included")==="on"; const price=included?null:integer(form,"price",1000000000,true);
+ if (!included && price===null) throw new Error("Hãy nhập giá thuê hoặc chọn Miễn phí.");
+ return { name:text(form,"name",160), name_en:text(form,"name_en",160), slug:slug(form), description:{vi:text(form,"description_vi",3000,false),en:text(form,"description_en",3000,false)}, price:included?null:price, included, image_url:images[0]||null, images, published:form.get("published")==="on", sort_order:integer(form,"sort_order",100000)??0 };
+}
+export async function saveBackdrop(id:string|null,_previous:ActionState,form:FormData):Promise<ActionState>{ let payload; try { if(id)uuid(id); const kind=text(form,"kind",20); if(!["color","effect"].includes(kind)) throw new Error("Loại phông không hợp lệ."); payload={...rentalAssetPayload(form),kind}; } catch(error){ return {error:error instanceof Error?error.message:"Dữ liệu phông không hợp lệ."}; } const session=await requireAdmin().catch(()=>null); if(!session)return{error:"Vui lòng đăng nhập lại."}; const query=id?session.db.from("backdrops").update(payload).eq("id",id):session.db.from("backdrops").insert(payload); const {data,error}=await query.select("id").single(); if(error?.code==="23505")return{error:"Slug phông đã tồn tại."}; if(error||!data)return{error:"Không thể lưu phông. Kiểm tra migration 100_rental_catalog_split.sql và quyền Supabase."}; revalidateBackdrops(data.id); redirect("/admin/backdrops?saved=1"); }
+export async function deleteBackdrop(id:string,_previous:ActionState):Promise<ActionState>{ void _previous; try{uuid(id)}catch{return{error:"ID phông không hợp lệ."}} const session=await requireAdmin().catch(()=>null); if(!session)return{error:"Vui lòng đăng nhập lại."}; const {data,error}=await session.db.from("backdrops").delete().eq("id",id).select("id").single(); if(error||!data)return{error:"Không thể xóa phông."}; revalidateBackdrops(id); redirect("/admin/backdrops?deleted=1"); }
+export async function saveProp(id:string|null,_previous:ActionState,form:FormData):Promise<ActionState>{ let payload; try{if(id)uuid(id);payload=rentalAssetPayload(form)}catch(error){return{error:error instanceof Error?error.message:"Dữ liệu đạo cụ không hợp lệ."}} const session=await requireAdmin().catch(()=>null); if(!session)return{error:"Vui lòng đăng nhập lại."}; const query=id?session.db.from("props").update(payload).eq("id",id):session.db.from("props").insert(payload); const {data,error}=await query.select("id").single(); if(error?.code==="23505")return{error:"Slug đạo cụ đã tồn tại."}; if(error||!data)return{error:"Không thể lưu đạo cụ. Kiểm tra migration 100_rental_catalog_split.sql và quyền Supabase."}; revalidateProps(data.id); redirect("/admin/props?saved=1"); }
+export async function deleteProp(id:string,_previous:ActionState):Promise<ActionState>{ void _previous; try{uuid(id)}catch{return{error:"ID đạo cụ không hợp lệ."}} const session=await requireAdmin().catch(()=>null); if(!session)return{error:"Vui lòng đăng nhập lại."}; const {data,error}=await session.db.from("props").delete().eq("id",id).select("id").single(); if(error||!data)return{error:"Không thể xóa đạo cụ."}; revalidateProps(id); redirect("/admin/props?deleted=1"); }
+/* oni-rental-catalog-actions-v1:end */
+
 export async function saveStudio(
   id: string | null,
   _previous: ActionState,
@@ -696,3 +710,71 @@ export async function deleteGallery(
   revalidateGallery();
   return { success: "Đã xóa ảnh khỏi thư viện website." };
 }
+
+
+export async function reorderBackdrops(
+  _previous: { error?: string; success?: string },
+  form: FormData,
+): Promise<{ error?: string; success?: string }> {
+  return reorderRentalAssets("backdrop", form);
+}
+
+export async function reorderProps(
+  _previous: { error?: string; success?: string },
+  form: FormData,
+): Promise<{ error?: string; success?: string }> {
+  return reorderRentalAssets("prop", form);
+}
+
+async function reorderRentalAssets(
+  assetType: "backdrop" | "prop",
+  form: FormData,
+): Promise<{ error?: string; success?: string }> {
+  const rawIds = String(form.get("ids") ?? "[]");
+  let ids: string[] = [];
+
+  try {
+    ids = JSON.parse(rawIds) as string[];
+  } catch {
+    return { error: "Dữ liệu sắp xếp không hợp lệ." };
+  }
+
+  if (
+    !Array.isArray(ids) ||
+    !ids.length ||
+    ids.some((id) => typeof id !== "string" || !id.trim())
+  ) {
+    return { error: "Danh sách sắp xếp không hợp lệ." };
+  }
+
+  const session = await requireAdmin().catch(() => null);
+
+  if (!session) {
+    return { error: "Vui lòng đăng nhập lại." };
+  }
+
+  const table = assetType === "backdrop" ? "backdrops" : "props";
+  const results = await Promise.all(
+    ids.map((id, index) =>
+      session.db.from(table).update({ sort_order: index }).eq("id", id),
+    ),
+  );
+
+  const failed = results.find((result) => result.error);
+
+  if (failed?.error) {
+    return { error: "Không thể cập nhật thứ tự hiển thị." };
+  }
+
+  if (assetType === "backdrop") {
+    revalidatePath("/backdrops");
+    revalidatePath("/effect-backdrops");
+    revalidatePath("/admin/backdrops");
+  } else {
+    revalidatePath("/props");
+    revalidatePath("/admin/props");
+  }
+
+  return { success: "Đã cập nhật thứ tự hiển thị." };
+}
+

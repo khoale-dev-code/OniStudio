@@ -1,31 +1,46 @@
 import { notFound } from "next/navigation";
 import { requireAdminPage } from "@/lib/auth";
 import { EquipmentForm } from "@/components/admin/equipment-form";
-import { InventoryManager } from "@/components/admin/inventory-manager";
 import { defaultEquipmentCategories } from "@/data/site";
 import type {
   Equipment,
   EquipmentCategory,
-  EquipmentUnit,
+  EquipmentOption,
 } from "@/types/catalog";
 
 export default async function Edit({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{
+    externalCopy?: string;
+    externalExists?: string;
+  }>;
 }) {
-  const [{ id }, { db }] = await Promise.all([params, requireAdminPage()]);
-  const [equipmentResult, categoriesResult, unitsResult] = await Promise.all([
-    db.from("equipment").select("*").eq("id", id).maybeSingle(),
+  const [{ id }, query, { db }] = await Promise.all([
+    params,
+    searchParams,
+    requireAdminPage(),
+  ]);
+
+  const [equipmentResult, categoriesResult, optionsResult] = await Promise.all([
+    db
+      .from("equipment")
+      .select("*")
+      .eq("id", id)
+      .neq("category", "backdrop")
+      .maybeSingle(),
     db
       .from("equipment_categories")
       .select("id,slug,name,sort_order")
+      .neq("slug", "backdrop")
       .order("sort_order"),
     db
-      .from("equipment_units")
-      .select("id,equipment_id,label,status,sort_order")
-      .eq("equipment_id", id)
-      .order("sort_order"),
+      .from("equipment")
+      .select("id,name,name_en,category,rental_source")
+      .neq("category", "backdrop")
+      .order("name"),
   ]);
 
   if (equipmentResult.error || !equipmentResult.data) notFound();
@@ -33,9 +48,10 @@ export default async function Edit({
   const categories = categoriesResult.error
     ? defaultEquipmentCategories
     : ((categoriesResult.data || []) as EquipmentCategory[]);
-  const units = unitsResult.error
+
+  const equipmentOptions = optionsResult.error
     ? []
-    : ((unitsResult.data || []) as EquipmentUnit[]);
+    : ((optionsResult.data || []) as EquipmentOption[]);
 
   return (
     <>
@@ -43,22 +59,29 @@ export default async function Edit({
         <div>
           <h1>Chỉnh sửa thiết bị</h1>
           <p>
-            Quản lý thông tin chung, giá thuê, danh mục và tồn kho theo từng
-            thiết bị vật lý.
+            Quản lý hình ảnh, giá, nguồn thiết bị và các sản phẩm đi kèm.
           </p>
         </div>
       </div>
-      {(categoriesResult.error || unitsResult.error) && (
-        <p className="notice error" role="alert">
-          Chưa có cấu trúc danh mục/tồn kho mới. Hãy chạy migration
-          003_admin_categories_inventory.sql trên Supabase.
+
+      {query.externalCopy && (
+        <p className="notice success" role="status">
+          Đã tạo bản thiết bị thuê ngoài. Hãy kiểm tra giá và chọn các sản phẩm
+          đi kèm trước khi bật hiển thị công khai.
         </p>
       )}
+
+      {query.externalExists && (
+        <p className="notice" role="status">
+          Thiết bị này đã có một bản thuê ngoài. Bạn đang chỉnh bản đó.
+        </p>
+      )}
+
       <EquipmentForm
         item={equipmentResult.data as Equipment}
         categories={categories}
+        equipmentOptions={equipmentOptions}
       />
-      <InventoryManager equipmentId={id} units={units} />
     </>
   );
 }

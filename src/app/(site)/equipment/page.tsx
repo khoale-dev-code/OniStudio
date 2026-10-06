@@ -5,47 +5,55 @@ import { EquipmentExplorer } from "@/components/catalog/equipment-explorer";
 import { getCatalog } from "@/lib/catalog";
 import { context } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
+
 export function generateMetadata() {
   return pageMetadata(
-    { vi: "Thiết bị studio", en: "Studio equipment" },
+    { vi: "Thiết bị cho thuê", en: "Equipment rental" },
     {
-      vi: "Tìm và lọc đèn LED, flash, phông nền và phụ kiện tại Oni Studio.",
-      en: "Search and filter continuous lights, flashes, backdrops and accessories at Oni Studio.",
+      vi: "Thiết bị tại Oni và thiết bị thuê ngoài cho buổi chụp, sản xuất và set ánh sáng.",
+      en: "Equipment at Oni plus external rental options for shoots and productions.",
     },
     "/equipment",
   );
 }
-async function EquipmentContent() {
+
+async function Content() {
   const [{ locale }, { equipment, categories }] = await Promise.all([
     context(),
     getCatalog(),
   ]);
+
   return (
     <>
       <PageHeading
-        eyebrow="YOUR CREATIVE TOOLKIT"
+        eyebrow="EQUIPMENT RENTAL"
         title={
           locale === "vi"
-            ? "Thiết bị cho ý tưởng của bạn."
-            : "Tools for your next idea."
+            ? "Thiết bị cho thuê."
+            : "Equipment for your set."
         }
         description={
           locale === "vi"
-            ? "Từ ánh sáng chủ đạo đến những phụ kiện nhỏ. Tìm setup phù hợp và nhắn Oni để kiểm tra lịch."
-            : "From your key light to the smallest accessory. Find your setup and ask Oni about availability."
+            ? " "
+            : " "
         }
       />
+
       <section className="container section-bottom">
-        <EquipmentExplorer items={equipment} categories={categories} locale={locale} />
+        <EquipmentExplorer
+          items={equipment}
+          categories={categories}
+          locale={locale}
+        />
       </section>
     </>
   );
 }
 
-export default function Equipment() {
+export default function Page() {
   return (
     <Suspense fallback={<PageLoading />}>
-      <EquipmentContent />
+      <Content />
     </Suspense>
   );
 }

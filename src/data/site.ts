@@ -18,19 +18,19 @@ export const site = {
     "https://www.google.com/maps?q=220%2F29%20Au%20Co%20Ho%20Chi%20Minh%20City&output=embed",
 };
 export const navigation: { path: string; label: Localized }[] = [
-  { path: "/studios", label: { vi: "Không gian", en: "Spaces" } },
-  { path: "/equipment", label: { vi: "Thiết bị", en: "Equipment" } },
-  { path: "/services", label: { vi: "Dịch vụ", en: "Services" } },
-  { path: "/pricing", label: { vi: "Bảng giá", en: "Pricing" } },
-  { path: "/gallery", label: { vi: "Thư viện", en: "Gallery" } },
-  { path: "/about", label: { vi: "Về Oni", en: "About" } },
+  { path: "/equipment", label: { vi: "Thiết Bị Cho Thuê", en: "Equipment Rental" } },
+  { path: "/studios", label: { vi: "Không Gian Phòng", en: "Studio Spaces" } },
+  { path: "/effect-backdrops", label: { vi: "Phông Màu Hiệu Ứng", en: "Effect Backdrops" } },
+  { path: "/backdrops", label: { vi: "Phông Màu", en: "Color Backdrops" } },
+  { path: "/props", label: { vi: "Đạo Cụ", en: "Props" } },
+  { path: "/gallery", label: { vi: "Hình Ảnh Thực Tế", en: "Real Photos" } },
+  { path: "/contact", label: { vi: "Địa Chỉ", en: "Address" } },
 ];
 export const categories = {
   continuous: { vi: "Đèn LED", en: "Continuous light" },
   flash: { vi: "Đèn flash", en: "Flash" },
   modifier: { vi: "Tạo hình ánh sáng", en: "Light modifiers" },
   support: { vi: "Phụ kiện", en: "Support" },
-  backdrop: { vi: "Phông nền", en: "Backdrops" },
 };
 export const defaultEquipmentCategories: EquipmentCategory[] = Object.entries(
   categories,
@@ -53,38 +53,12 @@ export const inventoryStatusLabels = {
   unavailable: { vi: "Tạm ngừng", en: "Unavailable" },
 };
 export const defaultGalleryCategories: GalleryCategory[] = [
-  {
-    id: "local-fashion",
-    slug: "fashion",
-    name: { vi: "Thời trang", en: "Fashion" },
-    sort_order: 0,
-  },
-  {
-    id: "local-portrait",
-    slug: "portrait",
-    name: { vi: "Chân dung", en: "Portrait" },
-    sort_order: 1,
-  },
-  {
-    id: "local-product",
-    slug: "product",
-    name: { vi: "Sản phẩm", en: "Product" },
-    sort_order: 2,
-  },
-  {
-    id: "local-commercial",
-    slug: "commercial",
-    name: { vi: "Thương mại", en: "Commercial" },
-    sort_order: 3,
-  },
-  {
-    id: "local-bts",
-    slug: "bts",
-    name: { vi: "Hậu trường", en: "Behind the scenes" },
-    sort_order: 4,
-  },
+  { id: "local-fashion", slug: "fashion", name: { vi: "Thời trang", en: "Fashion" }, sort_order: 0 },
+  { id: "local-portrait", slug: "portrait", name: { vi: "Chân dung", en: "Portrait" }, sort_order: 1 },
+  { id: "local-product", slug: "product", name: { vi: "Sản phẩm", en: "Product" }, sort_order: 2 },
+  { id: "local-commercial", slug: "commercial", name: { vi: "Thương mại", en: "Commercial" }, sort_order: 3 },
+  { id: "local-bts", slug: "bts", name: { vi: "Hậu trường", en: "Behind the scenes" }, sort_order: 4 },
 ];
-
 export const galleryCategories = [
   { id: "all", vi: "Tất cả", en: "All" },
   ...defaultGalleryCategories.map((category) => ({

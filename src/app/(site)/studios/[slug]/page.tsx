@@ -5,7 +5,6 @@ import { Users, Maximize2, Clock, Check } from "lucide-react";
 import { getCatalog } from "@/lib/catalog";
 import { context, href, money } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
-import { ContactActions } from "@/components/ui/contact-actions";
 import { includedGroups } from "@/data/content";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
@@ -135,7 +134,6 @@ export default async function StudioDetail({ params }: Props) {
               ? `Gửi tên ${s.name}, ngày chụp, thời lượng và số người cho Oni để kiểm tra lịch.`
               : `Send Oni the room name (${s.name}), date, duration and crew size to check availability.`}
           </p>
-          <ContactActions locale={locale} />
           <p className="small muted">
             {locale === "vi"
               ? "Lịch được xác nhận trực tiếp với studio."

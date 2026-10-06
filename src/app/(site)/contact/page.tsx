@@ -1,6 +1,5 @@
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { PageHeading } from "@/components/ui/section";
-import { ContactActions } from "@/components/ui/contact-actions";
 import { context } from "@/lib/i18n";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -59,7 +58,6 @@ export default async function Contact() {
                 ? "Nhắn tin & đặt lịch"
                 : "Messages & reservations"}
             </h2>
-            <ContactActions locale={locale} />
             <div className="social-links">
               <a href={site.facebook} target="_blank" rel="noopener noreferrer">
                 Facebook

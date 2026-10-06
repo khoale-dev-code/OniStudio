@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PageHeading, SectionHeading } from "@/components/ui/section";
-import { ContactCTA } from "@/components/layout/contact-cta";
+
 import { context } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
 export function generateMetadata() {
@@ -80,7 +80,7 @@ export default async function About() {
           </div>
         </div>
       </section>
-      <ContactCTA locale={locale} />
+      
     </>
   );
 }

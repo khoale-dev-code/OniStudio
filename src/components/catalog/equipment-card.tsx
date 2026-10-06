@@ -1,17 +1,11 @@
-import Link from "@/components/ui/nav-link";
 import Image from "next/image";
+import Link from "@/components/ui/nav-link";
 import {
   Aperture,
-  Lightbulb,
-  Scan,
-  SlidersHorizontal,
-  Layers,
+  ArrowUpRight,
+  PackageCheck,
 } from "lucide-react";
-import { statusLabels } from "@/data/site";
-import {
-  categoryLabel,
-  inventoryAvailabilityLabel,
-} from "@/lib/equipment";
+import { categoryLabel } from "@/lib/equipment";
 import { href, formatMoney } from "@/lib/links";
 import { equipmentImages } from "@/data/equipment-images";
 import type {
@@ -20,37 +14,47 @@ import type {
   Locale,
 } from "@/types/catalog";
 
-const icons = {
-  continuous: Lightbulb,
-  flash: Aperture,
-  modifier: Scan,
-  support: SlidersHorizontal,
-  backdrop: Layers,
-};
-
 export function EquipmentCard({
   item,
+  allEquipment = [],
   categories,
   locale,
 }: {
   item: Equipment;
+  allEquipment?: Equipment[];
   categories: EquipmentCategory[];
   locale: Locale;
 }) {
-  const Icon =
-    icons[item.category as keyof typeof icons] || SlidersHorizontal;
   const { images, reference } = equipmentImages(item);
   const cover = images[0];
   const name = locale === "en" ? item.name_en : item.name;
   const category = categoryLabel(categories, item.category, locale);
-  const inventoryLabel = inventoryAvailabilityLabel(item.inventory, locale);
+  const description = item.description[locale];
+  const detailHref = href(locale, `/equipment/${item.slug}`);
+  const external = item.rental_source === "external";
+
+  const resolvedFromCatalog = item.included_equipment_items ?? [];
+
+  const resolvedFromVisibleEquipment = (item.included_equipment_ids ?? [])
+    .map((id) => allEquipment.find((equipment) => equipment.id === id))
+    .filter((equipment): equipment is Equipment => Boolean(equipment))
+    .map((equipment) => ({
+      id: equipment.id,
+      name: equipment.name,
+      name_en: equipment.name_en,
+    }));
+
+  const includedItems =
+    resolvedFromCatalog.length > 0
+      ? resolvedFromCatalog
+      : resolvedFromVisibleEquipment;
+
+  const includedCount =
+    item.included_equipment_ids?.length ?? includedItems.length;
 
   return (
-    <article className="equipment-card">
-      <Link
-        className="equipment-image"
-        href={href(locale, `/equipment/${item.slug}`)}
-      >
+    <article className="equipment-card equipment-card-v4">
+      <Link className="equipment-image" href={detailHref}>
         {cover ? (
           <Image
             src={cover}
@@ -60,10 +64,11 @@ export function EquipmentCard({
           />
         ) : (
           <div className="equipment-placeholder">
-            <Icon size={54} strokeWidth={1} />
+            <Aperture size={54} strokeWidth={1} />
             <span>{category}</span>
           </div>
         )}
+
         {reference && (
           <span className="equipment-reference">
             {locale === "vi"
@@ -71,23 +76,28 @@ export function EquipmentCard({
               : "Manufacturer reference"}
           </span>
         )}
-        <span className="equipment-tag">
-          {item.included
-            ? locale === "vi"
-              ? "Kèm phòng"
-              : "Included"
-            : category}
-        </span>
+
+        <span className="equipment-tag">{category}</span>
       </Link>
 
-      <div className="card-body">
-        <p className="small muted">
-          {inventoryLabel || statusLabels[item.status][locale]}
-        </p>
+      <div className="card-body equipment-card-body-v4">
+        {external && (
+          <div className="equipment-card-source-row">
+            <span className="equipment-source-badge external">
+              {locale === "vi" ? "Thiết bị thuê ngoài" : "External rental"}
+            </span>
+          </div>
+        )}
+
         <h3>
-          <Link href={href(locale, `/equipment/${item.slug}`)}>{name}</Link>
+          <Link href={detailHref}>{name}</Link>
         </h3>
-        <p className="equipment-price">
+
+        <p
+          className={`equipment-price ${
+            item.included ? "is-free" : ""
+          }`}
+        >
           {item.included ? (
             locale === "vi" ? (
               "Miễn phí khi thuê phòng"
@@ -105,6 +115,58 @@ export function EquipmentCard({
             "Contact for a quote"
           )}
         </p>
+
+        {external && includedCount > 0 && (
+          <div className="equipment-included-products">
+            <div className="equipment-included-heading">
+              <PackageCheck size={16} aria-hidden="true" />
+              <span>
+                {locale === "vi"
+                  ? `Đi kèm ${includedCount} sản phẩm`
+                  : `${includedCount} included items`}
+              </span>
+            </div>
+
+            {includedItems.length > 0 ? (
+              <div className="equipment-included-list">
+                {includedItems.slice(0, 4).map((includedItem) => (
+                  <span
+                    className="equipment-included-chip"
+                    key={includedItem.id}
+                    title={
+                      locale === "en"
+                        ? includedItem.name_en
+                        : includedItem.name
+                    }
+                  >
+                    {locale === "en"
+                      ? includedItem.name_en
+                      : includedItem.name}
+                  </span>
+                ))}
+
+                {includedItems.length > 4 && (
+                  <span className="equipment-included-more">
+                    +{includedItems.length - 4}
+                  </span>
+                )}
+              </div>
+            ) : (
+              <p className="equipment-included-fallback">
+                {locale === "vi"
+                  ? "Phụ kiện đi kèm đã được cấu hình."
+                  : "Included accessories are configured."}
+              </p>
+            )}
+          </div>
+        )}
+
+        <p className="equipment-card-description">{description}</p>
+
+        <Link className="equipment-card-view" href={detailHref}>
+          {locale === "vi" ? "Xem hình ảnh" : "View images"}
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </Link>
       </div>
     </article>
   );

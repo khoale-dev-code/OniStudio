@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { adminSession } from "@/lib/auth";
 import { logout } from "@/app/admin/actions";
+import { AdminMobileMenu } from "@/components/admin/admin-mobile-menu";
 
 export default async function ProtectedLayout({
   children,
@@ -25,14 +26,17 @@ export default async function ProtectedLayout({
             <Link className="admin-nav-link" href="/admin/equipment">
               Thiết bị
             </Link>
-            <Link className="admin-nav-link" href="/admin/categories">
-              Danh mục
+            <Link className="admin-nav-link" href="/admin/backdrops">
+              Phông
+            </Link>
+            <Link className="admin-nav-link" href="/admin/props">
+              Đạo cụ
             </Link>
             <Link className="admin-nav-link" href="/admin/studios">
-              Phòng
+              Không gian
             </Link>
             <Link className="admin-nav-link" href="/admin/gallery">
-              Thư viện
+              Hình ảnh
             </Link>
             <Link
               className="admin-nav-link admin-nav-site"
@@ -48,6 +52,8 @@ export default async function ProtectedLayout({
               </button>
             </form>
           </nav>
+
+          <AdminMobileMenu />
         </div>
       </header>
 

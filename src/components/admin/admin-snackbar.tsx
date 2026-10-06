@@ -168,6 +168,8 @@ export function AdminSnackbar() {
   useEffect(() => {
     document.documentElement.classList.add("admin-snackbar-active");
 
+    const seenNotices = new WeakSet<Element>();
+
     const scanNotices = (root: ParentNode) => {
       const notices: Element[] = [];
 
@@ -185,15 +187,24 @@ export function AdminSnackbar() {
       );
 
       for (const notice of notices) {
-        if (notice.getAttribute("data-admin-snackbar-seen") === "true") {
+        if (seenNotices.has(notice)) {
           continue;
         }
 
         const text = notice.textContent?.trim();
         if (!text) continue;
 
-        notice.setAttribute("data-admin-snackbar-seen", "true");
-        notice.setAttribute("aria-hidden", "true");
+        /*
+         * Never mutate attributes on SSR-rendered notices here.
+         * The admin snackbar can mount before a nested Server Component has
+         * finished hydrating. Adding data-* / aria-hidden at that moment makes
+         * the client DOM differ from the server HTML and triggers a hydration
+         * mismatch in React/Next.js.
+         *
+         * A WeakSet tracks processed nodes without changing the DOM. Existing
+         * CSS hides inline notices whenever admin-snackbar-active is present.
+         */
+        seenNotices.add(notice);
 
         sessionStorage.removeItem(STORAGE_KEY);
 

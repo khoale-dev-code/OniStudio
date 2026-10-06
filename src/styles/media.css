@@ -6467,3 +6467,7219 @@
 }
 
 /* oni-homepage-spaces-mobile-compact-v27:end */
+
+/* oni-rental-catalog-split-v1:start */
+.client-rental-nav{gap:clamp(9px,1vw,16px)}.client-rental-nav a{white-space:nowrap;font-size:.72rem}@media(max-width:1280px){.client-rental-nav{display:none!important}.site-header .mobile-toggle{display:inline-flex!important}}
+.rental-asset-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}.rental-asset-card{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 14px 38px rgba(1,7,54,.055)}.rental-asset-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#eef0ec}.rental-asset-media img{object-fit:cover}.rental-asset-placeholder{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:10px;color:var(--muted);font-size:.75rem}.rental-asset-kind,.rental-asset-price-badge{position:absolute;z-index:2;top:12px;min-height:32px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;font-size:.65rem;font-weight:750;backdrop-filter:blur(10px)}.rental-asset-kind{left:12px;background:rgba(1,7,54,.7);color:#fff}.rental-asset-price-badge{right:12px;background:rgba(255,255,255,.92);color:var(--navy)}.rental-asset-price-badge.is-free{background:rgba(234,249,242,.95);color:#13754a}.rental-asset-body{padding:18px}.rental-asset-body h2{font-size:1.12rem;line-height:1.25}.rental-asset-body p{margin-top:8px;color:var(--muted);font-size:.8rem;line-height:1.6}.rental-asset-empty{min-height:240px;border:1px dashed var(--line);border-radius:18px;background:#fff}
+.admin-grid-rental{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.rental-admin-table table{min-width:760px}.rental-admin-thumb{object-fit:cover}.rental-admin-price{display:inline-flex;min-height:30px;align-items:center;padding:0 9px;border-radius:999px;background:#f0f3f9;color:#36435c;font-size:.72rem;font-weight:700}.rental-admin-price.is-free{background:#eaf9f2;color:#13754a}.rental-admin-form{max-width:1060px}.rental-admin-checks{display:flex;flex-wrap:wrap;gap:18px 28px;padding-top:8px}.admin-header .admin-nav{gap:10px}.admin-header .admin-nav-link{white-space:nowrap;font-size:.78rem}
+@media(max-width:1180px){.admin-header-inner{align-items:flex-start;flex-direction:column;padding-block:14px}.admin-header .admin-nav{width:100%;overflow-x:auto;padding-bottom:4px}}
+@media(max-width:1050px){.rental-asset-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.rental-asset-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.rental-asset-card{border-radius:16px}.rental-asset-kind,.rental-asset-price-badge{top:9px;min-height:29px;padding-inline:8px;font-size:.58rem}.rental-asset-kind{left:9px}.rental-asset-price-badge{right:9px}.rental-asset-body{padding:14px}.rental-admin-form .form-grid{grid-template-columns:1fr}}@media(max-width:430px){.rental-asset-grid{grid-template-columns:1fr}.rental-asset-media{aspect-ratio:16/10}}
+/* oni-rental-catalog-split-v1:end */
+
+/* oni-client-header-redesign-v11:start */
+
+/*
+  Desktop header inspired by the spacious rhythm of Apple's navigation:
+  logo left, navigation centered, language switch right.
+*/
+.site-header .header-inner {
+  display: grid !important;
+  grid-template-columns: minmax(190px, auto) minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  column-gap: clamp(32px, 3.4vw, 70px) !important;
+  min-height: 88px !important;
+}
+
+.site-header .brand {
+  justify-self: start;
+}
+
+.client-rental-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(22px, 1.65vw, 34px) !important;
+  min-width: 0;
+}
+
+.client-rental-nav a {
+  position: relative;
+  min-height: 48px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0 !important;
+  color: #4f534d !important;
+  font-size: clamp(0.94rem, 0.78rem + 0.22vw, 1.06rem) !important;
+  font-weight: 560 !important;
+  letter-spacing: -0.018em;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.client-rental-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.client-rental-nav a:hover,
+.client-rental-nav a[aria-current="page"] {
+  color: var(--accent) !important;
+}
+
+.client-rental-nav a:hover::after,
+.client-rental-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.site-header .header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 16px !important;
+}
+
+.site-header .language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px !important;
+  padding-left: 10px;
+  font-size: 0.94rem !important;
+  font-weight: 600;
+}
+
+.site-header .language-switch a {
+  min-width: 26px;
+  color: #62665f !important;
+}
+
+.site-header .language-switch a[aria-current="true"] {
+  color: var(--ink) !important;
+  font-weight: 750;
+}
+
+.site-header .language-switch span {
+  color: #9ca19a !important;
+}
+
+/* The rental catalogue pages are visual catalogues: no marketing paragraph. */
+.rental-public-page .page-heading {
+  padding-bottom: clamp(26px, 3vw, 42px) !important;
+}
+
+.rental-public-page .page-heading > p:last-child {
+  display: none !important;
+}
+
+.rental-public-page .page-heading h1 {
+  margin-bottom: 0 !important;
+}
+
+.rental-public-grid-section {
+  padding-top: 0 !important;
+}
+
+@media (max-width: 1620px) {
+  .site-header .header-inner {
+    column-gap: 30px !important;
+  }
+
+  .client-rental-nav {
+    gap: 20px !important;
+  }
+
+  .client-rental-nav a {
+    font-size: 0.92rem !important;
+  }
+}
+
+@media (max-width: 1380px) {
+  .client-rental-nav {
+    display: none !important;
+  }
+
+  .site-header .header-inner {
+    display: flex !important;
+    justify-content: space-between !important;
+    min-height: 82px !important;
+  }
+
+  .site-header .mobile-toggle {
+    display: inline-flex !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header .header-inner {
+    min-height: 76px !important;
+  }
+
+  .site-header .language-switch {
+    gap: 9px !important;
+    padding-left: 0;
+    font-size: 0.84rem !important;
+  }
+
+  .rental-public-page .page-heading {
+    padding-top: 38px !important;
+    padding-bottom: 22px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-rental-nav a::after {
+    transition: none;
+  }
+}
+
+/* oni-client-header-redesign-v11:end */
+
+/* oni-rental-card-gallery-v21:start */
+
+.rental-asset-card {
+  overflow: hidden;
+}
+
+.rental-asset-open {
+  width: 100%;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rental-asset-open:disabled {
+  cursor: default;
+}
+
+.rental-asset-open:focus-visible {
+  outline: 3px solid rgba(49, 87, 216, 0.25);
+  outline-offset: -3px;
+  border-radius: inherit;
+}
+
+.rental-asset-kind {
+  top: 12px !important;
+  left: 12px !important;
+}
+
+.rental-asset-image-count {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  right: 12px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy);
+  font-size: 0.68rem;
+  font-weight: 750;
+  backdrop-filter: blur(10px);
+}
+
+.rental-asset-view-hint {
+  position: absolute;
+  z-index: 3;
+  right: 12px;
+  bottom: 12px;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: rgba(1, 7, 54, 0.72);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.rental-asset-card:hover .rental-asset-view-hint,
+.rental-asset-open:focus-visible .rental-asset-view-hint {
+  opacity: 1;
+  transform: none;
+}
+
+.rental-asset-body {
+  padding: 18px 18px 20px !important;
+}
+
+.rental-asset-body h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(1.08rem, 1.2vw, 1.28rem) !important;
+  line-height: 1.28;
+  letter-spacing: -0.026em;
+}
+
+.rental-asset-price {
+  width: max-content;
+  max-width: 100%;
+  margin-top: 8px;
+  color: var(--navy);
+  font-size: 0.92rem;
+  font-weight: 780;
+  line-height: 1.35;
+}
+
+.rental-asset-price.is-free {
+  color: #148457;
+}
+
+.rental-asset-description {
+  margin-top: 12px !important;
+  color: var(--muted);
+  font-size: 0.82rem !important;
+  line-height: 1.65 !important;
+}
+
+/* Image viewer: modal only, no detail route. */
+.rental-gallery-dialog {
+  width: min(1180px, calc(100vw - 32px));
+  max-width: 1180px;
+  height: min(860px, calc(100dvh - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 24px;
+  background: #0e1015;
+  color: white;
+  box-shadow: 0 34px 100px rgba(0, 0, 0, 0.4);
+}
+
+.rental-gallery-dialog::backdrop {
+  background: rgba(7, 9, 13, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.rental-gallery-shell {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.rental-gallery-header {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 16px 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rental-gallery-header span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.rental-gallery-header h2 {
+  margin-top: 2px;
+  color: white;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.25;
+}
+
+.rental-gallery-close,
+.rental-gallery-arrow {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  cursor: pointer;
+}
+
+.rental-gallery-close {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+}
+
+.rental-gallery-stage {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, #20242e 0%, #0e1015 72%);
+  touch-action: pan-y;
+}
+
+.rental-gallery-stage > img {
+  object-fit: contain;
+  padding: 14px;
+}
+
+.rental-gallery-arrow {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  backdrop-filter: blur(10px);
+}
+
+.rental-gallery-arrow.is-left {
+  left: 18px;
+}
+
+.rental-gallery-arrow.is-right {
+  right: 18px;
+}
+
+.rental-gallery-counter {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: 14px;
+  min-height: 31px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.58);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  transform: translateX(-50%);
+  backdrop-filter: blur(8px);
+}
+
+.rental-gallery-thumbnails {
+  display: flex;
+  gap: 8px;
+  padding: 12px 18px 16px;
+  overflow-x: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  scrollbar-width: thin;
+}
+
+.rental-gallery-thumbnails button {
+  position: relative;
+  width: 78px;
+  height: 58px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #222;
+  cursor: pointer;
+  opacity: 0.58;
+}
+
+.rental-gallery-thumbnails button.is-active {
+  border-color: white;
+  opacity: 1;
+}
+
+.rental-gallery-thumbnails img {
+  object-fit: cover;
+}
+
+/* Admin: pricing mode and multi-image gallery are explicit. */
+.rental-pricing-fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.rental-pricing-fieldset legend {
+  margin-bottom: 10px;
+  color: var(--navy);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.rental-pricing-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rental-pricing-option {
+  min-height: 78px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.rental-pricing-option.is-active {
+  border-color: rgba(49, 87, 216, 0.38);
+  background: #f3f6ff;
+  box-shadow: 0 0 0 3px rgba(49, 87, 216, 0.07);
+}
+
+.rental-pricing-option input {
+  margin-top: 4px;
+}
+
+.rental-pricing-option span {
+  display: grid;
+  gap: 3px;
+}
+
+.rental-pricing-option strong {
+  color: var(--navy);
+  font-size: 0.82rem;
+}
+
+.rental-pricing-option small {
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.rental-gallery-admin-note {
+  padding: 14px 16px;
+  border: 1px solid rgba(49, 87, 216, 0.12);
+  border-radius: 14px;
+  background: #f6f8ff;
+}
+
+.rental-gallery-admin-note strong {
+  color: var(--navy);
+  font-size: 0.82rem;
+}
+
+.rental-gallery-admin-note p {
+  max-width: 820px;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .rental-asset-view-hint {
+    opacity: 1;
+    transform: none;
+  }
+
+  .rental-gallery-dialog {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .rental-gallery-header {
+    min-height: 66px;
+    padding: 9px 10px 9px 15px;
+  }
+
+  .rental-gallery-stage > img {
+    padding: 6px;
+  }
+
+  .rental-gallery-arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+  .rental-gallery-arrow.is-left {
+    left: 8px;
+  }
+
+  .rental-gallery-arrow.is-right {
+    right: 8px;
+  }
+
+  .rental-gallery-thumbnails {
+    padding: 10px 12px 14px;
+  }
+
+  .rental-pricing-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rental-asset-view-hint {
+    transition: none;
+  }
+}
+
+/* oni-rental-card-gallery-v21:end */
+
+/* oni-rental-admin-reorder-v1:start */
+.rental-admin-shell {
+  display: grid;
+  gap: 22px;
+}
+
+.rental-admin-title p {
+  max-width: 720px;
+}
+
+.rental-admin-overview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.rental-overview-card {
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,.96) 0%, rgba(247,248,252,.96) 100%);
+  box-shadow: 0 18px 40px rgba(4, 16, 44, .05);
+}
+
+.rental-overview-card.is-accent {
+  background: linear-gradient(135deg, rgba(29, 78, 216, .08) 0%, rgba(255,255,255,.98) 100%);
+}
+
+.rental-overview-eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.rental-overview-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--navy);
+  font-size: clamp(1.7rem, 1.2rem + 1vw, 2.4rem);
+  line-height: 1.05;
+}
+
+.rental-overview-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.rental-admin-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, .9fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.rental-panel-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.rental-panel-head.compact {
+  margin-bottom: 14px;
+}
+
+.rental-panel-head h2 {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-size: 1.08rem;
+}
+
+.rental-panel-head p {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: .94rem;
+  line-height: 1.65;
+}
+
+.rental-admin-note-card,
+.rental-side-card,
+.rental-editor-card {
+  border-radius: 24px;
+}
+
+.rental-admin-note-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 10px;
+  line-height: 1.65;
+}
+
+.rental-sort-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rental-sort-row {
+  display: grid;
+  grid-template-columns: auto auto 72px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.rental-sort-row.is-dragging {
+  opacity: .74;
+  transform: scale(.995);
+}
+
+.rental-sort-row:hover {
+  border-color: rgba(29, 78, 216, .34);
+  box-shadow: 0 16px 30px rgba(17, 24, 39, .05);
+}
+
+.rental-sort-grip,
+.rental-sort-position {
+  display: grid;
+  place-items: center;
+}
+
+.rental-sort-grip {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: #f3f5fa;
+  color: var(--muted);
+  cursor: grab;
+}
+
+.rental-sort-position {
+  width: 42px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.rental-sort-media {
+  position: relative;
+  width: 72px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #eef1f7;
+}
+
+.rental-sort-media img,
+.rental-admin-card-media img {
+  object-fit: cover;
+}
+
+.rental-sort-copy {
+  min-width: 0;
+}
+
+.rental-sort-copy strong {
+  display: block;
+  color: var(--navy);
+  font-size: 1rem;
+}
+
+.rental-sort-copy > span {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.rental-sort-copy-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.rental-sort-copy-meta span,
+.rental-status-pill,
+.rental-admin-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #f3f5fa;
+  color: #43506a;
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+.rental-sort-copy-meta .is-free,
+.rental-status-pill.is-free,
+.rental-admin-price.is-free {
+  background: #eaf8f0;
+  color: #15754a;
+}
+
+.rental-sort-row-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button.button-ghost {
+  min-width: 42px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.rental-sort-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.rental-sort-footer p {
+  margin: 0;
+  max-width: 55ch;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.65;
+}
+
+.rental-admin-catalog {
+  padding-top: 24px;
+}
+
+.rental-admin-card-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.rental-admin-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: #fff;
+}
+
+.rental-admin-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #eef1f7;
+}
+
+.rental-admin-card-body {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.rental-admin-card-meta {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rental-admin-card-meta h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1rem;
+}
+
+.rental-admin-card-meta p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.rental-admin-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rental-admin-chip.is-live {
+  background: rgba(29, 78, 216, .08);
+  color: #1d4ed8;
+}
+
+.rental-admin-chip.is-muted {
+  color: var(--muted);
+}
+
+.rental-admin-card-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.rental-editor-form {
+  display: grid;
+  gap: 20px;
+}
+
+.rental-editor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, .82fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.rental-editor-main,
+.rental-editor-side {
+  display: grid;
+  gap: 20px;
+}
+
+.rental-form-grid {
+  gap: 18px 20px;
+}
+
+.rental-slug-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.rental-pricing-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.rental-pricing-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.rental-pricing-option input {
+  accent-color: #1d4ed8;
+}
+
+.rental-pricing-option.is-active {
+  border-color: rgba(29, 78, 216, .38);
+  background: rgba(29, 78, 216, .04);
+  box-shadow: 0 10px 28px rgba(29, 78, 216, .08);
+}
+
+.rental-pricing-option span {
+  display: grid;
+  gap: 3px;
+}
+
+.rental-pricing-option strong {
+  color: var(--navy);
+}
+
+.rental-pricing-option small,
+.rental-side-note,
+.rental-inline-note {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.rental-inline-note {
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: #f7f8fc;
+}
+
+.rental-side-stack,
+.rental-action-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.rental-status-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.danger-zone {
+  border-color: rgba(239, 68, 68, .16);
+}
+
+.danger-zone .rental-panel-head p {
+  max-width: 36ch;
+}
+
+.spin {
+  animation: oni-spin 1s linear infinite;
+}
+
+@keyframes oni-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1180px) {
+  .rental-admin-layout,
+  .rental-editor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .rental-admin-card-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .rental-admin-overview,
+  .rental-pricing-options,
+  .rental-admin-card-list {
+    grid-template-columns: 1fr;
+  }
+
+  .rental-slug-row,
+  .rental-sort-footer {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .rental-sort-row {
+    grid-template-columns: auto 62px minmax(0, 1fr);
+    grid-template-areas:
+      "grip media actions"
+      "position copy copy";
+    align-items: start;
+  }
+
+  .rental-sort-grip { grid-area: grip; }
+  .rental-sort-position { grid-area: position; justify-self: start; width: auto; }
+  .rental-sort-media { grid-area: media; width: 62px; }
+  .rental-sort-copy { grid-area: copy; }
+  .rental-sort-row-actions {
+    grid-area: actions;
+    justify-self: end;
+  }
+
+  .rental-sort-footer {
+    align-items: stretch;
+  }
+
+  .rental-sort-footer .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .rental-overview-card,
+  .rental-editor-card,
+  .rental-side-card,
+  .rental-admin-card,
+  .rental-sort-row {
+    border-radius: 20px;
+  }
+
+  .rental-admin-title .button,
+  .rental-action-stack .button,
+  .rental-slug-row .button {
+    width: 100%;
+  }
+
+  .rental-admin-card-meta,
+  .rental-panel-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* oni-rental-admin-reorder-v1:end */
+
+/* oni-rental-form-bugfix-ui-v12:start */
+
+/* Fix the pricing control: compact, deliberate, touch-friendly. */
+.rental-pricing-fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.rental-pricing-fieldset legend {
+  margin-bottom: 9px;
+  color: var(--navy);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.rental-pricing-options {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px !important;
+}
+
+.rental-pricing-option {
+  min-height: 64px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 11px !important;
+  padding: 11px 13px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 16px !important;
+  background: #fff !important;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+
+.rental-pricing-option.is-active {
+  border-color: rgba(37, 99, 235, 0.48) !important;
+  background: rgba(37, 99, 235, 0.045) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.06) !important;
+}
+
+.rental-pricing-option input[type="radio"] {
+  width: 18px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  flex: 0 0 18px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  accent-color: #2563eb;
+}
+
+.rental-pricing-option span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.rental-pricing-option strong {
+  color: var(--navy);
+  font-size: 0.88rem;
+  line-height: 1.25;
+}
+
+.rental-pricing-option small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+/* Editor hierarchy */
+.rental-editor-root {
+  display: grid;
+  gap: 18px;
+}
+
+.rental-editor-layout {
+  align-items: start;
+}
+
+.rental-editor-card,
+.rental-side-card,
+.rental-danger-card {
+  border-radius: 20px !important;
+}
+
+.rental-editor-card {
+  padding: clamp(18px, 2vw, 24px) !important;
+}
+
+.rental-side-card {
+  padding: 18px !important;
+}
+
+.rental-panel-head {
+  margin-bottom: 15px !important;
+}
+
+.rental-panel-head h2 {
+  font-size: 1rem !important;
+  line-height: 1.25;
+}
+
+.rental-panel-head p {
+  max-width: 64ch;
+  font-size: 0.84rem !important;
+  line-height: 1.55 !important;
+}
+
+.rental-form-grid {
+  gap: 15px 18px !important;
+}
+
+.rental-form-grid .form-field > span,
+.rental-form-grid .form-field > legend {
+  font-size: 0.78rem;
+}
+
+.rental-form-grid input:not([type="radio"]):not([type="checkbox"]),
+.rental-form-grid select {
+  min-height: 46px !important;
+}
+
+.rental-form-grid textarea {
+  min-height: 98px !important;
+}
+
+.rental-slug-row {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 9px !important;
+}
+
+.rental-slug-button {
+  min-width: 108px;
+  min-height: 46px;
+  white-space: nowrap;
+}
+
+.rental-inline-note {
+  margin-bottom: 12px !important;
+  padding: 11px 13px !important;
+  border-radius: 14px !important;
+  font-size: 0.78rem;
+}
+
+.rental-side-stack {
+  gap: 12px !important;
+}
+
+.rental-status-pill {
+  min-height: 27px !important;
+  padding-inline: 9px !important;
+  font-size: 0.7rem !important;
+}
+
+.rental-save-card .button {
+  min-height: 44px;
+}
+
+.rental-danger-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 18px !important;
+  border-color: rgba(220, 38, 38, 0.18) !important;
+  background: rgba(254, 242, 242, 0.55) !important;
+}
+
+.rental-danger-copy h2 {
+  margin: 0 0 4px;
+  color: #991b1b;
+  font-size: 0.92rem;
+}
+
+.rental-danger-copy p {
+  margin: 0;
+  max-width: 58ch;
+  color: #7f1d1d;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/*
+  IMPORTANT:
+  DeleteForm is intentionally OUTSIDE .rental-editor-form.
+  This avoids invalid nested <form> markup and the hydration error.
+*/
+
+@media (max-width: 980px) {
+  .rental-editor-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rental-editor-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .rental-editor-side {
+    grid-template-columns: 1fr;
+  }
+
+  .rental-pricing-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .rental-pricing-option {
+    min-height: 60px !important;
+    padding: 10px 11px !important;
+  }
+
+  .rental-pricing-option strong {
+    font-size: 0.82rem;
+  }
+
+  .rental-pricing-option small {
+    font-size: 0.67rem;
+  }
+
+  .rental-danger-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 460px) {
+  .rental-pricing-options {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rental-pricing-option {
+    min-height: 56px !important;
+  }
+
+  .rental-slug-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rental-slug-button {
+    width: 100%;
+  }
+
+  .rental-editor-card,
+  .rental-side-card,
+  .rental-danger-card {
+    border-radius: 16px !important;
+  }
+}
+
+/* oni-rental-form-bugfix-ui-v12:end */
+
+
+/* oni-rental-sorter-ui-v2:start */
+
+.rental-sorter-v2 {
+  display: grid;
+  gap: 14px;
+}
+
+.rental-sort-help {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.rental-sort-help > div {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.rental-sort-help strong {
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+
+.rental-sort-help span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.rental-sort-count {
+  flex: 0 0 auto;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: #f2f5fb;
+  color: #44506a !important;
+  font-weight: 700;
+}
+
+.rental-sort-row-v2 {
+  grid-template-columns: 42px 72px minmax(0, 1fr) auto !important;
+  gap: 14px !important;
+  min-height: 96px;
+  padding: 11px 12px !important;
+  border: 1px solid #dfe4ec !important;
+  border-radius: 18px !important;
+  background: #fff !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.035) !important;
+}
+
+.rental-sort-row-v2:hover {
+  border-color: rgba(37, 99, 235, 0.35) !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.065) !important;
+}
+
+.rental-sort-row-v2.is-dragging {
+  border-color: rgba(37, 99, 235, 0.52) !important;
+  background: #f8faff !important;
+  opacity: 0.78;
+}
+
+.rental-sort-drag-handle {
+  width: 38px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  border-radius: 12px;
+  background: #f3f5f9;
+  color: #6d778b;
+  cursor: grab;
+}
+
+.rental-sort-drag-handle:active {
+  cursor: grabbing;
+}
+
+.rental-sort-row-v2 .rental-sort-media {
+  width: 72px;
+  height: 72px;
+  aspect-ratio: 1;
+  align-self: center;
+  border-radius: 15px;
+  background: #f1f4f8;
+}
+
+.rental-sort-content {
+  min-width: 0;
+  align-self: center;
+  display: grid;
+  gap: 9px;
+}
+
+.rental-sort-title-row {
+  min-width: 0;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.rental-sort-title {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.rental-sort-title strong {
+  overflow: hidden;
+  color: var(--navy);
+  font-size: 0.98rem;
+  line-height: 1.28;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rental-sort-title > span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rental-sort-price {
+  flex: 0 0 auto;
+  color: var(--navy);
+  font-size: 0.82rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.rental-sort-price.is-free {
+  color: #14764a;
+}
+
+.rental-sort-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.rental-sort-tags span {
+  min-height: 27px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: #f2f4f8;
+  color: #526078;
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.rental-sort-tags .is-live {
+  background: #eaf8f0;
+  color: #14764a;
+}
+
+.rental-sort-tags .is-hidden {
+  background: #f6f6f7;
+  color: #7b8190;
+}
+
+.rental-sort-desktop-action {
+  align-self: center;
+}
+
+.rental-sort-edit {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 13px;
+  border: 1px solid #d9dee7;
+  border-radius: 13px;
+  background: #fff;
+  color: var(--navy) !important;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.rental-sort-edit:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  background: #f7f9ff;
+  color: #1d4ed8 !important;
+}
+
+.rental-sort-mobile-actions {
+  display: none;
+}
+
+.rental-sort-footer-v2 {
+  padding-top: 16px !important;
+}
+
+.rental-sort-footer-v2 strong {
+  color: var(--navy);
+}
+
+.rental-sort-save {
+  min-width: 132px;
+  justify-content: center;
+}
+
+@media (max-width: 760px) {
+  .rental-sort-help {
+    align-items: flex-start;
+  }
+
+  .rental-sort-row-v2 {
+    grid-template-columns: 36px 64px minmax(0, 1fr) !important;
+    grid-template-areas:
+      "drag media content"
+      "actions actions actions";
+    gap: 11px !important;
+    min-height: 0;
+    padding: 11px !important;
+  }
+
+  .rental-sort-drag-handle {
+    grid-area: drag;
+    width: 36px;
+    height: 48px;
+    align-self: start;
+  }
+
+  .rental-sort-row-v2 .rental-sort-media {
+    grid-area: media;
+    width: 64px;
+    height: 64px;
+    align-self: start;
+  }
+
+  .rental-sort-content {
+    grid-area: content;
+    align-self: start;
+  }
+
+  .rental-sort-title-row {
+    display: grid;
+    gap: 5px;
+  }
+
+  .rental-sort-price {
+    justify-self: start;
+  }
+
+  .rental-sort-desktop-action {
+    display: none;
+  }
+
+  .rental-sort-mobile-actions {
+    grid-area: actions;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px solid #edf0f4;
+  }
+
+  .rental-sort-mobile-button {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 8px;
+    border: 1px solid #dce1e9;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .rental-sort-mobile-button:disabled {
+    opacity: 0.38;
+  }
+
+  .rental-sort-footer-v2 {
+    display: grid !important;
+    gap: 12px !important;
+  }
+
+  .rental-sort-save {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .rental-sort-help {
+    display: grid;
+  }
+
+  .rental-sort-count {
+    justify-self: start;
+  }
+
+  .rental-sort-row-v2 {
+    grid-template-columns: 34px 56px minmax(0, 1fr) !important;
+  }
+
+  .rental-sort-row-v2 .rental-sort-media {
+    width: 56px;
+    height: 56px;
+    border-radius: 13px;
+  }
+
+  .rental-sort-drag-handle {
+    width: 34px;
+    height: 44px;
+  }
+
+  .rental-sort-title strong {
+    font-size: 0.9rem;
+  }
+
+  .rental-sort-tags {
+    gap: 5px;
+  }
+
+  .rental-sort-tags span {
+    min-height: 25px;
+    padding: 0 8px;
+    font-size: 0.66rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rental-sort-row-v2,
+  .rental-sort-edit {
+    transition: none !important;
+  }
+}
+
+/* oni-rental-sorter-ui-v2:end */
+
+/* oni-rental-gallery-viewer-v4.2:start */
+
+/*
+  Transparent rental gallery viewer.
+  The page stays visually present behind the gallery, while the photo remains
+  centered and clear. Only the controls use frosted surfaces.
+*/
+
+.rental-gallery-dialog {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100dvh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #fff;
+}
+
+.rental-gallery-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.12) !important;
+  backdrop-filter: blur(9px) saturate(1.02) !important;
+}
+
+.rental-gallery-shell {
+  position: absolute !important;
+  inset: 0 !important;
+  width: min(1180px, calc(100vw - 40px)) !important;
+  height: min(880px, calc(100dvh - 40px)) !important;
+  max-height: none !important;
+  margin: auto !important;
+  display: grid !important;
+  grid-template-rows: 78px minmax(0, 1fr) auto !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 26px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.rental-gallery-header {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 18px !important;
+  padding: 14px 16px 13px 22px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+  border-radius: 22px 22px 0 0 !important;
+  background: rgba(18, 24, 34, 0.38) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+  backdrop-filter: blur(16px) saturate(1.08) !important;
+}
+
+.rental-gallery-header > div {
+  min-width: 0;
+}
+
+.rental-gallery-header span {
+  display: block;
+  margin-bottom: 3px;
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.rental-gallery-header h2 {
+  max-width: 760px;
+  overflow: hidden;
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: clamp(1.12rem, 1rem + 0.45vw, 1.55rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.025em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+}
+
+.rental-gallery-close {
+  width: 48px !important;
+  height: 48px !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  border-radius: 999px !important;
+  background: rgba(15, 23, 42, 0.3) !important;
+  color: #fff !important;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(14px) !important;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.rental-gallery-close:hover {
+  border-color: rgba(255, 255, 255, 0.46) !important;
+  background: rgba(15, 23, 42, 0.46) !important;
+  transform: translateY(-1px);
+}
+
+.rental-gallery-close:focus-visible,
+.rental-gallery-arrow:focus-visible,
+.rental-gallery-thumbnails button:focus-visible {
+  outline: 2px solid #fff !important;
+  outline-offset: 3px;
+}
+
+/* The image stage is intentionally transparent. */
+.rental-gallery-stage {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: hidden !important;
+  isolation: isolate;
+  background: transparent !important;
+  touch-action: pan-y;
+}
+
+.rental-gallery-stage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 18px 70px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 22px 70px rgba(15, 23, 42, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+
+.rental-gallery-stage > img {
+  object-fit: contain !important;
+  object-position: 50% 50% !important;
+  padding: clamp(16px, 2vw, 26px) clamp(72px, 7vw, 104px) !important;
+  filter:
+    drop-shadow(0 18px 26px rgba(15, 23, 42, 0.08))
+    drop-shadow(0 4px 8px rgba(15, 23, 42, 0.06));
+}
+
+.rental-gallery-arrow {
+  position: absolute !important;
+  z-index: 4;
+  top: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.26) !important;
+  border-radius: 999px !important;
+  background: rgba(15, 23, 42, 0.32) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
+  transform: translateY(-50%) !important;
+  cursor: pointer;
+  backdrop-filter: blur(14px) !important;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.rental-gallery-arrow:hover {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  background: rgba(15, 23, 42, 0.5) !important;
+  transform: translateY(-50%) scale(1.03) !important;
+}
+
+.rental-gallery-arrow.is-left {
+  left: 22px !important;
+}
+
+.rental-gallery-arrow.is-right {
+  right: 22px !important;
+}
+
+.rental-gallery-counter {
+  position: absolute !important;
+  z-index: 4;
+  left: 50% !important;
+  bottom: 18px !important;
+  min-width: 52px;
+  min-height: 32px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 11px !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  border-radius: 999px !important;
+  background: rgba(15, 23, 42, 0.36) !important;
+  color: #fff !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  transform: translateX(-50%) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.rental-gallery-thumbnails {
+  min-height: 88px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: safe center !important;
+  gap: 9px !important;
+  padding: 11px 16px 13px !important;
+  overflow-x: auto !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0 0 22px 22px !important;
+  background: rgba(18, 24, 34, 0.28) !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06) !important;
+  backdrop-filter: blur(16px) saturate(1.05) !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.34) transparent;
+}
+
+.rental-gallery-thumbnails button {
+  position: relative;
+  width: 74px !important;
+  height: 56px !important;
+  flex: 0 0 auto;
+  overflow: hidden;
+  padding: 0 !important;
+  border: 2px solid transparent !important;
+  border-radius: 11px !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  cursor: pointer;
+  opacity: 0.62 !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  transition:
+    opacity 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+.rental-gallery-thumbnails button:hover {
+  opacity: 0.86 !important;
+}
+
+.rental-gallery-thumbnails button.is-active {
+  border-color: rgba(255, 255, 255, 0.98) !important;
+  opacity: 1 !important;
+  transform: translateY(-1px);
+}
+
+.rental-gallery-thumbnails img {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.rental-gallery-thumbnails:has(button:only-child) {
+  display: none !important;
+}
+
+
+@media (max-width: 1180px) {
+  .rental-gallery-shell {
+    width: calc(100vw - 24px) !important;
+    height: calc(100dvh - 24px) !important;
+  }
+
+  .rental-gallery-stage > img {
+    padding-inline: 72px !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .rental-gallery-shell {
+    width: calc(100vw - 14px) !important;
+    height: calc(100dvh - 14px) !important;
+    grid-template-rows: 72px minmax(0, 1fr) auto !important;
+  }
+
+  .rental-gallery-header {
+    padding: 12px 12px 11px 16px !important;
+  }
+
+  .rental-gallery-close {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .rental-gallery-stage::before {
+    inset: 10px 48px;
+    border-radius: 20px;
+  }
+
+  .rental-gallery-stage > img {
+    padding: 12px 54px !important;
+  }
+
+  .rental-gallery-arrow {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .rental-gallery-arrow.is-left {
+    left: 10px !important;
+  }
+
+  .rental-gallery-arrow.is-right {
+    right: 10px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .rental-gallery-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.08) !important;
+    backdrop-filter: blur(7px) !important;
+  }
+
+  .rental-gallery-shell {
+    position: relative !important;
+    inset: auto !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    margin: 0 !important;
+    grid-template-rows: auto minmax(0, 1fr) auto !important;
+    border-radius: 0 !important;
+  }
+
+  .rental-gallery-header {
+    min-height: 66px !important;
+    padding:
+      max(10px, env(safe-area-inset-top))
+      10px
+      9px
+      14px !important;
+    border-inline: 0 !important;
+    border-top: 0 !important;
+    border-radius: 0 !important;
+    background: rgba(18, 24, 34, 0.38) !important;
+  }
+
+  .rental-gallery-header h2 {
+    max-width: calc(100vw - 88px);
+    font-size: 1rem !important;
+  }
+
+  .rental-gallery-stage::before {
+    inset: 8px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .rental-gallery-stage > img {
+    padding: 8px 10px !important;
+  }
+
+  .rental-gallery-arrow {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .rental-gallery-counter {
+    bottom: 10px !important;
+  }
+
+  .rental-gallery-thumbnails {
+    min-height: 74px !important;
+    justify-content: flex-start !important;
+    padding:
+      8px
+      10px
+      max(10px, env(safe-area-inset-bottom)) !important;
+    border-inline: 0 !important;
+    border-bottom: 0 !important;
+    border-radius: 0 !important;
+    background: rgba(18, 24, 34, 0.34) !important;
+  }
+
+  .rental-gallery-thumbnails button {
+    width: 64px !important;
+    height: 48px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rental-gallery-close,
+  .rental-gallery-arrow,
+  .rental-gallery-thumbnails button {
+    transition: none !important;
+  }
+}
+
+/* oni-rental-gallery-viewer-v4.2:end */
+
+/* oni-global-price-emphasis-v1:start */
+
+/*
+  ONI price emphasis
+  Customer-facing prices use one consistent premium gold language.
+  The goal is fast visual scanning without turning every card into a promo badge.
+*/
+:root {
+  --oni-price-accent: #9a5a08;
+  --oni-price-accent-strong: #744000;
+  --oni-price-accent-soft: #fff2cc;
+  --oni-price-accent-soft-2: #fff8e8;
+  --oni-price-accent-border: rgba(154, 90, 8, 0.22);
+  --oni-price-on-dark: #ffe08a;
+}
+
+/* Shared numeric behavior */
+.home-hero-v2-photo-bottom strong,
+.home-price-top h3,
+.studio-price-block strong,
+.equipment-price,
+.product-price,
+.detail-price strong,
+.rental-asset-price {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Homepage hero: price sits over photography, so use a brighter gold. */
+.home-hero-v2-photo-bottom strong {
+  color: var(--oni-price-on-dark) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+
+.home-hero-v2-photo-bottom small {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.home-hero-v2-photo-bottom > div > span {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+/* Homepage room pricing */
+.home-price-top h3 {
+  color: var(--oni-price-accent) !important;
+  font-weight: 800 !important;
+}
+
+.home-price-top h3 > span {
+  color: #75684f !important;
+  font-weight: 550 !important;
+}
+
+.home-price-card-featured .home-price-top h3 {
+  color: var(--oni-price-accent-strong) !important;
+}
+
+/* Studio cards */
+.studio-price-block strong {
+  color: var(--oni-price-accent) !important;
+  font-weight: 800 !important;
+}
+
+.studio-price-block p {
+  width: max-content;
+  max-width: 100%;
+  margin-top: 4px;
+  padding: 5px 9px;
+  border: 1px solid var(--oni-price-accent-border);
+  border-radius: 10px;
+  background: var(--oni-price-accent-soft-2);
+}
+
+.studio-price-block small {
+  color: #75684f !important;
+}
+
+/* Equipment catalogue cards */
+.equipment-price {
+  width: max-content;
+  max-width: 100%;
+  margin-top: 14px !important;
+  padding: 6px 10px;
+  border: 1px solid var(--oni-price-accent-border);
+  border-radius: 10px;
+  background: var(--oni-price-accent-soft-2);
+  color: var(--oni-price-accent) !important;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.equipment-price strong {
+  color: var(--oni-price-accent) !important;
+  font-size: 1.04rem !important;
+  font-weight: 800 !important;
+}
+
+.equipment-price span {
+  color: #75684f !important;
+  font-weight: 550;
+}
+
+/* Equipment detail */
+.product-price {
+  width: max-content;
+  max-width: 100%;
+  padding: 9px 13px;
+  border: 1px solid var(--oni-price-accent-border);
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--oni-price-accent-soft) 0%,
+    var(--oni-price-accent-soft-2) 100%
+  );
+  color: var(--oni-price-accent-strong) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+}
+
+.product-price span {
+  color: #75684f !important;
+  font-weight: 550 !important;
+  letter-spacing: 0;
+}
+
+/* Studio detail */
+.detail-price {
+  align-items: flex-start;
+}
+
+.detail-price strong {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 7px 12px;
+  border: 1px solid var(--oni-price-accent-border);
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--oni-price-accent-soft) 0%,
+    var(--oni-price-accent-soft-2) 100%
+  );
+  color: var(--oni-price-accent-strong) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em;
+}
+
+.detail-price span {
+  color: #75684f !important;
+}
+
+/* Props / color backdrops / effect backdrops */
+.rental-asset-price {
+  margin-top: 9px !important;
+  padding: 6px 10px;
+  border: 1px solid var(--oni-price-accent-border);
+  border-radius: 10px;
+  background: var(--oni-price-accent-soft-2);
+  color: var(--oni-price-accent) !important;
+  font-size: 0.96rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em;
+}
+
+/* Keep "Free" semantic green instead of turning it into a paid-price color. */
+.rental-asset-price.is-free {
+  border-color: rgba(20, 132, 87, 0.2) !important;
+  background: #edf9f3 !important;
+  color: #14764a !important;
+}
+
+/* Legacy / generic price cards still used in homepage variants */
+.price-card h2,
+.price-card h3 {
+  font-variant-numeric: tabular-nums;
+}
+
+.home-price-card h3 {
+  color: var(--oni-price-accent) !important;
+  font-weight: 800 !important;
+}
+
+.price-featured h2,
+.price-featured h3 {
+  color: var(--oni-price-on-dark) !important;
+}
+
+/* Price tables: second column is the monetary value in the current UI. */
+.price-table td:nth-child(2) {
+  color: var(--oni-price-accent-strong) !important;
+  font-weight: 800 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive: emphasis stays strong without oversized pills. */
+@media (max-width: 600px) {
+  .studio-price-block p,
+  .equipment-price,
+  .product-price,
+  .detail-price strong,
+  .rental-asset-price {
+    border-radius: 9px;
+  }
+
+  .product-price {
+    font-size: 1.65rem !important;
+  }
+
+  .detail-price strong {
+    min-height: 40px;
+    font-size: 1.6rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-price-block p,
+  .equipment-price,
+  .product-price,
+  .detail-price strong,
+  .rental-asset-price {
+    transition: none !important;
+  }
+}
+
+/* oni-global-price-emphasis-v1:end */
+
+/* oni-equipment-catalog-v3:start */
+
+/* Admin equipment editor */
+.equipment-form-v2 {
+  display: grid;
+  gap: 0;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.equipment-form-section {
+  padding: 26px 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.equipment-form-section:last-of-type {
+  border-bottom: 0;
+}
+
+.equipment-form-section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.equipment-form-section-head h2 {
+  margin: 0 0 5px;
+  font-size: 1.12rem;
+}
+
+.equipment-form-section-head p {
+  margin: 0;
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.equipment-slug-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.equipment-slug-row .button {
+  min-height: 44px;
+  padding-inline: 16px;
+  white-space: nowrap;
+}
+
+.equipment-source-admin {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.equipment-source-option {
+  min-height: 96px;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 17px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.equipment-source-option.is-active {
+  border-color: rgba(37, 76, 219, 0.48);
+  background: #f5f7ff;
+  box-shadow: 0 0 0 3px rgba(37, 76, 219, 0.07);
+}
+
+.equipment-source-option input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--accent);
+}
+
+.equipment-source-option span {
+  display: grid;
+  gap: 5px;
+}
+
+.equipment-source-option strong {
+  font-size: 0.9rem;
+}
+
+.equipment-source-option small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.equipment-accessory-panel {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #dce3f5;
+  border-radius: 14px;
+  background: #f7f9ff;
+}
+
+.equipment-accessory-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 280px);
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 13px;
+}
+
+.equipment-accessory-head > div {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.equipment-accessory-head svg {
+  flex: 0 0 auto;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.equipment-accessory-head strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.9rem;
+}
+
+.equipment-accessory-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.equipment-accessory-head input {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 12px;
+  background: #fff;
+}
+
+.equipment-accessory-list {
+  max-height: 300px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding-right: 4px;
+}
+
+.equipment-accessory-item {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  padding: 10px 11px;
+  border: 1px solid #e2e6ef;
+  border-radius: 11px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.equipment-accessory-item input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--accent);
+}
+
+.equipment-accessory-item span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.equipment-accessory-item strong {
+  overflow: hidden;
+  font-size: 0.79rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equipment-accessory-item small {
+  color: var(--muted);
+  font-size: 0.67rem;
+}
+
+.equipment-form-options {
+  padding-block: 18px;
+}
+
+.equipment-form-options .full {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 26px;
+}
+
+.equipment-form-v2 > .notice,
+.equipment-form-v2 > .form-actions {
+  margin-inline: 28px;
+}
+
+.equipment-form-v2 > .form-actions {
+  padding-block: 20px 26px;
+}
+
+.equipment-danger-zone {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 18px;
+  border: 1px solid #f1c7c7;
+  border-radius: 14px;
+  background: #fff8f8;
+}
+
+.equipment-danger-zone strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.equipment-danger-zone p {
+  margin: 0;
+  color: #9e3a3a;
+  font-size: 0.75rem;
+}
+
+/* Admin list */
+.equipment-admin-table-v2 .admin-equipment-name small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+}
+
+.equipment-source-badge {
+  width: max-content;
+  max-width: 100%;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.equipment-source-badge.internal {
+  background: #eef2f7;
+  color: #44506a;
+}
+
+.equipment-source-badge.external {
+  background: #e8edff;
+  color: #254cdb;
+}
+
+/* Public source switch */
+.equipment-source-switch {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.equipment-source-switch button {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.equipment-source-switch button:hover {
+  border-color: #b7c2df;
+  background: #fafbff;
+}
+
+.equipment-source-switch button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: #edf1ff;
+  color: #1738ae;
+  box-shadow: 0 0 0 3px rgba(37, 76, 219, 0.07);
+}
+
+.equipment-source-switch button strong {
+  min-width: 26px;
+  min-height: 26px;
+  display: grid;
+  place-items: center;
+  padding-inline: 7px;
+  border-radius: 999px;
+  background: rgba(37, 76, 219, 0.08);
+  font-size: 0.7rem;
+}
+
+.equipment-external-switch[aria-pressed="true"] {
+  background: #172037 !important;
+  border-color: #172037 !important;
+  color: #fff !important;
+}
+
+.equipment-external-switch[aria-pressed="true"] strong {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.equipment-toolbar-v3 {
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 240px) !important;
+}
+
+/* Public cards */
+.equipment-card-v3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.equipment-card-v3 .equipment-image {
+  flex: 0 0 auto;
+}
+
+.equipment-card-body-v3 {
+  min-height: 255px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.equipment-card-source-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.equipment-accessory-count {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #f7f4ea;
+  color: #74591d;
+  font-size: 0.66rem;
+  font-weight: 650;
+}
+
+.equipment-card-v3 h3 {
+  margin-bottom: 8px;
+}
+
+.equipment-card-description {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.equipment-card-v3 .equipment-price {
+  margin-top: auto !important;
+}
+
+.equipment-card-v3 .equipment-price.is-free {
+  border-color: rgba(20, 118, 74, 0.2);
+  background: #edf9f3;
+  color: #14764a !important;
+}
+
+.equipment-card-view {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.equipment-card-view:hover {
+  color: var(--accent);
+}
+
+/* Image-only equipment detail */
+.equipment-gallery-only {
+  padding: 34px 0 72px;
+}
+
+.equipment-gallery-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.equipment-gallery-nav > span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.equipment-gallery-shell {
+  max-width: 1120px;
+}
+
+.equipment-gallery-only .product-gallery {
+  width: 100%;
+}
+
+.equipment-gallery-only .gallery-stage {
+  aspect-ratio: 16 / 10;
+  min-height: 520px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #f0f1ec;
+}
+
+.equipment-gallery-only .gallery-stage > img {
+  padding: clamp(18px, 4vw, 54px);
+}
+
+.equipment-gallery-only .gallery-pagination {
+  margin-block: 14px 10px;
+}
+
+.equipment-gallery-only .gallery-thumbnails {
+  justify-content: center;
+  padding-bottom: 4px;
+}
+
+@media (max-width: 820px) {
+  .equipment-form-section {
+    padding: 22px 18px;
+  }
+
+  .equipment-source-admin,
+  .equipment-accessory-list {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-accessory-head {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-form-v2 > .notice,
+  .equipment-form-v2 > .form-actions {
+    margin-inline: 18px;
+  }
+
+  .equipment-source-switch {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-source-switch button {
+    justify-content: flex-start;
+  }
+
+  .equipment-source-switch button strong {
+    margin-left: auto;
+  }
+
+  .equipment-toolbar-v3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .equipment-gallery-only .gallery-stage {
+    min-height: 420px;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .equipment-form-section {
+    padding: 20px 14px;
+  }
+
+  .equipment-slug-row {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-slug-row .button {
+    width: 100%;
+  }
+
+  .equipment-form-v2 > .notice,
+  .equipment-form-v2 > .form-actions {
+    margin-inline: 14px;
+  }
+
+  .equipment-danger-zone {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .equipment-card-body-v3 {
+    min-height: 0;
+  }
+
+  .equipment-gallery-only {
+    padding-top: 18px;
+  }
+
+  .equipment-gallery-nav {
+    margin-bottom: 10px;
+  }
+
+  .equipment-gallery-only .gallery-stage {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    border-radius: 14px;
+  }
+
+  .equipment-gallery-only .gallery-stage > img {
+    padding: 12px;
+  }
+
+  .equipment-gallery-only .gallery-thumbnails {
+    justify-content: flex-start;
+  }
+}
+
+/* oni-equipment-catalog-v3:end */
+
+/* oni-equipment-card-detail-v3.2:start */
+
+/*
+  Card hierarchy:
+  source -> product name -> PRICE -> description -> image CTA.
+  The price is intentionally placed before supporting copy so customers can
+  scan the catalogue by cost immediately.
+*/
+.equipment-card-v3 .equipment-price {
+  order: initial;
+  margin: 2px 0 12px !important;
+}
+
+.equipment-card-v3 .equipment-card-description {
+  margin: 0 0 12px !important;
+}
+
+/*
+  Image-only equipment detail.
+  Remove the old framed "product stage" look. The image itself becomes the
+  visual surface, with no grey panel, border, inner padding or card shadow.
+*/
+.equipment-gallery-only {
+  padding: 26px 0 64px !important;
+}
+
+.equipment-gallery-only .equipment-gallery-nav {
+  max-width: 920px;
+  margin-inline: auto;
+  margin-bottom: 14px;
+}
+
+.equipment-gallery-only .equipment-gallery-shell {
+  width: min(920px, 100%);
+  max-width: 920px !important;
+  margin-inline: auto;
+}
+
+.equipment-gallery-only .product-gallery {
+  width: 100%;
+}
+
+.equipment-gallery-only .gallery-stage {
+  width: 100%;
+  min-height: 0 !important;
+  aspect-ratio: 1 / 1 !important;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.equipment-gallery-only .gallery-stage > img {
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* Keep only functional controls floating over the image. */
+.equipment-gallery-only .gallery-expand {
+  top: 12px !important;
+  right: 12px !important;
+  border: 1px solid rgba(17, 24, 39, 0.09) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.equipment-gallery-only .gallery-pagination {
+  margin: 12px 0 10px !important;
+}
+
+.equipment-gallery-only .gallery-thumbnails {
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 2px;
+}
+
+.equipment-gallery-only .gallery-thumbnail {
+  border-radius: 8px;
+}
+
+/* A one-image product should feel like a clean product photograph, not a carousel. */
+.equipment-gallery-only .gallery-thumbnails:has(.gallery-thumbnail:only-child) {
+  display: none;
+}
+
+.equipment-gallery-only
+  .gallery-pagination:has(+ .gallery-thumbnails .gallery-thumbnail:only-child) {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .equipment-gallery-only .equipment-gallery-nav,
+  .equipment-gallery-only .equipment-gallery-shell {
+    width: calc(100% - 32px);
+  }
+}
+
+@media (max-width: 600px) {
+  .equipment-gallery-only {
+    padding-top: 14px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .equipment-gallery-only .equipment-gallery-nav,
+  .equipment-gallery-only .equipment-gallery-shell {
+    width: calc(100% - 20px);
+  }
+
+  .equipment-gallery-only .equipment-gallery-nav {
+    margin-bottom: 8px;
+  }
+
+  .equipment-gallery-only .gallery-stage {
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .equipment-gallery-only .gallery-expand {
+    top: 8px !important;
+    right: 8px !important;
+  }
+
+  .equipment-gallery-only .gallery-thumbnails {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .equipment-gallery-only .gallery-thumbnails::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* oni-equipment-card-detail-v3.2:end */
+
+/* oni-equipment-source-switch-v2:start */
+
+/*
+  Equipment source filter:
+  Turn the three oversized cards into one compact segmented control.
+  It should read as a filter/navigation decision, not as three dashboard cards.
+*/
+.equipment-source-switch {
+  width: 100%;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  margin: 0 0 20px !important;
+  padding: 6px !important;
+  border: 1px solid #dedfd8;
+  border-radius: 16px;
+  background: #f1f1ec;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.equipment-source-switch button {
+  position: relative;
+  min-width: 0;
+  min-height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+  padding: 0 14px !important;
+  border: 0 !important;
+  border-radius: 11px !important;
+  background: transparent !important;
+  color: #31342f !important;
+  box-shadow: none !important;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.equipment-source-switch button:hover {
+  background: rgba(255, 255, 255, 0.68) !important;
+}
+
+.equipment-source-switch button:focus-visible {
+  outline: 2px solid #2c55df;
+  outline-offset: 2px;
+}
+
+.equipment-source-switch button > svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  opacity: 0.76;
+}
+
+.equipment-source-switch button > span {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.92rem;
+  font-weight: 620;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equipment-source-switch button > strong {
+  min-width: 28px !important;
+  height: 28px !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  margin: 0 !important;
+  padding: 0 8px !important;
+  border-radius: 999px !important;
+  background: rgba(34, 39, 50, 0.07) !important;
+  color: #5e6470 !important;
+  font-size: 0.7rem !important;
+  font-weight: 750 !important;
+  line-height: 1 !important;
+}
+
+.equipment-source-switch button[aria-pressed="true"] {
+  background: #ffffff !important;
+  color: #173ebf !important;
+  box-shadow:
+    0 2px 8px rgba(25, 32, 46, 0.06),
+    0 0 0 1px rgba(44, 85, 223, 0.1) !important;
+}
+
+.equipment-source-switch button[aria-pressed="true"] > svg {
+  color: #2c55df;
+  opacity: 1;
+}
+
+.equipment-source-switch button[aria-pressed="true"] > strong {
+  background: #e9efff !important;
+  color: #2448c8 !important;
+}
+
+/* Give external rental a clear identity without making it look like an alert. */
+.equipment-source-switch .equipment-external-switch[aria-pressed="true"] {
+  background: #18213a !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 4px 12px rgba(24, 33, 58, 0.16),
+    0 0 0 1px rgba(24, 33, 58, 0.08) !important;
+}
+
+.equipment-source-switch
+  .equipment-external-switch[aria-pressed="true"]
+  > svg {
+  color: #ffffff;
+}
+
+.equipment-source-switch
+  .equipment-external-switch[aria-pressed="true"]
+  > strong {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+/* Medium screens: preserve one-row filter but reduce label density. */
+@media (max-width: 900px) {
+  .equipment-source-switch {
+    gap: 5px !important;
+    padding: 5px !important;
+  }
+
+  .equipment-source-switch button {
+    min-height: 46px !important;
+    padding-inline: 10px !important;
+  }
+
+  .equipment-source-switch button > span {
+    font-size: 0.84rem;
+  }
+}
+
+/*
+  Mobile: this is a filter bar, so horizontal scrolling is faster than stacking
+  three large controls vertically and pushing the catalogue down the page.
+*/
+@media (max-width: 640px) {
+  .equipment-source-switch {
+    display: flex !important;
+    gap: 6px !important;
+    overflow-x: auto;
+    padding: 5px !important;
+    border-radius: 14px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .equipment-source-switch::-webkit-scrollbar {
+    display: none;
+  }
+
+  .equipment-source-switch button {
+    min-width: 164px !important;
+    min-height: 46px !important;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    justify-content: flex-start !important;
+    padding-inline: 12px !important;
+  }
+
+  .equipment-source-switch button > strong {
+    margin-left: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .equipment-source-switch button {
+    transition: none !important;
+  }
+}
+
+/* oni-equipment-source-switch-v2:end */
+
+/* oni-equipment-fast-create-v1:start */
+
+/* Accessory tools: search + quick create live in one compact control row. */
+.equipment-accessory-tools {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.equipment-accessory-tools > input {
+  min-width: 0;
+}
+
+.equipment-quick-toggle {
+  min-height: 42px !important;
+  padding-inline: 13px !important;
+  white-space: nowrap;
+}
+
+.equipment-quick-add {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 1.35fr)
+    minmax(180px, 1fr)
+    minmax(150px, 0.75fr)
+    auto;
+  gap: 10px;
+  align-items: end;
+  margin: 0 0 14px;
+  padding: 14px;
+  border: 1px solid #cdd8f7;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(37, 76, 219, 0.05);
+}
+
+.equipment-quick-add > div:first-child {
+  align-self: center;
+}
+
+.equipment-quick-add > div:first-child strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.82rem;
+}
+
+.equipment-quick-add > div:first-child p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.69rem;
+  line-height: 1.45;
+}
+
+.equipment-quick-add label {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.equipment-quick-add label > span {
+  color: #4c566c;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.equipment-quick-add input,
+.equipment-quick-add select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 11px;
+  background: #fff;
+}
+
+.equipment-quick-add > .button {
+  min-height: 42px;
+  white-space: nowrap;
+}
+
+.equipment-quick-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.72rem;
+}
+
+.equipment-quick-message.is-error {
+  color: #b42318;
+}
+
+.equipment-quick-message.is-success {
+  color: #137a4a;
+}
+
+.equipment-accessory-selection-summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  margin: -2px 0 9px;
+  color: var(--muted);
+  font-size: 0.69rem;
+}
+
+.equipment-accessory-selection-summary strong {
+  color: #1d2d58;
+  font-size: 0.7rem;
+}
+
+.equipment-accessory-item.is-selected {
+  border-color: rgba(37, 76, 219, 0.42);
+  background: #f4f7ff;
+  box-shadow: inset 3px 0 0 #2c55df;
+}
+
+/* Admin equipment list: make quick clone explicit but secondary to Edit. */
+.equipment-admin-hint {
+  margin-bottom: 14px;
+  padding: 13px 15px;
+  border: 1px solid #dce3f5;
+  border-radius: 12px;
+  background: #f7f9ff;
+}
+
+.equipment-admin-hint strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.8rem;
+}
+
+.equipment-admin-hint p {
+  margin: 0;
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.equipment-admin-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.equipment-admin-actions > a,
+.equipment-admin-actions button {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.equipment-admin-actions > a {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+
+.equipment-admin-actions form {
+  margin: 0;
+}
+
+.equipment-admin-actions button {
+  border: 1px solid #cbd6fa;
+  background: #eef2ff;
+  color: #254cdb;
+}
+
+.equipment-admin-actions button:hover {
+  background: #e4eaff;
+}
+
+@media (max-width: 1020px) {
+  .equipment-quick-add {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .equipment-quick-add > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .equipment-quick-add > .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .equipment-accessory-tools {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-quick-toggle {
+    width: 100%;
+  }
+
+  .equipment-quick-add {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-quick-add > div:first-child,
+  .equipment-quick-message {
+    grid-column: auto;
+  }
+
+  .equipment-admin-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .equipment-admin-actions > a,
+  .equipment-admin-actions form,
+  .equipment-admin-actions button {
+    width: 100%;
+  }
+}
+
+/* oni-equipment-fast-create-v1:end */
+
+/* oni-equipment-public-v4:start */
+
+/* Compact catalogue control surface */
+.equipment-catalog-controls-v4 {
+  margin-bottom: 24px;
+  border: 1px solid #dedfd8;
+  border-radius: 16px;
+  background: #f8f8f4;
+  overflow: hidden;
+}
+
+.equipment-controls-main {
+  display: grid;
+  grid-template-columns: auto minmax(360px, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e5e5df;
+}
+
+.equipment-source-tabs-v4 {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #dedfd8;
+  border-radius: 12px;
+  background: #efefe9;
+}
+
+.equipment-source-tabs-v4 button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #5b5f5a;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.equipment-source-tabs-v4 button:hover {
+  background: rgba(255, 255, 255, 0.64);
+  color: #202522;
+}
+
+.equipment-source-tabs-v4 button[aria-pressed="true"] {
+  background: #19233e;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(25, 35, 62, 0.12);
+}
+
+.equipment-source-tabs-v4 button > svg {
+  width: 15px;
+  height: 15px;
+}
+
+.equipment-source-tabs-v4 button > strong {
+  min-width: 23px;
+  height: 23px;
+  display: inline-grid;
+  place-items: center;
+  padding-inline: 6px;
+  border-radius: 999px;
+  background: rgba(20, 25, 32, 0.07);
+  color: #737872;
+  font-size: 0.64rem;
+  font-weight: 750;
+}
+
+.equipment-source-tabs-v4 button[aria-pressed="true"] > strong {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.equipment-toolbar-v4 {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 164px;
+  gap: 8px;
+}
+
+.equipment-search-v4,
+.equipment-sort-v4 {
+  min-width: 0;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #d9dad4;
+  border-radius: 10px;
+  background: #fff;
+  color: #626761;
+}
+
+.equipment-search-v4 {
+  padding: 0 12px;
+}
+
+.equipment-search-v4 input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1b201d;
+  font: inherit;
+}
+
+.equipment-sort-v4 {
+  padding-left: 11px;
+}
+
+.equipment-sort-v4 select {
+  width: 100%;
+  min-height: 40px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1f2421;
+  font: inherit;
+  cursor: pointer;
+}
+
+.equipment-controls-categories {
+  min-height: 56px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 9px 12px;
+}
+
+.equipment-category-label {
+  color: #777b76;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.equipment-category-chips-v4 {
+  min-width: 0;
+  margin: 0 !important;
+}
+
+.equipment-category-chips-v4 .chip {
+  min-height: 34px;
+  padding-inline: 12px;
+}
+
+.equipment-result-count-v4 {
+  margin: 0;
+  color: #777b76;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.equipment-result-count-v4 strong {
+  color: #242924;
+  font-size: 0.8rem;
+}
+
+/* Card: make the included products understandable at first glance */
+.equipment-card-body-v4 {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.equipment-card-v4 h3 {
+  margin: 0 0 8px;
+}
+
+.equipment-card-v4 .equipment-price {
+  margin: 2px 0 12px !important;
+}
+
+.equipment-included-products {
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 10px;
+  border: 1px solid #eadfbd;
+  border-radius: 10px;
+  background: #fbf7e9;
+}
+
+.equipment-included-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+  color: #74591d;
+  font-size: 0.69rem;
+  font-weight: 750;
+}
+
+.equipment-included-heading svg {
+  flex: 0 0 auto;
+}
+
+.equipment-included-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.equipment-included-chip,
+.equipment-included-more {
+  max-width: 100%;
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  line-height: 1;
+}
+
+.equipment-included-chip {
+  overflow: hidden;
+  border: 1px solid #e7d8ae;
+  background: #fff;
+  color: #403927;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equipment-included-more {
+  background: #e9dfc3;
+  color: #665527;
+  font-weight: 750;
+}
+
+.equipment-card-v4 .equipment-card-description {
+  margin: 0 0 12px !important;
+}
+
+.equipment-card-v4 .equipment-card-view {
+  margin-top: auto;
+}
+
+/* Old count pill is no longer needed on V4 cards. */
+.equipment-card-v4 .equipment-accessory-count {
+  display: none !important;
+}
+
+@media (max-width: 1040px) {
+  .equipment-controls-main {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .equipment-source-tabs-v4 {
+    width: max-content;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .equipment-catalog-controls-v4 {
+    border-radius: 14px;
+  }
+
+  .equipment-controls-main {
+    padding: 9px;
+  }
+
+  .equipment-source-tabs-v4 {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .equipment-source-tabs-v4::-webkit-scrollbar {
+    display: none;
+  }
+
+  .equipment-source-tabs-v4 button {
+    flex: 0 0 auto;
+  }
+
+  .equipment-toolbar-v4 {
+    grid-template-columns: minmax(0, 1fr) 126px;
+  }
+
+  .equipment-controls-categories {
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .equipment-category-label {
+    display: none;
+  }
+
+  .equipment-category-chips-v4 {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .equipment-category-chips-v4::-webkit-scrollbar {
+    display: none;
+  }
+
+  .equipment-category-chips-v4 .chip {
+    flex: 0 0 auto;
+  }
+
+  .equipment-card-body-v4 {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .equipment-toolbar-v4 {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-sort-v4 {
+    width: 100%;
+  }
+
+  .equipment-controls-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-result-count-v4 {
+    padding-inline: 2px;
+  }
+
+  .equipment-included-products {
+    padding: 9px;
+  }
+}
+
+/* oni-equipment-public-v4:end */
+
+/* oni-equipment-included-names-v1:start */
+
+.equipment-included-products {
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 11px 12px;
+  border: 1px solid #e8d9ad;
+  border-radius: 11px;
+  background: #fbf7e9;
+}
+
+.equipment-included-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+  color: #6d5519;
+  font-size: 0.7rem;
+  font-weight: 760;
+}
+
+.equipment-included-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.equipment-included-chip {
+  max-width: 100%;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 9px;
+  overflow: hidden;
+  border: 1px solid #dfd1a7;
+  border-radius: 999px;
+  background: #fff;
+  color: #2d2b24;
+  font-size: 0.66rem;
+  font-weight: 650;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equipment-included-more {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: #e9dfc3;
+  color: #665527;
+  font-size: 0.66rem;
+  font-weight: 760;
+}
+
+.equipment-included-fallback {
+  margin: 0;
+  color: #75684f;
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .equipment-included-products {
+    padding: 10px;
+  }
+
+  .equipment-included-chip {
+    min-height: 30px;
+    font-size: 0.68rem;
+  }
+}
+
+/* oni-equipment-included-names-v1:end */
+
+/* oni-equipment-card-clean-source-free-v1:start */
+
+/* Internal equipment does not need a source badge on the customer-facing card. */
+.equipment-card-v4 .equipment-card-source-row {
+  margin-bottom: 10px;
+}
+
+/*
+  Free items are a semantic availability/benefit state, not a paid price.
+  Use green so customers can recognize "free with room" immediately.
+*/
+.equipment-card-v4 .equipment-price.is-free {
+  width: max-content;
+  max-width: 100%;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid #a8d9bf !important;
+  border-radius: 10px;
+  background: #eaf8ef !important;
+  color: #147a46 !important;
+  box-shadow: none !important;
+  font-weight: 760;
+}
+
+.equipment-card-v4 .equipment-price.is-free strong,
+.equipment-card-v4 .equipment-price.is-free span {
+  color: #147a46 !important;
+}
+
+@media (max-width: 600px) {
+  .equipment-card-v4 .equipment-price.is-free {
+    min-height: 36px;
+    padding-inline: 10px;
+    font-size: 0.76rem;
+  }
+}
+
+/* oni-equipment-card-clean-source-free-v1:end */
+
+/* oni-equipment-detail-size-v1:start */
+
+/*
+  Equipment detail image should feel like a product preview, not a full-page hero.
+  Keep it centered and comfortably sized on desktop while still using the
+  available width on tablets/mobile.
+*/
+.equipment-gallery-only .equipment-gallery-nav {
+  width: min(760px, calc(100% - 32px));
+  max-width: 760px !important;
+  margin-inline: auto;
+}
+
+.equipment-gallery-only .equipment-gallery-shell {
+  width: min(760px, calc(100% - 32px));
+  max-width: 760px !important;
+  margin-inline: auto;
+}
+
+.equipment-gallery-only .product-gallery {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.equipment-gallery-only .gallery-stage {
+  width: 100%;
+  max-height: 560px;
+  aspect-ratio: 4 / 3 !important;
+  min-height: 0 !important;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.equipment-gallery-only .gallery-stage > img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.equipment-gallery-only .gallery-pagination {
+  max-width: 760px;
+  margin-inline: auto !important;
+}
+
+.equipment-gallery-only .gallery-thumbnails {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+@media (min-width: 1280px) {
+  .equipment-gallery-only .equipment-gallery-nav,
+  .equipment-gallery-only .equipment-gallery-shell,
+  .equipment-gallery-only .product-gallery,
+  .equipment-gallery-only .gallery-pagination,
+  .equipment-gallery-only .gallery-thumbnails {
+    max-width: 720px !important;
+  }
+
+  .equipment-gallery-only .gallery-stage {
+    max-height: 520px;
+  }
+}
+
+@media (max-width: 820px) {
+  .equipment-gallery-only .equipment-gallery-nav,
+  .equipment-gallery-only .equipment-gallery-shell {
+    width: calc(100% - 28px);
+  }
+
+  .equipment-gallery-only .gallery-stage {
+    max-height: none;
+    aspect-ratio: 4 / 3 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .equipment-gallery-only .equipment-gallery-nav,
+  .equipment-gallery-only .equipment-gallery-shell {
+    width: calc(100% - 20px);
+  }
+
+  .equipment-gallery-only .gallery-stage {
+    aspect-ratio: 1 / 1 !important;
+  }
+}
+
+/* oni-equipment-detail-size-v1:end */
+
+/* oni-equipment-admin-manager-v3:start */
+
+.equipment-admin-title-v3 {
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.equipment-admin-manager-v3 {
+  display: grid;
+  gap: 18px;
+}
+
+.equipment-admin-toolbar-v3 {
+  display: grid;
+  grid-template-columns: auto minmax(220px, 1fr) minmax(170px, 220px) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #dfe3ec;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(21, 36, 70, 0.045);
+}
+
+.equipment-admin-source-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 11px;
+  background: #f1f3f7;
+}
+
+.equipment-admin-source-tabs button,
+.equipment-recent-filter {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 11px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #566075;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.equipment-admin-source-tabs button strong,
+.equipment-recent-filter strong {
+  min-width: 23px;
+  height: 23px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(30, 46, 82, 0.08);
+  font-size: 0.63rem;
+}
+
+.equipment-admin-source-tabs button[aria-pressed="true"] {
+  background: #18233f;
+  color: #fff;
+  box-shadow: 0 3px 9px rgba(24, 35, 63, 0.14);
+}
+
+.equipment-admin-source-tabs button[aria-pressed="true"] strong {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.equipment-admin-search,
+.equipment-admin-category-filter {
+  min-width: 0;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dce0e8;
+  border-radius: 10px;
+  background: #fff;
+  padding: 0 11px;
+  color: #7a8291;
+}
+
+.equipment-admin-search input,
+.equipment-admin-category-filter select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1f293b;
+  font: inherit;
+  font-size: 0.76rem;
+}
+
+.equipment-admin-category-filter select {
+  min-height: 40px;
+  cursor: pointer;
+}
+
+.equipment-recent-filter {
+  min-height: 42px;
+  border: 1px solid #dce0e8;
+  background: #fff;
+}
+
+.equipment-recent-filter[aria-pressed="true"] {
+  border-color: #b8c8ff;
+  background: #eef3ff;
+  color: #2851da;
+}
+
+.equipment-admin-filter-summary {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -8px;
+  color: #7a8291;
+  font-size: 0.68rem;
+}
+
+.equipment-admin-filter-summary strong {
+  color: #1f293b;
+}
+
+.equipment-admin-filter-summary button {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: #2851da;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.equipment-order-status {
+  margin: -8px 0 0;
+}
+
+.equipment-admin-group {
+  overflow: hidden;
+  border: 1px solid #dfe3ec;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 14px 38px rgba(20, 33, 63, 0.045);
+}
+
+.equipment-admin-group-head {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e8ebf1;
+  background: #fafbfe;
+}
+
+.equipment-admin-group-head h2 {
+  margin: 0;
+  color: #172238;
+  font-size: 1rem;
+}
+
+.equipment-admin-group-head p {
+  margin: 3px 0 0;
+  color: #7a8291;
+  font-size: 0.68rem;
+}
+
+.equipment-admin-order-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #6d7688;
+  font-size: 0.67rem;
+}
+
+.equipment-admin-list-v3 {
+  min-width: 0;
+}
+
+.equipment-admin-list-head,
+.equipment-admin-row-v3 {
+  display: grid;
+  grid-template-columns: 112px minmax(260px, 1.6fr) minmax(110px, .7fr) minmax(110px, .7fr) minmax(100px, .65fr) minmax(160px, .85fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.equipment-admin-list-head {
+  min-height: 38px;
+  padding: 0 14px;
+  border-bottom: 1px solid #e8ebf1;
+  color: #7c8492;
+  font-size: 0.62rem;
+  font-weight: 750;
+}
+
+.equipment-admin-row-v3 {
+  min-height: 76px;
+  padding: 9px 14px;
+  border-bottom: 1px solid #eef0f4;
+  background: #fff;
+  transition: background 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.equipment-admin-row-v3:last-child {
+  border-bottom: 0;
+}
+
+.equipment-admin-row-v3.is-dragging {
+  position: relative;
+  z-index: 2;
+  background: #f3f6ff;
+  box-shadow: 0 8px 24px rgba(37, 76, 219, 0.12);
+  transform: scale(1.004);
+}
+
+.equipment-admin-order-cell {
+  display: grid;
+  grid-template-columns: 34px 30px 1fr;
+  gap: 5px;
+  align-items: center;
+}
+
+.equipment-drag-handle {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dce1ea;
+  border-radius: 9px;
+  background: #f8f9fc;
+  color: #606b80;
+  cursor: grab;
+  touch-action: none;
+}
+
+.equipment-drag-handle:active {
+  cursor: grabbing;
+}
+
+.equipment-drag-handle:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+.equipment-position-number {
+  color: #727b8d;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.equipment-order-buttons {
+  display: flex;
+  gap: 3px;
+}
+
+.equipment-order-buttons button {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e1e5ed;
+  border-radius: 7px;
+  background: #fff;
+  color: #6c7587;
+  cursor: pointer;
+}
+
+.equipment-order-buttons button:disabled {
+  opacity: .25;
+  cursor: not-allowed;
+}
+
+.equipment-admin-product-cell {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.equipment-admin-product-cell .admin-equipment-thumb,
+.equipment-admin-product-cell .admin-equipment-empty {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border-radius: 9px;
+}
+
+.equipment-admin-name-line {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.equipment-admin-name-line strong {
+  overflow: hidden;
+  color: #1c263a;
+  font-size: 0.76rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equipment-admin-product-cell small {
+  display: block;
+  margin-top: 3px;
+  overflow: hidden;
+  color: #8a91a0;
+  font-size: 0.62rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equipment-new-badge {
+  min-height: 22px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #eaf8ef;
+  color: #137449;
+  font-size: 0.58rem;
+  font-weight: 800;
+}
+
+.equipment-admin-meta-cell {
+  min-width: 0;
+  color: #515b6e;
+  font-size: 0.7rem;
+}
+
+.equipment-admin-mobile-label {
+  display: none;
+}
+
+.equipment-admin-actions-v3 {
+  justify-content: flex-end;
+}
+
+.equipment-admin-empty {
+  padding: 28px 16px;
+  color: #858d9d;
+  text-align: center;
+  font-size: 0.74rem;
+}
+
+@media (max-width: 1100px) {
+  .equipment-admin-toolbar-v3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .equipment-admin-source-tabs {
+    width: max-content;
+  }
+
+  .equipment-admin-list-head,
+  .equipment-admin-row-v3 {
+    grid-template-columns: 96px minmax(220px, 1.4fr) 100px 100px 90px 150px;
+  }
+
+  .equipment-admin-list-v3 {
+    overflow-x: auto;
+  }
+
+  .equipment-admin-list-head,
+  .equipment-admin-row-v3 {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 760px) {
+  .equipment-admin-title-v3 {
+    align-items: stretch;
+  }
+
+  .equipment-admin-title-v3,
+  .equipment-admin-title-v3 .button-row {
+    flex-direction: column;
+  }
+
+  .equipment-admin-title-v3 .button-row,
+  .equipment-admin-title-v3 .button {
+    width: 100%;
+  }
+
+  .equipment-admin-toolbar-v3 {
+    grid-template-columns: 1fr;
+    padding: 7px;
+  }
+
+  .equipment-admin-source-tabs {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .equipment-admin-source-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .equipment-admin-source-tabs button {
+    flex: 1 0 auto;
+  }
+
+  .equipment-admin-filter-summary {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .equipment-admin-filter-summary button {
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .equipment-admin-group-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .equipment-admin-list-v3 {
+    overflow: visible;
+  }
+
+  .equipment-admin-list-head {
+    display: none;
+  }
+
+  .equipment-admin-row-v3 {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .equipment-admin-order-cell {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    grid-template-columns: 34px 26px;
+  }
+
+  .equipment-order-buttons {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+
+  .equipment-admin-product-cell {
+    grid-column: 1;
+    grid-row: 1;
+    padding-right: 4px;
+  }
+
+  .equipment-admin-meta-cell {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding-top: 9px;
+    border-top: 1px solid #edf0f5;
+  }
+
+  .equipment-admin-mobile-label {
+    display: inline;
+    color: #9299a6;
+    font-size: 0.62rem;
+  }
+
+  .equipment-admin-actions-v3 {
+    grid-column: 1 / -1;
+    justify-content: stretch;
+  }
+
+  .equipment-admin-actions-v3 > a,
+  .equipment-admin-actions-v3 form,
+  .equipment-admin-actions-v3 button {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .equipment-admin-row-v3 {
+    transition: none;
+  }
+}
+
+/* oni-equipment-admin-manager-v3:end */
+
+/* oni-equipment-admin-scale-v4:start */
+
+/*
+  The equipment admin page was visually too small at 100% browser zoom.
+  This pass increases the working canvas, type scale, row density and controls
+  without changing the rest of the admin.
+*/
+
+.equipment-admin-page-v4 {
+  width: min(1540px, calc(100vw - 56px));
+  max-width: none;
+  margin-inline: auto;
+}
+
+.equipment-admin-page-v4 .equipment-admin-title-v3 {
+  margin-bottom: 22px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-title-v3 h1 {
+  font-size: clamp(2.15rem, 2.6vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.equipment-admin-page-v4 .equipment-admin-title-v3 p {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.equipment-admin-page-v4 .equipment-admin-title-v3 .button {
+  min-height: 44px;
+  padding-inline: 16px;
+  font-size: 0.76rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-manager-v3 {
+  gap: 22px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-toolbar-v3 {
+  grid-template-columns:
+    auto
+    minmax(280px, 1fr)
+    minmax(190px, 240px)
+    auto;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 17px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-source-tabs button,
+.equipment-admin-page-v4 .equipment-recent-filter {
+  min-height: 42px;
+  padding-inline: 13px;
+  font-size: 0.78rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-source-tabs button strong,
+.equipment-admin-page-v4 .equipment-recent-filter strong {
+  min-width: 25px;
+  height: 25px;
+  font-size: 0.67rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-search,
+.equipment-admin-page-v4 .equipment-admin-category-filter,
+.equipment-admin-page-v4 .equipment-recent-filter {
+  min-height: 46px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-search input,
+.equipment-admin-page-v4 .equipment-admin-category-filter select {
+  font-size: 0.82rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-filter-summary {
+  min-height: 38px;
+  font-size: 0.73rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-group {
+  border-radius: 18px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-group-head {
+  min-height: 80px;
+  padding: 16px 18px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-group-head h2 {
+  font-size: 1.08rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-group-head p,
+.equipment-admin-page-v4 .equipment-admin-order-note {
+  font-size: 0.72rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-list-head,
+.equipment-admin-page-v4 .equipment-admin-row-v3 {
+  grid-template-columns:
+    124px
+    minmax(290px, 1.65fr)
+    minmax(126px, 0.72fr)
+    minmax(122px, 0.72fr)
+    minmax(110px, 0.68fr)
+    minmax(176px, 0.88fr);
+  gap: 14px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-list-head {
+  min-height: 44px;
+  padding-inline: 16px;
+  font-size: 0.67rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-row-v3 {
+  min-height: 86px;
+  padding: 11px 16px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-order-cell {
+  grid-template-columns: 38px 34px 1fr;
+  gap: 6px;
+}
+
+.equipment-admin-page-v4 .equipment-drag-handle {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+.equipment-admin-page-v4 .equipment-position-number {
+  font-size: 0.73rem;
+}
+
+.equipment-admin-page-v4 .equipment-order-buttons button {
+  width: 28px;
+  height: 28px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell {
+  gap: 12px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-thumb,
+.equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-empty {
+  width: 60px;
+  height: 60px;
+  flex-basis: 60px;
+  border-radius: 10px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-name-line strong {
+  font-size: 0.84rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell small {
+  margin-top: 4px;
+  font-size: 0.68rem;
+}
+
+.equipment-admin-page-v4 .equipment-new-badge {
+  min-height: 24px;
+  padding-inline: 8px;
+  font-size: 0.61rem;
+}
+
+.equipment-admin-page-v4 .equipment-admin-meta-cell {
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.equipment-admin-page-v4 .equipment-admin-actions-v3 {
+  gap: 7px;
+}
+
+.equipment-admin-page-v4 .equipment-admin-actions-v3 > a,
+.equipment-admin-page-v4 .equipment-admin-actions-v3 button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 12px;
+  border-radius: 9px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.equipment-admin-page-v4 .equipment-admin-empty {
+  padding: 34px 18px;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 1700px) {
+  .equipment-admin-page-v4 {
+    width: min(1620px, calc(100vw - 72px));
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-head,
+  .equipment-admin-page-v4 .equipment-admin-row-v3 {
+    grid-template-columns:
+      132px
+      minmax(320px, 1.75fr)
+      minmax(135px, 0.72fr)
+      minmax(130px, 0.72fr)
+      minmax(118px, 0.68fr)
+      minmax(190px, 0.9fr);
+  }
+}
+
+@media (max-width: 1250px) {
+  .equipment-admin-page-v4 {
+    width: calc(100vw - 32px);
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-toolbar-v3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-source-tabs {
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-v3 {
+    overflow-x: auto;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-head,
+  .equipment-admin-page-v4 .equipment-admin-row-v3 {
+    min-width: 980px;
+  }
+}
+
+@media (max-width: 760px) {
+  .equipment-admin-page-v4 {
+    width: calc(100vw - 20px);
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-title-v3 h1 {
+    font-size: clamp(2rem, 10vw, 2.55rem);
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-title-v3 p {
+    font-size: 0.8rem;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-toolbar-v3 {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-source-tabs {
+    width: 100%;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-group-head {
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-v3 {
+    overflow: visible;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-row-v3 {
+    min-width: 0;
+    min-height: 0;
+    padding: 15px;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-thumb,
+  .equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-empty {
+    width: 64px;
+    height: 64px;
+    flex-basis: 64px;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-name-line strong {
+    font-size: 0.9rem;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-meta-cell {
+    font-size: 0.8rem;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-actions-v3 > a,
+  .equipment-admin-page-v4 .equipment-admin-actions-v3 button {
+    min-height: 42px;
+    font-size: 0.76rem;
+  }
+}
+
+/* oni-equipment-admin-scale-v4:end */
+
+/* oni-equipment-admin-thumb-layout-v1:start */
+
+/*
+  Equipment admin table:
+  - reserve enough width for drag/order controls so they never collide with thumbnails
+  - show equipment images without distortion
+  - use the available desktop width more efficiently
+*/
+.equipment-admin-page-v4 .equipment-admin-list-head,
+.equipment-admin-page-v4 .equipment-admin-row-v3 {
+  grid-template-columns:
+    164px
+    minmax(360px, 1.8fr)
+    minmax(135px, 0.72fr)
+    minmax(130px, 0.72fr)
+    minmax(125px, 0.68fr)
+    minmax(190px, 0.92fr) !important;
+  gap: 18px !important;
+}
+
+.equipment-admin-page-v4 .equipment-admin-row-v3 {
+  min-height: 92px !important;
+  align-items: center !important;
+}
+
+.equipment-admin-page-v4 .equipment-admin-order-cell {
+  width: 100%;
+  min-width: 0;
+  display: grid !important;
+  grid-template-columns: 40px 30px 68px !important;
+  gap: 7px !important;
+  align-items: center;
+}
+
+.equipment-admin-page-v4 .equipment-drag-handle {
+  width: 40px !important;
+  height: 40px !important;
+  flex: 0 0 40px;
+}
+
+.equipment-admin-page-v4 .equipment-position-number {
+  min-width: 30px;
+  text-align: center;
+}
+
+.equipment-admin-page-v4 .equipment-order-buttons {
+  width: 68px;
+  display: grid !important;
+  grid-template-columns: repeat(2, 31px);
+  gap: 6px !important;
+}
+
+.equipment-admin-page-v4 .equipment-order-buttons button {
+  width: 31px !important;
+  height: 31px !important;
+  padding: 0 !important;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell {
+  min-width: 0;
+  display: grid !important;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px !important;
+  align-items: center;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-thumb,
+.equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-empty {
+  width: 92px !important;
+  height: 68px !important;
+  min-width: 92px;
+  max-width: 92px;
+  border-radius: 11px !important;
+  box-sizing: border-box;
+  background: #f1f3ef;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-thumb {
+  display: block;
+  padding: 5px;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-empty {
+  display: grid;
+  place-items: center;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell > div {
+  min-width: 0;
+}
+
+.equipment-admin-page-v4 .equipment-admin-name-line {
+  min-width: 0;
+}
+
+.equipment-admin-page-v4 .equipment-admin-name-line strong {
+  max-width: 100%;
+  font-size: 0.87rem !important;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equipment-admin-page-v4 .equipment-admin-product-cell small {
+  max-width: 100%;
+  font-size: 0.7rem !important;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+  Header correction:
+  Previous wide admin-page work can expose horizontal overflow and make the
+  sticky header appear shifted/cropped. Give the header its own centered,
+  viewport-safe working width instead of inheriting content-page sizing.
+*/
+.admin-shell {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.admin-shell .admin-header {
+  width: 100%;
+  max-width: 100vw;
+}
+
+.admin-shell .admin-header > .admin-header-inner,
+.admin-shell .admin-header > .container.admin-header-inner {
+  width: min(1540px, calc(100% - 56px)) !important;
+  max-width: 1540px !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+  box-sizing: border-box;
+}
+
+.admin-shell .admin-header .admin-wordmark {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.admin-shell .admin-header .admin-nav {
+  min-width: 0;
+  margin-left: auto;
+}
+
+@media (min-width: 1500px) {
+  .equipment-admin-page-v4 .equipment-admin-product-cell {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-thumb,
+  .equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-empty {
+    width: 104px !important;
+    max-width: 104px;
+    min-width: 104px;
+    height: 72px !important;
+  }
+}
+
+@media (max-width: 1250px) {
+  .admin-shell .admin-header > .admin-header-inner,
+  .admin-shell .admin-header > .container.admin-header-inner {
+    width: calc(100% - 32px) !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-v3 {
+    max-width: 100%;
+    overflow-x: auto !important;
+    overscroll-behavior-x: contain;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-head,
+  .equipment-admin-page-v4 .equipment-admin-row-v3 {
+    min-width: 1160px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-shell .admin-header > .admin-header-inner,
+  .admin-shell .admin-header > .container.admin-header-inner {
+    width: calc(100% - 28px) !important;
+  }
+
+  .admin-shell .admin-header .admin-nav {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-shell .admin-header > .admin-header-inner,
+  .admin-shell .admin-header > .container.admin-header-inner {
+    width: calc(100% - 20px) !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-head {
+    display: none !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-row-v3 {
+    min-width: 0 !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-order-cell {
+    width: auto;
+    grid-template-columns: 40px 30px !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-order-buttons {
+    width: auto;
+    grid-column: 1 / -1;
+    justify-content: end;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-product-cell {
+    grid-template-columns: 82px minmax(0, 1fr) !important;
+    gap: 13px !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-thumb,
+  .equipment-admin-page-v4 .equipment-admin-product-cell .admin-equipment-empty {
+    width: 82px !important;
+    min-width: 82px;
+    max-width: 82px;
+    height: 64px !important;
+  }
+}
+
+/* oni-equipment-admin-thumb-layout-v1:end */
+
+/* oni-equipment-admin-frame-alignment-v2:start */
+
+/*
+  The equipment page was wider than its parent .admin-content container.
+  That made the page start from the old 1320px container but extend to the
+  right, so the toolbar/table/actions looked shifted and were clipped.
+
+  Fix: enlarge the actual parent container for this page, then make the
+  equipment page fill that parent instead of creating an oversized child.
+*/
+.admin-shell .admin-content:has(> .equipment-admin-page-v4) {
+  width: min(1540px, calc(100% - 56px)) !important;
+  max-width: 1540px !important;
+  margin-inline: auto !important;
+  box-sizing: border-box;
+}
+
+.admin-shell .admin-content > .equipment-admin-page-v4 {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Header and equipment workspace now share exactly the same visual rails. */
+.admin-shell .admin-header > .admin-header-inner,
+.admin-shell .admin-header > .container.admin-header-inner {
+  width: min(1540px, calc(100% - 56px)) !important;
+  max-width: 1540px !important;
+  margin-inline: auto !important;
+  box-sizing: border-box;
+}
+
+/* Keep every large equipment surface inside the corrected parent width. */
+.equipment-admin-page-v4 .equipment-admin-manager-v3,
+.equipment-admin-page-v4 .equipment-admin-toolbar-v3,
+.equipment-admin-page-v4 .equipment-admin-group,
+.equipment-admin-page-v4 .equipment-admin-list-v3 {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.equipment-admin-page-v4 .equipment-admin-toolbar-v3 > * {
+  min-width: 0;
+}
+
+.equipment-admin-page-v4 .equipment-admin-search {
+  width: 100%;
+}
+
+.equipment-admin-page-v4 .equipment-admin-category-filter {
+  width: 100%;
+}
+
+/*
+  Do not hide layout mistakes at desktop size. The equipment table should fit
+  inside the workspace; only smaller screens get their own horizontal scroller.
+*/
+@media (min-width: 1251px) {
+  .admin-shell {
+    overflow-x: hidden;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-v3 {
+    overflow-x: visible !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-head,
+  .equipment-admin-page-v4 .equipment-admin-row-v3 {
+    width: 100%;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 1250px) {
+  .admin-shell .admin-content:has(> .equipment-admin-page-v4),
+  .admin-shell .admin-header > .admin-header-inner,
+  .admin-shell .admin-header > .container.admin-header-inner {
+    width: calc(100% - 32px) !important;
+    max-width: none !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-v3 {
+    overflow-x: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-shell .admin-content:has(> .equipment-admin-page-v4),
+  .admin-shell .admin-header > .admin-header-inner,
+  .admin-shell .admin-header > .container.admin-header-inner {
+    width: calc(100% - 28px) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-shell .admin-content:has(> .equipment-admin-page-v4),
+  .admin-shell .admin-header > .admin-header-inner,
+  .admin-shell .admin-header > .container.admin-header-inner {
+    width: calc(100% - 20px) !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-list-v3 {
+    overflow-x: visible !important;
+  }
+
+  .equipment-admin-page-v4 .equipment-admin-row-v3 {
+    width: 100%;
+    min-width: 0 !important;
+  }
+}
+
+/* oni-equipment-admin-frame-alignment-v2:end */
+
+/* oni-admin-fixed-header-v1:start */
+
+/*
+  Keep the admin navigation attached to the viewport while the user scrolls.
+  A real fixed header is used instead of sticky because wide admin tables and
+  overflow containers can change sticky's containing block.
+*/
+.admin-shell {
+  --admin-fixed-header-height: 92px;
+  padding-top: var(--admin-fixed-header-height);
+}
+
+.admin-shell .admin-header.admin-header-light {
+  position: fixed !important;
+  inset: 0 0 auto 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: var(--admin-fixed-header-height);
+  z-index: 120 !important;
+  margin: 0 !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-bottom: 1px solid rgba(216, 222, 233, 0.9) !important;
+  box-shadow:
+    0 1px 0 rgba(13, 28, 66, 0.025),
+    0 10px 28px rgba(13, 28, 66, 0.065) !important;
+  backdrop-filter: saturate(180%) blur(18px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(18px) !important;
+  isolation: isolate;
+}
+
+.admin-shell .admin-header.admin-header-light .admin-header-inner {
+  width: min(1540px, calc(100% - 56px)) !important;
+  max-width: 1540px !important;
+  height: 100%;
+  min-height: 0 !important;
+  margin-inline: auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: clamp(24px, 3vw, 52px) !important;
+  box-sizing: border-box;
+}
+
+.admin-shell .admin-header .admin-wordmark {
+  flex: 0 0 auto;
+}
+
+.admin-shell .admin-header .admin-nav {
+  min-width: 0;
+  margin-left: auto;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end;
+  flex-wrap: nowrap !important;
+  gap: clamp(3px, 0.5vw, 9px) !important;
+}
+
+.admin-shell .admin-header .admin-nav-link {
+  position: relative;
+}
+
+.admin-shell .admin-header .admin-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.45);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
+.admin-shell .admin-header .admin-nav-link:hover::after,
+.admin-shell .admin-header .admin-nav-link:focus-visible::after,
+.admin-shell .admin-header .admin-nav-link[aria-current="page"]::after {
+  opacity: 0.26;
+  transform: scaleX(1);
+}
+
+/* Keep anchored/focused content from hiding underneath the fixed header. */
+.admin-shell .admin-content {
+  scroll-margin-top: calc(var(--admin-fixed-header-height) + 18px);
+}
+
+/*
+  Medium screens: keep the logo visible and let navigation itself scroll
+  horizontally instead of making the whole document overflow.
+*/
+@media (max-width: 1180px) {
+  .admin-shell {
+    --admin-fixed-header-height: 82px;
+  }
+
+  .admin-shell .admin-header.admin-header-light .admin-header-inner {
+    width: calc(100% - 32px) !important;
+    gap: 18px !important;
+  }
+
+  .admin-shell .admin-header .admin-nav {
+    width: auto !important;
+    max-width: calc(100vw - 230px);
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    padding: 0 2px 3px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-shell .admin-header .admin-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .admin-shell .admin-header .admin-nav-link,
+  .admin-shell .admin-header .admin-logout-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+/*
+  Phone/tablet: two compact fixed rows.
+  The first row holds the brand; the nav becomes a swipeable strip below it.
+*/
+@media (max-width: 760px) {
+  .admin-shell {
+    --admin-fixed-header-height: 128px;
+  }
+
+  .admin-shell .admin-header.admin-header-light .admin-header-inner {
+    width: calc(100% - 20px) !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 58px 58px !important;
+    align-content: center;
+    gap: 0 !important;
+  }
+
+  .admin-shell .admin-header .admin-wordmark {
+    align-self: center;
+    justify-self: start;
+  }
+
+  .admin-shell .admin-header .admin-nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: flex-start !important;
+    align-self: center;
+    margin: 0 !important;
+    padding: 2px 0 6px !important;
+  }
+
+  .admin-shell .admin-header .admin-nav-link,
+  .admin-shell .admin-header .admin-logout-button {
+    min-height: 40px !important;
+    padding-inline: 10px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .admin-shell .admin-header .admin-logout-form {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .admin-shell {
+    --admin-fixed-header-height: 122px;
+  }
+
+  .admin-shell .admin-header.admin-header-light .admin-header-inner {
+    grid-template-rows: 54px 56px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-shell .admin-header .admin-nav-link::after {
+    transition: none;
+  }
+}
+
+/* oni-admin-fixed-header-v1:end */
+
+/* oni-client-fixed-header-v1:start */
+
+/*
+  Public/client header:
+  keep navigation fixed to the viewport while preserving the existing
+  spacious ONI desktop layout. The shell owns the offset, so pages do not
+  need per-route padding hacks.
+*/
+.site-shell {
+  --site-fixed-header-height: 88px;
+  min-height: 100vh;
+  padding-top: var(--site-fixed-header-height);
+}
+
+.site-shell > .site-header {
+  position: fixed !important;
+  inset: 0 0 auto 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: var(--site-fixed-header-height);
+  z-index: 100 !important;
+  margin: 0 !important;
+  background: rgba(249, 248, 242, 0.94) !important;
+  border-bottom: 1px solid rgba(31, 33, 29, 0.09) !important;
+  box-shadow:
+    0 1px 0 rgba(20, 22, 19, 0.025),
+    0 8px 26px rgba(20, 22, 19, 0.045);
+  backdrop-filter: saturate(150%) blur(16px);
+  -webkit-backdrop-filter: saturate(150%) blur(16px);
+  isolation: isolate;
+}
+
+.site-shell > .site-header .header-inner {
+  height: 100%;
+  min-height: 0 !important;
+}
+
+/* Keep in-page anchors/focus targets visible below the fixed navigation. */
+.site-shell .site-main {
+  min-height: 1px;
+  scroll-margin-top: calc(var(--site-fixed-header-height) + 16px);
+}
+
+.site-shell .site-main [id] {
+  scroll-margin-top: calc(var(--site-fixed-header-height) + 20px);
+}
+
+/* Prevent fixed-header controls from visually jumping above dialogs/lightboxes. */
+.site-shell .mobile-dialog,
+.site-shell .lightbox {
+  z-index: 180;
+}
+
+/*
+  At the breakpoint where the desktop rental navigation becomes the mobile
+  header, match the shell offset to the existing 82px header treatment.
+*/
+@media (max-width: 1380px) {
+  .site-shell {
+    --site-fixed-header-height: 82px;
+  }
+
+  .site-shell > .site-header .header-inner {
+    min-height: 0 !important;
+    height: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    --site-fixed-header-height: 76px;
+  }
+
+  .site-shell > .site-header {
+    box-shadow:
+      0 1px 0 rgba(20, 22, 19, 0.035),
+      0 6px 20px rgba(20, 22, 19, 0.04);
+  }
+}
+
+/* iOS safe-area support when the site is installed/full-screen. */
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (max-width: 760px) {
+    .site-shell {
+      --site-fixed-header-height: calc(76px + env(safe-area-inset-top));
+    }
+
+    .site-shell > .site-header .header-inner {
+      padding-top: env(safe-area-inset-top);
+      box-sizing: border-box;
+    }
+  }
+}
+
+/* oni-client-fixed-header-v1:end */
+
+/* oni-rental-admin-unified-v1:start */
+
+/*
+  Phong / Dao cu admin now follows the same information architecture as
+  Equipment: one page title, one compact control surface, one sortable table.
+  The previous overview cards, instruction sidebar and duplicate card gallery
+  are intentionally removed.
+*/
+
+.admin-shell .admin-content:has(> .rental-admin-unified) {
+  width: min(1540px, calc(100% - 56px)) !important;
+  max-width: 1540px !important;
+  margin-inline: auto !important;
+  box-sizing: border-box;
+}
+
+.rental-admin-unified {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.rental-admin-unified .rental-admin-title {
+  margin-bottom: 22px;
+}
+
+.rental-admin-unified .rental-admin-title h1 {
+  font-size: clamp(2.15rem, 2.55vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.rental-admin-unified .rental-admin-title p {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.rental-admin-unified .rental-admin-title .button {
+  min-height: 44px;
+  padding-inline: 17px;
+  font-size: 0.76rem;
+}
+
+.rental-admin-manager-v3 {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.rental-admin-toolbar-v3 {
+  display: grid;
+  grid-template-columns: auto minmax(280px, 1fr) minmax(180px, 220px);
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #dce2ed;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 32px rgba(13, 28, 66, 0.045);
+}
+
+.rental-admin-tabs-v3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
+  background: #f2f4f8;
+}
+
+.rental-admin-tabs-v3 button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #58657b;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.rental-admin-tabs-v3 button strong {
+  min-width: 23px;
+  height: 23px;
+  display: inline-grid;
+  place-items: center;
+  padding-inline: 6px;
+  border-radius: 999px;
+  background: rgba(85, 99, 124, 0.09);
+  font-size: 0.64rem;
+}
+
+.rental-admin-tabs-v3 button.is-active {
+  background: #14203c;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(20, 32, 60, 0.14);
+}
+
+.rental-admin-tabs-v3 button.is-active strong {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.rental-admin-search-v3,
+.rental-admin-fee-filter-v3 {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #dce2ed;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.rental-admin-search-v3 {
+  padding: 0 13px;
+  color: #8490a3;
+}
+
+.rental-admin-search-v3 input {
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  border: 0 !important;
+  outline: 0;
+  background: transparent;
+  box-shadow: none !important;
+  padding: 0 !important;
+  font-size: 0.8rem;
+}
+
+.rental-admin-fee-filter-v3 select {
+  width: 100%;
+  height: 44px;
+  border: 0 !important;
+  outline: 0;
+  background: transparent;
+  box-shadow: none !important;
+  padding: 0 35px 0 13px !important;
+  font-size: 0.78rem;
+}
+
+.rental-admin-filter-summary-v3 {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #7a8598;
+  font-size: 0.72rem;
+}
+
+.rental-admin-filter-summary-v3 strong {
+  color: #17213a;
+}
+
+.rental-admin-filter-summary-v3 button {
+  border: 0;
+  background: transparent;
+  color: #2f62e9;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.rental-admin-table-v3 {
+  overflow: hidden;
+  border: 1px solid #dce2ed;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 38px rgba(13, 28, 66, 0.055);
+}
+
+.rental-admin-table-head-v3 {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 15px 18px;
+  background: #fafbfc;
+  border-bottom: 1px solid #e4e8f0;
+}
+
+.rental-admin-table-head-v3 h2 {
+  margin: 0;
+  color: #17213a;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.rental-admin-table-head-v3 p {
+  margin: 4px 0 0;
+  color: #7a8598;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.rental-admin-order-status-v3 {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #7a8598;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.rental-admin-order-form-v3 {
+  margin: 0;
+}
+
+.rental-admin-list-head-v3,
+.rental-admin-row-v3 {
+  display: grid;
+  grid-template-columns:
+    154px
+    minmax(330px, 1.75fr)
+    minmax(150px, 0.78fr)
+    minmax(150px, 0.78fr)
+    minmax(125px, 0.7fr)
+    minmax(145px, 0.75fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.rental-admin-list-head-v3 {
+  min-height: 44px;
+  padding: 0 16px;
+  border-bottom: 1px solid #e5e9f1;
+  color: #7a8598;
+  font-size: 0.66rem;
+  font-weight: 650;
+}
+
+.rental-admin-row-list-v3 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rental-admin-row-v3 {
+  min-height: 88px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #edf0f5;
+  transition:
+    background-color 150ms ease,
+    opacity 150ms ease;
+}
+
+.rental-admin-row-v3:last-child {
+  border-bottom: 0;
+}
+
+.rental-admin-row-v3:hover {
+  background: #fbfcfe;
+}
+
+.rental-admin-row-v3.is-dragging {
+  opacity: 0.58;
+  background: #f1f5ff;
+}
+
+.rental-admin-position-v3 {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 40px 30px 68px;
+  gap: 7px;
+  align-items: center;
+}
+
+.rental-admin-drag-v3 {
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #dce2ed;
+  border-radius: 10px;
+  background: #f7f9fc;
+  color: #718097;
+  cursor: grab;
+}
+
+.rental-admin-drag-v3:active {
+  cursor: grabbing;
+}
+
+.rental-admin-drag-v3:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.rental-admin-index-v3 {
+  color: #8590a2;
+  font-size: 0.72rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.rental-admin-move-v3 {
+  display: grid;
+  grid-template-columns: repeat(2, 31px);
+  gap: 6px;
+}
+
+.rental-admin-move-v3 button {
+  width: 31px;
+  height: 31px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #dce2ed;
+  border-radius: 8px;
+  background: #fff;
+  color: #6d7a90;
+  cursor: pointer;
+}
+
+.rental-admin-move-v3 button:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.rental-admin-product-v3 {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.rental-admin-thumb-v3 {
+  position: relative;
+  width: 92px;
+  height: 66px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f0f2ee;
+}
+
+.rental-admin-thumb-v3 img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.rental-admin-thumb-v3 > span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #9aa2ae;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.rental-admin-product-copy-v3 {
+  min-width: 0;
+}
+
+.rental-admin-product-copy-v3 strong,
+.rental-admin-product-copy-v3 small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rental-admin-product-copy-v3 strong {
+  color: #17213a;
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.rental-admin-product-copy-v3 small {
+  margin-top: 4px;
+  color: #8993a4;
+  font-size: 0.67rem;
+}
+
+.rental-admin-cell-v3 {
+  min-width: 0;
+  color: #5f6b7f;
+  font-size: 0.74rem;
+}
+
+.rental-admin-type-v3,
+.rental-admin-images-v3,
+.rental-admin-visibility-v3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rental-admin-type-v3 {
+  color: #5c6780;
+}
+
+.rental-admin-images-v3 {
+  color: #68758a;
+}
+
+.rental-admin-fee-v3 {
+  font-weight: 720;
+  font-variant-numeric: tabular-nums;
+}
+
+.rental-admin-fee-v3.is-paid {
+  color: #a66300;
+}
+
+.rental-admin-fee-v3.is-free {
+  color: #118253;
+}
+
+.rental-admin-visibility-v3::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a8afbb;
+}
+
+.rental-admin-visibility-v3.is-live {
+  color: #23724e;
+}
+
+.rental-admin-visibility-v3.is-live::before {
+  background: #25a66a;
+}
+
+.rental-admin-visibility-v3.is-hidden {
+  color: #8a6670;
+}
+
+.rental-admin-actions-v3 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rental-admin-actions-v3 a {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 1px solid #d8dee9;
+  border-radius: 9px;
+  background: #fff;
+  color: #17213a;
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.rental-admin-empty-v3 {
+  padding: 34px 18px;
+  color: #7a8598;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.rental-admin-savebar-v3 {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 16px;
+  border-top: 1px solid #e5e9f1;
+  background: #fafbfc;
+}
+
+.rental-admin-savebar-v3 > div {
+  min-width: 0;
+}
+
+.rental-admin-savebar-v3 strong,
+.rental-admin-savebar-v3 span {
+  display: block;
+}
+
+.rental-admin-savebar-v3 strong {
+  color: #17213a;
+  font-size: 0.78rem;
+}
+
+.rental-admin-savebar-v3 span {
+  margin-top: 3px;
+  color: #7a8598;
+  font-size: 0.68rem;
+}
+
+.rental-admin-savebar-v3 .button {
+  min-width: 124px;
+  min-height: 40px;
+}
+
+@media (max-width: 1250px) {
+  .admin-shell .admin-content:has(> .rental-admin-unified) {
+    width: calc(100% - 32px) !important;
+    max-width: none !important;
+  }
+
+  .rental-admin-toolbar-v3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rental-admin-tabs-v3 {
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .rental-admin-search-v3 {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .rental-admin-table-v3 {
+    overflow-x: auto;
+  }
+
+  .rental-admin-list-head-v3,
+  .rental-admin-row-v3 {
+    min-width: 1080px;
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-shell .admin-content:has(> .rental-admin-unified) {
+    width: calc(100% - 20px) !important;
+  }
+
+  .rental-admin-unified .rental-admin-title {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .rental-admin-unified .rental-admin-title h1 {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+
+  .rental-admin-toolbar-v3 {
+    grid-template-columns: 1fr;
+    padding: 8px;
+  }
+
+  .rental-admin-tabs-v3,
+  .rental-admin-search-v3,
+  .rental-admin-fee-filter-v3 {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+  }
+
+  .rental-admin-tabs-v3 {
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rental-admin-filter-summary-v3 {
+    padding-inline: 2px;
+  }
+
+  .rental-admin-table-v3 {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .rental-admin-table-head-v3 {
+    min-height: auto;
+    padding: 15px;
+    border: 1px solid #dce2ed;
+    border-radius: 16px;
+    background: #fff;
+  }
+
+  .rental-admin-order-status-v3 {
+    display: none;
+  }
+
+  .rental-admin-list-head-v3 {
+    display: none;
+  }
+
+  .rental-admin-row-list-v3 {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .rental-admin-row-v3,
+  .rental-admin-row-v3.is-backdrop,
+  .rental-admin-row-v3.is-prop {
+    min-width: 0;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px 10px;
+    padding: 14px;
+    border: 1px solid #dce2ed;
+    border-radius: 15px;
+    background: #fff;
+  }
+
+  .rental-admin-position-v3 {
+    grid-column: 1 / -1;
+    grid-template-columns: 40px 30px auto;
+  }
+
+  .rental-admin-move-v3 {
+    justify-content: end;
+  }
+
+  .rental-admin-product-v3 {
+    grid-column: 1 / -1;
+    grid-template-columns: 82px minmax(0, 1fr);
+  }
+
+  .rental-admin-thumb-v3 {
+    width: 82px;
+    height: 64px;
+  }
+
+  .rental-admin-cell-v3 {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  .rental-admin-actions-v3 {
+    align-self: center;
+  }
+
+  .rental-admin-actions-v3 a {
+    min-height: 40px;
+  }
+
+  .rental-admin-savebar-v3 {
+    margin-top: 10px;
+    padding: 14px;
+    border: 1px solid #dce2ed;
+    border-radius: 15px;
+    background: #fff;
+  }
+}
+
+@media (max-width: 520px) {
+  .rental-admin-unified .rental-admin-title {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .rental-admin-unified .rental-admin-title .button {
+    width: 100%;
+  }
+
+  .rental-admin-table-head-v3 {
+    display: block;
+  }
+
+  .rental-admin-row-v3,
+  .rental-admin-row-v3.is-backdrop,
+  .rental-admin-row-v3.is-prop {
+    grid-template-columns: 1fr;
+  }
+
+  .rental-admin-cell-v3,
+  .rental-admin-actions-v3 {
+    justify-content: flex-start;
+  }
+
+  .rental-admin-actions-v3 a {
+    width: 100%;
+  }
+
+  .rental-admin-savebar-v3 {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .rental-admin-savebar-v3 .button {
+    width: 100%;
+  }
+}
+
+/* oni-rental-admin-unified-v1:end */
+
+/* oni-rental-public-equipment-style-v1:start */
+
+/*
+  Public backdrops and props use the same visual system as Equipment.
+  Keep the data model separate, but present the cards consistently.
+*/
+.rental-public-grid-section {
+  padding-top: 4px;
+}
+
+.rental-equipment-grid {
+  align-items: stretch;
+}
+
+.rental-equipment-card {
+  height: 100%;
+}
+
+.rental-equipment-image {
+  position: relative;
+}
+
+.rental-equipment-image > img {
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.rental-equipment-image-count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid rgba(20, 28, 45, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #17213a;
+  font-size: 0.68rem;
+  font-weight: 750;
+  box-shadow: 0 6px 18px rgba(20, 28, 45, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.rental-equipment-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.rental-equipment-card-body .equipment-card-description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.rental-equipment-card-body .equipment-card-view {
+  margin-top: auto;
+}
+
+/* Free rental assets use the same green semantic treatment. */
+.rental-equipment-card .equipment-price.is-free {
+  width: max-content;
+  max-width: 100%;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid #a8d9bf !important;
+  border-radius: 10px;
+  background: #eaf8ef !important;
+  color: #147a46 !important;
+  box-shadow: none !important;
+  font-weight: 760;
+}
+
+/*
+  Dedicated product links for backdrops / props.
+  The detail page mirrors the image-first Equipment detail experience.
+*/
+.rental-detail-page {
+  padding: 42px 0 74px;
+}
+
+.rental-detail-inner {
+  width: min(980px, calc(100% - 40px));
+}
+
+.rental-detail-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+  color: #697386;
+  font-size: 0.74rem;
+}
+
+.rental-detail-nav > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #17213a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rental-detail-heading {
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.rental-detail-heading > span {
+  color: #65718a;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.rental-detail-heading h1 {
+  margin: 7px 0 0;
+  color: #121823;
+  font-size: clamp(1.6rem, 3vw, 2.45rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.rental-detail-gallery {
+  width: min(760px, 100%);
+  margin-inline: auto;
+}
+
+.rental-detail-gallery .product-gallery {
+  width: 100%;
+}
+
+.rental-detail-gallery .gallery-stage {
+  width: 100%;
+  max-height: 570px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.rental-detail-gallery .gallery-stage > img {
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.rental-detail-gallery .gallery-pagination,
+.rental-detail-gallery .gallery-thumbnails {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.rental-detail-empty {
+  width: min(760px, 100%);
+  margin-inline: auto;
+}
+
+@media (max-width: 760px) {
+  .rental-detail-page {
+    padding: 26px 0 52px;
+  }
+
+  .rental-detail-inner {
+    width: calc(100% - 24px);
+  }
+
+  .rental-detail-nav {
+    margin-bottom: 18px;
+  }
+
+  .rental-detail-heading {
+    text-align: left;
+  }
+
+  .rental-detail-gallery {
+    width: 100%;
+  }
+
+  .rental-detail-gallery .gallery-stage {
+    max-height: none;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* oni-rental-public-equipment-style-v1:end */
+
+/* oni-client-mobile-drawer-v2:start */
+
+/*
+  Mobile navigation direction:
+  quiet dark side drawer, strong typography, generous tap targets,
+  subtle dividers and one compact contact action.
+*/
+.oni-mobile-drawer {
+  --oni-drawer-bg: #151917;
+  --oni-drawer-line: rgba(255, 255, 255, 0.085);
+  --oni-drawer-text: #f7f7f2;
+  --oni-drawer-muted: rgba(247, 247, 242, 0.62);
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 0 auto !important;
+  width: min(390px, calc(100vw - 12px)) !important;
+  max-width: none !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden;
+  background: transparent !important;
+  color: var(--oni-drawer-text);
+}
+
+.oni-mobile-drawer[open] {
+  display: block;
+}
+
+.oni-mobile-drawer::backdrop {
+  background: rgba(20, 22, 20, 0.56) !important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.oni-mobile-drawer-content {
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 24px 28px !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  background: var(--oni-drawer-bg);
+  box-sizing: border-box;
+  animation: oni-mobile-drawer-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.oni-mobile-drawer-head {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.oni-mobile-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--oni-drawer-text);
+  text-decoration: none;
+}
+
+.oni-mobile-wordmark-main {
+  font-size: 1.7rem;
+  line-height: 1;
+  font-weight: 760;
+  letter-spacing: -0.05em;
+}
+
+.oni-mobile-wordmark-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.oni-mobile-wordmark-studio {
+  padding-top: 2px;
+  font-size: 0.58rem;
+  line-height: 1;
+  font-weight: 760;
+  letter-spacing: 0.16em;
+}
+
+.oni-mobile-close {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--oni-drawer-text);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+.oni-mobile-close:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.82);
+}
+
+.oni-mobile-close:active {
+  transform: scale(0.96);
+}
+
+.oni-mobile-close:focus-visible,
+.oni-mobile-nav-link:focus-visible,
+.oni-mobile-message:focus-visible {
+  outline: 2px solid #d9e2ff;
+  outline-offset: 3px;
+}
+
+.oni-mobile-nav {
+  display: grid !important;
+  padding: 28px 0 0 !important;
+}
+
+.oni-mobile-nav-link {
+  position: relative;
+  min-height: 54px !important;
+  display: flex !important;
+  align-items: center;
+  padding: 0 !important;
+  border-bottom: 1px solid var(--oni-drawer-line) !important;
+  color: var(--oni-drawer-text) !important;
+  font-size: 1.03rem !important;
+  line-height: 1.22;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  transition:
+    color 140ms ease,
+    padding-left 160ms ease,
+    background-color 140ms ease;
+}
+
+.oni-mobile-nav-link:first-child {
+  border-top: 0;
+}
+
+.oni-mobile-nav-link:hover {
+  padding-left: 5px !important;
+  color: #fff !important;
+}
+
+.oni-mobile-nav-link[aria-current="page"] {
+  color: #fff !important;
+  font-weight: 650;
+}
+
+.oni-mobile-nav-link[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  width: 3px;
+  height: 18px;
+  border-radius: 999px;
+  background: #dce5ff;
+}
+
+.oni-mobile-drawer-footer {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 30px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+
+.oni-mobile-message {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border: 1px solid rgba(1, 7, 54, 0.08);
+  border-radius: 999px;
+  background: #edf1ff;
+  color: #111722;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: none;
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease;
+}
+
+.oni-mobile-message:hover {
+  background: #fff;
+}
+
+.oni-mobile-message:active {
+  transform: scale(0.98);
+}
+
+/* Keep the hamburger calm and consistent with the reference. */
+.site-header .mobile-toggle {
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  padding: 0 !important;
+  border: 1px solid rgba(22, 27, 25, 0.18) !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.48) !important;
+  color: #171b19 !important;
+  box-shadow: none !important;
+}
+
+.site-header .mobile-toggle svg {
+  width: 23px;
+  height: 23px;
+  stroke-width: 1.75;
+}
+
+@media (max-width: 480px) {
+  .oni-mobile-drawer {
+    width: calc(100vw - 10px) !important;
+  }
+
+  .oni-mobile-drawer-content {
+    padding: 26px 22px 24px !important;
+  }
+
+  .oni-mobile-nav {
+    padding-top: 25px !important;
+  }
+
+  .oni-mobile-nav-link {
+    min-height: 55px !important;
+    font-size: 1.02rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .oni-mobile-drawer-content {
+    padding-inline: 18px !important;
+  }
+
+  .oni-mobile-wordmark-main {
+    font-size: 1.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oni-mobile-drawer-content {
+    animation: none;
+  }
+
+  .oni-mobile-close,
+  .oni-mobile-nav-link,
+  .oni-mobile-message {
+    transition: none;
+  }
+}
+
+@keyframes oni-mobile-drawer-in {
+  from {
+    opacity: 0.92;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* oni-client-mobile-drawer-v2:end */
+
+/* oni-admin-mobile-drawer-v1:start */
+
+/*
+  Admin mobile navigation now mirrors the client drawer:
+  dark side sheet, large readable rows, square close button and a single
+  bottom action. Desktop navigation is untouched.
+*/
+
+.admin-mobile-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(13, 28, 66, 0.16);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  color: #0d1c42;
+  cursor: pointer;
+}
+
+.admin-mobile-dialog {
+  --admin-drawer-bg: #151917;
+  --admin-drawer-text: #f7f7f2;
+  --admin-drawer-line: rgba(255, 255, 255, 0.085);
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 0 auto !important;
+  width: min(390px, calc(100vw - 12px)) !important;
+  max-width: none !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden;
+  background: transparent !important;
+  color: var(--admin-drawer-text);
+}
+
+.admin-mobile-dialog[open] {
+  display: block;
+}
+
+.admin-mobile-dialog::backdrop {
+  background: rgba(20, 22, 20, 0.58);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.admin-mobile-dialog-content {
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 24px 28px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-sizing: border-box;
+  background: var(--admin-drawer-bg);
+  animation: admin-drawer-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.admin-mobile-dialog-head {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.admin-mobile-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--admin-drawer-text);
+  text-decoration: none;
+}
+
+.admin-mobile-wordmark-main {
+  font-size: 1.7rem;
+  line-height: 1;
+  font-weight: 760;
+  letter-spacing: -0.05em;
+}
+
+.admin-mobile-wordmark-badge {
+  min-height: 27px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 9px;
+  border: 1px solid rgba(220, 229, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(220, 229, 255, 0.1);
+  color: #dce5ff;
+  font-size: 0.56rem;
+  font-weight: 760;
+  letter-spacing: 0.16em;
+}
+
+.admin-mobile-close {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--admin-drawer-text);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.admin-mobile-close:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.admin-mobile-close:active {
+  transform: scale(0.96);
+}
+
+.admin-mobile-nav {
+  width: 100%;
+  display: grid !important;
+  padding: 28px 0 0 !important;
+  overflow: visible !important;
+}
+
+.admin-mobile-nav-link {
+  position: relative;
+  width: 100%;
+  min-height: 54px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--admin-drawer-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--admin-drawer-text) !important;
+  font-size: 1.03rem !important;
+  line-height: 1.22;
+  font-weight: 500 !important;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  white-space: normal !important;
+  transition:
+    color 140ms ease,
+    padding-left 160ms ease;
+}
+
+.admin-mobile-nav-link:hover {
+  padding-left: 5px !important;
+  color: #fff !important;
+}
+
+.admin-mobile-nav-link[aria-current="page"] {
+  color: #fff !important;
+  font-weight: 680 !important;
+}
+
+.admin-mobile-nav-link[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  width: 3px;
+  height: 18px;
+  border-radius: 999px;
+  background: #dce5ff;
+}
+
+.admin-mobile-site-link {
+  color: #dce5ff !important;
+}
+
+.admin-mobile-dialog-footer {
+  margin-top: auto;
+  padding-top: 30px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+
+.admin-mobile-dialog-footer form {
+  margin: 0;
+}
+
+.admin-mobile-logout {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border: 1px solid rgba(1, 7, 54, 0.08);
+  border-radius: 999px;
+  background: #edf1ff;
+  color: #111722;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 720;
+  cursor: pointer;
+}
+
+.admin-mobile-toggle:focus-visible,
+.admin-mobile-close:focus-visible,
+.admin-mobile-nav-link:focus-visible,
+.admin-mobile-logout:focus-visible {
+  outline: 2px solid #dce5ff;
+  outline-offset: 3px;
+}
+
+/*
+  Override the older two-row / horizontal-scroll admin header on mobile.
+  At <= 900px the fixed header becomes one clean row with burger navigation.
+*/
+@media (max-width: 900px) {
+  .admin-shell {
+    --admin-fixed-header-height: 76px !important;
+    padding-top: var(--admin-fixed-header-height) !important;
+  }
+
+  .admin-shell .admin-header.admin-header-light {
+    height: var(--admin-fixed-header-height) !important;
+  }
+
+  .admin-shell .admin-header.admin-header-light .admin-header-inner,
+  .admin-shell .admin-header > .container.admin-header-inner {
+    width: calc(100% - 24px) !important;
+    max-width: none !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    padding: 0 !important;
+  }
+
+  .admin-shell .admin-header .admin-nav {
+    display: none !important;
+  }
+
+  .admin-mobile-toggle {
+    display: inline-grid;
+  }
+
+  .admin-shell .admin-wordmark {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-shell {
+    --admin-fixed-header-height: 72px !important;
+  }
+
+  .admin-shell .admin-header.admin-header-light .admin-header-inner,
+  .admin-shell .admin-header > .container.admin-header-inner {
+    width: calc(100% - 20px) !important;
+  }
+
+  .admin-shell .admin-header .admin-wordmark {
+    font-size: 1.65rem !important;
+  }
+
+  .admin-shell .admin-header .admin-wordmark > span {
+    min-height: 26px !important;
+    margin-left: 8px !important;
+    padding: 4px 9px !important;
+    font-size: 0.54rem !important;
+  }
+
+  .admin-mobile-toggle {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .admin-mobile-dialog {
+    width: calc(100vw - 10px) !important;
+  }
+
+  .admin-mobile-dialog-content {
+    padding: 26px 22px 24px;
+  }
+
+  .admin-mobile-nav {
+    padding-top: 25px !important;
+  }
+
+  .admin-mobile-nav-link {
+    min-height: 55px !important;
+    font-size: 1.02rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .admin-mobile-dialog-content {
+    padding-inline: 18px;
+  }
+
+  .admin-mobile-wordmark-main {
+    font-size: 1.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-mobile-dialog-content {
+    animation: none;
+  }
+
+  .admin-mobile-close,
+  .admin-mobile-nav-link {
+    transition: none;
+  }
+}
+
+@keyframes admin-drawer-in {
+  from {
+    opacity: 0.92;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* oni-admin-mobile-drawer-v1:end */
+
+/* oni-admin-mobile-drawer-contrast-v2:start */
+
+/*
+  Improve mobile admin drawer contrast and make sure the hamburger exists
+  ONLY at mobile/tablet widths.
+*/
+
+/* Desktop must never show the mobile menu trigger. */
+@media (min-width: 901px) {
+  .admin-shell .admin-mobile-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Mobile / tablet header uses the drawer trigger instead of desktop nav. */
+@media (max-width: 900px) {
+  .admin-shell .admin-header .admin-nav {
+    display: none !important;
+  }
+
+  .admin-shell .admin-mobile-toggle {
+    display: inline-grid !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    place-items: center;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    flex: 0 0 44px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(13, 28, 66, 0.16) !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    color: #101828 !important;
+    box-shadow: 0 7px 20px rgba(13, 28, 66, 0.08) !important;
+  }
+
+  .admin-shell .admin-mobile-toggle svg {
+    color: currentColor !important;
+    stroke: currentColor !important;
+  }
+}
+
+/* Drawer surface */
+.admin-mobile-dialog {
+  --admin-drawer-bg: #121715 !important;
+  --admin-drawer-text: #f8faf9 !important;
+  --admin-drawer-muted: #c4cbc7 !important;
+  --admin-drawer-line: rgba(255, 255, 255, 0.11) !important;
+  --admin-drawer-accent: #8eafff !important;
+}
+
+.admin-mobile-dialog-content {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.018) 0%,
+      rgba(255, 255, 255, 0) 28%
+    ),
+    var(--admin-drawer-bg) !important;
+  color: var(--admin-drawer-text) !important;
+}
+
+/* Brand */
+.admin-mobile-wordmark,
+.admin-mobile-wordmark:visited {
+  color: #ffffff !important;
+}
+
+.admin-mobile-wordmark-main {
+  color: #ffffff !important;
+}
+
+.admin-mobile-wordmark-badge {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #eef3ff !important;
+}
+
+/* Close button: prevent global button styles from turning it white. */
+.admin-mobile-close {
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.admin-mobile-close svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.admin-mobile-close:hover {
+  border-color: rgba(255, 255, 255, 0.62) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Navigation */
+.admin-mobile-nav {
+  gap: 0 !important;
+}
+
+.admin-mobile-nav-link,
+.admin-mobile-nav-link:link,
+.admin-mobile-nav-link:visited {
+  min-height: 58px !important;
+  padding: 0 4px !important;
+  border-bottom: 1px solid var(--admin-drawer-line) !important;
+  background: transparent !important;
+  color: rgba(248, 250, 249, 0.88) !important;
+  font-size: 1.05rem !important;
+  font-weight: 540 !important;
+  letter-spacing: -0.018em !important;
+  text-shadow: none !important;
+}
+
+.admin-mobile-nav-link:hover {
+  padding-left: 9px !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  color: #ffffff !important;
+}
+
+.admin-mobile-nav-link[aria-current="page"],
+.admin-mobile-nav-link[aria-current="page"]:visited {
+  padding-left: 12px !important;
+  background: rgba(106, 145, 255, 0.085) !important;
+  color: #dce7ff !important;
+  font-weight: 720 !important;
+}
+
+.admin-mobile-nav-link[aria-current="page"]::before {
+  left: 0 !important;
+  width: 3px !important;
+  height: 24px !important;
+  background: var(--admin-drawer-accent) !important;
+}
+
+.admin-mobile-site-link,
+.admin-mobile-site-link:link,
+.admin-mobile-site-link:visited {
+  color: #eef3ff !important;
+}
+
+.admin-mobile-site-link svg {
+  color: var(--admin-drawer-accent) !important;
+  stroke: var(--admin-drawer-accent) !important;
+}
+
+/* Bottom logout action */
+.admin-mobile-dialog-footer {
+  margin-top: auto !important;
+  padding-top: 28px !important;
+}
+
+.admin-mobile-logout {
+  min-height: 46px !important;
+  padding: 0 22px !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 999px !important;
+  background: #f4f7ff !important;
+  color: #16203a !important;
+  box-shadow: none !important;
+  font-size: 0.82rem !important;
+  font-weight: 760 !important;
+}
+
+.admin-mobile-logout:hover {
+  background: #ffffff !important;
+}
+
+/* Slightly cleaner compact phone spacing. */
+@media (max-width: 560px) {
+  .admin-mobile-dialog-content {
+    padding: 24px 20px 22px !important;
+  }
+
+  .admin-mobile-nav {
+    padding-top: 22px !important;
+  }
+
+  .admin-mobile-nav-link,
+  .admin-mobile-nav-link:link,
+  .admin-mobile-nav-link:visited {
+    min-height: 57px !important;
+    font-size: 1.04rem !important;
+  }
+}
+
+/* oni-admin-mobile-drawer-contrast-v2:end */
+
+/* oni-admin-mobile-drawer-light-v3:start */
+
+/*
+  Light admin drawer:
+  white surface, dark typography, subtle gray dividers,
+  restrained blue only for the active indicator.
+*/
+
+.admin-mobile-dialog {
+  --admin-drawer-bg: #ffffff !important;
+  --admin-drawer-text: #111827 !important;
+  --admin-drawer-muted: #667085 !important;
+  --admin-drawer-line: #e6e9ef !important;
+  --admin-drawer-accent: #2f63ff !important;
+}
+
+.admin-mobile-dialog::backdrop {
+  background: rgba(17, 24, 39, 0.34) !important;
+  backdrop-filter: blur(2px) !important;
+  -webkit-backdrop-filter: blur(2px) !important;
+}
+
+.admin-mobile-dialog-content {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* Brand */
+.admin-mobile-wordmark,
+.admin-mobile-wordmark:link,
+.admin-mobile-wordmark:visited {
+  color: #111827 !important;
+}
+
+.admin-mobile-wordmark-main {
+  color: #111827 !important;
+}
+
+.admin-mobile-wordmark-badge {
+  border-color: #d7dce5 !important;
+  background: #f5f7fa !important;
+  color: #344054 !important;
+}
+
+/* Close button */
+.admin-mobile-close {
+  border: 1px solid #d7dce5 !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  box-shadow: 0 4px 14px rgba(16, 24, 40, 0.06) !important;
+}
+
+.admin-mobile-close svg {
+  color: #111827 !important;
+  stroke: #111827 !important;
+}
+
+.admin-mobile-close:hover {
+  border-color: #c7ced9 !important;
+  background: #f7f8fa !important;
+}
+
+/* Navigation */
+.admin-mobile-nav-link,
+.admin-mobile-nav-link:link,
+.admin-mobile-nav-link:visited {
+  border-bottom: 1px solid var(--admin-drawer-line) !important;
+  background: transparent !important;
+  color: #202938 !important;
+  text-shadow: none !important;
+}
+
+.admin-mobile-nav-link:hover {
+  background: #f7f8fa !important;
+  color: #111827 !important;
+}
+
+/* Active row: keep text dark, use subtle background + blue left rail only. */
+.admin-mobile-nav-link[aria-current="page"],
+.admin-mobile-nav-link[aria-current="page"]:link,
+.admin-mobile-nav-link[aria-current="page"]:visited {
+  background: #f3f6ff !important;
+  color: #111827 !important;
+  font-weight: 720 !important;
+}
+
+.admin-mobile-nav-link[aria-current="page"]::before {
+  background: var(--admin-drawer-accent) !important;
+}
+
+/* Website should also read as a normal black menu item. */
+.admin-mobile-site-link,
+.admin-mobile-site-link:link,
+.admin-mobile-site-link:visited {
+  color: #202938 !important;
+}
+
+.admin-mobile-site-link svg {
+  color: #202938 !important;
+  stroke: #202938 !important;
+}
+
+/* Logout */
+.admin-mobile-logout {
+  border: 1px solid #d7dce5 !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+}
+
+.admin-mobile-logout:hover {
+  background: #f7f8fa !important;
+  border-color: #c7ced9 !important;
+}
+
+/* Focus */
+.admin-mobile-toggle:focus-visible,
+.admin-mobile-close:focus-visible,
+.admin-mobile-nav-link:focus-visible,
+.admin-mobile-logout:focus-visible {
+  outline: 2px solid #2f63ff !important;
+  outline-offset: 3px;
+}
+
+/* oni-admin-mobile-drawer-light-v3:end */

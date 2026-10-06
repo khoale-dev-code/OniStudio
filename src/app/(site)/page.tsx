@@ -10,7 +10,7 @@ import { EquipmentCard } from "@/components/catalog/equipment-card";
 import { ServiceGrid } from "@/components/home/services-section";
 import { FAQ } from "@/components/home/faq";
 import { GalleryGrid } from "@/components/catalog/gallery-grid";
-import { ContactCTA } from "@/components/layout/contact-cta";
+
 import { getCatalog } from "@/lib/catalog";
 import { context, href, money } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
@@ -144,6 +144,7 @@ async function HomeContent() {
             <EquipmentCard
               key={item.id}
               item={item}
+              allEquipment={equipment}
               categories={categories}
               locale={locale}
             />
@@ -362,7 +363,7 @@ async function HomeContent() {
         </div>
       </section>
 
-      <ContactCTA locale={locale} />
+      
     </div>
   );
 }
