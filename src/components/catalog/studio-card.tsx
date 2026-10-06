@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "@/components/ui/nav-link";
-import { ArrowUpRight, Lightbulb, Maximize2, Users } from "lucide-react";
+import {
+  ArrowUpRight,
+  Lightbulb,
+  Maximize2,
+} from "lucide-react";
 import { href, money } from "@/lib/i18n";
+import {
+  normalizeStudioDetailContent,
+  studioDimensions,
+} from "@/data/studio-detail";
 import type { Locale, Studio } from "@/types/catalog";
 
 export function StudioCard({
@@ -15,6 +23,11 @@ export function StudioCard({
 }) {
   const detailHref = href(locale, `/studios/${studio.slug}`);
   const description = studio.description[locale];
+  const dimensions = studioDimensions(studio, locale);
+  const card = normalizeStudioDetailContent(
+    studio.detail_content,
+    studio.led_count,
+  ).card;
 
   return (
     <article className="studio-card studio-card-v2">
@@ -39,9 +52,12 @@ export function StudioCard({
           <span className="studio-card-index">
             {String(index ?? 1).padStart(2, "0")}
           </span>
-          <span className="studio-card-type">
-            {locale === "vi" ? "Studio chụp ảnh" : "Photo studio"}
-          </span>
+
+          {card.show_type && (
+            <span className="studio-card-type">
+              {card.type_label[locale]}
+            </span>
+          )}
         </div>
 
         <div className="studio-card-media-bottom">
@@ -59,55 +75,75 @@ export function StudioCard({
       <div className="studio-card-content">
         <div className="studio-card-title-row">
           <div>
-            <p className="studio-card-kicker">
-              {locale === "vi" ? "Không gian studio" : "Studio space"}
-            </p>
+            {card.show_kicker && (
+              <p className="studio-card-kicker">
+                {card.kicker[locale]}
+              </p>
+            )}
+
             <h3>
               <Link href={detailHref}>{studio.name}</Link>
             </h3>
           </div>
-          <span className="studio-card-availability">
-            {locale === "vi" ? "Liên hệ lịch" : "Check dates"}
-          </span>
-        </div>
 
-        <p className="studio-card-description">{description}</p>
-
-        <div className="studio-card-facts" aria-label={locale === "vi" ? "Thông tin phòng" : "Room details"}>
-          <span>
-            <Maximize2 size={17} aria-hidden="true" />
-            <strong>{studio.area}</strong> m²
-          </span>
-          <span>
-            <Users size={18} aria-hidden="true" />
-            {locale === "vi"
-              ? `Tối đa ${studio.capacity} người`
-              : `Up to ${studio.capacity} people`}
-          </span>
-          {studio.led_count > 0 && (
-            <span>
-              <Lightbulb size={18} aria-hidden="true" />
-              {locale === "vi"
-                ? `${studio.led_count} đèn đi kèm`
-                : `${studio.led_count} included light${studio.led_count > 1 ? "s" : ""}`}
+          {card.show_availability && (
+            <span className="studio-card-availability">
+              {card.availability_label[locale]}
             </span>
           )}
         </div>
 
-        <div className="studio-card-footer">
-          <div className="studio-price-block">
-            <span>{locale === "vi" ? "Giá thuê từ" : "From"}</span>
-            <p>
-              <strong>{money(studio.price, locale)}</strong>
-              <small> / {locale === "vi" ? "giờ" : "hour"}</small>
-            </p>
+        {card.show_price && (
+          <div className="studio-card-price-inline">
+            <strong>{money(studio.price, locale)}</strong>
+            <span>{card.price_suffix[locale]}</span>
           </div>
+        )}
 
-          <Link className="studio-explore-button" href={detailHref}>
-            <span>{locale === "vi" ? "Xem chi tiết" : "View details"}</span>
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
-        </div>
+        {card.show_description && description && (
+          <p className="studio-card-description">{description}</p>
+        )}
+
+        {(card.show_area ||
+          (card.show_dimensions && dimensions) ||
+          (card.show_extra_fact && card.extra_fact[locale])) && (
+          <div
+            className="studio-card-facts"
+            aria-label={
+              locale === "vi" ? "Thông tin phòng" : "Room details"
+            }
+          >
+            {card.show_area && (
+              <span>
+                <Maximize2 size={17} aria-hidden="true" />
+                <strong>{studio.area}</strong> m²
+              </span>
+            )}
+
+            {card.show_dimensions && dimensions && (
+              <span className="studio-card-dimensions">
+                <Maximize2 size={17} aria-hidden="true" />
+                {dimensions}
+              </span>
+            )}
+
+            {card.show_extra_fact && card.extra_fact[locale] && (
+              <span>
+                <Lightbulb size={18} aria-hidden="true" />
+                {card.extra_fact[locale]}
+              </span>
+            )}
+          </div>
+        )}
+
+        {card.show_cta && (
+          <div className="studio-card-footer studio-card-footer-action-only">
+            <Link className="studio-explore-button" href={detailHref}>
+              <span>{card.cta_label[locale]}</span>
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
       </div>
     </article>
   );

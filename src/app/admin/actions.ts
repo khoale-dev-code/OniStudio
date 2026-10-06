@@ -7,6 +7,10 @@ import { isConfigured } from "@/lib/supabase/config";
 import { requireAdmin } from "@/lib/auth";
 import { CATALOG_CACHE_TAG } from "@/lib/cache-tags";
 import {
+  DEFAULT_STUDIO_DETAIL_CONTENT,
+  normalizeStudioDetailContent,
+} from "@/data/studio-detail";
+import {
   equipmentPayload,
   imageList,
   integer,
@@ -386,14 +390,60 @@ export async function saveStudio(
   form: FormData,
 ): Promise<ActionState> {
   void _previous;
+
+  function optionalDimension(key: string) {
+    const raw = String(form.get(key) || "")
+      .trim()
+      .replace(",", ".");
+
+    if (!raw) return null;
+
+    const value = Number(raw);
+
+    if (!Number.isFinite(value) || value <= 0 || value > 1000) {
+      throw new Error("Kích thước phòng phải lớn hơn 0 và không vượt quá 1000m.");
+    }
+
+    return Math.round(value * 100) / 100;
+  }
+
+  function detailText(
+    key: string,
+    fallback: string,
+    maxLength: number,
+  ) {
+    const value = text(form, key, maxLength, false);
+    return value || fallback;
+  }
+
   let payload;
+
   try {
     if (id) uuid(id);
-    const area = integer(form, "area", 100000);
-    const capacity = integer(form, "capacity", 10000);
-    if (!area || !capacity) {
-      throw new Error("Diện tích và sức chứa phải lớn hơn 0.");
+    if (form.get("card_preview_confirmed") !== "1") {
+      throw new Error(
+        "Hãy xem trước Card và bấm Xác nhận & cập nhật Client trước khi lưu.",
+      );
     }
+
+    const area = integer(form, "area", 100000);
+    if (!area) {
+      throw new Error("Diện tích phải lớn hơn 0.");
+    }
+
+    const width = optionalDimension("width_m");
+    const length = optionalDimension("length_m");
+    const height = optionalDimension("height_m");
+    const showDimensions = form.get("show_dimensions") === "on";
+
+    if (showDimensions && !width && !length && !height) {
+      throw new Error(
+        "Hãy nhập ít nhất một kích thước trước khi bật hiển thị thông số nâng cao.",
+      );
+    }
+
+    const defaults = DEFAULT_STUDIO_DETAIL_CONTENT;
+
     payload = {
       name: text(form, "name", 160),
       slug: slug(form),
@@ -402,13 +452,212 @@ export async function saveStudio(
         en: text(form, "description_en"),
       },
       area,
-      capacity,
+      width_m: width,
+      length_m: length,
+      height_m: height,
+      show_dimensions: showDimensions,
       price: integer(form, "price"),
-      led_count: integer(form, "led_count", 100),
       images: imageList(form),
       published: form.get("published") === "on",
-      sort_order: integer(form, "sort_order", 100000),
+      detail_content: {
+        card: {
+          type_label: {
+            vi: detailText(
+              "card_type_vi",
+              defaults.card.type_label.vi,
+              80,
+            ),
+            en: detailText(
+              "card_type_en",
+              defaults.card.type_label.en,
+              80,
+            ),
+          },
+          kicker: {
+            vi: detailText(
+              "card_kicker_vi",
+              defaults.card.kicker.vi,
+              80,
+            ),
+            en: detailText(
+              "card_kicker_en",
+              defaults.card.kicker.en,
+              80,
+            ),
+          },
+          availability_label: {
+            vi: detailText(
+              "card_availability_vi",
+              defaults.card.availability_label.vi,
+              80,
+            ),
+            en: detailText(
+              "card_availability_en",
+              defaults.card.availability_label.en,
+              80,
+            ),
+          },
+          price_suffix: {
+            vi: detailText(
+              "card_price_suffix_vi",
+              defaults.card.price_suffix.vi,
+              40,
+            ),
+            en: detailText(
+              "card_price_suffix_en",
+              defaults.card.price_suffix.en,
+              40,
+            ),
+          },
+          extra_fact: {
+            vi: detailText(
+              "card_extra_fact_vi",
+              defaults.card.extra_fact.vi,
+              120,
+            ),
+            en: detailText(
+              "card_extra_fact_en",
+              defaults.card.extra_fact.en,
+              120,
+            ),
+          },
+          cta_label: {
+            vi: detailText(
+              "card_cta_vi",
+              defaults.card.cta_label.vi,
+              80,
+            ),
+            en: detailText(
+              "card_cta_en",
+              defaults.card.cta_label.en,
+              80,
+            ),
+          },
+          show_type: form.get("card_show_type") === "on",
+          show_kicker: form.get("card_show_kicker") === "on",
+          show_availability:
+            form.get("card_show_availability") === "on",
+          show_price: form.get("card_show_price") === "on",
+          show_description:
+            form.get("card_show_description") === "on",
+          show_area: form.get("card_show_area") === "on",
+          show_dimensions:
+            form.get("card_show_dimensions") === "on",
+          show_extra_fact:
+            form.get("card_show_extra_fact") === "on",
+          show_cta: form.get("card_show_cta") === "on",
+        },
+        minimum_booking: {
+          vi: detailText(
+            "detail_minimum_booking_vi",
+            defaults.minimum_booking.vi,
+            120,
+          ),
+          en: detailText(
+            "detail_minimum_booking_en",
+            defaults.minimum_booking.en,
+            120,
+          ),
+        },
+        intro_title: {
+          vi: detailText(
+            "detail_intro_title_vi",
+            defaults.intro_title.vi,
+            180,
+          ),
+          en: detailText(
+            "detail_intro_title_en",
+            defaults.intro_title.en,
+            180,
+          ),
+        },
+        intro_body: {
+          vi: detailText(
+            "detail_intro_body_vi",
+            defaults.intro_body.vi,
+            5000,
+          ),
+          en: detailText(
+            "detail_intro_body_en",
+            defaults.intro_body.en,
+            5000,
+          ),
+        },
+        amenities: {
+          vi: detailText(
+            "detail_amenities_vi",
+            defaults.amenities.vi,
+            12000,
+          ),
+          en: detailText(
+            "detail_amenities_en",
+            defaults.amenities.en,
+            12000,
+          ),
+        },
+        rules_title: {
+          vi: detailText(
+            "detail_rules_title_vi",
+            defaults.rules_title.vi,
+            180,
+          ),
+          en: detailText(
+            "detail_rules_title_en",
+            defaults.rules_title.en,
+            180,
+          ),
+        },
+        rules: {
+          vi: detailText(
+            "detail_rules_vi",
+            defaults.rules.vi,
+            10000,
+          ),
+          en: detailText(
+            "detail_rules_en",
+            defaults.rules.en,
+            10000,
+          ),
+        },
+        note: {
+          vi: detailText(
+            "detail_note_vi",
+            defaults.note.vi,
+            3000,
+          ),
+          en: detailText(
+            "detail_note_en",
+            defaults.note.en,
+            3000,
+          ),
+        },
+        inquiry_title: {
+          vi: detailText(
+            "detail_inquiry_title_vi",
+            defaults.inquiry_title.vi,
+            180,
+          ),
+          en: detailText(
+            "detail_inquiry_title_en",
+            defaults.inquiry_title.en,
+            180,
+          ),
+        },
+        inquiry_body: {
+          vi: detailText(
+            "detail_inquiry_body_vi",
+            defaults.inquiry_body.vi,
+            3000,
+          ),
+          en: detailText(
+            "detail_inquiry_body_en",
+            defaults.inquiry_body.en,
+            3000,
+          ),
+        },
+      },
     };
+
     if (payload.images.length > 12) {
       throw new Error("Tối đa 12 ảnh cho một phòng.");
     }
@@ -430,18 +679,210 @@ export async function saveStudio(
       .single();
 
     if (error || !data) return { error: dbMessage(error?.code) };
-  } else {
-    const { data, error } = await session.db
-      .from("studios")
-      .insert(payload)
-      .select("id")
-      .single();
 
-    if (error || !data) return { error: dbMessage(error?.code) };
+    revalidateStudios(data.id);
+    redirect("/admin/studios?saved=1");
   }
 
-  revalidateStudios(id ?? undefined);
+  const { data: lastRoom, error: orderError } = await session.db
+    .from("studios")
+    .select("sort_order")
+    .order("sort_order", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (orderError) {
+    return { error: "Không thể xác định vị trí phòng mới." };
+  }
+
+  const nextOrder = Math.min(
+    Math.max(Number(lastRoom?.sort_order ?? -1) + 1, 0),
+    100000,
+  );
+
+  const { data, error } = await session.db
+    .from("studios")
+    .insert({
+      ...payload,
+      sort_order: nextOrder,
+    })
+    .select("id")
+    .single();
+
+  if (error || !data) return { error: dbMessage(error?.code) };
+
+  revalidateStudios(data.id);
   redirect("/admin/studios?saved=1");
+}
+
+
+export async function saveStudioDetailContent(
+  id: string,
+  form: FormData,
+): Promise<ActionState> {
+  try {
+    uuid(id);
+  } catch {
+    return { error: "ID phòng không hợp lệ." };
+  }
+
+  const session = await requireAdmin().catch(() => null);
+  if (!session) {
+    return { error: "Phiên quản trị đã hết hạn. Vui lòng đăng nhập lại." };
+  }
+
+  const { data: currentRow, error: currentError } = await session.db
+    .from("studios")
+    .select("detail_content,led_count")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (currentError || !currentRow) {
+    return { error: "Không tìm thấy phòng cần cập nhật." };
+  }
+
+  const current = normalizeStudioDetailContent(
+    currentRow.detail_content,
+    Number(currentRow.led_count || 0),
+  );
+
+  function detailText(
+    key: string,
+    fallback: string,
+    maxLength: number,
+  ) {
+    const value = text(form, key, maxLength, false);
+    return value || fallback;
+  }
+
+  const detailContent = {
+    ...current,
+    minimum_booking: {
+      vi: detailText(
+        "detail_minimum_booking_vi",
+        current.minimum_booking.vi,
+        120,
+      ),
+      en: detailText(
+        "detail_minimum_booking_en",
+        current.minimum_booking.en,
+        120,
+      ),
+    },
+    intro_title: {
+      vi: detailText(
+        "detail_intro_title_vi",
+        current.intro_title.vi,
+        180,
+      ),
+      en: detailText(
+        "detail_intro_title_en",
+        current.intro_title.en,
+        180,
+      ),
+    },
+    intro_body: {
+      vi: detailText(
+        "detail_intro_body_vi",
+        current.intro_body.vi,
+        5000,
+      ),
+      en: detailText(
+        "detail_intro_body_en",
+        current.intro_body.en,
+        5000,
+      ),
+    },
+    amenities: {
+      vi: detailText(
+        "detail_amenities_vi",
+        current.amenities.vi,
+        12000,
+      ),
+      en: detailText(
+        "detail_amenities_en",
+        current.amenities.en,
+        12000,
+      ),
+    },
+    rules_title: {
+      vi: detailText(
+        "detail_rules_title_vi",
+        current.rules_title.vi,
+        180,
+      ),
+      en: detailText(
+        "detail_rules_title_en",
+        current.rules_title.en,
+        180,
+      ),
+    },
+    rules: {
+      vi: detailText(
+        "detail_rules_vi",
+        current.rules.vi,
+        10000,
+      ),
+      en: detailText(
+        "detail_rules_en",
+        current.rules.en,
+        10000,
+      ),
+    },
+    note: {
+      vi: detailText(
+        "detail_note_vi",
+        current.note.vi,
+        3000,
+      ),
+      en: detailText(
+        "detail_note_en",
+        current.note.en,
+        3000,
+      ),
+    },
+    inquiry_title: {
+      vi: detailText(
+        "detail_inquiry_title_vi",
+        current.inquiry_title.vi,
+        180,
+      ),
+      en: detailText(
+        "detail_inquiry_title_en",
+        current.inquiry_title.en,
+        180,
+      ),
+    },
+    inquiry_body: {
+      vi: detailText(
+        "detail_inquiry_body_vi",
+        current.inquiry_body.vi,
+        3000,
+      ),
+      en: detailText(
+        "detail_inquiry_body_en",
+        current.inquiry_body.en,
+        3000,
+      ),
+    },
+  };
+
+  const { data, error } = await session.db
+    .from("studios")
+    .update({ detail_content: detailContent })
+    .eq("id", id)
+    .select("id")
+    .single();
+
+  if (error || !data) {
+    return { error: dbMessage(error?.code) };
+  }
+
+  revalidateStudios(data.id);
+
+  return {
+    success: "Đã cập nhật nội dung trang chi tiết phòng.",
+  };
 }
 
 export async function deleteStudio(

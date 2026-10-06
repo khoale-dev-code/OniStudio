@@ -11,7 +11,7 @@ export const site = {
   facebook: "https://www.facebook.com/onistudiovn",
   messenger: "https://m.me/onistudiovn",
   zalo: process.env.NEXT_PUBLIC_ZALO_URL || "",
-  instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
+  instagram: "https://www.instagram.com/onistudiovn",
   tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "",
   map: "https://www.google.com/maps?q=220%2F29%20Au%20Co%20Ho%20Chi%20Minh%20City",
   mapEmbed:

@@ -104,7 +104,7 @@ const loadCatalog = unstable_cache(
     db
       .from("studios")
       .select(
-        "id,slug,name,description,area,capacity,price,led_count,images,published,sort_order",
+        "id,slug,name,description,area,price,led_count,images,published,sort_order,width_m,length_m,height_m,show_dimensions,detail_content",
       )
       .eq("published", true)
       .order("sort_order"),
@@ -232,7 +232,7 @@ const loadCatalog = unstable_cache(
       : ((galleryCategoriesResult.data || []) as GalleryCategory[]),
   };
   },
-  ["oni-public-catalog-v3"],
+  ["oni-public-catalog-v4"],
   {
     tags: [CATALOG_CACHE_TAG],
     revalidate: 300,

@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { Plus, Pencil, Trash2 } from "lucide-react";
+import { Pencil, Plus, Trash2 } from "lucide-react";
 import { requireAdminPage } from "@/lib/auth";
 import { deleteStudio } from "@/app/admin/actions";
 import { DeleteForm } from "@/components/admin/delete-form";
+import { studioDimensions } from "@/data/studio-detail";
 import type { Studio } from "@/types/catalog";
 
 function formatVnd(value: number) {
@@ -16,10 +17,16 @@ export default async function Rooms({
 }: {
   searchParams: Promise<{ saved?: string; deleted?: string }>;
 }) {
-  const [{ db }, query] = await Promise.all([requireAdminPage(), searchParams]);
+  const [{ db }, query] = await Promise.all([
+    requireAdminPage(),
+    searchParams,
+  ]);
+
   const { data, error } = await db
     .from("studios")
-    .select("id,name,area,capacity,price,published,sort_order")
+    .select(
+      "id,slug,name,description,area,price,led_count,images,published,sort_order,width_m,length_m,height_m,show_dimensions,detail_content",
+    )
     .order("sort_order");
 
   if (error) throw new Error("Studios unavailable");
@@ -34,8 +41,7 @@ export default async function Rooms({
           <p className="eyebrow">STUDIO ROOMS</p>
           <h1>Phòng studio</h1>
           <p>
-            Thêm, sửa, xóa phòng và quản lý giá thuê. Hệ thống luôn giữ tối thiểu
-            một phòng.
+            Thêm, sửa, xóa phòng, quản lý kích thước và nội dung trang chi tiết.
           </p>
         </div>
         <Link className="button studio-add-button" href="/admin/studios/new">
@@ -45,14 +51,11 @@ export default async function Rooms({
       </div>
 
       {query.saved && (
-        <p className="notice success" role="status">
-          Đã lưu phòng studio.
-        </p>
+        <p className="notice success" role="status">Đã cập nhật phòng và Card Client.</p>
       )}
+
       {query.deleted && (
-        <p className="notice success" role="status">
-          Đã xóa phòng studio.
-        </p>
+        <p className="notice success" role="status">Đã xóa phòng studio.</p>
       )}
 
       <div className="studio-admin-summary">
@@ -68,52 +71,66 @@ export default async function Rooms({
       </div>
 
       <div className="studio-admin-grid">
-        {rooms.map((room) => (
-          <article className="studio-admin-card" key={room.id}>
-            <div className="studio-admin-card-top">
-              <div>
-                <span className="studio-admin-room-order">#{room.sort_order + 1}</span>
-                <h2>{room.name}</h2>
-                <p>
-                  {room.area} m² · {room.capacity} người
-                </p>
+        {rooms.map((room) => {
+          const dimensions = studioDimensions(room, "vi");
+
+          return (
+            <article className="studio-admin-card" key={room.id}>
+              <div className="studio-admin-card-top">
+                <div>
+                  <span className="studio-admin-room-order">
+                    #{room.sort_order + 1}
+                  </span>
+                  <h2>{room.name}</h2>
+                  <p>
+                    {room.area} m²
+                    {dimensions ? ` · ${dimensions}` : ""}
+                  </p>
+                </div>
+
+                <span
+                  className={`studio-admin-visibility ${
+                    room.published ? "is-published" : "is-hidden"
+                  }`}
+                >
+                  {room.published ? "Đang hiển thị" : "Đang ẩn"}
+                </span>
               </div>
-              <span
-                className={`studio-admin-visibility ${room.published ? "is-published" : "is-hidden"}`}
-              >
-                {room.published ? "Đang hiển thị" : "Đang ẩn"}
-              </span>
-            </div>
 
-            <div className="studio-admin-price">
-              <span>Giá mỗi giờ</span>
-              <strong>{formatVnd(room.price)}</strong>
-            </div>
+              <div className="studio-admin-price">
+                <span>Giá mỗi giờ</span>
+                <strong>{formatVnd(room.price)}</strong>
+              </div>
 
-            <div className="studio-admin-card-actions">
-              <Link
-                className="button button-outline studio-edit-button"
-                href={`/admin/studios/${room.id}`}
-                prefetch={false}
-              >
-                <Pencil size={16} aria-hidden="true" />
-                <span>Chỉnh sửa</span>
-              </Link>
+              <div className="studio-admin-card-actions">
+                <Link
+                  className="button button-outline studio-edit-button"
+                  href={`/admin/studios/${room.id}`}
+                  prefetch={false}
+                >
+                  <Pencil size={16} aria-hidden="true" />
+                  <span>Chỉnh sửa</span>
+                </Link>
 
-              {canDelete ? (
-                <DeleteForm
-                  action={deleteStudio.bind(null, room.id)}
-                  label={`phòng "${room.name}"`}
-                />
-              ) : (
-                <button className="button danger-button" type="button" disabled>
-                  <Trash2 size={16} aria-hidden="true" />
-                  <span>Giữ phòng cuối</span>
-                </button>
-              )}
-            </div>
-          </article>
-        ))}
+                {canDelete ? (
+                  <DeleteForm
+                    action={deleteStudio.bind(null, room.id)}
+                    label={`phòng "${room.name}"`}
+                  />
+                ) : (
+                  <button
+                    className="button danger-button"
+                    type="button"
+                    disabled
+                  >
+                    <Trash2 size={16} aria-hidden="true" />
+                    <span>Giữ phòng cuối</span>
+                  </button>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   );

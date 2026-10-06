@@ -1,10 +1,16 @@
 "use client";
 
-import { useActionState, useState } from "react";
-import { Save, Trash2 } from "lucide-react";
+import { useActionState, useMemo, useState } from "react";
+import { ChevronDown, Trash2 } from "lucide-react";
 import { deleteStudio, saveStudio } from "@/app/admin/actions";
+import {
+  DEFAULT_STUDIO_DETAIL_CONTENT,
+  normalizeStudioDetailContent,
+} from "@/data/studio-detail";
 import { ImageUpload } from "./image-upload";
 import { DeleteForm } from "./delete-form";
+import { StudioCardEditor } from "./studio-card-editor";
+import { StudioDetailShortcut } from "./studio-detail-shortcut";
 import { VndInput } from "./vnd-input";
 import type { Studio } from "@/types/catalog";
 
@@ -20,7 +26,25 @@ export function StudioForm({
     {},
   );
   const [mediaBlocked, setMediaBlocked] = useState(false);
+  const [previewImages, setPreviewImages] = useState(
+    item?.images ?? [],
+  );
   const editing = Boolean(item);
+
+  const detail = useMemo(
+    () =>
+      item
+        ? normalizeStudioDetailContent(
+            item.detail_content,
+            item.led_count,
+          )
+        : DEFAULT_STUDIO_DETAIL_CONTENT,
+    [item],
+  );
+
+  const hasDimensions = Boolean(
+    item?.width_m || item?.length_m || item?.height_m,
+  );
 
   return (
     <div className="studio-admin-editor">
@@ -30,7 +54,7 @@ export function StudioForm({
             <p className="eyebrow">{editing ? "EDIT ROOM" : "NEW ROOM"}</p>
             <h2>{editing ? item?.name : "Tạo phòng studio mới"}</h2>
             <p className="muted">
-              Quản lý thông tin, giá thuê, hình ảnh và trạng thái hiển thị của phòng.
+              Mọi thay đổi Card phải được xem trước trước khi cập nhật ra Client.
             </p>
           </div>
         </div>
@@ -74,19 +98,6 @@ export function StudioForm({
           </label>
 
           <label className="form-field">
-            <span>Sức chứa (người)</span>
-            <input
-              name="capacity"
-              type="number"
-              min="1"
-              step="1"
-              max="10000"
-              required
-              defaultValue={item?.capacity ?? 10}
-            />
-          </label>
-
-          <label className="form-field">
             <span>Giá mỗi giờ (VNĐ)</span>
             <VndInput
               name="price"
@@ -96,58 +107,218 @@ export function StudioForm({
             <small>Ví dụ: nhập 300000 sẽ hiển thị 300.000 VNĐ.</small>
           </label>
 
-          <label className="form-field">
-            <span>Số đèn Nanlite 300B đi kèm</span>
-            <input
-              name="led_count"
-              type="number"
-              min="0"
-              step="1"
-              max="100"
-              required
-              defaultValue={item?.led_count ?? 1}
-            />
-          </label>
-
-          <label className="form-field">
-            <span>Thứ tự</span>
-            <input
-              name="sort_order"
-              type="number"
-              min="0"
-              step="1"
-              max="100000"
-              required
-              defaultValue={item?.sort_order ?? 0}
-            />
-          </label>
-
           <label className="form-field studio-admin-description">
-            <span>Mô tả (VI)</span>
+            <span>Mô tả card / giới thiệu (VI)</span>
             <textarea
               name="description_vi"
               required
               maxLength={5000}
               defaultValue={item?.description.vi ?? ""}
-              placeholder="Mô tả không gian, concept phù hợp và tiện ích của phòng."
+              placeholder="Mô tả ngắn dùng trên card và phần đầu trang chi tiết."
             />
           </label>
 
           <label className="form-field studio-admin-description">
-            <span>Mô tả (EN)</span>
+            <span>Mô tả card / giới thiệu (EN)</span>
             <textarea
               name="description_en"
               required
               maxLength={5000}
               defaultValue={item?.description.en ?? ""}
-              placeholder="Describe the space, suitable concepts and room facilities."
+              placeholder="Short description used on the room card and detail page."
             />
           </label>
+
+          <details
+            className="studio-admin-advanced"
+            open={Boolean(item?.show_dimensions || hasDimensions)}
+          >
+            <summary>
+              <span>
+                <strong>Thông số nâng cao</strong>
+                <small>Chiều dài, chiều rộng, chiều cao</small>
+              </span>
+              <ChevronDown size={18} aria-hidden="true" />
+            </summary>
+
+            <div className="studio-admin-advanced-body">
+              <label className="check-field studio-dimension-visibility">
+                <input
+                  type="checkbox"
+                  name="show_dimensions"
+                  defaultChecked={item?.show_dimensions ?? false}
+                />
+                Cho phép hiển thị kích thước nâng cao ngoài website
+              </label>
+
+              <div className="studio-dimension-grid">
+                <label className="form-field">
+                  <span>Chiều dài (m)</span>
+                  <input
+                    name="length_m"
+                    type="number"
+                    min="0.1"
+                    max="1000"
+                    step="0.1"
+                    defaultValue={item?.length_m ?? ""}
+                    placeholder="12"
+                  />
+                </label>
+
+                <label className="form-field">
+                  <span>Chiều rộng (m)</span>
+                  <input
+                    name="width_m"
+                    type="number"
+                    min="0.1"
+                    max="1000"
+                    step="0.1"
+                    defaultValue={item?.width_m ?? ""}
+                    placeholder="8"
+                  />
+                </label>
+
+                <label className="form-field">
+                  <span>Chiều cao (m)</span>
+                  <input
+                    name="height_m"
+                    type="number"
+                    min="0.1"
+                    max="1000"
+                    step="0.1"
+                    defaultValue={item?.height_m ?? ""}
+                    placeholder="4"
+                  />
+                </label>
+              </div>
+            </div>
+          </details>
 
           <ImageUpload
             initialUrls={item?.images ?? []}
             onBlockedChange={setMediaBlocked}
+            onUrlsChange={setPreviewImages}
           />
+
+          <StudioCardEditor
+            initial={detail.card}
+            images={previewImages}
+            pending={pending}
+            mediaBlocked={mediaBlocked}
+          />
+          
+          <div hidden aria-hidden="true">
+            <input
+              type="hidden"
+              name="detail_minimum_booking_vi"
+              value={detail.minimum_booking.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_minimum_booking_en"
+              value={detail.minimum_booking.en}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_intro_title_vi"
+              value={detail.intro_title.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_intro_title_en"
+              value={detail.intro_title.en}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_intro_body_vi"
+              value={detail.intro_body.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_intro_body_en"
+              value={detail.intro_body.en}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_amenities_vi"
+              value={detail.amenities.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_amenities_en"
+              value={detail.amenities.en}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_rules_title_vi"
+              value={detail.rules_title.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_rules_title_en"
+              value={detail.rules_title.en}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_rules_vi"
+              value={detail.rules.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_rules_en"
+              value={detail.rules.en}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_note_vi"
+              value={detail.note.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_note_en"
+              value={detail.note.en}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_inquiry_title_vi"
+              value={detail.inquiry_title.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_inquiry_title_en"
+              value={detail.inquiry_title.en}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_inquiry_body_vi"
+              value={detail.inquiry_body.vi}
+              readOnly
+            />
+            <input
+              type="hidden"
+              name="detail_inquiry_body_en"
+              value={detail.inquiry_body.en}
+              readOnly
+            />
+          </div>
+
+          <StudioDetailShortcut studioId={item?.id} />
 
           <label className="check-field studio-admin-publish">
             <input
@@ -170,31 +341,22 @@ export function StudioForm({
             {state.success}
           </p>
         )}
-
-        <div className="form-actions studio-admin-form-actions">
-          <button className="button" disabled={pending || mediaBlocked}>
-            <Save size={17} aria-hidden="true" />
-            <span>
-              {pending
-                ? "Đang lưu..."
-                : editing
-                  ? "Lưu thay đổi"
-                  : "Thêm phòng"}
-            </span>
-          </button>
-        </div>
       </form>
 
       {item && (
-        <section className="studio-admin-danger-zone" aria-labelledby="studio-delete-heading">
+        <section
+          className="studio-admin-danger-zone"
+          aria-labelledby="studio-delete-heading"
+        >
           <div>
             <p className="eyebrow">DANGER ZONE</p>
             <h3 id="studio-delete-heading">Xóa phòng</h3>
             <p className="muted">
-              Hệ thống luôn giữ tối thiểu một phòng studio. Ảnh gốc trên Cloudinary
-              không bị xóa khi xóa bản ghi phòng.
+              Hệ thống luôn giữ tối thiểu một phòng studio. Ảnh gốc trên
+              Cloudinary không bị xóa khi xóa bản ghi phòng.
             </p>
           </div>
+
           {canDelete ? (
             <DeleteForm
               action={deleteStudio.bind(null, item.id)}

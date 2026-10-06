@@ -11,8 +11,8 @@ export function generateMetadata() {
   return pageMetadata(
     { vi: "Không gian studio", en: "Studio spaces" },
     {
-      vi: "Khám phá các phòng chụp tại Oni Studio: diện tích, sức chứa, tiện ích và giá thuê.",
-      en: "Explore Oni Studio spaces: floor area, capacity, facilities and rental rates.",
+      vi: "Khám phá các phòng chụp tại Oni Studio: diện tích, kích thước, tiện ích và giá thuê.",
+      en: "Explore Oni Studio spaces: floor area, dimensions, facilities and rental rates.",
     },
     "/studios",
   );
@@ -35,8 +35,8 @@ async function StudiosContent() {
         }
         description={
           locale === "vi"
-            ? "Chọn phòng phù hợp với concept và số lượng thành viên. Oni xác nhận lịch trực tiếp qua tin nhắn."
-            : "Find a room for your concept and crew. Oni confirms availability directly by message."
+            ? "Chọn phòng phù hợp với concept, kích thước và cách set up của buổi chụp. Oni xác nhận lịch trực tiếp qua tin nhắn."
+            : "Choose a room that fits your concept, dimensions and setup. Oni confirms availability directly by message."
         }
       />
 
@@ -68,8 +68,6 @@ async function StudiosContent() {
           ))}
         </div>
       </section>
-
-      
     </>
   );
 }

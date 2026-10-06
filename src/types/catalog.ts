@@ -87,18 +87,53 @@ export interface PropItem {
   sort_order: number;
 }
 
+export interface StudioCardContent {
+  type_label: Localized;
+  kicker: Localized;
+  availability_label: Localized;
+  price_suffix: Localized;
+  extra_fact: Localized;
+  cta_label: Localized;
+  show_type: boolean;
+  show_kicker: boolean;
+  show_availability: boolean;
+  show_price: boolean;
+  show_description: boolean;
+  show_area: boolean;
+  show_dimensions: boolean;
+  show_extra_fact: boolean;
+  show_cta: boolean;
+}
+
+export interface StudioDetailContent {
+  card: StudioCardContent;
+  minimum_booking: Localized;
+  intro_title: Localized;
+  intro_body: Localized;
+  amenities: Localized;
+  rules_title: Localized;
+  rules: Localized;
+  note: Localized;
+  inquiry_title: Localized;
+  inquiry_body: Localized;
+}
+
 export interface Studio {
   id: string;
   slug: string;
   name: string;
   description: Localized;
   area: number;
-  capacity: number;
   price: number;
   led_count: number;
   images: string[];
   published: boolean;
   sort_order: number;
+  width_m?: number | null;
+  length_m?: number | null;
+  height_m?: number | null;
+  show_dimensions?: boolean;
+  detail_content?: StudioDetailContent;
 }
 
 export interface GalleryCategory {

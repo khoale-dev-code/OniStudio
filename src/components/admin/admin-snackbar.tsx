@@ -194,16 +194,6 @@ export function AdminSnackbar() {
         const text = notice.textContent?.trim();
         if (!text) continue;
 
-        /*
-         * Never mutate attributes on SSR-rendered notices here.
-         * The admin snackbar can mount before a nested Server Component has
-         * finished hydrating. Adding data-* / aria-hidden at that moment makes
-         * the client DOM differ from the server HTML and triggers a hydration
-         * mismatch in React/Next.js.
-         *
-         * A WeakSet tracks processed nodes without changing the DOM. Existing
-         * CSS hides inline notices whenever admin-snackbar-active is present.
-         */
         seenNotices.add(notice);
 
         sessionStorage.removeItem(STORAGE_KEY);

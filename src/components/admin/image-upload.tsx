@@ -15,11 +15,13 @@ import { useMediaUpload } from "@/hooks/use-media-upload";
 export function ImageUpload({
   initialUrls = [],
   onBlockedChange,
+  onUrlsChange,
   max = 12,
   name = "images",
 }: {
   initialUrls?: string[];
   onBlockedChange: (blocked: boolean) => void;
+  onUrlsChange?: (urls: string[]) => void;
   max?: number;
   name?: string;
 }) {
@@ -66,6 +68,14 @@ export function ImageUpload({
   useEffect(() => {
     onBlockedChange(blocked);
   }, [blocked, onBlockedChange]);
+
+  useEffect(() => {
+    onUrlsChange?.(
+      items
+        .filter((item) => item.status === "ready")
+        .map((item) => item.url),
+    );
+  }, [items, onUrlsChange]);
   useEffect(() => {
     if (!blocked) return;
     function preventExit(event: BeforeUnloadEvent) {

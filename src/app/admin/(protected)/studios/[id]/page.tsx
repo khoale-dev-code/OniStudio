@@ -8,9 +8,19 @@ export default async function Edit({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const [{ id }, { db }] = await Promise.all([params, requireAdminPage()]);
+  const [{ id }, { db }] = await Promise.all([
+    params,
+    requireAdminPage(),
+  ]);
+
   const [studioResult, countResult] = await Promise.all([
-    db.from("studios").select("*").eq("id", id).maybeSingle(),
+    db
+      .from("studios")
+      .select(
+        "id,slug,name,description,area,price,led_count,images,published,sort_order,width_m,length_m,height_m,show_dimensions,detail_content",
+      )
+      .eq("id", id)
+      .maybeSingle(),
     db.from("studios").select("id", { count: "exact", head: true }),
   ]);
 
@@ -23,9 +33,13 @@ export default async function Edit({
         <div>
           <p className="eyebrow">EDIT ROOM</p>
           <h1>Chỉnh sửa phòng</h1>
-          <p>Cập nhật thông tin, giá thuê, hình ảnh hoặc xóa phòng khi không còn sử dụng.</p>
+          <p>
+            Cập nhật thông tin, kích thước, giá thuê, hình ảnh và toàn bộ nội
+            dung trang chi tiết.
+          </p>
         </div>
       </div>
+
       <StudioForm
         item={studioResult.data as Studio}
         canDelete={(countResult.count ?? 0) > 1}

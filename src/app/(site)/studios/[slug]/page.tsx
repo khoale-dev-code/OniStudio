@@ -1,138 +1,342 @@
 import { ProductGallery } from "@/components/catalog/product-gallery";
 import Link from "@/components/ui/nav-link";
 import { notFound } from "next/navigation";
-import { Users, Maximize2, Clock, Check } from "lucide-react";
+import {
+  Check,
+  Clock,
+  Info,
+  Maximize2,
+} from "lucide-react";
 import { getCatalog } from "@/lib/catalog";
 import { context, href, money } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
-import { includedGroups } from "@/data/content";
+import {
+  normalizeStudioDetailContent,
+  renderStudioTemplate,
+  studioDetailBlocks,
+  studioDetailRules,
+  studioDimensions,
+} from "@/data/studio-detail";
+import type { Locale } from "@/types/catalog";
+
 type Props = { params: Promise<{ slug: string }> };
+
+type AmenityGroup = {
+  title: string;
+  body: string;
+};
+
+function expandLegacyAmenityGroups(
+  groups: AmenityGroup[],
+  locale: Locale,
+) {
+  if (groups.length !== 1) return groups;
+
+  const current = groups[0];
+  const markers =
+    locale === "vi"
+      ? [
+          "Phụ kiện trong phòng",
+          "Tạo hình ánh sáng",
+          "Softbox",
+        ]
+      : [
+          "Studio accessories",
+          "Light shaping",
+          "Softboxes",
+        ];
+
+  let body = current.body;
+  let title = current.title;
+  const recovered: AmenityGroup[] = [];
+
+  for (const marker of markers) {
+    const token = `${marker} |`;
+    const index = body.indexOf(token);
+
+    if (index < 0) continue;
+
+    const sectionBody = body.slice(0, index).trim();
+
+    if (sectionBody) {
+      recovered.push({
+        title,
+        body: sectionBody,
+      });
+    }
+
+    title = marker;
+    body = body.slice(index + token.length).trim();
+  }
+
+  if (body) {
+    recovered.push({
+      title,
+      body,
+    });
+  }
+
+  return recovered.length > 1 ? recovered : groups;
+}
+
+function splitAmenityItems(body: string) {
+  const items = body
+    .split("·")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  return items.length ? items : [body];
+}
+
+function expandLegacyRules(rules: string[]) {
+  if (rules.length !== 1 || rules[0].length < 140) return rules;
+
+  const split = rules[0]
+    .split(/\.\s+(?=[A-ZÀ-Ỹ])/u)
+    .map((rule) => rule.trim())
+    .filter(Boolean)
+    .map((rule) => (rule.endsWith(".") ? rule : `${rule}.`));
+
+  return split.length > 1 ? split : rules;
+}
+
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const s = (await getCatalog()).studios.find((s) => s.slug === slug);
+  const studio = (await getCatalog()).studios.find(
+    (entry) => entry.slug === slug,
+  );
+
   return pageMetadata(
-    { vi: s?.name || "Không tìm thấy phòng", en: s?.name || "Room not found" },
-    s?.description || { vi: "Không gian Oni Studio", en: "Oni Studio space" },
+    {
+      vi: studio?.name || "Không tìm thấy phòng",
+      en: studio?.name || "Room not found",
+    },
+    studio?.description || {
+      vi: "Không gian Oni Studio",
+      en: "Oni Studio space",
+    },
     `/studios/${slug}`,
   );
 }
+
 export default async function StudioDetail({ params }: Props) {
   const [{ slug }, { locale }, { studios }] = await Promise.all([
     params,
     context(),
     getCatalog(),
   ]);
-  const s = studios.find((s) => s.slug === slug);
-  if (!s) notFound();
+
+  const studio = studios.find((entry) => entry.slug === slug);
+  if (!studio) notFound();
+
+  const detail = normalizeStudioDetailContent(
+    studio.detail_content,
+    studio.led_count,
+  );
+  const dimensions = studioDimensions(studio, locale);
+  const amenities = expandLegacyAmenityGroups(
+    studioDetailBlocks(detail.amenities[locale]),
+    locale,
+  );
+  const rules = expandLegacyRules(
+    studioDetailRules(detail.rules[locale]),
+  );
+
   return (
-    <div className="container detail-page">
+    <div className="container detail-page studio-detail-page-v3 studio-detail-page-v6">
       <Link className="text-link" href={href(locale, "/studios")}>
         {locale === "vi" ? "Tất cả không gian" : "All spaces"}
       </Link>
+
       <div className="detail-heading">
         <div>
           <p className="eyebrow">ONI STUDIO / THE SPACES</p>
-          <h1>{s.name}</h1>
-          <p>{s.description[locale]}</p>
+          <h1>{studio.name}</h1>
+          <p>{studio.description[locale]}</p>
         </div>
+
         <div className="detail-price">
-          <strong>{money(s.price, locale)}</strong>
+          <strong>{money(studio.price, locale)}</strong>
           <span>
             / {locale === "vi" ? "giờ · đã gồm VAT" : "hour · VAT included"}
           </span>
         </div>
       </div>
+
       <ProductGallery
-        images={s.images.length ? s.images : ["/images/studio-concept.webp"]}
-        name={s.name}
+        images={
+          studio.images.length
+            ? studio.images
+            : ["/images/studio-concept.webp"]
+        }
+        name={studio.name}
         locale={locale}
         fit="cover"
         caption={
-          !s.images.length
+          !studio.images.length
             ? locale === "vi"
               ? "Ảnh minh họa · Hình phòng thực tế sẽ được cập nhật"
               : "Illustration · Actual room photographs to follow"
             : undefined
         }
       />
-      <div className="detail-grid">
-        <div>
-          <div className="detail-facts">
+
+      <div className="detail-grid studio-detail-layout-v6">
+        <div className="studio-detail-main-v6">
+          <div className="detail-facts studio-detail-facts-v3">
             <span>
               <Maximize2 />
-              {s.area} m²
+              {studio.area} m²
             </span>
-            <span>
-              <Users />
-              {s.capacity} {locale === "vi" ? "người" : "people"}
-            </span>
+
+            {dimensions && (
+              <span>
+                <Maximize2 />
+                {dimensions}
+              </span>
+            )}
+
             <span>
               <Clock />
-              {locale === "vi" ? "Tối thiểu 2 giờ" : "2-hour minimum"}
+              {detail.minimum_booking[locale]}
             </span>
           </div>
-          <h2>
-            {locale === "vi"
-              ? "Sẵn sàng cho buổi chụp"
-              : "Ready for your session"}
-          </h2>
-          <p>
-            {locale === "vi"
-              ? `Miễn phí đèn flash studio và ${s.led_count} đèn LED Nanlite 300B. Hỗ trợ setup ánh sáng theo layout mẫu. Xác nhận danh sách và số lượng thiết bị khi đặt phòng.`
-              : `Studio flashes and ${s.led_count} Nanlite 300B LED light(s) included. Reference-layout lighting assistance. Confirm the equipment list and quantities when reserving.`}
-          </p>
-          <div className="amenity-grid">
-            {includedGroups.map((g) => (
-              <div key={g.title.en}>
-                <h3>{g.title[locale]}</h3>
-                <p>{g.items[locale]}</p>
+
+          <section className="studio-detail-intro-v6">
+            <div className="studio-detail-section-kicker-v6">
+              <span>01</span>
+              <p>
+                {locale === "vi"
+                  ? "Thông tin phòng"
+                  : "Room introduction"}
+              </p>
+            </div>
+
+            <h2>{detail.intro_title[locale]}</h2>
+
+            <p className="studio-detail-intro-copy-v6">
+              {renderStudioTemplate(
+                detail.intro_body[locale],
+                studio,
+              )}
+            </p>
+          </section>
+
+          {amenities.length > 0 && (
+            <section className="studio-detail-section-v6">
+              <div className="studio-detail-section-heading-v6">
+                <div className="studio-detail-section-kicker-v6">
+                  <span>02</span>
+                  <p>
+                    {locale === "vi"
+                      ? "Có sẵn trong phòng"
+                      : "Included in the room"}
+                  </p>
+                </div>
+
+                <h2>
+                  {locale === "vi"
+                    ? "Không gian & thiết bị"
+                    : "Space & equipment"}
+                </h2>
+
+                <p>
+                  {locale === "vi"
+                    ? "Các hạng mục có sẵn để bạn chuẩn bị buổi chụp thuận tiện hơn."
+                    : "What is available to help you prepare your shoot."}
+                </p>
               </div>
-            ))}
-          </div>
-          <h2>
-            {locale === "vi" ? "Quy định & lưu ý" : "House rules & notes"}
-          </h2>
-          <ul className="check-list">
-            <li>
-              <Check />
-              {locale === "vi"
-                ? "Hỗ trợ makeup tối đa 1 giờ trước lịch, tại khu chung."
-                : "Up to one hour of early makeup in the shared area."}
-            </li>
-            <li>
-              <Check />
-              {locale === "vi"
-                ? "Khu vực chờ: tối đa 4 người mỗi ê-kíp."
-                : "Waiting area: up to four people per crew."}
-            </li>
-            <li>
-              <Check />
-              {locale === "vi"
-                ? "Thêm người: 50.000đ/người; sau 22:00: +50.000đ/giờ."
-                : "Extra person: 50,000 VND/person; after 10 pm: +50,000 VND/hour."}
-            </li>
-            <li>
-              <Check />
-              {locale === "vi"
-                ? "Đèn LED tổng công suất trên 500W: +50.000đ/giờ."
-                : "LED use over 500W total: +50,000 VND/hour."}
-            </li>
-          </ul>
-          <p className="muted">
-            {locale === "vi"
-              ? "Vui lòng trao đổi quy định đặt cọc, đổi/hủy lịch và hoàn tiền với Oni trước khi xác nhận."
-              : "Confirm deposit, rescheduling, cancellation and refund terms with Oni before booking."}
-          </p>
+
+              <div className="studio-detail-amenities-v6">
+                {amenities.map((group, index) => (
+                  <article
+                    className="studio-detail-amenity-card-v6"
+                    key={`${group.title}-${index}`}
+                  >
+                    <div className="studio-detail-amenity-title-v6">
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <h3>
+                        {group.title ||
+                          (locale === "vi"
+                            ? "Tiện ích"
+                            : "Amenity")}
+                      </h3>
+                    </div>
+
+                    <ul>
+                      {splitAmenityItems(group.body).map(
+                        (item, itemIndex) => (
+                          <li key={`${item}-${itemIndex}`}>
+                            <span aria-hidden="true" />
+                            <p>{item}</p>
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section className="studio-detail-section-v6 studio-detail-rules-section-v6">
+            <div className="studio-detail-section-heading-v6">
+              <div className="studio-detail-section-kicker-v6">
+                <span>03</span>
+                <p>
+                  {locale === "vi"
+                    ? "Trước khi đặt lịch"
+                    : "Before booking"}
+                </p>
+              </div>
+
+              <h2>{detail.rules_title[locale]}</h2>
+
+              <p>
+                {locale === "vi"
+                  ? "Một vài lưu ý để buổi chụp diễn ra thuận lợi và rõ ràng ngay từ đầu."
+                  : "A few notes to keep your session smooth and clear from the start."}
+              </p>
+            </div>
+
+            {rules.length > 0 && (
+              <div className="studio-detail-rule-list-v6">
+                {rules.map((rule, index) => (
+                  <div
+                    className="studio-detail-rule-row-v6"
+                    key={`${rule}-${index}`}
+                  >
+                    <span className="studio-detail-rule-icon-v6">
+                      <Check size={17} aria-hidden="true" />
+                    </span>
+                    <p>{rule}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {detail.note[locale] && (
+              <div className="studio-detail-note-v6">
+                <Info size={18} aria-hidden="true" />
+                <p>
+                  {renderStudioTemplate(
+                    detail.note[locale],
+                    studio,
+                  )}
+                </p>
+              </div>
+            )}
+          </section>
         </div>
-        <aside className="inquiry-card">
+
+        <aside className="inquiry-card studio-detail-inquiry-v6">
           <p className="eyebrow">YOUR NEXT SHOOT</p>
-          <h2>
-            {locale === "vi" ? "Cùng lên lịch nhé?" : "Plan your next shoot?"}
-          </h2>
+          <h2>{detail.inquiry_title[locale]}</h2>
           <p>
-            {locale === "vi"
-              ? `Gửi tên ${s.name}, ngày chụp, thời lượng và số người cho Oni để kiểm tra lịch.`
-              : `Send Oni the room name (${s.name}), date, duration and crew size to check availability.`}
+            {renderStudioTemplate(
+              detail.inquiry_body[locale],
+              studio,
+            )}
           </p>
           <p className="small muted">
             {locale === "vi"
