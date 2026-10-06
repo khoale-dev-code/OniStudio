@@ -1,6 +1,6 @@
 import {
+  ArrowRight,
   ArrowUpRight,
-  Check,
   Facebook,
   Instagram,
   Mail,
@@ -16,8 +16,8 @@ export function generateMetadata() {
   return pageMetadata(
     { vi: "Liên hệ & địa chỉ", en: "Contact & visit" },
     {
-      vi: "Liên hệ Oni Studio, xem địa chỉ, bản đồ, số điện thoại và các kênh nhắn tin để chuẩn bị buổi chụp.",
-      en: "Contact Oni Studio, find the address, map, phone number and messaging channels to prepare your shoot.",
+      vi: "Liên hệ Oni Studio, xem địa chỉ, bản đồ và các kênh nhắn tin để chuẩn bị buổi chụp.",
+      en: "Contact Oni Studio, find the address, map and messaging channels to prepare your shoot.",
     },
     "/contact",
   );
@@ -27,167 +27,167 @@ export default async function Contact() {
   const { locale } = await context();
   const vi = locale === "vi";
 
-  const visitSteps = vi
-    ? [
-        "Gửi concept hoặc moodboard để Oni hiểu hướng chụp.",
-        "Cho Oni biết ngày chụp, thời lượng và nhu cầu thiết bị.",
-        "Chờ xác nhận lịch trước khi di chuyển đến studio.",
-      ]
-    : [
-        "Send your concept or moodboard so Oni understands the direction.",
-        "Share the shoot date, duration and equipment needs.",
-        "Wait for booking confirmation before travelling to the studio.",
-      ];
-
   return (
-    <main className="contact-page-v2">
-      <section className="contact-v2-hero">
-        <div className="container contact-v2-hero-grid">
-          <div className="contact-v2-hero-copy">
+    <main className="contact-page-v3">
+      <section className="contact-v3-hero">
+        <div className="container contact-v3-hero-grid">
+          <div className="contact-v3-hero-copy">
             <p className="eyebrow">ONI STUDIO · CONTACT</p>
 
             <h1>
               {vi ? (
                 <>
-                  Hẹn gặp bạn
+                  Bắt đầu từ
                   <br />
-                  tại Oni.
+                  một cuộc trò chuyện.
                 </>
               ) : (
                 <>
-                  See you
+                  Start with
                   <br />
-                  at Oni.
+                  a conversation.
                 </>
               )}
             </h1>
 
-            <p className="contact-v2-lead">
+            <p>
               {vi
-                ? "Gửi concept, ngày chụp và nhu cầu thiết bị. Oni sẽ cùng bạn kiểm tra không gian phù hợp và xác nhận lịch trước khi buổi chụp bắt đầu."
-                : "Share your concept, shoot date and equipment needs. Oni will help confirm the right space and availability before your session."}
+                ? "Gửi cho Oni concept, ngày chụp và nhu cầu thiết bị. Phần còn lại sẽ được trao đổi trực tiếp để bạn có một buổi chụp gọn và rõ ràng hơn."
+                : "Send Oni your concept, shoot date and equipment needs. We’ll confirm the rest directly so your shoot can stay simple and clear."}
             </p>
+
+            <div className="contact-v3-hero-actions">
+              <a
+                className="button button-accent"
+                href={site.messenger}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle size={18} aria-hidden="true" />
+                {vi ? "Nhắn Oni Studio" : "Message Oni Studio"}
+              </a>
+
+              <a
+                className="button button-outline"
+                href={`tel:${site.phoneHref}`}
+              >
+                <Phone size={18} aria-hidden="true" />
+                {site.phone}
+              </a>
+            </div>
           </div>
 
-          <div className="contact-v2-primary-actions">
-            <p className="contact-v2-action-label">
-              {vi ? "Liên hệ nhanh" : "Quick contact"}
+          <div className="contact-v3-hero-note">
+            <p className="contact-v3-small-label">
+              {vi ? "THÔNG TIN NÊN GỬI" : "WHAT TO SEND"}
             </p>
 
-            <a
-              className="contact-v2-action contact-v2-action-primary"
-              href={site.messenger}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="contact-v2-action-icon">
-                <MessageCircle size={20} aria-hidden="true" />
-              </span>
-              <span>
-                <small>Messenger</small>
-                <strong>
-                  {vi ? "Nhắn Oni Studio" : "Message Oni Studio"}
-                </strong>
-              </span>
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
+            <div className="contact-v3-note-list">
+              <span>01</span>
+              <p>{vi ? "Concept / moodboard" : "Concept / moodboard"}</p>
 
-            <a
-              className="contact-v2-action"
-              href={`tel:${site.phoneHref}`}
-            >
-              <span className="contact-v2-action-icon">
-                <Phone size={20} aria-hidden="true" />
-              </span>
-              <span>
-                <small>{vi ? "Điện thoại" : "Phone"}</small>
-                <strong>{site.phone}</strong>
-              </span>
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
+              <span>02</span>
+              <p>{vi ? "Ngày & thời lượng chụp" : "Shoot date & duration"}</p>
+
+              <span>03</span>
+              <p>{vi ? "Nhu cầu thiết bị" : "Equipment needs"}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="container contact-v2-info-strip">
-        <article>
-          <span className="contact-v2-info-icon">
-            <MapPin size={19} aria-hidden="true" />
+      <section className="container contact-v3-quick-grid">
+        <a
+          href={site.map}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="contact-v3-quick-card"
+        >
+          <span className="contact-v3-icon">
+            <MapPin size={20} aria-hidden="true" />
           </span>
           <div>
-            <p>{vi ? "Địa chỉ" : "Address"}</p>
+            <small>{vi ? "Địa chỉ" : "Address"}</small>
             <strong>{site.address[locale]}</strong>
           </div>
-        </article>
+          <ArrowUpRight size={17} aria-hidden="true" />
+        </a>
 
-        <article>
-          <span className="contact-v2-info-icon">
-            <Mail size={19} aria-hidden="true" />
+        <a
+          href={`mailto:${site.email}`}
+          className="contact-v3-quick-card"
+        >
+          <span className="contact-v3-icon">
+            <Mail size={20} aria-hidden="true" />
           </span>
           <div>
-            <p>Email</p>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <small>Email</small>
+            <strong>{site.email}</strong>
           </div>
-        </article>
+          <ArrowUpRight size={17} aria-hidden="true" />
+        </a>
 
-        <article>
-          <span className="contact-v2-info-icon">
-            <Facebook size={19} aria-hidden="true" />
+        <a
+          href={site.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="contact-v3-quick-card"
+        >
+          <span className="contact-v3-icon">
+            <Facebook size={20} aria-hidden="true" />
           </span>
           <div>
-            <p>{vi ? "Mạng xã hội" : "Social"}</p>
-            <div className="contact-v2-social-inline">
-              <a
-                href={site.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-              {site.instagram && (
-                <a
-                  href={site.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Instagram
-                </a>
-              )}
+            <small>Facebook</small>
+            <strong>@onistudiovn</strong>
+          </div>
+          <ArrowUpRight size={17} aria-hidden="true" />
+        </a>
+
+        {site.instagram && (
+          <a
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-v3-quick-card"
+          >
+            <span className="contact-v3-icon">
+              <Instagram size={20} aria-hidden="true" />
+            </span>
+            <div>
+              <small>Instagram</small>
+              <strong>@onistudiovn</strong>
             </div>
-          </div>
-        </article>
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </a>
+        )}
       </section>
 
-      <section className="container contact-v2-main">
-        <div className="contact-v2-map-panel">
-          <div className="contact-v2-section-head">
-            <div>
-              <p className="eyebrow">
-                {vi ? "ĐƯỜNG ĐẾN ONI" : "FIND ONI"}
-              </p>
-              <h2>
-                {vi ? "220/29 Âu Cơ, Tân Hoà." : "220/29 Au Co, Tan Hoa."}
-              </h2>
-            </div>
-
-            <a
-              className="contact-v2-map-link"
-              href={site.map}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Google Maps
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
+      <section className="container contact-v3-map-section">
+        <div className="contact-v3-map-head">
+          <div>
+            <p className="eyebrow">{vi ? "GHÉ ONI" : "VISIT ONI"}</p>
+            <h2>
+              {vi
+                ? "Tìm đường đến studio."
+                : "Find your way to the studio."}
+            </h2>
           </div>
 
-          <div className="contact-v2-map-frame">
+          <a
+            className="contact-v3-map-link"
+            href={site.map}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Maps
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
+
+        <div className="contact-v3-map-layout">
+          <div className="contact-v3-map-frame">
             <iframe
-              title={
-                vi
-                  ? "Bản đồ đến Oni Studio"
-                  : "Directions to Oni Studio"
-              }
+              title={vi ? "Bản đồ đến Oni Studio" : "Directions to Oni Studio"}
               src={site.mapEmbed}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -195,102 +195,33 @@ export default async function Contact() {
             />
           </div>
 
-          <p className="contact-v2-map-note">
-            {vi
-              ? "Vui lòng xác nhận giờ đến với studio trước khi di chuyển."
-              : "Please confirm your arrival time with the studio before travelling."}
-          </p>
-        </div>
-
-        <aside className="contact-v2-visit-card">
-          <div>
-            <p className="eyebrow">
-              {vi ? "TRƯỚC KHI ĐẾN" : "BEFORE YOU VISIT"}
+          <aside className="contact-v3-map-aside">
+            <p className="contact-v3-small-label">
+              {vi ? "TRƯỚC KHI DI CHUYỂN" : "BEFORE YOU TRAVEL"}
             </p>
-            <h2>
+
+            <h3>
               {vi
-                ? "Chuẩn bị nhanh cho buổi chụp."
-                : "A quick prep for your shoot."}
-            </h2>
+                ? "Xác nhận lịch trước khi đến."
+                : "Confirm your booking before arrival."}
+            </h3>
+
             <p>
               {vi
-                ? "Ba thông tin đơn giản giúp Oni kiểm tra lịch và chuẩn bị nhanh hơn."
-                : "Three simple details help Oni confirm availability and prepare faster."}
+                ? "Oni sẽ xác nhận lại phòng, thời lượng và nhu cầu thiết bị trước buổi chụp."
+                : "Oni will confirm the room, duration and equipment requirements before your session."}
             </p>
-          </div>
 
-          <ol className="contact-v2-checklist">
-            {visitSteps.map((step, index) => (
-              <li key={step}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{step}</p>
-                <Check size={17} aria-hidden="true" />
-              </li>
-            ))}
-          </ol>
-
-          <div className="contact-v2-visit-actions">
             <a
-              className="button button-accent"
               href={site.messenger}
               target="_blank"
               rel="noopener noreferrer"
+              className="contact-v3-aside-link"
             >
-              <MessageCircle size={18} aria-hidden="true" />
-              {vi ? "Nhắn Oni" : "Message Oni"}
+              {vi ? "Nhắn Oni để xác nhận" : "Message Oni to confirm"}
+              <ArrowRight size={16} aria-hidden="true" />
             </a>
-
-            <a
-              className="button button-outline"
-              href={`mailto:${site.email}`}
-            >
-              <Mail size={18} aria-hidden="true" />
-              Email
-            </a>
-          </div>
-        </aside>
-      </section>
-
-      <section className="container contact-v2-social-section">
-        <div className="contact-v2-social-copy">
-          <p className="eyebrow">
-            {vi ? "THEO DÕI ONI" : "FOLLOW ONI"}
-          </p>
-          <h2>
-            {vi
-              ? "Xem thêm hình ảnh và cập nhật mới."
-              : "See more work and studio updates."}
-          </h2>
-        </div>
-
-        <div className="contact-v2-social-cards">
-          <a
-            href={site.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Facebook size={22} aria-hidden="true" />
-            <span>
-              <small>Facebook</small>
-              <strong>@onistudiovn</strong>
-            </span>
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
-
-          {site.instagram && (
-            <a
-              href={site.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Instagram size={22} aria-hidden="true" />
-              <span>
-                <small>Instagram</small>
-                <strong>@onistudiovn</strong>
-              </span>
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-          )}
+          </aside>
         </div>
       </section>
     </main>
