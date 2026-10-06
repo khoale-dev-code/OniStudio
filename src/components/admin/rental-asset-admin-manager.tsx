@@ -12,12 +12,11 @@ import {
   Search,
 } from "lucide-react";
 import {
-  useActionState,
-  useEffect,
   useMemo,
   useState,
+  useTransition,
+  type FormEvent,
 } from "react";
-import { useRouter } from "next/navigation";
 import {
   reorderBackdrops,
   reorderProps,
@@ -77,7 +76,11 @@ export function RentalAssetAdminManager({
 }) {
   const action =
     assetType === "backdrop" ? reorderBackdrops : reorderProps;
-  const [state, formAction, pending] = useActionState(action, {});
+  const [pending, startSaving] = useTransition();
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
   const [items, setItems] = useState<RentalAdminItem[]>(initialItems);
   const [dragId, setDragId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -85,13 +88,6 @@ export function RentalAssetAdminManager({
   const [backdropTab, setBackdropTab] = useState<BackdropTab>("all");
   const [propTab, setPropTab] = useState<PropTab>("all");
   const [dirty, setDirty] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (state.success) {
-      router.refresh();
-    }
-  }, [router, state.success]);
 
   const counts = useMemo(() => {
     const color = items.filter((item) => item.kind === "color").length;
@@ -189,19 +185,40 @@ export function RentalAssetAdminManager({
     setPropTab("all");
   }
 
+  function saveOrder(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (pending || hasFilter || !dirty || items.length === 0) return;
+
+    const form = new FormData(event.currentTarget);
+    setStatus(null);
+
+    startSaving(async () => {
+      const result = await action({}, form);
+
+      if (result.error) {
+        setStatus({ type: "error", text: result.error });
+        return;
+      }
+
+      setDirty(false);
+      setStatus({
+        type: "success",
+        text: result.success || "Đã cập nhật thứ tự hiển thị.",
+      });
+    });
+  }
+
   const noun = assetType === "backdrop" ? "phông" : "đạo cụ";
 
   return (
     <div className="rental-admin-manager-v3">
-      {state.error && (
-        <p className="notice error" role="alert">
-          {state.error}
-        </p>
-      )}
-
-      {state.success && (
-        <p className="notice success" role="status">
-          {state.success}
+      {status && (
+        <p
+          className={`notice ${status.type === "error" ? "error" : "success"}`}
+          role={status.type === "error" ? "alert" : "status"}
+        >
+          {status.text}
         </p>
       )}
 
@@ -321,7 +338,7 @@ export function RentalAssetAdminManager({
           </div>
         </div>
 
-        <form action={formAction} className="rental-admin-order-form-v3">
+        <form onSubmit={saveOrder} className="rental-admin-order-form-v3">
           <input type="hidden" name="ids" value={payload} readOnly />
 
           <div
@@ -494,7 +511,7 @@ export function RentalAssetAdminManager({
                   </div>
 
                   <div className="rental-admin-actions-v3">
-                    <Link href={editHref}>
+                    <Link href={editHref} prefetch={false}>
                       <Pencil size={15} aria-hidden="true" />
                       Chỉnh sửa
                     </Link>

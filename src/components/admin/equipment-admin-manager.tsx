@@ -448,7 +448,10 @@ export function EquipmentAdminManager({
                 </div>
 
                 <div className="equipment-admin-actions equipment-admin-actions-v3">
-                  <Link href={`/admin/equipment/${item.id}`}>
+                  <Link
+                    href={`/admin/equipment/${item.id}`}
+                    prefetch={false}
+                  >
                     Chỉnh sửa
                   </Link>
 

@@ -36,10 +36,20 @@ export async function RentalAssetAdminList({
   const [{ db }] = await Promise.all([requireAdminPage(), searchParams]);
   const meta = cfg(assetType);
 
-  const { data, error } = await db
-    .from(meta.table)
-    .select("*")
-    .order("sort_order");
+  const { data, error } =
+    assetType === "backdrop"
+      ? await db
+          .from("backdrops")
+          .select(
+            "id,name,name_en,kind,price,included,image_url,images,published,sort_order",
+          )
+          .order("sort_order")
+      : await db
+          .from("props")
+          .select(
+            "id,name,name_en,price,included,image_url,images,published,sort_order",
+          )
+          .order("sort_order");
 
   if (error) {
     throw new Error(

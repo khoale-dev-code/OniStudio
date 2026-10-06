@@ -28,7 +28,9 @@ export default async function EquipmentAdmin({
   const [equipmentResult, categoriesResult] = await Promise.all([
     db
       .from("equipment")
-      .select("*")
+      .select(
+        "id,name,name_en,category,price,included,images,image_url,published,sort_order,rental_source,included_equipment_ids,included_equipment_items,created_at",
+      )
       .neq("category", "backdrop")
       .order("rental_source")
       .order("sort_order")

@@ -753,16 +753,19 @@ async function reorderRentalAssets(
     return { error: "Vui lòng đăng nhập lại." };
   }
 
-  const table = assetType === "backdrop" ? "backdrops" : "props";
-  const results = await Promise.all(
-    ids.map((id, index) =>
-      session.db.from(table).update({ sort_order: index }).eq("id", id),
-    ),
-  );
+  const { error } = await session.db.rpc("reorder_rental_assets", {
+    p_asset_type: assetType,
+    p_ids: ids,
+  });
 
-  const failed = results.find((result) => result.error);
+  if (error) {
+    if (["42883", "PGRST202"].includes(error.code || "")) {
+      return {
+        error:
+          "Chưa có hàm sắp xếp nhanh cho Phông / Đạo cụ. Hãy chạy migration 120_admin_performance_v2.sql.",
+      };
+    }
 
-  if (failed?.error) {
     return { error: "Không thể cập nhật thứ tự hiển thị." };
   }
 
