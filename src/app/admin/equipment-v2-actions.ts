@@ -1,8 +1,9 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import { updateTag } from "next/cache";
 import { requireAdmin } from "@/lib/auth";
+import { CATALOG_CACHE_TAG } from "@/lib/cache-tags";
 import {
   imageList,
   integer,
@@ -19,17 +20,8 @@ import type {
 } from "@/types/catalog";
 
 function revalidateEquipmentV2(equipmentId?: string) {
-  revalidatePath("/");
-  revalidatePath("/equipment");
-  revalidatePath("/en/equipment");
-  revalidatePath("/equipment/[slug]", "page");
-  revalidatePath("/en/equipment/[slug]", "page");
-  revalidatePath("/pricing");
-  revalidatePath("/admin/equipment");
-
-  if (equipmentId) {
-    revalidatePath(`/admin/equipment/${equipmentId}`);
-  }
+  void equipmentId;
+  updateTag(CATALOG_CACHE_TAG);
 }
 
 function dbMessage(code?: string) {

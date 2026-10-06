@@ -94,6 +94,7 @@ export default async function Rooms({
               <Link
                 className="button button-outline studio-edit-button"
                 href={`/admin/studios/${room.id}`}
+                prefetch={false}
               >
                 <Pencil size={16} aria-hidden="true" />
                 <span>Chỉnh sửa</span>

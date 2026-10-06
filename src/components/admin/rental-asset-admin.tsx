@@ -8,6 +8,19 @@ import { RentalAssetAdminManager } from "./rental-asset-admin-manager";
 type AssetType = "backdrop" | "prop";
 type Asset = Backdrop | PropItem;
 
+type RentalAdminListRow = {
+  id: string;
+  name: string;
+  name_en: string;
+  kind?: "color" | "effect";
+  price: number | null;
+  included: boolean;
+  image_url: string | null;
+  image_count: number;
+  published: boolean;
+  sort_order: number;
+};
+
 function cfg(type: AssetType) {
   return type === "backdrop"
     ? {
@@ -41,13 +54,13 @@ export async function RentalAssetAdminList({
       ? await db
           .from("backdrops")
           .select(
-            "id,name,name_en,kind,price,included,image_url,images,published,sort_order",
+            "id,name,name_en,kind,price,included,image_url,image_count,published,sort_order",
           )
           .order("sort_order")
       : await db
           .from("props")
           .select(
-            "id,name,name_en,price,included,image_url,images,published,sort_order",
+            "id,name,name_en,price,included,image_url,image_count,published,sort_order",
           )
           .order("sort_order");
 
@@ -57,22 +70,21 @@ export async function RentalAssetAdminList({
     );
   }
 
-  const items = (data || []) as Asset[];
+  const items = (data || []) as RentalAdminListRow[];
 
   const managerItems = items.map((item) => ({
     id: item.id,
     name: item.name,
     name_en: item.name_en,
-    cover: item.images?.[0] || item.image_url || null,
+    cover: item.image_url,
     kind:
-      assetType === "backdrop" && "kind" in item
-        ? item.kind
+      assetType === "backdrop"
+        ? item.kind ?? "color"
         : ("prop" as const),
     included: item.included,
     price: item.price,
     published: item.published,
-    imageCount:
-      item.images?.length || (item.image_url ? 1 : 0),
+    imageCount: Number(item.image_count || 0),
   }));
 
   return (

@@ -1,10 +1,11 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { createAuthClient } from "@/lib/supabase/server";
 import { isConfigured } from "@/lib/supabase/config";
 import { requireAdmin } from "@/lib/auth";
+import { CATALOG_CACHE_TAG } from "@/lib/cache-tags";
 import {
   equipmentPayload,
   imageList,
@@ -65,42 +66,33 @@ function dbMessage(code?: string) {
   return "Không thể lưu dữ liệu. Kiểm tra kết nối và quyền Supabase.";
 }
 
+function refreshPublicCatalog() {
+  updateTag(CATALOG_CACHE_TAG);
+}
+
 function revalidateEquipment(equipmentId?: string) {
-  revalidatePath("/");
-  revalidatePath("/equipment");
-  revalidatePath("/equipment/[slug]", "page");
-  revalidatePath("/pricing");
-  revalidatePath("/admin/equipment");
-  if (equipmentId) revalidatePath(`/admin/equipment/${equipmentId}`);
+  void equipmentId;
+  refreshPublicCatalog();
 }
 
 function revalidateEquipmentCategories() {
-  revalidatePath("/");
-  revalidatePath("/equipment");
-  revalidatePath("/pricing");
+  refreshPublicCatalog();
   revalidatePath("/admin/equipment");
   revalidatePath("/admin/categories");
 }
 
 function revalidateStudios(studioId?: string) {
-  revalidatePath("/");
-  revalidatePath("/studios");
-  revalidatePath("/studios/[slug]", "page");
-  revalidatePath("/pricing");
-  revalidatePath("/admin/studios");
-  if (studioId) revalidatePath(`/admin/studios/${studioId}`);
+  void studioId;
+  refreshPublicCatalog();
 }
 
 function revalidateGallery(galleryId?: string) {
-  revalidatePath("/");
-  revalidatePath("/gallery");
-  revalidatePath("/admin/gallery");
-  if (galleryId) revalidatePath(`/admin/gallery/${galleryId}`);
+  void galleryId;
+  refreshPublicCatalog();
 }
 
 function revalidateGalleryCategories() {
-  revalidatePath("/");
-  revalidatePath("/gallery");
+  refreshPublicCatalog();
   revalidatePath("/admin/gallery");
   revalidatePath("/admin/gallery/categories");
 }
@@ -369,8 +361,14 @@ export async function deleteEquipmentUnit(
 }
 
 /* oni-rental-catalog-actions-v1:start */
-function revalidateBackdrops(id?: string) { revalidatePath("/backdrops"); revalidatePath("/effect-backdrops"); revalidatePath("/admin/backdrops"); if (id) revalidatePath(`/admin/backdrops/${id}`); }
-function revalidateProps(id?: string) { revalidatePath("/props"); revalidatePath("/admin/props"); if (id) revalidatePath(`/admin/props/${id}`); }
+function revalidateBackdrops(id?: string) {
+  void id;
+  refreshPublicCatalog();
+}
+function revalidateProps(id?: string) {
+  void id;
+  refreshPublicCatalog();
+}
 function rentalAssetPayload(form: FormData) {
  const images=imageList(form); const included=form.get("included")==="on"; const price=included?null:integer(form,"price",1000000000,true);
  if (!included && price===null) throw new Error("Hãy nhập giá thuê hoặc chọn Miễn phí.");
@@ -769,14 +767,7 @@ async function reorderRentalAssets(
     return { error: "Không thể cập nhật thứ tự hiển thị." };
   }
 
-  if (assetType === "backdrop") {
-    revalidatePath("/backdrops");
-    revalidatePath("/effect-backdrops");
-    revalidatePath("/admin/backdrops");
-  } else {
-    revalidatePath("/props");
-    revalidatePath("/admin/props");
-  }
+  refreshPublicCatalog();
 
   return { success: "Đã cập nhật thứ tự hiển thị." };
 }

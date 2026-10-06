@@ -1,5 +1,6 @@
 import "server-only";
 import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
 import local from "@/data/catalog.json";
 import {
@@ -17,6 +18,7 @@ import type {
   Studio,
 } from "@/types/catalog";
 import { isConfigured, supabaseConfig } from "./supabase/config";
+import { CATALOG_CACHE_TAG } from "./cache-tags";
 
 type Catalog = {
   studios: Studio[];
@@ -64,7 +66,8 @@ function attachIncludedEquipmentNames(
   });
 }
 
-export const getCatalog = cache(async (): Promise<Catalog> => {
+const loadCatalog = unstable_cache(
+  async (): Promise<Catalog> => {
   if (!isConfigured()) {
     const fallback = local as {
       studios: Studio[];
@@ -98,22 +101,51 @@ export const getCatalog = cache(async (): Promise<Catalog> => {
     categoriesResult,
     galleryCategoriesResult,
   ] = await Promise.all([
-    db.from("studios").select("*").eq("published", true).order("sort_order"),
+    db
+      .from("studios")
+      .select(
+        "id,slug,name,description,area,capacity,price,led_count,images,published,sort_order",
+      )
+      .eq("published", true)
+      .order("sort_order"),
     db
       .from("equipment")
-      .select("*")
+      .select(
+        "id,slug,name,name_en,category,description,specifications,price,unit,included,status,image_url,images,featured,published,sort_order,rental_source,included_equipment_ids,included_equipment_items",
+      )
       .eq("published", true)
       .neq("category", "backdrop")
       .order("sort_order"),
-    db.from("backdrops").select("*").eq("published", true).order("sort_order"),
-    db.from("props").select("*").eq("published", true).order("sort_order"),
-    db.from("gallery").select("*").eq("published", true).order("sort_order"),
+    db
+      .from("backdrops")
+      .select(
+        "id,slug,name,name_en,kind,description,price,included,image_url,images,published,sort_order",
+      )
+      .eq("published", true)
+      .order("sort_order"),
+    db
+      .from("props")
+      .select(
+        "id,slug,name,name_en,description,price,included,image_url,images,published,sort_order",
+      )
+      .eq("published", true)
+      .order("sort_order"),
+    db
+      .from("gallery")
+      .select(
+        "id,title,description,category,image_url,images,facebook_url,instagram_url,photographer_name,photographer_facebook_url,photographer_instagram_url,oni_production,oni_lighting,shot_at_oni,published,sort_order",
+      )
+      .eq("published", true)
+      .order("sort_order"),
     db
       .from("equipment_categories")
-      .select("*")
+      .select("id,slug,name,sort_order")
       .neq("slug", "backdrop")
       .order("sort_order"),
-    db.from("gallery_categories").select("*").order("sort_order"),
+    db
+      .from("gallery_categories")
+      .select("id,slug,name,sort_order")
+      .order("sort_order"),
   ]);
 
   const required = [studiosResult, equipmentResult, galleryResult];
@@ -199,4 +231,12 @@ export const getCatalog = cache(async (): Promise<Catalog> => {
       ? defaultGalleryCategories
       : ((galleryCategoriesResult.data || []) as GalleryCategory[]),
   };
-});
+  },
+  ["oni-public-catalog-v3"],
+  {
+    tags: [CATALOG_CACHE_TAG],
+    revalidate: 300,
+  },
+);
+
+export const getCatalog = cache(loadCatalog);

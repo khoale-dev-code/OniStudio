@@ -13834,3 +13834,90 @@ button.admin-mobile-close svg {
 }
 
 /* oni-admin-mobile-controls-v5:end */
+
+/* oni-admin-performance-v3:start */
+
+/*
+  Mobile admin rendering:
+  let the browser skip layout/paint work for long off-screen rows while
+  preserving the existing visual design and all drag/edit interactions.
+*/
+@media (max-width: 900px) {
+  .equipment-admin-row-v3,
+  .rental-admin-row-v3,
+  .gallery-library-row,
+  .studio-admin-card {
+    content-visibility: auto;
+  }
+
+  .equipment-admin-row-v3,
+  .rental-admin-row-v3 {
+    contain-intrinsic-block-size: 118px;
+  }
+
+  .gallery-library-row {
+    contain-intrinsic-block-size: 124px;
+  }
+
+  .studio-admin-card {
+    contain-intrinsic-block-size: 240px;
+  }
+
+  /* Backdrop blur is relatively expensive on lower-end mobile GPUs. */
+  .admin-mobile-dialog::backdrop {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+.gallery-deferred-create {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.gallery-deferred-create .button {
+  justify-self: start;
+}
+
+.gallery-deferred-loading {
+  min-height: 150px;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+}
+
+.gallery-deferred-create-open {
+  display: grid;
+  gap: 14px;
+}
+
+.gallery-deferred-create-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.gallery-deferred-create-toolbar > div {
+  display: grid;
+  gap: 3px;
+}
+
+.gallery-deferred-create-toolbar span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 560px) {
+  .gallery-deferred-create-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .gallery-deferred-create-toolbar .button {
+    width: 100%;
+  }
+}
+
+/* oni-admin-performance-v3:end */
