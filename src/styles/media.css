@@ -13683,3 +13683,154 @@
 }
 
 /* oni-admin-mobile-drawer-light-v3:end */
+
+/* oni-admin-mobile-logout-danger-v4:start */
+
+/* Destructive action: make logout immediately recognizable. */
+.admin-mobile-logout,
+.admin-mobile-logout:link,
+.admin-mobile-logout:visited {
+  border: 1px solid #ef4444 !important;
+  background: #fff5f5 !important;
+  color: #dc2626 !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+.admin-mobile-logout:hover {
+  border-color: #dc2626 !important;
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+.admin-mobile-logout:active {
+  background: #fecaca !important;
+  color: #991b1b !important;
+}
+
+.admin-mobile-logout svg {
+  color: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* oni-admin-mobile-logout-danger-v4:end */
+
+/* oni-admin-mobile-controls-v5:start */
+
+/* Force the destructive logout action to be unmistakably red. */
+.admin-mobile-dialog
+.admin-mobile-dialog-content
+.admin-mobile-dialog-footer
+form
+button.admin-mobile-logout {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  min-height: 46px !important;
+  padding: 0 22px !important;
+  border: 1px solid #dc2626 !important;
+  border-radius: 999px !important;
+  background: #dc2626 !important;
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.16) !important;
+  font: inherit !important;
+  font-size: 0.82rem !important;
+  font-weight: 750 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.admin-mobile-dialog
+.admin-mobile-dialog-content
+.admin-mobile-dialog-footer
+form
+button.admin-mobile-logout:hover {
+  border-color: #b91c1c !important;
+  background: #b91c1c !important;
+  background-color: #b91c1c !important;
+  color: #ffffff !important;
+}
+
+.admin-mobile-dialog
+.admin-mobile-dialog-content
+.admin-mobile-dialog-footer
+form
+button.admin-mobile-logout:active {
+  border-color: #991b1b !important;
+  background: #991b1b !important;
+  background-color: #991b1b !important;
+  color: #ffffff !important;
+  transform: translateY(1px);
+}
+
+/* Make the close icon mathematically centered inside the square button. */
+.admin-mobile-dialog
+.admin-mobile-dialog-head
+button.admin-mobile-close {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  flex: 0 0 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  place-items: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1px solid #d7dce5 !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  line-height: 0 !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 14px rgba(16, 24, 40, 0.06) !important;
+}
+
+.admin-mobile-dialog
+.admin-mobile-dialog-head
+button.admin-mobile-close svg {
+  display: block !important;
+  width: 22px !important;
+  height: 22px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 0 22px !important;
+  color: #111827 !important;
+  stroke: #111827 !important;
+  transform: none !important;
+}
+
+/* Keep brand and close button vertically aligned. */
+.admin-mobile-dialog .admin-mobile-dialog-head {
+  min-height: 52px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+@media (max-width: 560px) {
+  .admin-mobile-dialog
+  .admin-mobile-dialog-content
+  .admin-mobile-dialog-footer
+  form
+  button.admin-mobile-logout {
+    min-height: 44px !important;
+    padding-inline: 20px !important;
+  }
+
+  .admin-mobile-dialog
+  .admin-mobile-dialog-head
+  button.admin-mobile-close {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    flex-basis: 42px !important;
+  }
+}
+
+/* oni-admin-mobile-controls-v5:end */
