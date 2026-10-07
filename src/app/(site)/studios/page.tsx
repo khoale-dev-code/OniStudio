@@ -64,6 +64,7 @@ async function StudiosContent() {
               studio={studio}
               locale={locale}
               index={index + 1}
+              autoRotate
             />
           ))}
         </div>

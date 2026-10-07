@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { StudioCardAutoImages } from "@/components/catalog/studio-card-auto-images";
 import Link from "@/components/ui/nav-link";
 import {
   ArrowUpRight,
@@ -16,10 +16,12 @@ export function StudioCard({
   studio,
   locale,
   index,
+  autoRotate = false,
 }: {
   studio: Studio;
   locale: Locale;
   index?: number;
+  autoRotate?: boolean;
 }) {
   const detailHref = href(locale, `/studios/${studio.slug}`);
   const description = studio.description[locale];
@@ -32,10 +34,11 @@ export function StudioCard({
   return (
     <article className="studio-card studio-card-v2">
       <Link href={detailHref} className="room-visual studio-card-media">
-        <Image
-          src={studio.images[0] || "/images/studio-concept.webp"}
-          fill
-          sizes="(max-width: 767px) 100vw, (max-width: 1100px) 50vw, 680px"
+        <StudioCardAutoImages
+          images={studio.images}
+          slug={studio.slug}
+          autoRotate={autoRotate}
+          priority={(index ?? 99) <= 2}
           alt={
             studio.images.length
               ? studio.name
@@ -43,7 +46,6 @@ export function StudioCard({
                 ? "Minh họa không gian chụp ảnh"
                 : "Photography space concept"
           }
-          className={`room-image room-${studio.slug}`}
         />
 
         <div className="studio-card-media-shade" aria-hidden="true" />
