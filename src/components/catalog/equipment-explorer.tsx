@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import {
-  Building2,
   Search,
   SlidersHorizontal,
-  Truck,
 } from "lucide-react";
 import { EquipmentCard } from "./equipment-card";
 import type {
@@ -14,7 +12,7 @@ import type {
   Locale,
 } from "@/types/catalog";
 
-type SourceFilter = "all" | "internal" | "external";
+type SourceFilter = "internal" | "external";
 
 function normalize(value: string) {
   return value
@@ -24,9 +22,6 @@ function normalize(value: string) {
     .toLowerCase();
 }
 
-function sourceRank(item: Equipment) {
-  return item.rental_source === "external" ? 1 : 0;
-}
 
 export function EquipmentExplorer({
   items,
@@ -39,7 +34,7 @@ export function EquipmentExplorer({
 }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
-  const [source, setSource] = useState<SourceFilter>("all");
+  const [source, setSource] = useState<SourceFilter>("internal");
   const [sort, setSort] = useState("default");
 
   const externalCount = items.filter(
@@ -50,7 +45,7 @@ export function EquipmentExplorer({
   const sourceItems = items.filter((item) => {
     const itemSource =
       item.rental_source === "external" ? "external" : "internal";
-    return source === "all" || itemSource === source;
+    return itemSource === source;
   });
 
   const filtered = sourceItems
@@ -70,10 +65,6 @@ export function EquipmentExplorer({
         return (b.price ?? 0) - (a.price ?? 0);
       }
 
-      if (source === "all") {
-        const sourceDifference = sourceRank(a) - sourceRank(b);
-        if (sourceDifference !== 0) return sourceDifference;
-      }
 
       return a.sort_order - b.sort_order || a.name.localeCompare(b.name);
     });
@@ -90,15 +81,11 @@ export function EquipmentExplorer({
   const sourceLabel =
     source === "external"
       ? locale === "vi"
-        ? "thiết bị thuê ngoài"
+        ? "thiết bị cho thuê ngoài"
         : "external rental items"
-      : source === "internal"
-        ? locale === "vi"
-          ? "thiết bị tại Oni"
-          : "items at Oni"
-        : locale === "vi"
-          ? "thiết bị"
-          : "items";
+      : locale === "vi"
+        ? "thiết bị tại Studio"
+        : "items in studio";
 
   return (
     <>
@@ -111,22 +98,13 @@ export function EquipmentExplorer({
               locale === "vi" ? "Nguồn thiết bị" : "Equipment source"
             }
           >
-            <button
-              type="button"
-              aria-pressed={source === "all"}
-              onClick={() => chooseSource("all")}
-            >
-              <span>{locale === "vi" ? "Tất cả" : "All"}</span>
-              <strong>{items.length}</strong>
-            </button>
 
             <button
               type="button"
               aria-pressed={source === "internal"}
               onClick={() => chooseSource("internal")}
             >
-              <Building2 size={16} aria-hidden="true" />
-              <span>{locale === "vi" ? "Tại Oni" : "At Oni"}</span>
+              <span>{locale === "vi" ? "Studio" : "In Studio"}</span>
               <strong>{internalCount}</strong>
             </button>
 
@@ -135,8 +113,7 @@ export function EquipmentExplorer({
               aria-pressed={source === "external"}
               onClick={() => chooseSource("external")}
             >
-              <Truck size={16} aria-hidden="true" />
-              <span>{locale === "vi" ? "Thuê ngoài" : "External"}</span>
+              <span>{locale === "vi" ? "Cho thuê ngoài" : "External rental"}</span>
               <strong>{externalCount}</strong>
             </button>
           </div>
@@ -254,7 +231,7 @@ export function EquipmentExplorer({
             onClick={() => {
               setQuery("");
               setCategory("all");
-              setSource("all");
+              setSource("internal");
             }}
           >
             {locale === "vi" ? "Xóa bộ lọc" : "Clear filters"}

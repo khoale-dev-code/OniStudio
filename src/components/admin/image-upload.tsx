@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import {
@@ -18,12 +19,16 @@ export function ImageUpload({
   onUrlsChange,
   max = 12,
   name = "images",
+  purpose = "default",
+  showUrlInput = true,
 }: {
   initialUrls?: string[];
   onBlockedChange: (blocked: boolean) => void;
   onUrlsChange?: (urls: string[]) => void;
   max?: number;
   name?: string;
+  purpose?: "default" | "gallery";
+  showUrlInput?: boolean;
 }) {
   const { items, message, addFiles, remove, retry, move, addUrl } =
     useMediaUpload(initialUrls, max);
@@ -34,18 +39,23 @@ export function ImageUpload({
   const manager = useRef<HTMLElement>(null);
   const pointer = useRef({ x: 0, y: 0 });
   const dragId = drag?.from;
+  const galleryMode = purpose === "gallery";
+
   useEffect(() => {
     if (!dragId) return;
     const from = dragId;
     let frame: number;
+
     function scrollWhileDragging() {
       const { x, y } = pointer.current;
       const speed = y < 80 ? -10 : y > window.innerHeight - 80 ? 10 : 0;
+
       if (speed) {
         window.scrollBy({ top: speed, behavior: "instant" });
         const element = document
           .elementFromPoint(x, y)
           ?.closest<HTMLElement>("[data-media-id]");
+
         if (element && manager.current?.contains(element)) {
           const to = element.dataset.mediaId!;
           setDrag((previous) =>
@@ -55,16 +65,20 @@ export function ImageUpload({
           );
         }
       }
+
       frame = requestAnimationFrame(scrollWhileDragging);
     }
+
     frame = requestAnimationFrame(scrollWhileDragging);
     return () => cancelAnimationFrame(frame);
   }, [dragId]);
+
   const id = useId();
   const blocked = items.some((item) => item.status !== "ready");
   const uploading = items.filter(
     (item) => item.status === "uploading" || item.status === "queued",
   ).length;
+
   useEffect(() => {
     onBlockedChange(blocked);
   }, [blocked, onBlockedChange]);
@@ -76,68 +90,82 @@ export function ImageUpload({
         .map((item) => item.url),
     );
   }, [items, onUrlsChange]);
+
   useEffect(() => {
     if (!blocked) return;
+
     function preventExit(event: BeforeUnloadEvent) {
       event.preventDefault();
     }
+
     window.addEventListener("beforeunload", preventExit);
     return () => window.removeEventListener("beforeunload", preventExit);
   }, [blocked]);
+
   return (
     <section
       ref={manager}
-      className="media-manager form-field full"
+      className={`media-manager form-field full${galleryMode ? " is-gallery-stream" : ""}`}
       aria-labelledby={`${id}-title`}
     >
       <div className="media-heading">
         <div>
-          <h3 id={`${id}-title`}>Hình ảnh</h3>
+          <h3 id={`${id}-title`}>
+            {galleryMode ? "Hình ảnh hiển thị" : "Hình ảnh"}
+          </h3>
           <p>
-            Ảnh đầu tiên là ảnh bìa. Kéo tay nắm để đổi thứ tự, hoặc dùng các
-            nút mũi tên.
+            {galleryMode
+              ? "Kéo tay nắm để đổi vị trí. Thứ tự ở đây chính là thứ tự ngoài website."
+              : "Ảnh đầu tiên là ảnh bìa. Kéo tay nắm để đổi thứ tự, hoặc dùng các nút mũi tên."}
           </p>
         </div>
+
         <span className="pill">
           {items.length} / {max}
         </span>
       </div>
+
       <input
         type="hidden"
         name={name}
         value={items
-          .filter((x) => x.status === "ready")
-          .map((x) => x.url)
+          .filter((item) => item.status === "ready")
+          .map((item) => item.url)
           .join("\n")}
       />
       <input type="hidden" name="media_blocked" value={blocked ? "1" : "0"} />
+
       <div
         className={`upload-dropzone ${over ? "is-over" : ""}`}
-        onDragOver={(e) => {
-          e.preventDefault();
+        onDragOver={(event) => {
+          event.preventDefault();
           setOver(true);
         }}
-        onDragLeave={(e) => {
-          if (!e.currentTarget.contains(e.relatedTarget as Node | null))
+        onDragLeave={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
             setOver(false);
+          }
         }}
-        onDrop={(e) => {
-          e.preventDefault();
+        onDrop={(event) => {
+          event.preventDefault();
           setOver(false);
-          addFiles(Array.from(e.dataTransfer.files));
+          addFiles(Array.from(event.dataTransfer.files));
         }}
       >
         <UploadCloud size={28} strokeWidth={1.5} />
         <strong>Kéo thả ảnh vào đây</strong>
         <span>JPEG, PNG, WebP · Tối đa 8 MB / ảnh</span>
+
         <button
           className="button button-small"
           type="button"
           disabled={items.length >= max}
           onClick={() => input.current?.click()}
         >
-          <ImagePlus size={16} /> Chọn nhiều ảnh
+          <ImagePlus size={16} />
+          Chọn nhiều ảnh
         </button>
+
         <input
           ref={input}
           id={`${id}-files`}
@@ -147,28 +175,34 @@ export function ImageUpload({
           type="file"
           accept="image/jpeg,image/png,image/webp"
           multiple
-          onChange={(e) => {
-            addFiles(Array.from(e.target.files || []));
-            e.target.value = "";
+          onChange={(event) => {
+            addFiles(Array.from(event.target.files || []));
+            event.target.value = "";
           }}
         />
       </div>
+
       <div className="media-status" role="status" aria-live="polite">
         {uploading
           ? `Đang tải ${uploading} ảnh. Bạn vẫn có thể sắp xếp hoặc thêm ảnh.`
           : blocked
             ? "Có ảnh tải lỗi. Thử lại hoặc bỏ ảnh lỗi trước khi lưu."
             : items.length
-              ? "Ảnh đã sẵn sàng. Bấm Lưu để cập nhật website."
+              ? galleryMode
+                ? "Ảnh đã sẵn sàng. Kéo để sắp xếp rồi bấm Cập nhật thư viện."
+                : "Ảnh đã sẵn sàng. Bấm Lưu để cập nhật website."
               : "Chọn ảnh để bắt đầu."}{" "}
         {message}
       </div>
+
       <ol className="media-grid">
         {items.map((item, index) => (
           <li
             key={item.id}
             data-media-id={item.id}
-            className={`media-tile ${drag?.from === item.id ? "is-dragging" : ""} ${drag?.to === item.id && drag.from !== item.id ? "is-target" : ""}`}
+            className={`media-tile ${drag?.from === item.id ? "is-dragging" : ""} ${
+              drag?.to === item.id && drag.from !== item.id ? "is-target" : ""
+            }`}
           >
             <div className="media-preview">
               <Image
@@ -179,9 +213,15 @@ export function ImageUpload({
                 unoptimized
                 draggable={false}
               />
+
               <span className="media-position">
-                {index === 0 ? "Ảnh bìa" : String(index + 1).padStart(2, "0")}
+                {galleryMode
+                  ? String(index + 1).padStart(2, "0")
+                  : index === 0
+                    ? "Ảnh bìa"
+                    : String(index + 1).padStart(2, "0")}
               </span>
+
               <button
                 type="button"
                 className="media-remove icon-button"
@@ -191,8 +231,10 @@ export function ImageUpload({
                 <X size={17} />
               </button>
             </div>
+
             <div className="media-tile-info">
               <p title={item.name}>{item.name}</p>
+
               {item.status === "uploading" ? (
                 <>
                   <progress
@@ -218,66 +260,81 @@ export function ImageUpload({
                     className="text-link"
                     onClick={() => retry(item.id)}
                   >
-                    <RotateCcw size={14} /> Thử lại
+                    <RotateCcw size={14} />
+                    Thử lại
                   </button>
                 </>
               ) : (
                 <small>Đã tải lên</small>
               )}
             </div>
+
             <div className="media-controls">
               <button
                 type="button"
                 className="icon-button drag-handle"
                 aria-label={`Di chuyển ảnh ${index + 1}, dùng phím trái hoặc phải`}
                 aria-describedby={`${id}-help`}
-                onPointerDown={(e) => {
-                  if (e.button !== 0) return;
-                  pointer.current = { x: e.clientX, y: e.clientY };
-                  e.currentTarget.setPointerCapture(e.pointerId);
+                onPointerDown={(event) => {
+                  if (event.button !== 0) return;
+                  pointer.current = { x: event.clientX, y: event.clientY };
+                  event.currentTarget.setPointerCapture(event.pointerId);
                   setDrag({ from: item.id, to: item.id });
                 }}
-                onPointerMove={(e) => {
-                  pointer.current = { x: e.clientX, y: e.clientY };
-                  if (!drag || !e.currentTarget.hasPointerCapture(e.pointerId))
+                onPointerMove={(event) => {
+                  pointer.current = { x: event.clientX, y: event.clientY };
+
+                  if (
+                    !drag ||
+                    !event.currentTarget.hasPointerCapture(event.pointerId)
+                  ) {
                     return;
+                  }
+
                   const target = document
-                    .elementFromPoint(e.clientX, e.clientY)
+                    .elementFromPoint(event.clientX, event.clientY)
                     ?.closest<HTMLElement>("[data-media-id]")?.dataset.mediaId;
-                  if (target && items.some((x) => x.id === target))
+
+                  if (target && items.some((entry) => entry.id === target)) {
                     setDrag({ from: drag.from, to: target });
+                  }
                 }}
-                onPointerUp={(e) => {
+                onPointerUp={(event) => {
                   if (drag) move(drag.from, drag.to);
                   setDrag(null);
-                  if (e.currentTarget.hasPointerCapture(e.pointerId))
-                    e.currentTarget.releasePointerCapture(e.pointerId);
+
+                  if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+                    event.currentTarget.releasePointerCapture(event.pointerId);
+                  }
                 }}
                 onPointerCancel={() => setDrag(null)}
                 onLostPointerCapture={() => setDrag(null)}
-                onKeyDown={(e) => {
-                  if (e.key === "Escape") setDrag(null);
+                onKeyDown={(event) => {
+                  if (event.key === "Escape") setDrag(null);
+
                   const next =
-                    e.key === "ArrowLeft" || e.key === "ArrowUp"
+                    event.key === "ArrowLeft" || event.key === "ArrowUp"
                       ? index - 1
-                      : e.key === "ArrowRight" || e.key === "ArrowDown"
+                      : event.key === "ArrowRight" || event.key === "ArrowDown"
                         ? index + 1
                         : -1;
+
                   if (
                     [
                       "ArrowLeft",
                       "ArrowRight",
                       "ArrowUp",
                       "ArrowDown",
-                    ].includes(e.key)
+                    ].includes(event.key)
                   ) {
-                    e.preventDefault();
+                    event.preventDefault();
                     if (items[next]) move(item.id, items[next].id);
                   }
                 }}
               >
                 <GripVertical size={19} />
               </button>
+
               <button
                 type="button"
                 className="icon-button"
@@ -287,6 +344,7 @@ export function ImageUpload({
               >
                 <ArrowLeft size={16} />
               </button>
+
               <button
                 type="button"
                 className="icon-button"
@@ -300,38 +358,44 @@ export function ImageUpload({
           </li>
         ))}
       </ol>
+
       <p id={`${id}-help`} className="sr-only">
         Kéo tay nắm tới ảnh khác rồi thả. Trên bàn phím, dùng các phím mũi tên.
-        Ảnh đầu tiên là ảnh bìa.
       </p>
-      <details className="media-url">
-        <summary>Dùng URL ảnh Cloudinary có sẵn</summary>
-        <label htmlFor={`${id}-url`}>URL ảnh</label>
-        <div>
-          <input
-            id={`${id}-url`}
-            type="url"
-            value={url}
-            maxLength={2048}
-            placeholder="https://res.cloudinary.com/..."
-            onChange={(e) => setUrl(e.target.value)}
-          />
-          <button
-            type="button"
-            className="button button-outline"
-            disabled={!url || items.length >= max}
-            onClick={() => {
-              if (addUrl(url.trim())) setUrl("");
-            }}
-          >
-            Thêm ảnh
-          </button>
-        </div>
-      </details>
-      <small>
-        Bỏ ảnh chỉ gỡ khỏi danh sách đang chỉnh sửa; không xóa file gốc trên
-        Cloudinary.
-      </small>
+
+      {showUrlInput && (
+        <details className="media-url">
+          <summary>Dùng URL ảnh Cloudinary có sẵn</summary>
+          <label htmlFor={`${id}-url`}>URL ảnh</label>
+          <div>
+            <input
+              id={`${id}-url`}
+              type="url"
+              value={url}
+              maxLength={2048}
+              placeholder="https://res.cloudinary.com/..."
+              onChange={(event) => setUrl(event.target.value)}
+            />
+            <button
+              type="button"
+              className="button button-outline"
+              disabled={!url || items.length >= max}
+              onClick={() => {
+                if (addUrl(url.trim())) setUrl("");
+              }}
+            >
+              Thêm ảnh
+            </button>
+          </div>
+        </details>
+      )}
+
+      {!galleryMode && (
+        <small>
+          Bỏ ảnh chỉ gỡ khỏi danh sách đang chỉnh sửa; không xóa file gốc trên
+          Cloudinary.
+        </small>
+      )}
     </section>
   );
 }

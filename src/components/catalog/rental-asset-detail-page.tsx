@@ -1,16 +1,10 @@
-import Link from "@/components/ui/nav-link";
-import { ProductGallery } from "@/components/catalog/product-gallery";
-import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
+import { RentalPinterestViewer } from "@/components/catalog/rental-pinterest-viewer";
 import { getCatalog } from "@/lib/catalog";
 import { context } from "@/lib/i18n";
 import { href } from "@/lib/links";
 import { pageMetadata } from "@/lib/metadata";
-import type {
-  Backdrop,
-  Locale,
-  PropItem,
-} from "@/types/catalog";
+import type { Backdrop, PropItem } from "@/types/catalog";
 
 type RentalDetailMode = "effect" | "color" | "prop";
 type RentalAsset = Backdrop | PropItem;
@@ -49,16 +43,6 @@ function backPath(mode: RentalDetailMode) {
   if (mode === "prop") return "/props";
   if (mode === "effect") return "/effect-backdrops";
   return "/backdrops";
-}
-
-function typeLabel(mode: RentalDetailMode, locale: Locale) {
-  if (mode === "prop") return locale === "vi" ? "Đạo cụ" : "Prop";
-  if (mode === "effect") {
-    return locale === "vi"
-      ? "Phông màu hiệu ứng"
-      : "Effect backdrop";
-  }
-  return locale === "vi" ? "Phông màu" : "Color backdrop";
 }
 
 export async function rentalAssetMetadata({
@@ -104,51 +88,12 @@ export async function RentalAssetDetailPage({
   if (!item) notFound();
 
   const images = getImages(item);
-  const name = locale === "en" ? item.name_en : item.name;
-  const collectionHref = href(locale, backPath(mode));
 
   return (
-    <div className="rental-detail-page">
-      <div className="container rental-detail-inner">
-        <div className="rental-detail-nav">
-          <Link href={collectionHref}>
-            <ArrowLeft size={16} aria-hidden="true" />
-            <span>
-              {locale === "vi"
-                ? `Quay lại ${typeLabel(mode, locale).toLocaleLowerCase("vi")}`
-                : `Back to ${typeLabel(mode, locale).toLowerCase()}`}
-            </span>
-          </Link>
-
-          <span>
-            {images.length} {locale === "vi" ? "ảnh" : "images"}
-          </span>
-        </div>
-
-        <div className="rental-detail-heading">
-          <span>{typeLabel(mode, locale)}</span>
-          <h1>{name}</h1>
-        </div>
-
-        {images.length ? (
-          <div className="rental-detail-gallery">
-            <ProductGallery
-              images={images}
-              name={name}
-              locale={locale}
-              fit="contain"
-            />
-          </div>
-        ) : (
-          <div className="empty-state rental-detail-empty">
-            <h2>
-              {locale === "vi"
-                ? "Hình ảnh đang được cập nhật"
-                : "Images are being updated"}
-            </h2>
-          </div>
-        )}
-      </div>
-    </div>
+    <RentalPinterestViewer
+      images={images}
+      locale={locale}
+      collectionHref={href(locale, backPath(mode))}
+    />
   );
 }

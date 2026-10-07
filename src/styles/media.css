@@ -17317,3 +17317,2572 @@ html[lang="en"] .home-hero-motion-line {
 }
 
 /* oni-homepage-hero-english-mobile-v3_10:end */
+
+/* oni-admin-login-v2:start */
+
+.login-page-v2 {
+  min-height: 100dvh;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.08fr) minmax(520px, 0.92fr);
+  background: #f4f4ef !important;
+  color: #171918;
+}
+
+.login-brand-panel {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 22% 15%, rgba(216, 179, 77, 0.14), transparent 26%),
+    radial-gradient(circle at 76% 68%, rgba(47, 76, 165, 0.26), transparent 35%),
+    linear-gradient(145deg, #111814 0%, #19231c 48%, #111814 100%);
+  color: #f7f6ef;
+}
+
+.login-brand-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.login-brand-panel-inner {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(36px, 5vw, 72px);
+}
+
+.login-brand-logo-link {
+  width: clamp(120px, 10vw, 155px);
+  aspect-ratio: 1;
+  display: block;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.14);
+}
+
+.login-brand-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.login-brand-copy {
+  align-self: center;
+  max-width: 720px;
+  padding-block: 56px;
+}
+
+.login-brand-kicker {
+  margin: 0 0 18px;
+  color: #d7c181;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.login-brand-copy h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(3.4rem, 6.3vw, 6.4rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.login-brand-copy > p:last-child {
+  max-width: 570px;
+  margin-top: 28px;
+  color: #b8c1ba;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.login-brand-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  color: #8f9a92;
+  font-size: 0.72rem;
+}
+
+.login-form-panel {
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(30px, 5vw, 76px);
+}
+
+.login-card-v2 {
+  width: min(100%, 520px) !important;
+  padding: clamp(30px, 4vw, 46px) !important;
+  border: 1px solid #dfe2da !important;
+  border-radius: 26px !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 24px 80px rgba(23, 25, 24, 0.08) !important;
+  backdrop-filter: blur(16px);
+}
+
+.login-mobile-brand {
+  display: none;
+}
+
+.login-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.login-card-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  background: #edf2ff;
+  color: #254cdb;
+}
+
+.login-card-eyebrow {
+  margin: 0 0 4px;
+  color: #737a73;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.login-card-v2 h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.65rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.login-card-description {
+  margin: 18px 0 0;
+  color: #737873;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.login-form-v2 {
+  display: grid;
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.login-field-v2 {
+  display: grid;
+  gap: 8px;
+}
+
+.login-field-v2 > span {
+  color: #272b27;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.login-input-shell {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  border: 1px solid #cfd4cc;
+  border-radius: 14px;
+  background: #fbfbf8;
+  color: #7b817b;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.login-input-shell:focus-within {
+  border-color: #254cdb;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 76, 219, 0.09);
+}
+
+.login-input-shell input {
+  width: 100%;
+  min-width: 0;
+  height: 56px;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #161916;
+}
+
+.login-input-shell input::placeholder {
+  color: #a1a7a1;
+}
+
+.login-submit-v2 {
+  width: 100%;
+  min-height: 56px;
+  margin-top: 2px;
+  border-radius: 14px !important;
+  background: #1d231e !important;
+  border-color: #1d231e !important;
+  font-size: 0.9rem;
+}
+
+.login-submit-v2:hover:not(:disabled) {
+  background: #254cdb !important;
+  border-color: #254cdb !important;
+}
+
+.login-submit-v2:disabled {
+  background: #989c98 !important;
+  border-color: #989c98 !important;
+}
+
+.login-error-v2 {
+  margin-top: 0;
+}
+
+.login-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #e4e6e0;
+}
+
+.admin-back-v2 {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 7px;
+  color: #313631;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.admin-back-v2:hover {
+  color: #254cdb;
+}
+
+.login-card-footer > span {
+  color: #9ba09b;
+  font-size: 0.68rem;
+}
+
+@media (max-width: 980px) {
+  .login-page-v2 {
+    grid-template-columns: 1fr;
+    min-height: 100dvh;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(37, 76, 219, 0.08), transparent 32%),
+      #f4f4ef !important;
+  }
+
+  .login-brand-panel {
+    display: none;
+  }
+
+  .login-form-panel {
+    min-height: 100dvh;
+    padding: 28px;
+  }
+
+  .login-card-v2 {
+    width: min(100%, 560px) !important;
+  }
+
+  .login-mobile-brand {
+    width: 96px;
+    height: 96px;
+    display: block;
+    overflow: hidden;
+    margin: 0 0 26px;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 14px 36px rgba(23, 25, 24, 0.08);
+  }
+
+  .login-mobile-brand img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 620px) {
+  .login-form-panel {
+    align-items: center;
+    padding: 18px;
+  }
+
+  .login-card-v2 {
+    padding: 24px !important;
+    border-radius: 22px !important;
+  }
+
+  .login-mobile-brand {
+    width: 82px;
+    height: 82px;
+    margin-bottom: 22px;
+    border-radius: 18px;
+  }
+
+  .login-card-v2 h2 {
+    font-size: 2rem;
+  }
+
+  .login-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* oni-admin-login-v2:end */
+
+/* oni-admin-login-logo-v2_1:start */
+
+/*
+  Brand logo refinement:
+  - exact 1:1 source ratio
+  - no crop
+  - no stretching
+  - logo lives on the white login card so the original white background
+    blends naturally instead of looking like a floating white square.
+*/
+.login-brand-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #9aa69d;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.login-logo-v21 {
+  width: 142px;
+  aspect-ratio: 1;
+  display: block;
+  margin-bottom: 30px;
+  overflow: hidden;
+  border-radius: 0;
+  background: #ffffff;
+}
+
+.login-logo-v21 img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+.login-card-v2 {
+  overflow: visible !important;
+}
+
+.login-card-heading {
+  margin-top: 2px;
+}
+
+/* Hide the old V2 brand tiles if they are still present after local edits. */
+.login-mobile-brand,
+.login-brand-logo-link {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  .login-logo-v21 {
+    width: 124px;
+    margin: 0 auto 26px;
+  }
+
+  .login-card-heading {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .login-card-description {
+    text-align: center;
+  }
+}
+
+@media (max-width: 620px) {
+  .login-logo-v21 {
+    width: 108px;
+    margin-bottom: 22px;
+  }
+
+  .login-card-heading {
+    justify-content: flex-start;
+  }
+
+  .login-card-description {
+    text-align: left;
+  }
+}
+
+/* oni-admin-login-logo-v2_1:end */
+
+/* oni-admin-header-brand-v3:start */
+
+.admin-header-brand-v3 {
+  position: fixed !important;
+  inset: 0 0 auto 0;
+  z-index: 70;
+  height: 88px;
+  border-top: 3px solid #b98b24;
+  border-bottom: 1px solid #e4e7e1 !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: #17213b !important;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.045);
+  backdrop-filter: blur(18px);
+}
+
+.admin-header-inner-v3 {
+  min-height: 85px !important;
+  max-width: 1540px !important;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.admin-brand-v3 {
+  flex: 0 0 auto;
+  min-width: 190px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #111827;
+}
+
+.admin-brand-logo-v3 {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.admin-brand-copy-v3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.admin-brand-name-v3 {
+  font-size: 2rem;
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.admin-brand-divider-v3 {
+  width: 1px;
+  height: 24px;
+  background: #cfd5de;
+}
+
+.admin-brand-badge-v3 {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid #c9d7ff;
+  border-radius: 999px;
+  background: #eef3ff;
+  color: #3157c8;
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+.admin-nav-v3 {
+  flex: 1;
+  justify-content: flex-end;
+  gap: 6px !important;
+}
+
+.admin-nav-v3 .admin-nav-link {
+  position: relative;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: #58657b !important;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.admin-nav-v3 .admin-nav-link:hover {
+  color: #18306b !important;
+  background: #f4f7ff;
+}
+
+.admin-nav-v3 .admin-nav-link:active {
+  transform: translateY(1px);
+}
+
+.admin-nav-site-v3 {
+  margin-left: 6px;
+  border: 1px solid #d9e1f1;
+  background: #f8faff;
+  color: #2754d7 !important;
+}
+
+.admin-logout-form {
+  margin-left: 6px;
+}
+
+.admin-logout-button-v3 {
+  min-height: 42px !important;
+  padding: 0 16px !important;
+  border: 1px solid #e2e6ed !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  color: #253044 !important;
+  font-size: 0.78rem !important;
+  font-weight: 650 !important;
+  box-shadow: 0 4px 12px rgba(22, 32, 52, 0.04);
+}
+
+.admin-logout-button-v3:hover {
+  border-color: #f0b7b7 !important;
+  background: #fff5f5 !important;
+  color: #c92a2a !important;
+}
+
+/* Content offset for the fixed 88px branded header. */
+.admin-shell > .admin-content {
+  padding-top: 122px !important;
+}
+
+/* Tablet / mobile brand header */
+.admin-mobile-toggle-v3 {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  display: none;
+  place-items: center;
+  border: 1px solid #d9dfe8 !important;
+  border-radius: 13px !important;
+  background: #ffffff !important;
+  color: #17213b !important;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.04);
+}
+
+.admin-mobile-brand-v3 {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #111827;
+}
+
+.admin-mobile-brand-logo-v3 {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.admin-mobile-brand-copy-v3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-mobile-brand-name-v3 {
+  font-size: 1.55rem;
+  font-weight: 650;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.admin-mobile-brand-badge-v3 {
+  display: inline-flex;
+  align-items: center;
+  min-height: 23px;
+  padding: 0 8px;
+  border: 1px solid #d6deed;
+  border-radius: 999px;
+  background: #f5f7fb;
+  color: #677186;
+  font-size: 0.52rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+.admin-mobile-dialog-head-v3 {
+  min-height: 62px;
+  align-items: center;
+}
+
+@media (max-width: 1180px) {
+  .admin-header-inner-v3 {
+    gap: 16px;
+  }
+
+  .admin-brand-v3 {
+    min-width: 170px;
+  }
+
+  .admin-nav-v3 .admin-nav-link {
+    padding-inline: 9px;
+    font-size: 0.75rem;
+  }
+
+  .admin-logout-button-v3 {
+    padding-inline: 12px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-header-brand-v3 {
+    height: 78px;
+  }
+
+  .admin-header-inner-v3 {
+    min-height: 75px !important;
+  }
+
+  .admin-nav-v3 {
+    display: none !important;
+  }
+
+  .admin-mobile-toggle-v3 {
+    display: grid !important;
+    margin-left: auto;
+  }
+
+  .admin-brand-v3 {
+    min-width: 0;
+  }
+
+  .admin-brand-logo-v3 {
+    width: 40px;
+    height: 40px;
+  }
+
+  .admin-brand-name-v3 {
+    font-size: 1.7rem;
+  }
+
+  .admin-brand-badge-v3 {
+    min-height: 25px;
+    padding-inline: 9px;
+  }
+
+  .admin-shell > .admin-content {
+    padding-top: 106px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-header-brand-v3 {
+    height: 72px;
+    border-top-width: 2px;
+  }
+
+  .admin-header-inner-v3 {
+    min-height: 70px !important;
+    width: min(100%, calc(100% - 28px)) !important;
+  }
+
+  .admin-brand-logo-v3 {
+    width: 36px;
+    height: 36px;
+  }
+
+  .admin-brand-copy-v3 {
+    gap: 7px;
+  }
+
+  .admin-brand-name-v3 {
+    font-size: 1.5rem;
+  }
+
+  .admin-brand-divider-v3 {
+    height: 20px;
+  }
+
+  .admin-brand-badge-v3 {
+    min-height: 22px;
+    padding-inline: 7px;
+    font-size: 0.5rem;
+  }
+
+  .admin-shell > .admin-content {
+    padding-top: 94px !important;
+  }
+}
+
+/* oni-admin-header-brand-v3:end */
+
+/* oni-gallery-pinterest-v1:start */
+
+/* Admin: image-only workflow */
+.gallery-photo-admin {
+  padding-bottom: 110px;
+}
+
+.gallery-photo-admin-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+.gallery-photo-admin-head h1 {
+  margin: 8px 0 10px;
+  font-size: clamp(2.2rem, 4.2vw, 4.4rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.gallery-photo-admin-head > div:first-child > p:last-child {
+  max-width: 720px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.gallery-photo-admin-count {
+  min-width: 126px;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 24px auto auto;
+  place-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 18px;
+  border: 1px solid #dce2eb;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #566177;
+}
+
+.gallery-photo-admin-count strong {
+  color: #17213b;
+  font-size: 1.25rem;
+}
+
+.gallery-photo-admin-count span {
+  font-size: 0.78rem;
+}
+
+.gallery-photo-admin-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid #dbe5ff;
+  border-radius: 14px;
+  background: #f4f7ff;
+  color: #4f5f7a;
+  font-size: 0.82rem;
+}
+
+.gallery-photo-admin-note svg {
+  flex: 0 0 auto;
+  color: #2d58dd;
+}
+
+.gallery-photo-admin-editor {
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid #dfe3ea;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 38px rgba(25, 36, 58, 0.045);
+}
+
+.media-manager.is-gallery-stream {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.media-manager.is-gallery-stream .media-preview {
+  aspect-ratio: 3 / 4;
+}
+
+.media-manager.is-gallery-stream .media-preview img {
+  object-fit: cover;
+  padding: 0;
+}
+
+.media-manager.is-gallery-stream .media-tile {
+  border-radius: 16px;
+}
+
+.media-manager.is-gallery-stream .media-tile-info {
+  display: none;
+}
+
+.media-manager.is-gallery-stream .media-controls {
+  padding: 8px;
+  border-top: 1px solid #edf0f3;
+}
+
+.gallery-photo-savebar {
+  position: sticky;
+  z-index: 30;
+  bottom: 18px;
+  width: min(860px, calc(100% - 24px));
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 26px auto 0;
+  padding: 12px 14px 12px 20px;
+  border: 1px solid #d8dee8;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 50px rgba(20, 29, 49, 0.14);
+  backdrop-filter: blur(18px);
+}
+
+.gallery-photo-savebar-copy p {
+  margin: 0;
+  color: #6c7688;
+  font-size: 0.8rem;
+}
+
+.gallery-photo-state.is-success {
+  color: #16824a;
+}
+
+.gallery-photo-state.is-error {
+  color: #c93232;
+}
+
+.gallery-photo-save-button {
+  flex: 0 0 auto;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Client: Pinterest-like image wall */
+.gallery-pinterest-page {
+  background:
+    radial-gradient(circle at 82% 5%, rgba(40, 77, 219, 0.035), transparent 28%),
+    #faf9f4;
+}
+
+.gallery-pinterest-section {
+  padding-bottom: clamp(64px, 8vw, 110px);
+}
+
+.gallery-pinterest-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.gallery-pinterest-pin {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: #e9eae5;
+  cursor: zoom-in;
+  box-shadow: none;
+  content-visibility: auto;
+  contain-intrinsic-size: 260px 347px;
+}
+
+.gallery-pinterest-pin img {
+  object-fit: cover;
+  transform: scale(1.001);
+  transition:
+    transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 240ms ease;
+}
+
+.gallery-pinterest-pin:hover img {
+  transform: scale(1.035);
+  filter: brightness(0.96);
+}
+
+.gallery-pinterest-empty {
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed #d8dbd4;
+  border-radius: 20px;
+  color: #818681;
+}
+
+/* Image-only lightbox. No project text/captions. */
+.gallery-pinterest-dialog {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(246, 246, 242, 0.98);
+  overflow: hidden;
+}
+
+.gallery-pinterest-dialog::backdrop {
+  background: rgba(20, 23, 20, 0.36);
+  backdrop-filter: blur(10px);
+}
+
+.gallery-pinterest-stage {
+  position: absolute;
+  inset: clamp(28px, 4vw, 52px) clamp(44px, 6vw, 86px);
+}
+
+.gallery-pinterest-stage img {
+  object-fit: contain;
+}
+
+.gallery-pinterest-close,
+.gallery-pinterest-arrow {
+  position: absolute;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #daddd6;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #161916;
+  box-shadow: 0 8px 24px rgba(20, 23, 20, 0.08);
+}
+
+.gallery-pinterest-close {
+  top: 20px;
+  right: 20px;
+}
+
+.gallery-pinterest-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gallery-pinterest-arrow-left {
+  left: 20px;
+}
+
+.gallery-pinterest-arrow-right {
+  right: 20px;
+}
+
+.gallery-pinterest-close:hover,
+.gallery-pinterest-arrow:hover {
+  background: #ffffff;
+  border-color: #bfc5bc;
+}
+
+@media (max-width: 1280px) {
+  .gallery-pinterest-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .gallery-photo-admin-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gallery-pinterest-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 650px) {
+  .gallery-photo-admin {
+    padding-bottom: 90px;
+  }
+
+  .gallery-photo-admin-head h1 {
+    font-size: 2.7rem;
+  }
+
+  .gallery-photo-admin-count {
+    min-height: 52px;
+    min-width: 110px;
+  }
+
+  .gallery-photo-admin-editor {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .gallery-photo-admin-editor .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-photo-savebar {
+    bottom: 10px;
+    width: calc(100% - 10px);
+    align-items: stretch;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .gallery-photo-save-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gallery-pinterest-section {
+    width: min(100%, calc(100% - 20px));
+  }
+
+  .gallery-pinterest-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .gallery-pinterest-pin {
+    border-radius: 14px;
+  }
+
+  .gallery-pinterest-stage {
+    inset: 58px 8px 24px;
+  }
+
+  .gallery-pinterest-close {
+    width: 42px;
+    height: 42px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .gallery-pinterest-arrow {
+    width: 42px;
+    height: 42px;
+    top: auto;
+    bottom: 12px;
+    transform: none;
+  }
+
+  .gallery-pinterest-arrow-left {
+    left: calc(50% - 50px);
+  }
+
+  .gallery-pinterest-arrow-right {
+    right: calc(50% - 50px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-pinterest-pin img {
+    transition: none;
+  }
+}
+
+/* oni-gallery-pinterest-v1:end */
+
+/* oni-gallery-pinterest-v1_1:start */
+
+.gallery-pinterest-pin-broken {
+  display: grid;
+  place-items: center;
+  border: 1px dashed #d7dad3;
+  background:
+    linear-gradient(145deg, #f0f1ec, #e7e9e3);
+  color: #9ca29a;
+  cursor: default;
+}
+
+.gallery-pinterest-viewer-broken {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  border-radius: 18px;
+  background: #eef0ea;
+  color: #777e76;
+  text-align: center;
+  font-size: 0.86rem;
+}
+
+.gallery-pinterest-viewer-broken span {
+  max-width: 260px;
+}
+
+/* oni-gallery-pinterest-v1_1:end */
+
+/* oni-gallery-pinterest-v1_2:start */
+
+/*
+  Client Gallery V1.2
+  - No headings / descriptions / project text
+  - True Pinterest-like masonry using natural image proportions
+  - Clean image-only viewer inspired by Pinterest
+*/
+
+/* Replace the old uniform grid entirely. */
+.gallery-pinterest-page-v2 {
+  min-height: 70vh;
+  background: #ffffff;
+}
+
+.gallery-pinterest-section-v2 {
+  width: min(100%, 1840px);
+  margin-inline: auto;
+  padding: clamp(18px, 2.2vw, 34px) clamp(12px, 1.6vw, 26px)
+    clamp(64px, 8vw, 110px);
+}
+
+.gallery-pinterest-grid-v2 {
+  column-count: 6;
+  column-gap: 16px;
+}
+
+.gallery-pinterest-pin-v2 {
+  width: 100%;
+  display: block;
+  break-inside: avoid;
+  margin: 0 0 16px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 18px;
+  background: #eceee9;
+  cursor: zoom-in;
+  text-align: initial;
+  box-shadow: none;
+}
+
+.gallery-pinterest-pin-v2 img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: inherit;
+  transform: scale(1.001);
+  transition:
+    transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 220ms ease;
+}
+
+.gallery-pinterest-pin-v2:hover img {
+  transform: scale(1.025);
+  filter: brightness(0.965);
+}
+
+.gallery-pinterest-pin-broken-v2 {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed #d7dad3;
+  color: #a0a69e;
+  cursor: default;
+}
+
+.gallery-pinterest-empty-v2 {
+  min-height: 58vh;
+}
+
+/* Pinterest-inspired image-only detail viewer. */
+.gallery-pinterest-dialog-v2 {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: rgba(17, 17, 17, 0.96);
+}
+
+.gallery-pinterest-dialog-v2::backdrop {
+  background: rgba(10, 10, 10, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.gallery-pinterest-stage-v2 {
+  position: absolute;
+  inset: 28px 72px;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.gallery-pinterest-stage-v2::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-pinterest-viewer-image-v2 {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(86vw, 1500px);
+  max-height: calc(100dvh - 72px);
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.32);
+  transform-origin: center center;
+  transition: transform 180ms ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.gallery-pinterest-close-v2 {
+  position: fixed;
+  z-index: 5;
+  top: 14px;
+  left: 14px;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 16px;
+  background: rgba(245, 245, 241, 0.94);
+  color: #171717;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+}
+
+.gallery-pinterest-close-v2:hover {
+  background: #ffffff;
+}
+
+.gallery-pinterest-zoom-v2 {
+  position: fixed;
+  z-index: 5;
+  right: 22px;
+  bottom: 22px;
+  display: grid;
+  gap: 8px;
+}
+
+.gallery-pinterest-zoom-v2 button {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 15px;
+  background: rgba(245, 245, 241, 0.96);
+  color: #171717;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
+}
+
+.gallery-pinterest-zoom-v2 button:hover:not(:disabled) {
+  background: #ffffff;
+}
+
+.gallery-pinterest-zoom-v2 button:disabled {
+  opacity: 0.38;
+}
+
+.gallery-pinterest-viewer-broken-v2 {
+  width: min(80vw, 620px);
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #252525;
+  color: #777;
+}
+
+/* Hide legacy Gallery V1 elements in case local CSS still contains them. */
+.gallery-pinterest-page-v2 .page-heading,
+.gallery-pinterest-page-v2 .eyebrow,
+.gallery-pinterest-page-v2 .section-heading,
+.gallery-pinterest-page-v2 .gallery-pinterest-grid,
+.gallery-pinterest-page-v2 .gallery-pinterest-section {
+  display: none !important;
+}
+
+@media (max-width: 1500px) {
+  .gallery-pinterest-grid-v2 {
+    column-count: 5;
+  }
+}
+
+@media (max-width: 1180px) {
+  .gallery-pinterest-grid-v2 {
+    column-count: 4;
+    column-gap: 14px;
+  }
+
+  .gallery-pinterest-pin-v2 {
+    margin-bottom: 14px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery-pinterest-grid-v2 {
+    column-count: 3;
+    column-gap: 12px;
+  }
+
+  .gallery-pinterest-pin-v2 {
+    margin-bottom: 12px;
+  }
+
+  .gallery-pinterest-stage-v2 {
+    inset: 66px 18px 76px;
+  }
+
+  .gallery-pinterest-viewer-image-v2 {
+    max-width: 94vw;
+    max-height: calc(100dvh - 150px);
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 620px) {
+  .gallery-pinterest-section-v2 {
+    padding: 10px 8px 64px;
+  }
+
+  .gallery-pinterest-grid-v2 {
+    column-count: 2;
+    column-gap: 8px;
+  }
+
+  .gallery-pinterest-pin-v2 {
+    margin-bottom: 8px;
+    border-radius: 13px;
+  }
+
+  .gallery-pinterest-close-v2 {
+    top: 10px;
+    left: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  .gallery-pinterest-stage-v2 {
+    inset: 58px 8px 72px;
+  }
+
+  .gallery-pinterest-viewer-image-v2 {
+    max-width: 96vw;
+    max-height: calc(100dvh - 138px);
+    border-radius: 14px;
+  }
+
+  .gallery-pinterest-zoom-v2 {
+    right: 12px;
+    bottom: 12px;
+    gap: 7px;
+  }
+
+  .gallery-pinterest-zoom-v2 button {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-pinterest-pin-v2 img,
+  .gallery-pinterest-viewer-image-v2 {
+    transition: none;
+  }
+}
+
+/* oni-gallery-pinterest-v1_2:end */
+
+/* oni-gallery-admin-layout-v2:start */
+
+.gallery-photo-admin-v2 {
+  width: min(100%, 1480px);
+  margin-inline: auto;
+  display: grid;
+  gap: 18px;
+  padding-bottom: 72px;
+}
+
+.gallery-photo-admin-hero-v2 {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 10px 0 6px;
+}
+
+.gallery-photo-admin-hero-copy-v2 {
+  min-width: 0;
+}
+
+.gallery-photo-admin-hero-copy-v2 h1 {
+  margin: 6px 0 8px;
+  color: #12203a;
+  font-size: clamp(2.35rem, 4vw, 4rem);
+  font-weight: 520;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.gallery-photo-admin-hero-copy-v2 > p:last-child {
+  max-width: 760px;
+  margin: 0;
+  color: #738096;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.gallery-photo-admin-summary-v2 {
+  min-width: 176px;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 17px;
+  border: 1px solid #dce3ee;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(17, 31, 58, 0.045);
+}
+
+.gallery-photo-admin-summary-icon-v2 {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 12px;
+  background: #eef3ff;
+  color: #315ad8;
+}
+
+.gallery-photo-admin-summary-v2 strong,
+.gallery-photo-admin-summary-v2 span {
+  display: block;
+}
+
+.gallery-photo-admin-summary-v2 strong {
+  color: #14213d;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.gallery-photo-admin-summary-v2 div > span {
+  margin-top: 5px;
+  color: #7a8699;
+  font-size: 0.68rem;
+}
+
+.gallery-photo-toolbar-v2 {
+  position: sticky;
+  z-index: 42;
+  top: 100px;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 10px 12px 10px 16px;
+  border: 1px solid rgba(213, 221, 233, 0.96);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 12px 34px rgba(19, 34, 63, 0.07),
+    0 2px 6px rgba(19, 34, 63, 0.03);
+  backdrop-filter: blur(18px);
+}
+
+.gallery-photo-toolbar-copy-v2 {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.gallery-photo-toolbar-icon-v2 {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 11px;
+  background: #f2f5fa;
+  color: #53627b;
+}
+
+.gallery-photo-toolbar-copy-v2 strong,
+.gallery-photo-toolbar-copy-v2 span {
+  display: block;
+}
+
+.gallery-photo-toolbar-copy-v2 strong {
+  color: #17233b;
+  font-size: 0.8rem;
+  font-weight: 760;
+}
+
+.gallery-photo-toolbar-copy-v2 div > span {
+  margin-top: 3px;
+  color: #7a8799;
+  font-size: 0.68rem;
+}
+
+.gallery-photo-save-button-v2 {
+  flex: 0 0 auto;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-inline: 18px;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 20px rgba(49, 87, 216, 0.16);
+}
+
+.gallery-photo-admin-panel-v2 {
+  overflow: hidden;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 14px 42px rgba(15, 30, 58, 0.045);
+}
+
+.gallery-photo-admin-panel-head-v2 {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e8ecf1;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+}
+
+.gallery-photo-admin-panel-head-v2 > div {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gallery-photo-admin-panel-icon-v2 {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 11px;
+  background: #edf3ff;
+  color: #3157d8;
+}
+
+.gallery-photo-admin-panel-head-v2 strong {
+  display: block;
+  color: #18243b;
+  font-size: 0.86rem;
+}
+
+.gallery-photo-admin-panel-head-v2 p {
+  margin: 4px 0 0;
+  color: #7d899b;
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
+.gallery-photo-admin-limit-v2 {
+  flex: 0 0 auto;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
+  border: 1px solid #dce3ed;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #6f7c90;
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.gallery-photo-admin-editor-v2 {
+  padding: 18px;
+}
+
+.gallery-photo-admin-editor-v2 .media-manager.is-gallery-stream {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.gallery-photo-admin-editor-v2 .media-heading {
+  display: none;
+}
+
+.gallery-photo-admin-editor-v2 .upload-dropzone {
+  min-height: 150px;
+  margin-bottom: 14px;
+  border: 1px dashed #cbd6e5;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, #fbfcf8 0%, #f7f9f4 100%);
+}
+
+.gallery-photo-admin-editor-v2 .media-status {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  margin: 0 0 14px;
+  padding: 9px 12px;
+  border: 1px solid #e6eaf0;
+  border-radius: 11px;
+  background: #fafbfc;
+  color: #7a8799;
+  font-size: 0.66rem;
+}
+
+.gallery-photo-admin-editor-v2 .media-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.gallery-photo-admin-editor-v2 .media-tile {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e0e5ec;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: none;
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.gallery-photo-admin-editor-v2 .media-tile:hover {
+  transform: translateY(-2px);
+  border-color: #cbd6e5;
+  box-shadow: 0 10px 26px rgba(22, 37, 66, 0.07);
+}
+
+.gallery-photo-admin-editor-v2 .media-preview {
+  aspect-ratio: 3 / 4;
+  background: #eef0ec;
+}
+
+.gallery-photo-admin-editor-v2 .media-preview img {
+  object-fit: cover;
+  padding: 0;
+}
+
+.gallery-photo-admin-editor-v2 .media-controls {
+  min-height: 48px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border-top: 1px solid #edf0f3;
+}
+
+.gallery-photo-admin-editor-v2 .drag-handle {
+  justify-self: start;
+  cursor: grab;
+}
+
+.gallery-photo-admin-editor-v2 .drag-handle:active {
+  cursor: grabbing;
+}
+
+.gallery-photo-admin-editor-v2 .media-position {
+  min-width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #526077;
+  font-size: 0.62rem;
+  font-weight: 760;
+  box-shadow: 0 4px 12px rgba(20, 32, 54, 0.08);
+}
+
+.gallery-photo-admin-editor-v2 .media-remove {
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #617086;
+}
+
+.gallery-photo-admin-editor-v2 .media-remove:hover {
+  background: #fff1f1;
+  color: #cf3333;
+}
+
+.gallery-photo-mobile-save-v2 {
+  display: none;
+}
+
+.gallery-photo-action-notice-v2 {
+  margin: 0;
+}
+
+/* Global Admin snackbar should sit below the branded fixed header. */
+@media (min-width: 761px) {
+  .admin-snackbar-region {
+    top: 102px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .gallery-photo-admin-editor-v2 .media-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .gallery-photo-admin-v2 {
+    gap: 14px;
+  }
+
+  .gallery-photo-admin-hero-v2 {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .gallery-photo-admin-summary-v2 {
+    min-height: 62px;
+    min-width: 150px;
+  }
+
+  .gallery-photo-toolbar-v2 {
+    top: 88px;
+  }
+
+  .gallery-photo-admin-editor-v2 .media-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .gallery-photo-admin-v2 {
+    padding-bottom: 92px;
+  }
+
+  .gallery-photo-admin-hero-copy-v2 h1 {
+    font-size: 2.55rem;
+  }
+
+  .gallery-photo-toolbar-v2 {
+    position: static;
+    min-height: 0;
+    padding: 12px;
+  }
+
+  .gallery-photo-toolbar-v2 > .gallery-photo-save-button-v2 {
+    display: none;
+  }
+
+  .gallery-photo-toolbar-copy-v2 div > span {
+    display: none;
+  }
+
+  .gallery-photo-admin-panel-head-v2 {
+    padding-inline: 14px;
+  }
+
+  .gallery-photo-admin-editor-v2 {
+    padding: 12px;
+  }
+
+  .gallery-photo-admin-editor-v2 .upload-dropzone {
+    min-height: 132px;
+  }
+
+  .gallery-photo-admin-editor-v2 .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .gallery-photo-admin-editor-v2 .media-tile {
+    border-radius: 13px;
+  }
+
+  .gallery-photo-admin-editor-v2 .media-controls {
+    min-height: 44px;
+    padding: 5px 6px;
+  }
+
+  .gallery-photo-mobile-save-v2 {
+    position: fixed;
+    z-index: 55;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    left: 12px;
+    display: block;
+  }
+
+  .gallery-photo-mobile-save-v2 .gallery-photo-save-button-v2 {
+    width: 100%;
+    min-height: 52px;
+  }
+}
+
+@media (max-width: 390px) {
+  .gallery-photo-admin-editor-v2 .media-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-photo-admin-editor-v2 .media-tile {
+    transition: none;
+  }
+}
+
+/* oni-gallery-admin-layout-v2:end */
+
+/* oni-gallery-admin-save-float-v2_1:start */
+
+/* Fix icon alignment in Gallery Admin summary + toolbar. */
+.gallery-photo-admin-summary-icon-v2,
+.gallery-photo-toolbar-icon-v2,
+.gallery-photo-admin-panel-icon-v2 {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 0 !important;
+  padding: 0 !important;
+}
+
+.gallery-photo-admin-summary-icon-v2 svg,
+.gallery-photo-toolbar-icon-v2 svg,
+.gallery-photo-admin-panel-icon-v2 svg {
+  display: block !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  transform: none !important;
+  vertical-align: middle !important;
+}
+
+/* Keep icon and text vertically aligned inside the summary card. */
+.gallery-photo-admin-summary-v2 {
+  align-items: center !important;
+}
+
+.gallery-photo-admin-summary-v2 > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 42px;
+}
+
+.gallery-photo-admin-summary-v2 strong,
+.gallery-photo-admin-summary-v2 div > span {
+  line-height: 1.1;
+}
+
+/* Keep toolbar icon centered with its copy. */
+.gallery-photo-toolbar-copy-v2 {
+  align-items: center !important;
+}
+
+.gallery-photo-toolbar-copy-v2 > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*
+  Add a second fixed save action at bottom-right.
+  Desktop: compact floating button.
+  Mobile: full-width safe-area button.
+*/
+.gallery-photo-mobile-save-v2 {
+  position: fixed !important;
+  z-index: 80 !important;
+  right: 22px !important;
+  bottom: max(22px, env(safe-area-inset-bottom)) !important;
+  left: auto !important;
+  display: block !important;
+  width: auto !important;
+  pointer-events: none;
+}
+
+.gallery-photo-mobile-save-v2 .gallery-photo-save-button-v2 {
+  width: auto !important;
+  min-width: 190px;
+  min-height: 52px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-inline: 20px !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 16px 38px rgba(35, 72, 190, 0.24),
+    0 4px 12px rgba(35, 72, 190, 0.12);
+  pointer-events: auto;
+}
+
+.gallery-photo-mobile-save-v2 .gallery-photo-save-button-v2 svg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* Leave enough space so the floating button never covers the last image row. */
+.gallery-photo-admin-v2 {
+  padding-bottom: 132px !important;
+}
+
+@media (max-width: 700px) {
+  .gallery-photo-mobile-save-v2 {
+    right: 12px !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    left: 12px !important;
+    width: auto !important;
+  }
+
+  .gallery-photo-mobile-save-v2 .gallery-photo-save-button-v2 {
+    width: 100% !important;
+    min-width: 0;
+    min-height: 54px;
+  }
+
+  .gallery-photo-admin-v2 {
+    padding-bottom: 108px !important;
+  }
+}
+
+/* oni-gallery-admin-save-float-v2_1:end */
+
+/* oni-equipment-source-switch-v4_1:start */
+
+/* Two clear customer choices: equipment at the studio vs external rental. */
+.equipment-source-tabs-v4 {
+  gap: 6px !important;
+  padding: 5px !important;
+  border-radius: 14px !important;
+}
+
+.equipment-source-tabs-v4 button {
+  min-height: 48px !important;
+  gap: 9px !important;
+  padding: 0 17px !important;
+  border-radius: 11px !important;
+  font-size: 0.86rem !important;
+  font-weight: 700 !important;
+}
+
+.equipment-source-tabs-v4 button > svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.equipment-source-tabs-v4 button > strong {
+  min-width: 27px !important;
+  height: 27px !important;
+  padding-inline: 7px !important;
+  font-size: 0.68rem !important;
+}
+
+@media (max-width: 720px) {
+  .equipment-source-tabs-v4 {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .equipment-source-tabs-v4 button {
+    width: 100%;
+    min-height: 50px !important;
+    justify-content: center;
+    padding-inline: 12px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .equipment-source-tabs-v4 button {
+    gap: 7px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* oni-equipment-source-switch-v4_1:end */
+
+/* oni-rental-card-edge-to-edge-v2:start */
+
+/*
+  Public rental cards: backdrops / effect backdrops / props.
+  The photo fills the entire card width with a consistent 4:3 frame.
+*/
+.rental-equipment-card {
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+.rental-equipment-card .rental-equipment-image,
+.rental-equipment-card .equipment-image {
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #eceee8 !important;
+}
+
+.rental-equipment-card .rental-equipment-image > img,
+.rental-equipment-card .equipment-image > img {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  mix-blend-mode: normal !important;
+  transform: scale(1.001);
+}
+
+.rental-equipment-card:hover .rental-equipment-image > img,
+.rental-equipment-card:hover .equipment-image > img {
+  transform: scale(1.025);
+}
+
+.rental-equipment-card .rental-equipment-card-body {
+  width: 100%;
+}
+
+/* Keep 4:3 on tablet/mobile as well. */
+@media (max-width: 760px) {
+  .rental-equipment-card .rental-equipment-image,
+  .rental-equipment-card .equipment-image {
+    aspect-ratio: 4 / 3 !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .rental-equipment-card .rental-equipment-image,
+  .rental-equipment-card .equipment-image {
+    aspect-ratio: 4 / 3 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rental-equipment-card .rental-equipment-image > img,
+  .rental-equipment-card .equipment-image > img {
+    transition: none !important;
+  }
+}
+
+/* oni-rental-card-edge-to-edge-v2:end */
+
+/* oni-rental-card-natural-ratio-v3:start */
+
+/*
+  Rental catalog images now preserve the original image ratio.
+  Example supplied by the user: 938 x 1344 (~0.698 / roughly 7:10).
+  This means the whole image is visible without cropping.
+*/
+.rental-equipment-card .rental-equipment-image,
+.rental-equipment-card .equipment-image {
+  aspect-ratio: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #eceee8 !important;
+}
+
+.rental-equipment-card .rental-equipment-image > img,
+.rental-equipment-card .equipment-image > img {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  mix-blend-mode: normal !important;
+  transform: none !important;
+}
+
+/* Keep the catalog clean: no zoom that could visually crop the image. */
+.rental-equipment-card:hover .rental-equipment-image > img,
+.rental-equipment-card:hover .equipment-image > img {
+  transform: none !important;
+}
+
+/* Badges remain attached to the image area. */
+.rental-equipment-card .rental-equipment-image {
+  position: relative !important;
+}
+
+/* oni-rental-card-natural-ratio-v3:end */
+
+/* oni-rental-pinterest-detail-v3:start */
+
+/*
+  Dedicated rental asset detail viewer inspired by Pinterest:
+  immersive background, centered full image, no product text, no footer.
+*/
+.rental-pinterest-detail-v3 {
+  position: fixed;
+  z-index: 140;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #171817;
+  color: #fff;
+}
+
+.rental-pinterest-backdrop-v3 {
+  position: absolute;
+  inset: -30px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  padding: 34px;
+  opacity: 0.52;
+  filter: blur(5px) saturate(0.75);
+  transform: scale(1.035);
+}
+
+.rental-pinterest-backdrop-tile-v3 {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #272827;
+}
+
+.rental-pinterest-backdrop-tile-v3:nth-child(3n + 1) {
+  transform: translateY(50px);
+}
+
+.rental-pinterest-backdrop-tile-v3:nth-child(3n + 2) {
+  transform: translateY(-25px);
+}
+
+.rental-pinterest-backdrop-tile-v3 img {
+  object-fit: cover;
+}
+
+.rental-pinterest-dim-v3 {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 9, 8, 0.74);
+  backdrop-filter: blur(7px);
+}
+
+.rental-pinterest-topbar-v3 {
+  position: absolute;
+  z-index: 8;
+  inset: 18px 22px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.rental-pinterest-close-v3,
+.rental-pinterest-share-v3,
+.rental-pinterest-save-v3,
+.rental-pinterest-nav-v3,
+.rental-pinterest-zoom-v3 button {
+  pointer-events: auto;
+}
+
+.rental-pinterest-close-v3 {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 16px;
+  background: rgba(245,245,241,.92);
+  color: #171817;
+  box-shadow: 0 10px 32px rgba(0,0,0,.2);
+  backdrop-filter: blur(12px);
+}
+
+.rental-pinterest-actions-v3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rental-pinterest-share-v3,
+.rental-pinterest-save-v3 {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px;
+  border-radius: 15px;
+  font-size: .82rem;
+  font-weight: 720;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rental-pinterest-share-v3 {
+  border: 1px solid rgba(255,255,255,.3);
+  background: rgba(245,245,241,.88);
+  color: #171817;
+  backdrop-filter: blur(12px);
+}
+
+.rental-pinterest-save-v3 {
+  border: 1px solid #e60023;
+  background: #e60023;
+  color: #fff;
+}
+
+.rental-pinterest-stage-v3 {
+  position: absolute;
+  z-index: 4;
+  inset: 76px 92px 56px;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+.rental-pinterest-stage-v3::-webkit-scrollbar {
+  display: none;
+}
+
+.rental-pinterest-image-shell-v3 {
+  position: relative;
+  width: min(72vw, 650px);
+  height: min(82dvh, 820px);
+  overflow: hidden;
+  border-radius: 26px;
+  background: #f1f1eb;
+  box-shadow: 0 32px 90px rgba(0,0,0,.4);
+}
+
+.rental-pinterest-image-v3 {
+  object-fit: contain !important;
+  object-position: center !important;
+  transition: transform 180ms ease;
+  transform-origin: center center;
+  user-select: none;
+}
+
+.rental-pinterest-nav-v3 {
+  position: absolute;
+  z-index: 7;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 50%;
+  background: rgba(245,245,241,.9);
+  color: #191a19;
+  transform: translateY(-50%);
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+.rental-pinterest-nav-v3.is-left {
+  left: 28px;
+}
+
+.rental-pinterest-nav-v3.is-right {
+  right: 28px;
+}
+
+.rental-pinterest-counter-v3 {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  bottom: 16px;
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.5);
+  color: rgba(255,255,255,.82);
+  font-size: .68rem;
+  font-weight: 700;
+  transform: translateX(-50%);
+  backdrop-filter: blur(10px);
+}
+
+.rental-pinterest-zoom-v3 {
+  position: absolute;
+  z-index: 8;
+  right: 24px;
+  bottom: 22px;
+  display: grid;
+  gap: 8px;
+}
+
+.rental-pinterest-zoom-v3 button {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 15px;
+  background: rgba(245,245,241,.93);
+  color: #171817;
+  box-shadow: 0 9px 26px rgba(0,0,0,.18);
+}
+
+.rental-pinterest-zoom-v3 button:disabled {
+  opacity: .38;
+}
+
+.rental-pinterest-empty-v3 {
+  display: grid;
+  place-items: center;
+}
+
+.rental-pinterest-empty-v3 > a {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: white;
+  color: #171817;
+}
+
+/* The route behaves like a modal/detail viewer, so the normal site chrome stays underneath. */
+.site-shell:has(.rental-pinterest-detail-v3) > .site-footer {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .rental-pinterest-backdrop-v3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .rental-pinterest-stage-v3 {
+    inset: 74px 58px 58px;
+  }
+
+  .rental-pinterest-image-shell-v3 {
+    width: min(78vw, 620px);
+    height: min(80dvh, 780px);
+  }
+
+  .rental-pinterest-nav-v3.is-left {
+    left: 12px;
+  }
+
+  .rental-pinterest-nav-v3.is-right {
+    right: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rental-pinterest-topbar-v3 {
+    inset: 10px 10px auto;
+  }
+
+  .rental-pinterest-close-v3 {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+  }
+
+  .rental-pinterest-actions-v3 {
+    gap: 7px;
+  }
+
+  .rental-pinterest-share-v3,
+  .rental-pinterest-save-v3 {
+    min-height: 44px;
+    padding: 0 13px;
+    border-radius: 13px;
+    font-size: .74rem;
+  }
+
+  .rental-pinterest-share-v3 span,
+  .rental-pinterest-save-v3 span {
+    display: none;
+  }
+
+  .rental-pinterest-stage-v3 {
+    inset: 60px 8px 62px;
+  }
+
+  .rental-pinterest-image-shell-v3 {
+    width: 94vw;
+    height: calc(100dvh - 138px);
+    border-radius: 18px;
+  }
+
+  .rental-pinterest-nav-v3 {
+    width: 42px;
+    height: 42px;
+  }
+
+  .rental-pinterest-nav-v3.is-left {
+    left: 8px;
+  }
+
+  .rental-pinterest-nav-v3.is-right {
+    right: 8px;
+  }
+
+  .rental-pinterest-zoom-v3 {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .rental-pinterest-zoom-v3 button {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .rental-pinterest-counter-v3 {
+    bottom: 12px;
+  }
+
+  .rental-pinterest-backdrop-v3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rental-pinterest-image-v3 {
+    transition: none;
+  }
+}
+
+/* oni-rental-pinterest-detail-v3:end */
+
+/* oni-rental-pinterest-full-bleed-v3_1:start */
+
+/*
+  Full-bleed image viewer:
+  - no white side bars
+  - no fixed white image shell
+  - preserves the full original image
+  - image itself becomes the visible frame
+*/
+.rental-pinterest-stage-v3 {
+  inset: 72px 72px 48px !important;
+  overflow: auto !important;
+}
+
+.rental-pinterest-image-shell-v3 {
+  position: relative !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.rental-pinterest-image-v3 {
+  position: relative !important;
+  inset: auto !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: min(86vw, 1500px) !important;
+  max-height: calc(100dvh - 128px) !important;
+  display: block !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 24px !important;
+  background: transparent !important;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.36) !important;
+  transform-origin: center center !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+/* Remove the light frame completely. */
+.rental-pinterest-image-shell-v3::before,
+.rental-pinterest-image-shell-v3::after {
+  display: none !important;
+  content: none !important;
+}
+
+@media (max-width: 900px) {
+  .rental-pinterest-stage-v3 {
+    inset: 66px 42px 52px !important;
+  }
+
+  .rental-pinterest-image-v3 {
+    max-width: 90vw !important;
+    max-height: calc(100dvh - 126px) !important;
+    border-radius: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .rental-pinterest-stage-v3 {
+    inset: 58px 6px 64px !important;
+  }
+
+  .rental-pinterest-image-v3 {
+    max-width: 96vw !important;
+    max-height: calc(100dvh - 126px) !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* oni-rental-pinterest-full-bleed-v3_1:end */

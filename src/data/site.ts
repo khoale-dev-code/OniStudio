@@ -18,7 +18,7 @@ export const site = {
     "https://www.google.com/maps?q=220%2F29%20Au%20Co%20Ho%20Chi%20Minh%20City&output=embed",
 };
 export const navigation: { path: string; label: Localized }[] = [
-  { path: "/equipment", label: { vi: "Thiết Bị Cho Thuê", en: "Equipment Rental" } },
+  { path: "/equipment", label: { vi: "Thiết Bị", en: "Equipment Rental" } },
   { path: "/studios", label: { vi: "Không Gian Phòng", en: "Studio Spaces" } },
   { path: "/effect-backdrops", label: { vi: "Phông Màu Hiệu Ứng", en: "Effect Backdrops" } },
   { path: "/backdrops", label: { vi: "Phông Màu", en: "Color Backdrops" } },

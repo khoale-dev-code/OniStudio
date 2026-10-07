@@ -1,1 +1,36 @@
-import { Suspense } from "react"; import PageLoading from "@/components/ui/page-loading"; import { PageHeading } from "@/components/ui/section"; import { GalleryGrid } from "@/components/catalog/gallery-grid"; import { getCatalog } from "@/lib/catalog"; import { context } from "@/lib/i18n"; import { pageMetadata } from "@/lib/metadata"; export function generateMetadata(){return pageMetadata({vi:"Hình ảnh thực tế",en:"Real photos"},{vi:"Hình ảnh thực tế từ các buổi chụp tại Oni Studio.",en:"Real images from shoots at Oni Studio."},"/gallery")} async function Content(){const [{locale},{gallery,galleryCategories}]=await Promise.all([context(),getCatalog()]);return <div className="gallery-public-page"><PageHeading eyebrow="REAL SHOOTS AT ONI" title={locale==="vi"?"Hình ảnh thực tế tại Oni.":"Real work created at Oni."} description={locale==="vi"?"Xem project, photographer và những buổi chụp thực tế đã được thực hiện tại Oni Studio.":"Explore real projects, photographers and shoots created at Oni Studio."}/><section className="container section-bottom gallery-public-section"><GalleryGrid items={gallery} categories={galleryCategories} locale={locale} variant="page"/></section></div>} export default function Page(){return <Suspense fallback={<PageLoading/>}><Content/></Suspense>}
+import { Suspense } from "react";
+import PageLoading from "@/components/ui/page-loading";
+import { PinterestGallery } from "@/components/catalog/pinterest-gallery";
+import { getGalleryPhotos } from "@/lib/gallery-photos";
+import { pageMetadata } from "@/lib/metadata";
+
+export function generateMetadata() {
+  return pageMetadata(
+    { vi: "Hình ảnh thực tế", en: "Real photos" },
+    {
+      vi: "Thư viện hình ảnh thực tế tại Oni Studio.",
+      en: "A visual gallery from Oni Studio.",
+    },
+    "/gallery",
+  );
+}
+
+async function Content() {
+  const photos = await getGalleryPhotos();
+
+  return (
+    <main className="gallery-pinterest-page-v2">
+      <section className="gallery-pinterest-section-v2">
+        <PinterestGallery photos={photos} />
+      </section>
+    </main>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<PageLoading />}>
+      <Content />
+    </Suspense>
+  );
+}

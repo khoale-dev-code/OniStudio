@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export function generateMetadata() {
   return pageMetadata(
-    { vi: "Thiết bị cho thuê", en: "Equipment rental" },
+    { vi: "Thiết bị", en: "Equipment" },
     {
       vi: "Thiết bị tại Oni và thiết bị thuê ngoài cho buổi chụp, sản xuất và set ánh sáng.",
       en: "Equipment at Oni plus external rental options for shoots and productions.",
@@ -29,7 +29,7 @@ async function Content() {
         eyebrow="EQUIPMENT RENTAL"
         title={
           locale === "vi"
-            ? "Thiết bị cho thuê."
+            ? "Thiết bị."
             : "Equipment for your set."
         }
         description={

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -55,14 +56,14 @@ export function AdminMobileMenu() {
   return (
     <>
       <button
-        className="admin-mobile-toggle"
+        className="admin-mobile-toggle admin-mobile-toggle-v3"
         type="button"
         aria-label="Mở menu quản trị"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
         onClick={openMenu}
       >
-        <Menu size={23} strokeWidth={1.75} />
+        <Menu size={22} strokeWidth={1.75} />
       </button>
 
       <dialog
@@ -79,15 +80,24 @@ export function AdminMobileMenu() {
         }}
       >
         <div className="admin-mobile-dialog-content">
-          <div className="admin-mobile-dialog-head">
+          <div className="admin-mobile-dialog-head admin-mobile-dialog-head-v3">
             <Link
-              className="admin-mobile-wordmark"
+              className="admin-mobile-brand-v3"
               href="/admin"
               onClick={closeMenu}
               aria-label="Oni Admin"
             >
-              <span className="admin-mobile-wordmark-main">oni</span>
-              <span className="admin-mobile-wordmark-badge">ADMIN</span>
+              <Image
+                src="/images/oni-studio-admin-brand.png"
+                width={46}
+                height={46}
+                alt=""
+                className="admin-mobile-brand-logo-v3"
+              />
+              <span className="admin-mobile-brand-copy-v3">
+                <span className="admin-mobile-brand-name-v3">oni</span>
+                <span className="admin-mobile-brand-badge-v3">ADMIN</span>
+              </span>
             </Link>
 
             <button
@@ -96,7 +106,7 @@ export function AdminMobileMenu() {
               aria-label="Đóng menu quản trị"
               onClick={closeMenu}
             >
-              <X size={24} strokeWidth={1.7} />
+              <X size={22} strokeWidth={1.7} />
             </button>
           </div>
 
@@ -134,10 +144,7 @@ export function AdminMobileMenu() {
 
           <div className="admin-mobile-dialog-footer">
             <form action={logout}>
-              <button
-                className="admin-mobile-logout"
-                type="submit"
-              >
+              <button className="admin-mobile-logout" type="submit">
                 Đăng xuất
               </button>
             </form>
