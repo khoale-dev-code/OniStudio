@@ -34,35 +34,7 @@ async function HomeContent() {
   const maxArea =
     studios.length > 0 ? Math.max(...studios.map((studio) => studio.area)) : null;
 
-  const values = vi
-    ? [
-        {
-          title: "Dễ xem",
-          body: "Thông tin quan trọng được đặt lên trước, khoảng trắng lớn và ít chi tiết thừa.",
-        },
-        {
-          title: "Dễ chọn",
-          body: "Trang chủ chỉ giới thiệu nhanh. Giá, hình ảnh và thông tin sâu nằm ở từng trang riêng.",
-        },
-        {
-          title: "Dễ thao tác",
-          body: "Nút hành động rõ ràng, responsive tốt và không buộc người xem phải cuộn quá lâu.",
-        },
-      ]
-    : [
-        {
-          title: "Easy to read",
-          body: "Important information comes first with generous spacing and less visual noise.",
-        },
-        {
-          title: "Easy to choose",
-          body: "The homepage stays concise while deeper pricing, imagery and details live on dedicated pages.",
-        },
-        {
-          title: "Easy to use",
-          body: "Clear actions, responsive layouts and a shorter page reduce unnecessary scrolling.",
-        },
-      ];
+
 
   return (
     <div className="home-clean-v3 home-clean-v33">
@@ -145,31 +117,7 @@ async function HomeContent() {
         </div>
       </section>
 
-      <section className="home-clean-v3-section section">
-        <div className="container">
-          <div className="home-clean-v3-heading-row">
-            <div>
-              <p className="eyebrow">03 / ONI</p>
-              <h2>{vi ? "Ít hơn. Rõ hơn. Dễ dùng hơn." : "Less. Clearer. Easier."}</h2>
-              <p>
-                {vi
-                  ? "Trang chủ chỉ làm đúng nhiệm vụ: giúp khách hiểu Oni nhanh và đi tới đúng nơi."
-                  : "The homepage does one job well: help visitors understand Oni quickly and reach the right page."}
-              </p>
-            </div>
           </div>
-
-          <div className="home-clean-v3-value-grid">
-            {values.map((item) => (
-              <article key={item.title} className="home-clean-v3-value-card">
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
   );
 }
 
