@@ -1,5 +1,4 @@
-import Link from "@/components/ui/nav-link";
-import { ProductGallery } from "@/components/catalog/product-gallery";
+import { RentalPinterestViewer } from "@/components/catalog/rental-pinterest-viewer";
 import { equipmentImages } from "@/data/equipment-images";
 import { getCatalog } from "@/lib/catalog";
 import { context, href } from "@/lib/i18n";
@@ -40,34 +39,11 @@ export default async function EquipmentDetail({ params }: Props) {
   const { images } = equipmentImages(item);
   if (!images.length) notFound();
 
-  const name = locale === "en" ? item.name_en : item.name;
-
   return (
-    <div className="equipment-gallery-only">
-      <div className="container equipment-gallery-nav">
-        <Link className="text-link" href={href(locale, "/equipment")}>
-          {locale === "vi" ? "← Quay lại thiết bị" : "← Back to equipment"}
-        </Link>
-        <span>
-          {images.length} {locale === "vi" ? "ảnh" : "images"}
-        </span>
-      </div>
-
-      <section
-        className="container equipment-gallery-shell"
-        aria-label={
-          locale === "vi"
-            ? `Hình ảnh ${name}`
-            : `${name} images`
-        }
-      >
-        <ProductGallery
-          images={images}
-          name={name}
-          locale={locale}
-          fit="contain"
-        />
-      </section>
-    </div>
+    <RentalPinterestViewer
+      images={images}
+      locale={locale}
+      collectionHref={href(locale, "/equipment")}
+    />
   );
 }
