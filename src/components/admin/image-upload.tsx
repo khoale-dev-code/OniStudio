@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import Image from "next/image";
+import { AdminSafeImage } from "@/components/admin/admin-safe-image";
 import {
   ArrowLeft,
   ArrowRight,
@@ -12,6 +13,30 @@ import {
   ImagePlus,
 } from "lucide-react";
 import { useMediaUpload } from "@/hooks/use-media-upload";
+
+function GalleryNaturalImageV7({ src, alt }: { src: string; alt: string }) {
+  const [failedSource, setFailedSource] = useState<string | null>(null);
+
+  if (failedSource === src) {
+    return (
+      <span className="gallery-admin-natural-fallback-v7" role="img" aria-label={alt || "Ảnh lỗi"}>
+        Ảnh không tải được
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="gallery-admin-natural-image-v7"
+      loading="lazy"
+      decoding="async"
+      draggable={false}
+      onError={() => setFailedSource(src)}
+    />
+  );
+}
 
 export function ImageUpload({
   initialUrls = [],
@@ -31,7 +56,7 @@ export function ImageUpload({
   showUrlInput?: boolean;
 }) {
   const { items, message, addFiles, remove, retry, move, addUrl } =
-    useMediaUpload(initialUrls, max);
+    useMediaUpload(initialUrls, max, purpose === "gallery");
   const [over, setOver] = useState(false);
   const [drag, setDrag] = useState<{ from: string; to: string } | null>(null);
   const [url, setUrl] = useState("");
@@ -40,6 +65,10 @@ export function ImageUpload({
   const pointer = useRef({ x: 0, y: 0 });
   const dragId = drag?.from;
   const galleryMode = purpose === "gallery";
+  const readyUrlsValue = items
+    .filter((item) => item.status === "ready")
+    .map((item) => item.url)
+    .join("\n");
 
   useEffect(() => {
     if (!dragId) return;
@@ -84,12 +113,9 @@ export function ImageUpload({
   }, [blocked, onBlockedChange]);
 
   useEffect(() => {
-    onUrlsChange?.(
-      items
-        .filter((item) => item.status === "ready")
-        .map((item) => item.url),
-    );
-  }, [items, onUrlsChange]);
+    // Update the parent only when the saved URL list actually changes.
+    onUrlsChange?.(readyUrlsValue ? readyUrlsValue.split("\n") : []);
+  }, [readyUrlsValue, onUrlsChange]);
 
   useEffect(() => {
     if (!blocked) return;
@@ -125,14 +151,7 @@ export function ImageUpload({
         </span>
       </div>
 
-      <input
-        type="hidden"
-        name={name}
-        value={items
-          .filter((item) => item.status === "ready")
-          .map((item) => item.url)
-          .join("\n")}
-      />
+      <input type="hidden" name={name} value={readyUrlsValue} />
       <input type="hidden" name="media_blocked" value={blocked ? "1" : "0"} />
 
       <div
@@ -195,7 +214,7 @@ export function ImageUpload({
         {message}
       </div>
 
-      <ol className="media-grid">
+      <ol className={galleryMode ? "media-grid gallery-admin-natural-grid-v7" : "media-grid"}>
         {items.map((item, index) => (
           <li
             key={item.id}
@@ -204,15 +223,18 @@ export function ImageUpload({
               drag?.to === item.id && drag.from !== item.id ? "is-target" : ""
             }`}
           >
-            <div className="media-preview">
-              <Image
+            <div className={galleryMode ? "media-preview gallery-admin-natural-preview-v7" : "media-preview"}>
+              {galleryMode ? (
+                <GalleryNaturalImageV7 src={item.url} alt={item.name} />
+              ) : (
+              <AdminSafeImage
                 src={item.url}
                 alt={item.name}
                 fill
                 sizes="(max-width: 600px) 40vw, 220px"
-                unoptimized
                 draggable={false}
               />
+              )}
 
               <span className="media-position">
                 {galleryMode
@@ -291,12 +313,17 @@ export function ImageUpload({
                     return;
                   }
 
-                  const target = document
+                  const tile = document
                     .elementFromPoint(event.clientX, event.clientY)
-                    ?.closest<HTMLElement>("[data-media-id]")?.dataset.mediaId;
+                    ?.closest<HTMLElement>("[data-media-id]");
+                  const target = tile?.dataset.mediaId;
 
-                  if (target && items.some((entry) => entry.id === target)) {
-                    setDrag({ from: drag.from, to: target });
+                  if (target && tile && manager.current?.contains(tile)) {
+                    setDrag((previous) =>
+                      previous && previous.to !== target
+                        ? { ...previous, to: target }
+                        : previous,
+                    );
                   }
                 }}
                 onPointerUp={(event) => {

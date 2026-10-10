@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { AdminSafeImage } from "@/components/admin/admin-safe-image";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -434,7 +434,7 @@ export function RentalAssetAdminManager({
                   <div className="rental-admin-product-v3">
                     <div className="rental-admin-thumb-v3">
                       {item.cover ? (
-                        <Image
+                        <AdminSafeImage
                           src={item.cover}
                           alt=""
                           fill

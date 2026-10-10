@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { AdminSafeImage } from "@/components/admin/admin-safe-image";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -390,7 +390,7 @@ export function EquipmentAdminManager({
 
                 <div className="equipment-admin-product-cell">
                   {cover ? (
-                    <Image
+                    <AdminSafeImage
                       src={cover}
                       alt=""
                       width={58}

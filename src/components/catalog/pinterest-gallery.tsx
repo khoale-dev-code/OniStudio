@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ImageOff, Minus, Plus, X } from "lucide-react";
 import type { GalleryPhoto } from "@/lib/gallery-photos";
 
@@ -25,10 +25,16 @@ function PinterestPin({
   photo,
   index,
   onOpen,
+  onImageSize,
+  width,
+  height,
 }: {
   photo: GalleryPhoto;
   index: number;
   onOpen: () => void;
+  onImageSize: (ratio: number) => void;
+  width?: number;
+  height?: number;
 }) {
   const [broken, setBroken] = useState(false);
 
@@ -36,6 +42,7 @@ function PinterestPin({
     return (
       <div
         className="gallery-pinterest-pin-v2 gallery-pinterest-pin-broken-v2"
+        style={width && height ? { width, height } : undefined}
         aria-label={`Ảnh ${index + 1} không còn tồn tại`}
       >
         <ImageOff size={24} aria-hidden="true" />
@@ -46,6 +53,7 @@ function PinterestPin({
   return (
     <button
       className="gallery-pinterest-pin-v2"
+      style={width && height ? { width, height } : undefined}
       type="button"
       onClick={onOpen}
       aria-label={`Mở ảnh ${index + 1}`}
@@ -55,10 +63,41 @@ function PinterestPin({
         alt=""
         loading={index < 6 ? "eager" : "lazy"}
         decoding="async"
+        onLoad={(event) => {
+          const { naturalWidth, naturalHeight } = event.currentTarget;
+          if (naturalWidth > 0 && naturalHeight > 0) {
+            onImageSize(naturalWidth / naturalHeight);
+          }
+        }}
         onError={() => setBroken(true)}
       />
     </button>
   );
+}
+
+type MasonryColumn = { indexes: number[]; height: number };
+
+function makeMasonryColumns(
+  photos: GalleryPhoto[],
+  width: number,
+  imageRatios: Record<string, number>,
+): MasonryColumn[] {
+  const count = width >= 1580 ? 6 : width >= 1220 ? 5 : width >= 940 ? 4 : width >= 768 ? 3 : 2;
+  const columns: MasonryColumn[] = Array.from({ length: count }, () => ({ indexes: [], height: 0 }));
+  const gap = width >= 1220 ? 16 : 12;
+  const columnWidth = Math.max(1, (Math.max(width, 320) - gap * (count - 1)) / count);
+
+  photos.forEach((photo, index) => {
+    const ratio = Math.max(0.4, Math.min(3.5, imageRatios[photo.id] ?? 1));
+    let shortest = 0;
+    for (let i = 1; i < columns.length; i += 1) {
+      if (columns[i].height < columns[shortest].height) shortest = i;
+    }
+    columns[shortest].indexes.push(index);
+    columns[shortest].height += columnWidth / ratio + gap;
+  });
+
+  return columns;
 }
 
 export function PinterestGallery({
@@ -69,11 +108,49 @@ export function PinterestGallery({
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [viewerBroken, setViewerBroken] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [galleryWidth, setGalleryWidth] = useState(0);
+  const [imageRatios, setImageRatios] = useState<Record<string, number>>({});
+  const imageRatiosRef = useRef<Record<string, number>>({});
+  const ratioFrame = useRef<number | null>(null);
+  const grid = useRef<HTMLDivElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const touchStartX = useRef<number | null>(null);
 
   const active =
     activeIndex === null ? null : photos[activeIndex] ?? null;
+
+  const trackImageRatio = useCallback((id: string, value: number) => {
+    const ratio = Math.max(0.4, Math.min(3.5, value));
+    if (Math.abs((imageRatiosRef.current[id] ?? 0) - ratio) < 0.02) return;
+    imageRatiosRef.current[id] = ratio;
+    // Batch fast image onLoad callbacks to avoid many layout updates.
+    if (ratioFrame.current !== null) return;
+    ratioFrame.current = requestAnimationFrame(() => {
+      ratioFrame.current = null;
+      setImageRatios({ ...imageRatiosRef.current });
+    });
+  }, []);
+
+  useEffect(() => {
+    const node = grid.current;
+    if (!node) return;
+    const observer = new ResizeObserver((entries) => {
+      const nextWidth = Math.round(entries[0]?.contentRect.width ?? 0);
+      if (nextWidth > 0) {
+        setGalleryWidth((previous) => previous === nextWidth ? previous : nextWidth);
+      }
+    });
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      if (ratioFrame.current !== null) cancelAnimationFrame(ratioFrame.current);
+    };
+  }, []);
+
+  const columns = useMemo(
+    () => makeMasonryColumns(photos, galleryWidth, imageRatios),
+    [photos, galleryWidth, imageRatios],
+  );
 
   function open(index: number) {
     setZoom(1);
@@ -141,14 +218,44 @@ export function PinterestGallery({
 
   return (
     <>
-      <div className="gallery-pinterest-grid-v2">
-        {photos.map((photo, index) => (
-          <PinterestPin
-            photo={photo}
-            index={index}
-            key={photo.id}
-            onOpen={() => open(index)}
-          />
+      {/* Keep the desktop justified rows and use independent vertical stacks on mobile. */}
+      <div className="gallery-pinterest-mobile-masonry-v5">
+        {[0, 1].map((column) => (
+          <div className="gallery-pinterest-mobile-column-v5" key={column}>
+            {photos.map((photo, index) =>
+              index % 2 === column ? (
+                <PinterestPin
+                  key={photo.id}
+                  photo={photo}
+                  index={index}
+                  onOpen={() => open(index)}
+                  onImageSize={(ratio) => trackImageRatio(photo.id, ratio)}
+                />
+              ) : null,
+            )}
+          </div>
+        ))}
+      </div>
+      <div
+        ref={grid}
+        className="gallery-pinterest-desktop-masonry-v7"
+        style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))` }}
+      >
+        {columns.map((column, columnIndex) => (
+          <div className="gallery-pinterest-desktop-column-v7" key={columnIndex}>
+            {column.indexes.map((index) => {
+              const photo = photos[index];
+              return (
+                <PinterestPin
+                  key={photo.id}
+                  photo={photo}
+                  index={index}
+                  onOpen={() => open(index)}
+                  onImageSize={(ratio) => trackImageRatio(photo.id, ratio)}
+                />
+              );
+            })}
+          </div>
         ))}
       </div>
 

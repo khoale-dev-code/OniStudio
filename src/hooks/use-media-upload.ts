@@ -11,7 +11,7 @@ export type MediaItem = {
   error?: string;
 };
 const LIMIT = 8 * 1024 * 1024;
-export function useMediaUpload(initial: string[], max: number) {
+export function useMediaUpload(initial: string[], max: number, newestFirst = false) {
   const [items, setItems] = useState<MediaItem[]>(() =>
     initial.map((url, i) => ({
       id: `saved-${i}`,
@@ -55,10 +55,13 @@ export function useMediaUpload(initial: string[], max: number) {
       xhr.open("POST", "/api/cloudinary/upload");
       xhr.timeout = 65000;
       xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable)
-          update(item.id, {
-            progress: Math.round((event.loaded / event.total) * 100),
-          });
+        if (!event.lengthComputable) return;
+        const progress = Math.round((event.loaded / event.total) * 100);
+        const previous = current.current.find((entry) => entry.id === item.id)?.progress ?? 0;
+        // Fewer React commits when multiple large uploads run together.
+        if ((progress === 100 && previous !== 100) || progress - previous >= 8) {
+          update(item.id, { progress });
+        }
       };
       let settled = false;
       function finish(error?: string, url?: string) {
@@ -106,8 +109,9 @@ export function useMediaUpload(initial: string[], max: number) {
   function addFiles(files: File[]) {
     const errors: string[] = [];
     const next = [...current.current];
+    const added: MediaItem[] = [];
     for (const file of files) {
-      if (next.length >= max) {
+      if (next.length + added.length >= max) {
         errors.push(`Tối đa ${max} ảnh. Các ảnh vượt giới hạn chưa được thêm.`);
         break;
       }
@@ -121,7 +125,7 @@ export function useMediaUpload(initial: string[], max: number) {
       }
       const url = URL.createObjectURL(file);
       previews.current.add(url);
-      next.push({
+      added.push({
         id: crypto.randomUUID(),
         url,
         name: file.name,
@@ -130,7 +134,9 @@ export function useMediaUpload(initial: string[], max: number) {
         progress: 0,
       });
     }
-    commit(next);
+    // Gallery: newest selection goes first; older photos keep their order.
+    // The file selection order is stable even when uploads finish out of order.
+    commit(newestFirst ? [...added.reverse(), ...next] : [...next, ...added]);
     setMessage(errors.join(" "));
     pump();
   }

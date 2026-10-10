@@ -1,6 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { isConfigured, supabaseConfig } from "@/lib/supabase/config";
+function isStaleRefreshToken(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+  const failure = error as { code?: string; message?: string };
+  return failure.code === "refresh_token_not_found" ||
+    failure.code === "invalid_refresh_token" ||
+    /invalid refresh token|refresh token not found/i.test(failure.message || "");
+}
+
 export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const prefixed = path === "/en" || path.startsWith("/en/");
@@ -22,10 +30,14 @@ export async function proxy(request: NextRequest) {
   let response = prefixed
     ? NextResponse.rewrite(url, { request: { headers } })
     : NextResponse.next({ request: { headers } });
-  if (
-    isConfigured() &&
-    (cleanPath.startsWith("/admin") || cleanPath.startsWith("/api/"))
-  ) {
+  // Authentication is already checked by API actions and by the protected layout.
+  // Refresh session cookies only for protected admin pages, not for login/uploads.
+  const protectedAdmin = cleanPath === "/admin" ||
+    (cleanPath.startsWith("/admin/") && cleanPath !== "/admin/login");
+  const hasAuthCookies = request.cookies.getAll().some(({ name }) =>
+    /^sb-[a-z0-9-]+-auth-token(?:\.\d+)?$/i.test(name),
+  );
+  if (isConfigured() && protectedAdmin && hasAuthCookies) {
     const { url: dbUrl, key } = supabaseConfig();
     const db = createServerClient(dbUrl, key, {
       cookies: {
@@ -40,7 +52,27 @@ export async function proxy(request: NextRequest) {
         },
       },
     });
-    await db.auth.getClaims();
+    try {
+      const { error } = await db.auth.getClaims();
+      if (error && isStaleRefreshToken(error)) {
+        // Expired refresh tokens cannot be reused. Clear only Supabase auth cookies.
+        // Authorization itself remains in requireAdminPage()/public.is_admin().
+        for (const { name } of request.cookies.getAll()) {
+          if (/^sb-[a-z0-9-]+-auth-token(?:\.\d+)?$/i.test(name)) {
+            request.cookies.delete(name);
+            response.cookies.delete(name);
+          }
+        }
+      }
+    } catch (error) {
+      if (!isStaleRefreshToken(error)) throw error;
+      for (const { name } of request.cookies.getAll()) {
+        if (/^sb-[a-z0-9-]+-auth-token(?:\.\d+)?$/i.test(name)) {
+          request.cookies.delete(name);
+          response.cookies.delete(name);
+        }
+      }
+    }
     response.headers.set("Cache-Control", "private, no-store");
   }
   return response;

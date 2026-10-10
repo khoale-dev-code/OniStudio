@@ -31,8 +31,8 @@ export function GalleryPhotoManager({
           <p className="eyebrow">ONI / IMAGE LIBRARY</p>
           <h1>Thư viện hình ảnh</h1>
           <p>
-            Tải ảnh lên, kéo thả để sắp xếp. Thứ tự trong Admin sẽ được dùng
-            trực tiếp ngoài website.
+            Ảnh mới sẽ ở vị trí đầu tiên. Kéo thả để thay đổi thứ tự;
+            thứ tự trong Admin sẽ được hiển thị ngoài website.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export function GalleryPhotoManager({
             <div>
               <strong>Hình ảnh</strong>
               <p>
-                Chọn nhiều ảnh cùng lúc, sau đó kéo thả để sắp xếp theo ý muốn.
+                Ảnh mới lên đầu danh sách. Bạn vẫn có thể kéo thả để sắp xếp.
               </p>
             </div>
           </div>

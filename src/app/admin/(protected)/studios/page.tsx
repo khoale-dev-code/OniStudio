@@ -25,7 +25,7 @@ export default async function Rooms({
   const { data, error } = await db
     .from("studios")
     .select(
-      "id,slug,name,description,area,price,led_count,images,published,sort_order,width_m,length_m,height_m,show_dimensions,detail_content",
+      "id,name,area,price,published,sort_order,width_m,length_m,height_m,show_dimensions",
     )
     .order("sort_order");
 

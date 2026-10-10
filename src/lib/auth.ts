@@ -8,19 +8,13 @@ export const adminSession = cache(async function adminSession() {
   if (!isConfigured()) return null;
 
   const db = await createAuthClient();
-  const [claimsResult, roleResult] = await Promise.all([
-    db.auth.getClaims(),
-    db.rpc("is_admin"),
-  ]);
+  // Do not perform an admin role query for missing/invalid sessions.
+  // This also avoids racing a token refresh against the role request.
+  const claimsResult = await db.auth.getClaims();
+  if (claimsResult.error || !claimsResult.data?.claims) return null;
 
-  if (
-    claimsResult.error ||
-    !claimsResult.data?.claims ||
-    roleResult.error ||
-    roleResult.data !== true
-  ) {
-    return null;
-  }
+  const roleResult = await db.rpc("is_admin");
+  if (roleResult.error || roleResult.data !== true) return null;
 
   const email =
     typeof claimsResult.data.claims.email === "string"
