@@ -20653,3 +20653,132 @@ html[lang="en"] .home-hero-motion-line {
 }
 /* oni-gallery-admin-natural-image-v7:end */
 
+/* oni-contact-text-only-v5:start */
+/* All new Contact content is typography-only; existing directions/map preserved. */
+.oni-contact-v5 { background: #faf9f6; color: #1c2321; }
+.oni-contact-v5 .oni-contact-v5-hero { padding: clamp(40px, 5vw, 88px) 0 clamp(46px, 6vw, 82px); background: #faf9f6; }
+.oni-contact-v5 .oni-contact-v5-hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .8fr); gap: clamp(32px, 6.8vw, 120px); align-items: end; }
+.oni-contact-v5 .oni-contact-v5-hero-title, .oni-contact-v5 .oni-contact-v5-hero-side { min-width: 0; }
+.oni-contact-v5 .oni-contact-v5-kicker { margin: 0 0 22px; color: #2c59d8; font-size: .73rem; font-weight: 760; letter-spacing: .095em; line-height: 1.5; }
+.oni-contact-v5 .oni-contact-v5-hero h1 { margin: 0; max-width: 920px; font-size: clamp(2.7rem, 5.3vw, 5.35rem); font-weight: 540; letter-spacing: -.025em; line-height: 1.25; text-wrap: balance; overflow-wrap: break-word; }
+.oni-contact-v5 .oni-contact-v5-intro { margin: 0; font-size: clamp(1.02rem, 1.22vw, 1.16rem); line-height: 1.83; color: #66716c; }
+.oni-contact-v5 .oni-contact-v5-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 25px; }
+.oni-contact-v5 .oni-contact-v5-button { display: inline-flex; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 9px; min-height: 48px; padding: 11px 18px; border: 1px solid #c7cdc6; border-radius: 999px; font-size: .84rem; font-weight: 730; line-height: 1.4; text-decoration: none; transition: background-color .2s ease, color .2s ease, transform .2s ease; white-space: nowrap; }
+.oni-contact-v5 .oni-contact-v5-button:hover { transform: translateY(-2px); }
+.oni-contact-v5 .oni-contact-v5-button-primary { background: #315ce8; border-color: #315ce8; color: white; }
+.oni-contact-v5 .oni-contact-v5-button-primary:hover { background: #214ed2; }
+.oni-contact-v5 .oni-contact-v5-button-outline { background: transparent; color: #192322; }
+.oni-contact-v5 .oni-contact-v5-button-outline:hover { background: #edeff0; }
+.oni-contact-v5 .oni-contact-v5-hero-note { max-width: 450px; margin: 16px 0 0; color: #949b94; font-size: .82rem; line-height: 1.72; }
+.oni-contact-v5 .oni-contact-v5-section { padding: clamp(50px, 5.7vw, 86px) 0; }
+.oni-contact-v5 .oni-contact-v5-section-heading { max-width: 490px; }
+.oni-contact-v5 .oni-contact-v5-wide-heading { max-width: 770px; margin-bottom: 36px; }
+.oni-contact-v5 .oni-contact-v5-index { display: block; color: #315ce8; font-weight: 760; font-size: .78rem; letter-spacing: .06em; margin-bottom: 14px; line-height: 1.5; }
+.oni-contact-v5 .oni-contact-v5-section-heading h2 { margin: 0; font-size: clamp(2rem, 3.25vw, 3.2rem); letter-spacing: -.024em; font-weight: 560; line-height: 1.32; text-wrap: balance; }
+.oni-contact-v5 .oni-contact-v5-section-heading p { margin: 15px 0 0; color: #778079; font-size: .98rem; line-height: 1.75; }
+.oni-contact-v5 .oni-contact-v5-preparation { background: white; }
+.oni-contact-v5 .oni-contact-v5-preparation-grid { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.2fr); gap: clamp(28px, 7vw, 116px); align-items: start; }
+.oni-contact-v5 .oni-contact-v5-preparation-list { padding: 0; margin: 0; list-style: none; border-top: 1px solid #e2e6df; }
+.oni-contact-v5 .oni-contact-v5-preparation-list li { display: grid; grid-template-columns: 49px minmax(0, 1fr); gap: 22px; align-items: start; padding: 22px 6px 25px 0; border-bottom: 1px solid #e2e6df; }
+.oni-contact-v5 .oni-contact-v5-preparation-number { color: #315ce8; font-size: .8rem; font-weight: 800; line-height: 1.75; }
+.oni-contact-v5 .oni-contact-v5-preparation-list h3 { margin: 0 0 7px; font-size: clamp(1.04rem, 1.45vw, 1.27rem); font-weight: 700; line-height: 1.47; letter-spacing: -.012em; }
+.oni-contact-v5 .oni-contact-v5-preparation-list p { max-width: 640px; margin: 0; color: #748077; font-size: .9rem; line-height: 1.75; }
+.oni-contact-v5 .oni-contact-v5-process { background: #f4f5f3; border-top: 1px solid #e9ece7; border-bottom: 1px solid #e9ece7; }
+.oni-contact-v5 .oni-contact-v5-process-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; list-style: none; padding: 0; margin: 0; }
+.oni-contact-v5 .oni-contact-v5-process-list li { min-width: 0; position: relative; padding: 22px 22px 24px; border: 1px solid #e1e5df; background: #fff; border-radius: 16px; }
+.oni-contact-v5 .oni-contact-v5-step { width: 41px; height: 41px; display: grid; place-items: center; margin-bottom: 20px; border-radius: 50%; background: #315ce8; color: white; font-size: 1rem; font-weight: 800; }
+.oni-contact-v5 .oni-contact-v5-process-list h3 { margin: 0 0 8px; font-size: 1.12rem; font-weight: 740; line-height: 1.46; }
+.oni-contact-v5 .oni-contact-v5-process-list p { margin: 0; color: #748078; font-size: .9rem; line-height: 1.75; }
+.oni-contact-v5 .oni-contact-v5-reach { background: white; }
+.oni-contact-v5 .oni-contact-v5-reach-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; }
+.oni-contact-v5 .oni-contact-v5-reach-card { display: grid; grid-template-columns: 28px minmax(0,1fr) 17px; gap: 13px; min-width: 0; padding: 24px 17px; border: 1px solid #e2e7e1; border-radius: 15px; color: #232c28; text-decoration: none; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.oni-contact-v5 .oni-contact-v5-reach-card:hover { border-color: #c8d4fd; box-shadow: 0 14px 34px rgba(24,49,110,.06); transform: translateY(-2px); }
+.oni-contact-v5 .oni-contact-v5-reach-card > svg:first-child { color: #315ce8; margin-top: 2px; }
+.oni-contact-v5 .oni-contact-v5-reach-card .oni-contact-v5-link-arrow { color: #8d998f; }
+.oni-contact-v5 .oni-contact-v5-reach-card h3 { font-size: .94rem; margin: 0 0 8px; line-height: 1.45; overflow-wrap: anywhere; font-weight: 740; }
+.oni-contact-v5 .oni-contact-v5-reach-card p { margin: 0; color: #79837b; font-size: .84rem; line-height: 1.7; }
+.oni-contact-v5 .oni-contact-v5-address { display: inline-flex; gap: 8px; align-items: flex-start; margin-top: 25px; color: #6e7970; text-decoration: none; font-size: .83rem; line-height: 1.7; }
+.oni-contact-v5 .oni-contact-v5-address:hover { color: #315ce8; }
+.oni-contact-v5 .oni-contact-v5-address svg { flex: none; margin-top: 2px; }
+@media (max-width: 1000px) {
+ .oni-contact-v5 .oni-contact-v5-hero-grid { gap: 30px; }
+ .oni-contact-v5 .oni-contact-v5-preparation-grid { gap: 40px; }
+ .oni-contact-v5 .oni-contact-v5-reach-card { grid-template-columns: 26px minmax(0,1fr); }
+ .oni-contact-v5 .oni-contact-v5-reach-card .oni-contact-v5-link-arrow { display: none; }
+}
+@media (max-width: 767px) {
+ .oni-contact-v5 .oni-contact-v5-hero { padding: 34px 0 45px; }
+ .oni-contact-v5 .oni-contact-v5-hero-grid { grid-template-columns: 1fr; gap: 17px; }
+ .oni-contact-v5 .oni-contact-v5-hero h1 { font-size: clamp(2.25rem, 7vw, 3.45rem); line-height: 1.28; letter-spacing: -.015em; }
+ .oni-contact-v5 .oni-contact-v5-kicker { margin-bottom: 12px; }
+ .oni-contact-v5 .oni-contact-v5-intro { font-size: .96rem; line-height: 1.75; }
+ .oni-contact-v5 .oni-contact-v5-actions { margin-top: 20px; }
+ .oni-contact-v5 .oni-contact-v5-section { padding: 49px 0; }
+ .oni-contact-v5 .oni-contact-v5-preparation-grid { grid-template-columns: 1fr; gap: 25px; }
+ .oni-contact-v5 .oni-contact-v5-preparation-list li { gap: 12px; grid-template-columns: 38px minmax(0,1fr); padding: 18px 0 20px; }
+ .oni-contact-v5 .oni-contact-v5-preparation-list h3 { font-size: 1.08rem; }
+ .oni-contact-v5 .oni-contact-v5-section-heading h2 { font-size: clamp(1.85rem, 5.6vw, 2.6rem); line-height: 1.32; }
+ .oni-contact-v5 .oni-contact-v5-wide-heading { margin-bottom: 24px; }
+ .oni-contact-v5 .oni-contact-v5-process-list { grid-template-columns: 1fr; gap: 10px; }
+ .oni-contact-v5 .oni-contact-v5-process-list li { display: grid; grid-template-columns: 45px minmax(0,1fr); column-gap: 13px; padding: 18px; }
+ .oni-contact-v5 .oni-contact-v5-step { grid-row: span 2; margin: 0; width: 39px; height: 39px; }
+ .oni-contact-v5 .oni-contact-v5-process-list h3 { margin: 0 0 3px; }
+ .oni-contact-v5 .oni-contact-v5-reach-grid { grid-template-columns: 1fr; gap: 10px; }
+ .oni-contact-v5 .oni-contact-v5-reach-card { grid-template-columns: 28px minmax(0,1fr) 17px; padding: 20px; }
+ .oni-contact-v5 .oni-contact-v5-reach-card .oni-contact-v5-link-arrow { display: block; }
+}
+@media (max-width: 420px) {
+ .oni-contact-v5 .oni-contact-v5-hero h1 { font-size: 2.25rem; }
+ .oni-contact-v5 .oni-contact-v5-actions { display: grid; grid-template-columns: 1fr; }
+ .oni-contact-v5 .oni-contact-v5-button { width: 100%; white-space: normal; }
+ .oni-contact-v5 .oni-contact-v5-reach-card { padding: 17px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .oni-contact-v5 .oni-contact-v5-button, .oni-contact-v5 .oni-contact-v5-reach-card { transition: none; }
+}
+/* oni-contact-text-only-v5:end */
+
+/* oni-contact-process-messenger-v6:start */
+/* Compact outline process icons and the Messenger brand mark. */
+.oni-contact-v5 .oni-contact-v6-step-heading {
+  display: flex;
+  align-items: center;
+  min-height: 43px;
+  gap: 14px;
+  margin-bottom: 17px;
+}
+.oni-contact-v5 .oni-contact-v6-step-heading .oni-contact-v5-step {
+  flex: 0 0 auto;
+  margin: 0;
+}
+.oni-contact-v5 .oni-contact-v6-step-icon {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  color: #303b37;
+}
+.oni-contact-v5 .oni-contact-v6-step-arrow {
+  margin-left: auto;
+  flex: 0 0 auto;
+  color: #b5bdb6;
+}
+.oni-contact-v5 .oni-contact-v6-messenger-icon {
+  flex: 0 0 auto;
+  display: block;
+  overflow: visible;
+}
+.oni-contact-v5 .oni-contact-v5-reach-card > .oni-contact-v6-messenger-icon {
+  margin-top: 0;
+}
+@media (max-width: 767px) {
+  .oni-contact-v5 .oni-contact-v5-process-list li {
+    display: block;
+  }
+  .oni-contact-v5 .oni-contact-v6-step-heading {
+    margin-bottom: 12px;
+  }
+  .oni-contact-v5 .oni-contact-v6-step-arrow {
+    width: 18px;
+  }
+}
+/* oni-contact-process-messenger-v6:end */

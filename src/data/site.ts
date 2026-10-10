@@ -23,7 +23,7 @@ export const navigation: { path: string; label: Localized }[] = [
   { path: "/effect-backdrops", label: { vi: "Phông Màu Hiệu Ứng", en: "Effect Backdrops" } },
   { path: "/backdrops", label: { vi: "Phông Màu", en: "Color Backdrops" } },
   { path: "/props", label: { vi: "Đạo Cụ", en: "Props" } },
-  { path: "/gallery", label: { vi: "Hình Ảnh Thực Tế", en: "Real Photos" } },
+  { path: "/gallery", label: { vi: "Hình Ảnh Thực Tế", en: "Photo Gallery" } },
   { path: "/contact", label: { vi: "Địa Chỉ", en: "Address" } },
 ];
 export const categories = {
