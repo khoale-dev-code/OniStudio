@@ -20782,3 +20782,19 @@ html[lang="en"] .home-hero-motion-line {
   }
 }
 /* oni-contact-process-messenger-v6:end */
+
+/* oni-contact-white-messenger-v2:start */
+/* White Messenger bubble and blue lightning inside the primary Contact CTA only. */
+.oni-contact-v5 .oni-contact-v5-button-primary > svg.oni-contact-v6-messenger-icon {
+  width: 23px;
+  height: 23px;
+  min-width: 23px;
+  flex: 0 0 23px;
+}
+.oni-contact-v5 .oni-contact-v5-button-primary > svg.oni-contact-v6-messenger-icon > path:first-of-type {
+  fill: #ffffff;
+}
+.oni-contact-v5 .oni-contact-v5-button-primary > svg.oni-contact-v6-messenger-icon > path:nth-of-type(2) {
+  fill: #315ce8;
+}
+/* oni-contact-white-messenger-v2:end */
