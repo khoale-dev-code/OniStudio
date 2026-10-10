@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-const cloud = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const config: NextConfig = {
   // Limit build-time page-data workers to reduce peak RAM usage.
   // This does not limit request concurrency in the deployed application.
@@ -8,15 +7,12 @@ const config: NextConfig = {
   },
   poweredByHeader: false,
   images: {
-    remotePatterns: cloud
-      ? [
-          {
-            protocol: "https",
-            hostname: "res.cloudinary.com",
-            pathname: `/${cloud}/image/upload/**`,
-          },
-        ]
-      : [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
   },
   async headers() {
     return [

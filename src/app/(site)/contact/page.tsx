@@ -8,6 +8,8 @@ import {
   MessageCircle,
   Phone,
 } from "lucide-react";
+import Image from "next/image";
+import { ContactMotion } from "@/components/contact/contact-motion";
 import { context } from "@/lib/i18n";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -28,7 +30,8 @@ export default async function Contact() {
   const vi = locale === "vi";
 
   return (
-    <main className="contact-page-v3">
+    <main className="contact-page-v3 contact-refresh">
+      <ContactMotion />
       <section className="contact-v3-hero">
         <div className="container contact-v3-hero-grid">
           <div className="contact-v3-hero-copy">
@@ -79,8 +82,10 @@ export default async function Contact() {
 
           <div className="contact-v3-hero-note">
             <p className="contact-v3-small-label">
-              {vi ? "THÔNG TIN NÊN GỬI" : "WHAT TO SEND"}
+              {vi ? "CHUẨN BỊ CHO BUỔI CHỤP" : "PREPARE YOUR SHOOT"}
             </p>
+            <h2 className="contact-refresh-note-title">{vi ? "Thông tin nên gửi" : "What to send"}</h2>
+            <p className="contact-refresh-note-intro">{vi ? "Chỉ cần 3 thông tin để Oni tư vấn nhanh và chính xác hơn." : "Three details help Oni respond with the right setup."}</p>
 
             <div className="contact-v3-note-list">
               <span>01</span>
@@ -196,6 +201,11 @@ export default async function Contact() {
           </div>
 
           <aside className="contact-v3-map-aside">
+            <div className="contact-refresh-logo-wrap">
+              <Image src="/images/oni-contact-logo.webp" alt="Oni Studio" width={164} height={164} className="contact-refresh-logo" />
+              <svg className="contact-refresh-orbit" viewBox="0 0 220 220" role="img" aria-label={vi ? "Nét trang trí chuyển động quanh logo" : "Decorative line around the logo"}><circle cx="110" cy="110" r="101" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 10" /><path d="M 10 110 A 100 100 0 0 1 110 10" fill="none" stroke="currentColor" strokeWidth="2" /></svg>
+            </div>
+            <div className="contact-refresh-aside-bottom">
             <p className="contact-v3-small-label">
               {vi ? "TRƯỚC KHI DI CHUYỂN" : "BEFORE YOU TRAVEL"}
             </p>
@@ -221,6 +231,7 @@ export default async function Contact() {
               {vi ? "Nhắn Oni để xác nhận" : "Message Oni to confirm"}
               <ArrowRight size={16} aria-hidden="true" />
             </a>
+            </div>
           </aside>
         </div>
       </section>
